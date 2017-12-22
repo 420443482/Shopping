@@ -1,4 +1,4 @@
-@import url(/content/ui/global/font-awesome/css/font-awesome.css);
+@import url(/static/css/index/font-awesome.css);
 /*!
  *   AdminLTE v2.3.6
  *   Author: Almsaeed Studio
@@ -558,10 +558,10 @@ a:focus {
   list-style: none;
   padding: 0;
   margin: 0;
-  /**********×îÐÂ°æ±¾£¬Èý¼¶²Ëµ¥Ð§¹ûÓÅ»¯**********/
+  /**********ï¿½ï¿½ï¿½Â°æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ð§ï¿½ï¿½ï¿½Å»ï¿½**********/
   /*padding-left: 5px;*/
 }
-  /**********×îÐÂ°æ±¾£¬Èý¼¶²Ëµ¥Ð§¹ûÓÅ»¯**********/
+  /**********ï¿½ï¿½ï¿½Â°æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ð§ï¿½ï¿½ï¿½Å»ï¿½**********/
 
 /*.sidebar-menu .treeview-menu .treeview-menu {
   padding-left: 20px;
