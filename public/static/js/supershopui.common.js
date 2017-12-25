@@ -1130,7 +1130,7 @@ function _init() {
 
 var App = function() {
 
-    var basePath = 'static/';
+    var basePath = '/static/';
 
     var imgPath = 'img/';
 
