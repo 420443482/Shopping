@@ -69,7 +69,7 @@
         $('.btn').click(function(){
             $.ajax({
                 type: "POST",
-                url: "admin/login/login",
+                url: "/admin/login/login",
                 data: $('#user_from').serialize(),
                 dataType: "json",
                 success: function(data){

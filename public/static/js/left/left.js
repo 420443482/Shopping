@@ -19,7 +19,7 @@ $(function () {
 
             },
             {
-                id: "10002", text: "人员中心", url: "../staff", targetType: "ajax", icon: "fa fa-bar-chart-o",
+                id: "10002", text: "人员中心", url: "../staff", targetType: "ajax", icon: "fa fa-child",
                 // { id: "10002", text: "二级菜单1", url: "dashboard.html", targetType: "ajax", icon: "icon-diamond" },
                 // { id: "10017", text: "二级菜单2", url: "../admin/ajax_content2.html", targetType: "ajax", icon: "icon-diamond" }
 
@@ -37,9 +37,9 @@ $(function () {
         var menus = [
             { id: "10010", text: "管理中心", isHeader: true },
             {
-                id: "10001", text: "一级菜dfafa", isOpen: true, icon: "icon-diamond",  children: [
-                { id: "10002", text: "二级菜单1", url: "../admin/dashboard.html", targetType: "ajax", icon: "icon-diamond" },
-                { id: "10017", text: "二级菜单2", url: "../admin/ajax_content2.html", targetType: "ajax", icon: "icon-diamond" }
+                id: "10001", text: "人员设置", isOpen: true, icon: "icon-diamond",  children: [
+                { id: "10002", text: "信息设置", url: "../admin/dashboard.html", targetType: "ajax", icon: "icon-diamond" },
+                { id: "10017", text: "人员调度", url: "../admin/ajax_content2.html", targetType: "ajax", icon: "icon-diamond" }
 
             ]
             }
