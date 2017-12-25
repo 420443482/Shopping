@@ -13,7 +13,10 @@ class Index extends Controller
 	public function loginOut(){
 		 return $this->fetch('login/login');
 	}
-	
+
+	public function dashboard(){
+        return $this->fetch('dashboard');
+    }
 	
 }
 

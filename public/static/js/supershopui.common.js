@@ -1130,9 +1130,9 @@ function _init() {
 
 var App = function() {
 
-    var basePath = '/content/';
+    var basePath = 'static/';
 
-    var imgPath = 'ui/img/';
+    var imgPath = 'img/';
 
     var pluginsPath = 'plugins/';
 
