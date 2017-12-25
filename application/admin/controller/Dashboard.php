@@ -2,19 +2,13 @@
 namespace app\admin\controller;
 use app\common\model\User;
 use think\Controller;
-class Index extends Controller
+class Dashboard extends Controller
 {
 	//显示首页
     public function index()
     {
-        return $this->fetch('content');
+        return $this->fetch('dashboard');
     }
-	
-	public function loginOut(){
-		 return $this->fetch('login/login');
-	}
-
-
 	
 }
 
