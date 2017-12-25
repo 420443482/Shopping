@@ -4,6 +4,7 @@
  * Licensed under the MIT license
  */
 $(function () {
+
     $("#workbench").click(function () {
         $(".sidebar-menu").empty();
 
@@ -12,11 +13,10 @@ $(function () {
         var menus = [
             { id: "10010", text: "我的工作台", isHeader: true },
             {
-                id: "10001", text: "一级菜单", isOpen: true, icon: "icon-diamond",  children: [
-                { id: "10002", text: "二级菜单1", url: "dashboard.html", targetType: "ajax", icon: "icon-diamond" },
-                { id: "10017", text: "二级菜单2", url: "../admin/ajax_content2.html", targetType: "ajax", icon: "icon-diamond" }
+                id: "10001", text: "统计中心", url: "dashboard.html", targetType: "ajax", icon: "fa fa-bar-chart-o"
+                // { id: "10002", text: "二级菜单1", url: "dashboard.html", targetType: "ajax", icon: "icon-diamond" },
+                // { id: "10017", text: "二级菜单2", url: "../admin/ajax_content2.html", targetType: "ajax", icon: "icon-diamond" }
 
-            ]
             }
         ];
         $('.sidebar-menu').sidebarMenu({ data: menus, param: { strUser: 'admin' } });
