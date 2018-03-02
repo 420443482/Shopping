@@ -1,30 +1,101 @@
-    <div class="content-tabs">
-        <button class="roll-nav roll-left tabLeft" onclick="scrollTabLeft()">
-            <i class="fa fa-backward"></i>
-        </button>
-        <nav class="page-tabs menuTabs tab-ui-menu" id="tab-menu">
-            <div class="page-tabs-content" style="margin-left: 0px;">
+    <div class="page-content-body " id="tab-page-content">
+        <div class="box-body" style="padding-bottom:0px;">
+            <div class="panel panel-default" >
+                <div class="panel-heading">查询条件</div>
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal">
+                        <div class="form-group" style="margin-top:15px">
+                            <label class="control-label col-sm-1" for="txt_search_departmentname">姓名</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="txt_search_departmentname">
+                            </div>
+                            <label class="control-label col-sm-1" for="txt_search_statu">编号</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="txt_search_statu">
+                            </div>
+                            <label class="control-label col-sm-1" for="txt_search_statu">手机号码</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="txt_search_statu">
+                            </div>
+                            <label class="control-label col-sm-1" for="txt_search_statu">入职时间</label>
+                            <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                <input class="span2" size="16" type="text" value="12-02-2012">
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                            <div class="col-sm-4" style="text-align:right; float: right">
+                                <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary">查询</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="content-iframe " style="background-color: #ffffff; ">
 
-                <a href="javascript:void(0);" id="tab_tab_10008" data-id="tab_10008" class="menu_tab">欢迎页</a><a href="javascript:void(0);" id="tab_tab_10012" data-id="tab_10012" class="menu_tab">图标库 <i class="fa fa-remove page_tab_close" style="cursor: pointer;" data-id="tab_10012" onclick="closeTab(this)"></i></a><a href="javascript:void(0);" id="tab_tab_10211" data-id="tab_10211" class="menu_tab">bootstraptable表格 <i class="fa fa-remove page_tab_close" style="cursor: pointer;" data-id="tab_10211" onclick="closeTab(this)"></i></a><a href="javascript:void(0);" id="tab_tab_10212" data-id="tab_10212" class="menu_tab active">管理表格 <i class="fa fa-remove page_tab_close" style="cursor: pointer;" data-id="tab_10212" onclick="closeTab(this)"></i></a><a href="javascript:void(0);" id="tab_tab_10213" data-id="tab_10213" class="menu_tab">jqgrid表格 <i class="fa fa-remove page_tab_close" style="cursor: pointer;" data-id="tab_10213" onclick="closeTab(this)"></i></a></div>
-        </nav>
-        <button class="roll-nav roll-right tabRight" onclick="scrollTabRight()">
-            <i class="fa fa-forward" style="margin-left: 3px;"></i>
-        </button>
-        <div class="btn-group roll-nav roll-right">
-            <button class="dropdown tabClose" data-toggle="dropdown" style="color: #000">
-                页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right" style="min-width: 128px;">
-                <li><a class="tabReload" href="javascript:refreshTab();">刷新当前</a></li>
-                <li><a class="tabCloseCurrent" href="javascript:closeCurrentTab();">关闭当前</a></li>
-                <li><a class="tabCloseAll" href="javascript:closeOtherTabs(true);">全部关闭</a></li>
-                <li><a class="tabCloseOther" href="javascript:closeOtherTabs();">除此之外全部关闭</a></li>
-            </ul>
+                <div class="fixed-table-toolbar"><div class="bs-bars pull-left"><div id="toolbar" class="btn-group">
+                    <button id="btn_add" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                    </button>
+                    <button id="btn_edit" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                    </button>
+                    <button id="btn_delete" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                    </button>
+                </div>
+                </div></div><div class="pull-right search"><input class="form-control" type="text" placeholder="搜索"></div></div>
+            <div class="row pre-scrollable" style=" overflow:scroll; width:102%; max-height: 60%;" id="list_staff">
+                <!--<table class="table table-striped" style="width: 90%; text-align: center;">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th>序号</th>-->
+                        <!--<th>员工姓名</th>-->
+                        <!--<th>编号</th>-->
+                        <!--<th>手机号码</th>-->
+                        <!--<th>住址</th>-->
+                        <!--<th>性别</th>-->
+                        <!--<th>微信号</th>-->
+                        <!--<th>QQ</th>-->
+                        <!--<th>入职时间</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--{volist name='list' id='staff'}-->
+                    <!--<tr>-->
+                        <!--<td>{$staff.staff_id}</td>-->
+                        <!--<td>{$staff.staff_name}</td>-->
+                        <!--<td>{$staff.staff_code}</td>-->
+                        <!--<td>{$staff.staff_phone}</td>-->
+                        <!--<td>{$staff.staff_address}</td>-->
+                        <!--<td>{$staff.staff_sex}</td>-->
+                        <!--<td>{$staff.staff_wx}</td>-->
+                        <!--<td>{$staff.staff_qq}</td>-->
+                        <!--<td>{$staff.staff_add_time}</td>-->
+                    <!--</tr>-->
+                    <!--{/volist}-->
+                    <!--</tbody>-->
+                <!--</table>-->
+            </div>
+            <div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示第 1 到第 10 条记录，总共 100 条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size">10</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li><li><a href="javascript:void(0)">50</a></li><li><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
+                {$page}
+            </div>
+          </div>
         </div>
-        <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
     </div>
-    <div class="content-iframe " style="background-color: #ffffff; ">
-        <div class="tab-content " id="tab-content" style="">
 
-            <div role="tabpanel" class="tab-pane" id="tab_10008"><iframe onload="javascript:App.unblockUI('#tab-content');" src="" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes" id="iframe_tab_10008" class="  tab_iframe" style="height: 800px; width: 100%;"></iframe></div><div role="tabpanel" class="tab-pane" id="tab_10012"><iframe onload="javascript:App.unblockUI('#tab-content');" src="http://www.supermgr.cn/../components/icons.html" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes" id="iframe_tab_10012" class="  tab_iframe" style="height: 800px; width: 100%;"></iframe></div><div role="tabpanel" class="tab-pane" id="tab_10211"><iframe onload="javascript:App.unblockUI('#tab-content');" src="http://www.supermgr.cn/../tables/basetable.html" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes" id="iframe_tab_10211" class="  tab_iframe" style="height: 800px; width: 100%;"></iframe></div><div role="tabpanel" class="tab-pane active" id="tab_10212"><iframe onload="javascript:App.unblockUI('#tab-content');" src="http://www.supermgr.cn/../tables/managetable.html" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes" id="iframe_tab_10212" class="  tab_iframe" style="height: 800px; width: 100%;"></iframe></div><div role="tabpanel" class="tab-pane" id="tab_10213"><iframe onload="javascript:App.unblockUI('#tab-content');" src="" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes" id="iframe_tab_10213" class="  tab_iframe" style="height: 800px; width: 100%;"></iframe></div></div>
-    </div>
+<script>
+    $(function(){
+        $("#btn_query").click(function(){
+            $.ajax({
+                url:'staff/staff_list',
+                type:"POST",
+                data:{page:1},
+                success: function(data){
+                    $("#list_staff").html(data);
+                }
+            });
+            // $("#ifrPage").attr("src","staff/staff_list");
+
+
+        })
+    });
+    </script>

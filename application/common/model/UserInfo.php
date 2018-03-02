@@ -5,6 +5,6 @@ use think\Model;
 class UserInfo extends Model
 {
 
-    protected $pk = 'uid';
+    protected $pk = 'user_id';
 
 }

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>婴儿游运</title>
+    {load href="/static/css/login/login.css" /}
+    {load href="/static/css/login/layout.css" /}
+    {load href="/static/css/example.css" /}
+    {load href="/static/js/sweet-alert.js" /}
+    {load href="/static/css/sweet-alert.css" /}
+    <style>
+        .ibar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="login-bg">
+    <div class="main ">
+        <!--登录-->
+        <div class="login-dom login-max">
+
+            <div class="login container " id="login">
+                <p class="text-big text-center logo-color">
+                  帐号注册
+                </p>
+
+                <p class="text-center margin-small-top logo-color text-small">
+                    婴儿游运
+                </p>
+                <form class="login-form"  method="post" id="staff_from" autocomplete="off">
+                    <input type="hidden" name="__token__" value="{$Request.token}" />
+                    <div class="login-box border text-small" style="height: auto;" id="box">
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="编号/账号" id="staff_account" name="staff_account" datatype="*" nullmsg="请填写帐号信息" />
+                        </div>
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="姓名" id="staff_name" name="staff_name" datatype="*" nullmsg="请填写姓名" />
+                        </div>
+                        <div class="pwd">
+                            <input type="password" placeholder="密码" datatype="*" id="staff_password" name="staff_password" nullmsg="请填写帐号密码" />
+                        </div>
+                        <div class="pwd">
+                            <input type="password" placeholder="重复密码" datatype="*" id="repeat_password" name="repeat_password" nullmsg="请重复填写密码" />
+                        </div>
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="手机号码" datatype="*" id="staff_phone" name="staff_phone" nullmsg="请填写手机号码" />
+                        </div>
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="住址" datatype="*" id="staff_address" name="staff_address" nullmsg="请填写住址" />
+                        </div>
+                        <div class="name border-bottom">
+                            <select class="name border-bottom" id="staff_sex" name="staff_sex" style="background-color: transparent;border:0px;margin-left:5%;width: 93%;font-size:14px;font:inherit; ">
+                                <option value="0">请选择性别</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                        </div>
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="微信号" datatype="*" id="staff_wx" name="staff_wx" nullmsg="请填写微信号码" />
+                        </div>
+                        <div class="name border-bottom">
+                            <input type="text" placeholder="QQ号" datatype="*" id="staff_qq" name="staff_qq" nullmsg="请填写QQ号码" />
+                        </div>
+                    </div>
+                    <input type="button" class="btn text-center login-btn" value="立即注册" />
+                </form>
+                <div class="forget">
+                    <a href="#" class="forget-pwd text-small fl"> 忘记登录密码？</a><a href="/admin" class="forget-new text-small fr" id="forget-new">返回登陆</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center text-small ie">
+            Copyright 2017 版权所有 ©yuchen 2017-2017      <a href="#" target="_blank">湘ICP备16024545号-1</a>
+            <span class="margin-left margin-right">|</span>
+        </div>
+        <div class="popupDom">
+            <div class="popup text-default">
+            </div>
+        </div>
+    </div>
+</body>
+
+{load href="/static/js/jquery.min.js" /}
+
+<script type="text/javascript">
+    $(function(){
+        $('.btn').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "/admin/login/staff_add",
+                data: $('#staff_from').serialize(),
+                dataType: "json",
+                success: function(data){
+                   if(data.return_status){
+                       swal(data.msg);
+                       setTimeout(window.location.href="/admin",86000);
+                   }else{
+                       swal(data.msg);
+                   }
+                }
+            });
+        });
+    });
+</script>
+</html>

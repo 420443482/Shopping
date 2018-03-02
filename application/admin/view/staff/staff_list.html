@@ -1,0 +1,31 @@
+<table class='table table-striped' style='width: 90%; text-align: center;'>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>员工姓名</th>
+            <th>编号</th>
+            <th>手机号码</th>
+            <th>住址</th>
+            <th>性别</th>
+            <th>微信号</th>
+            <th>QQ</th>
+            <th>入职时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name='list' id='staff'}
+        <tr>
+            <td>{$staff.staff_id}</td>
+            <td>{$staff.staff_name}</td>
+            <td>{$staff.staff_code}</td>
+            <td>{$staff.staff_phone}</td>
+            <td>{$staff.staff_address}</td>
+            <td>{$staff.staff_sex}</td>
+            <td>{$staff.staff_wx}</td>
+            <td>{$staff.staff_qq}</td>
+            <td>{$staff.staff_add_time}</td>
+        </tr>
+        {/volist}
+        </tbody>
+</table>
+
