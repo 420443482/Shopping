@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\staff\staff.html";i:1519983291;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\staff\staff.html";i:1519983485;}*/ ?>
     <div class="page-content-body " id="tab-page-content">
         <div class="box-body" style="padding-bottom:0px;">
             <div class="panel panel-default" >
@@ -6,24 +6,24 @@
                 <div class="panel-body">
                     <form id="formSearch" class="form-horizontal">
                         <div class="form-group" style="margin-top:15px">
-                            <label class="control-label col-sm-1" for="txt_search_departmentname">姓名</label>
+                            <label class="control-label col-sm-1" for="staff_name">姓名</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="txt_search_departmentname">
+                                <input type="text" class="form-control" id="staff_name">
                             </div>
-                            <label class="control-label col-sm-1" for="txt_search_statu">编号</label>
+                            <label class="control-label col-sm-1" for="staff_code">编号</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="txt_search_statu">
+                                <input type="text" class="form-control" id="staff_code">
                             </div>
-                            <label class="control-label col-sm-1" for="txt_search_statu">手机号码</label>
+                            <label class="control-label col-sm-1" for="staff_phone">手机号码</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="txt_search_statu">
+                                <input type="text" class="form-control" id="staff_phone">
                             </div>
                         </div>
                         <div class="form-group" style="margin-top:15px">
-                            <label class="control-label col-sm-1"for="txt_search_statu" >入职时间</label>
+                            <label class="control-label col-sm-1"for="staff_add_time" >入职时间</label>
                             <div class="col-sm-3">
                             <a class='input-group date' id='datetimepicker1'>
-                                    <input type='date' class="form-control" id='nowdate'  />
+                                    <input type='date' class="form-control" id='staff_add_time'  />
                                     <span class="input-group-addon" >
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -97,7 +97,7 @@
             $.ajax({
                 url:'staff/staff_list',
                 type:"POST",
-                data:{page:1},
+                data:$("#formSearch").serialize(),
                 success: function(data){
                     $("#list_staff").html(data);
                 }
