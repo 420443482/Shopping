@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\staff\staff.html";i:1519983291;}*/ ?>
     <div class="page-content-body " id="tab-page-content">
         <div class="box-body" style="padding-bottom:0px;">
             <div class="panel panel-default" >
@@ -5,24 +6,24 @@
                 <div class="panel-body">
                     <form id="formSearch" class="form-horizontal">
                         <div class="form-group" style="margin-top:15px">
-                            <label class="control-label col-sm-1" for="staff_name">姓名</label>
+                            <label class="control-label col-sm-1" for="txt_search_departmentname">姓名</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="staff_name">
+                                <input type="text" class="form-control" id="txt_search_departmentname">
                             </div>
-                            <label class="control-label col-sm-1" for="staff_code">编号</label>
+                            <label class="control-label col-sm-1" for="txt_search_statu">编号</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="staff_code">
+                                <input type="text" class="form-control" id="txt_search_statu">
                             </div>
-                            <label class="control-label col-sm-1" for="staff_phone">手机号码</label>
+                            <label class="control-label col-sm-1" for="txt_search_statu">手机号码</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="staff_phone">
+                                <input type="text" class="form-control" id="txt_search_statu">
                             </div>
                         </div>
                         <div class="form-group" style="margin-top:15px">
-                            <label class="control-label col-sm-1"for="staff_add_time" >入职时间</label>
+                            <label class="control-label col-sm-1"for="txt_search_statu" >入职时间</label>
                             <div class="col-sm-3">
                             <a class='input-group date' id='datetimepicker1'>
-                                    <input type='date' class="form-control" id='staff_add_time'  />
+                                    <input type='date' class="form-control" id='nowdate'  />
                                     <span class="input-group-addon" >
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -65,24 +66,24 @@
                     <!--</tr>-->
                     <!--</thead>-->
                     <!--<tbody>-->
-                    <!--{volist name='list' id='staff'}-->
+                    <!--<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$staff): $mod = ($i % 2 );++$i;?>-->
                     <!--<tr>-->
-                        <!--<td>{$staff.staff_id}</td>-->
-                        <!--<td>{$staff.staff_name}</td>-->
-                        <!--<td>{$staff.staff_code}</td>-->
-                        <!--<td>{$staff.staff_phone}</td>-->
-                        <!--<td>{$staff.staff_address}</td>-->
-                        <!--<td>{$staff.staff_sex}</td>-->
-                        <!--<td>{$staff.staff_wx}</td>-->
-                        <!--<td>{$staff.staff_qq}</td>-->
-                        <!--<td>{$staff.staff_add_time}</td>-->
+                        <!--<td><?php echo $staff['staff_id']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_name']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_code']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_phone']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_address']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_sex']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_wx']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_qq']; ?></td>-->
+                        <!--<td><?php echo $staff['staff_add_time']; ?></td>-->
                     <!--</tr>-->
-                    <!--{/volist}-->
+                    <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
                     <!--</tbody>-->
                 <!--</table>-->
             </div>
             <div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示第 1 到第 10 条记录，总共 100 条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size">10</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li><li><a href="javascript:void(0)">50</a></li><li><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
-                {$page}
+                <?php echo $page; ?>
             </div>
           </div>
         </div>
@@ -96,7 +97,7 @@
             $.ajax({
                 url:'staff/staff_list',
                 type:"POST",
-                data:$("#formSearch").serialize(),
+                data:{page:1},
                 success: function(data){
                     $("#list_staff").html(data);
                 }
