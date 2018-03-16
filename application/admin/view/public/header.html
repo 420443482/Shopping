@@ -16,9 +16,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {load href="/static/css/index/supershopui.common.min.css" /}
     {load href="/static/css/example.css" /}
     {load href="/static/css/sweet-alert.css" /}
-    {load href="/static/js/sweet-alert.js" /}
     {load href="/static/js/skin/style.css" /}
     {load href="/static/js/skin/layer.css" /}
+    {load href="/static/css/goods/bootstrap-switch.css" /}
 
     <style type="text/css">
         html {
@@ -120,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li>
                                         <a href="#">
                                             <h3>
-                                                superui第一版发布啦
+                                                婴儿游运第一版发布啦
                                                 <small class="pull-right">20%</small>
                                             </h3>
                                             <div class="progress xs">
@@ -139,15 +139,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/static/img/girl1.png" class="user-image" alt="User Image">
-                            <span class="hidden-xs">TZHSWEET</span>
+                            <img src="{$Request.session.staff_portrait}" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{$Request.session.staff_account}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img src="/static/img/girl1.png" class="img-circle" alt="User Image">
+                                <img src="{$Request.session.staff_portrait}" class="img-circle" alt="User Image">
                                 <p>
-                                    TZHSWEET的小妞
-                                    <small>2016年注册</small>
+                                    {$Request.session.staff_account}
+                                    <small>{$Request.session.date}注册</small>
                                 </p>
                             </li>
                             <li class="user-body">
@@ -185,3 +185,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {load href="/static/js/bootstrap.min.js" /}
 {load href="/static/js/supershopui.common.js" /}
 {load href="/static/js/jquery-ui.min.js" /}
+{load href="/static/js/sweet-alert.js" /}
+{load href="/static/js/goods/bootstrap-switch.js" /}
+

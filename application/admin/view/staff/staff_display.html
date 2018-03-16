@@ -1,0 +1,199 @@
+{load href="/static/css/index/bootstrap.min.css" /}
+{load href="/static/css/index/supershopui.common.min.css" /}
+{load href="/static/css/example.css" /}
+
+<style>
+    table{
+        width: 100%;
+    }
+    table td:nth-child(2){
+        display: block;
+    }
+    table td{
+        padding:5px 0px;
+        text-align: center;
+    }
+    .img_box{
+        width:100px;height:100px;border-radius:50px;margin-left:45%;
+    }
+    .img{
+        width:100px;height:100px;border-radius:50px;
+    }
+    #fileselect{
+        width:100px;height:100px;
+        border-radius:50px;
+        overflow: hidden;
+        font-size: 300px;
+        position:absolute;
+        right:43%;
+        top:7%;
+        opacity: 0;
+        filter:alpha(opacity=0);
+        cursor:pointer;
+    }
+    </style>
+<div class="page-container" style="background-color: white;">
+    <div class="page-content" style="background-color: white; padding: 15px;">
+        <form id="form1">
+
+            <div class="formDiv">
+                <div class="tab-content" style="padding-top: 15px;">
+                    <div id="BaseInfo" class="tab-pane active" style=" padding-right:30px;">
+
+                        <table class="form">
+
+                            <tbody>
+                            <tr>
+                                <div class="row img_box" id="img_box">
+                                    {if $list.staff_portrait != ''}
+                                    <img src="{$list.staff_portrait}" alt="test" class="img">
+                                    {else}
+                                    <img src="/static/img/touxiang.jpg" alt="test" class="img">
+                                    {/if}
+                                </div>
+                                <div class="form-group">
+                                    <input type="file"  id="fileselect" class="form-control" name="fileselect[]" multiple="multiple"/>
+                                </div>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">员工账号<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="staff_account"  name="staff_account"  value="{$list.staff_account}" type="text" class="form-control" placeholder="员工账号" isvalid="yes" checkexpession="NotNull">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">员工姓名<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="staff_name" name="staff_name" value="{$list.staff_name}" type="text" class="form-control" placeholder="员工姓名">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">登录密码<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="staff_password" type="password" value="{$list.staff_password}" name="staff_password" class="form-control" placeholder="登录密码">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">重复密码<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="repeat_password" type="password" value="{$list.staff_password}" name="repeat_password" class="form-control" placeholder="重复密码">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">手机号码<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="staff_phone" type="text" name="staff_phone" value="{$list.staff_phone}" class="form-control" placeholder="手机号码" isvalid="yes" checkexpession="NotNull">
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td class="formTitle">住址<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <input id="staff_address" name="staff_address" value="{$list.staff_address}" type="text" class="form-control" placeholder="住址">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="formTitle">性别<font face="宋体">*</font></td>
+                                <td class="formValue">
+                                    <select class="name border-bottom" id="staff_sex" name="staff_sex" style="background-color: transparent;border:1px solid #ccc;height:34px;border-radius:4px;width: 100%;font-size:14px;font:inherit; ">
+                                        {if $list.staff_sex != ''}
+                                        <option style="display: none;" value="{$list.staff_sex}">{if $list.staff_sex == 1}男{else}女{/if}</option>
+                                        {else}
+                                        <option style="display: none;" value="0">请选择性别</option>
+                                        {/if}
+                                        <option value="1">男</option>
+                                        <option value="2">女</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">微信号</td>
+                                <td class="formValue">
+                                    <input id="staff_wx" type="text" name="staff_wx" value="{$list.staff_wx}" class="form-control" placeholder="微信号">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="formTitle">QQ号</td>
+                                <td class="formValue">
+                                    <input id="staff_qq" type="text" name="staff_qq" value="{$list.staff_qq}" class="form-control" placeholder="QQ号">
+                                </td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden"  name="staff_portrait" id="staff_portrait" value="{$list.staff_portrait}">
+        </form>
+    </div>
+
+</div>
+{load href="/static/js/jquery.min.js" /}
+
+<script>
+    $(function(){
+    $('#selsect').click(function(event) {
+        $('#fileselect').click();
+    });
+    //选择文件
+    $('#fileselect').change(function(event) {
+        event.preventDefault();
+        var n=event.target.files.length;
+        var file;
+        for (var i = 0; i < n; i++) {
+            file=event.target.files[i];
+            html5up(file);
+        };
+    });
+    //上传操作
+    function html5up(file){
+        /* Act on the event */
+        var form_data=new FormData();
+        form_data.append('timestamp',"{$time}");
+        form_data.append('token','{:md5("unique_salt".$time)}');
+        form_data.append("Filedata",file);
+        $.ajax({
+            url: '/admin/login/upload',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: form_data,
+        })
+            .done(function(data) {
+                // alert(data);
+                if (!data.return_status) {
+                    alert(data.info);
+                    return false;
+                };
+                put_img(data.savepath,data.savename);//添加图片到img_box
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+    }
+    //添加图片到img_box
+    function put_img(savepath,savename){
+        var img_url="__ROOT__"+savepath;
+        var path = '/uploads/images/';
+        var new_img='<div class="col-md-3">';
+        new_img+='<img  src="'+path+''+img_url+'" alt="test" class="img">';
+        new_img+='</div>';
+        new_img+='</div>';
+        $('.img_box').html(new_img);
+        $("#staff_portrait").val(path+img_url);
+    }
+    });
+</script>

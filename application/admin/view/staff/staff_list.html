@@ -1,20 +1,24 @@
-<table class='table table-striped' style='width: 90%; text-align: center;'>
+<div class="row pre-scrollable" style=" overflow:scroll; width:102%; max-height: 60%;" id="list_staff">
+    <table class="table-scrollable table table-hover  table-bordered" style="width: 90%; text-align: center;">
         <thead>
         <tr>
-            <th>序号</th>
-            <th>员工姓名</th>
-            <th>编号</th>
-            <th>手机号码</th>
-            <th>住址</th>
-            <th>性别</th>
-            <th>微信号</th>
-            <th>QQ</th>
-            <th>入职时间</th>
+            <th class="bs-checkbox " style="width: 36px;padding-bottom:11px; " data-field="0" tabindex="0"><div class="th-inner "><input name="btSelectAll" type="checkbox"></div><div class="fht-cell"></div></th>
+            <th nowrap="nowrap">序号</th>
+            <th nowrap="nowrap">员工姓名</th>
+            <th nowrap="nowrap">编号</th>
+            <th nowrap="nowrap">手机号码</th>
+            <th nowrap="nowrap">住址</th>
+            <th nowrap="nowrap">性别</th>
+            <th nowrap="nowrap">微信号</th>
+            <th nowrap="nowrap">QQ</th>
+            <th nowrap="nowrap">入职时间</th>
+            <th nowrap="nowrap">操作</th>
         </tr>
         </thead>
         <tbody>
         {volist name='list' id='staff'}
         <tr>
+            <td class="bs-checkbox "><input data-index="0"  data-staff-id="{$staff.staff_id}" name="btSelectItem" type="checkbox"></td>
             <td>{$staff.staff_id}</td>
             <td>{$staff.staff_name}</td>
             <td>{$staff.staff_code}</td>
@@ -24,8 +28,17 @@
             <td>{$staff.staff_wx}</td>
             <td>{$staff.staff_qq}</td>
             <td>{$staff.staff_add_time}</td>
+            <td nowrap="nowrap">
+            <a href="javascript:;" class="btn btn-icon-only purple" edit-id="{$staff.staff_id}" name="staff_edit"><i class="fa fa-edit"></i></a>
+            <a href="javascript:;" class="btn btn-icon-only red" data-id="{$staff.staff_id}" name="staff_delete"> <i class="fa fa-times"></i></a>
+            </td>
         </tr>
         {/volist}
         </tbody>
-</table>
-
+    </table>
+</div>
+<div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示 1 到 {$list_num} 条记录，总共{$total}条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size" id="page_num">{$list_num}</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li {if $list_num == 10}class="active"{/if}><a href="javascript:void(0)">10</a></li><li {if $list_num == 25}class="active"{/if}><a href="javascript:void(0)">25</a></li><li {if $list_num == 50}class="active"{/if}><a href="javascript:void(0)">50</a></li><li {if $list_num == 100}class="active"{/if}><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
+    {$page}
+</div>
+</div>
+<script src="/static/js/staff/staff_list.js" type="text/javascript"></script>

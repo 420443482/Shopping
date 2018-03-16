@@ -13,6 +13,25 @@
         .ibar {
             display: none;
         }
+        .img_box{
+            width:100px;height:100px;border-radius:50px;border:solid rgb(100,100,100) 1px;margin-left:45%;
+        }
+        .img{
+            width:100px;height:100px;border-radius:50px;border:solid rgb(100,100,100) 1px;
+        }
+        #fileselect{
+            width:100px;height:100px;
+            border-radius:50px;
+            overflow: hidden;
+            font-size: 300px;
+            position:absolute;
+            right:47%;
+            top:16%;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            cursor:pointer;
+        }
+
     </style>
 </head>
 
@@ -31,9 +50,15 @@
                 </p>
                 <form class="login-form"  method="post" id="staff_from" autocomplete="off">
                     <input type="hidden" name="__token__" value="{$Request.token}" />
+                    <div class="row img_box" id="img_box">
+                        <img src="/static/img/touxiang.jpg" alt="test" class="img">
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="fileselect" class="form-control" name="fileselect[]" multiple="multiple"/>
+                    </div>
                     <div class="login-box border text-small" style="height: auto;" id="box">
                         <div class="name border-bottom">
-                            <input type="text" placeholder="编号/账号" id="staff_account" name="staff_account" datatype="*" nullmsg="请填写帐号信息" />
+                            <input type="text" placeholder="账号" id="staff_account" name="staff_account" datatype="*" nullmsg="请填写帐号信息" />
                         </div>
                         <div class="name border-bottom">
                             <input type="text" placeholder="姓名" id="staff_name" name="staff_name" datatype="*" nullmsg="请填写姓名" />
@@ -65,6 +90,7 @@
                         </div>
                     </div>
                     <input type="button" class="btn text-center login-btn" value="立即注册" />
+                    <input type="hidden" value="" name="staff_portrait" id="staff_portrait">
                 </form>
                 <div class="forget">
                     <a href="#" class="forget-pwd text-small fl"> 忘记登录密码？</a><a href="/admin" class="forget-new text-small fr" id="forget-new">返回登陆</a>
@@ -83,9 +109,112 @@
 </body>
 
 {load href="/static/js/jquery.min.js" /}
+{load href="/static/js/bootstrap.min.js" /}
+{load href="/static/js/supershopui.common.js" /}
 
 <script type="text/javascript">
     $(function(){
+        //提示框显示
+        $.fn.modalMsg = function (content, type) {
+            var iconType = 0;
+            if (type != undefined) {
+                var icon = "";
+                if (type == 'success') {
+                    icon = "fa-check-circle";
+                    iconType = 1;
+                }
+                if (type == 'error') {
+                    icon = "fa-times-circle";
+                    iconType = 2;
+                }
+                if (type == 'warning') {
+                    icon = "fa-exclamation-circle";
+                    iconType = 3;
+                }
+                top.layer.msg(content, { icon: iconType, time: 1000, shift: 5 });
+                top.$(".layui-layer-msg").find('i.' + iconType).parents('.layui-layer-msg').addClass('layui-layer-msg-' + type);
+            } else {
+                top.layer.msg(content);
+            }
+        }
+
+        $('#selsect').click(function(event) {
+            $('#fileselect').click();
+        });
+        //选择文件
+        $('#fileselect').change(function(event) {
+            event.preventDefault();
+            var n=event.target.files.length;
+            var file;
+            for (var i = 0; i < n; i++) {
+                file=event.target.files[i];
+                html5up(file);
+            };
+        });
+        //上传操作
+        function html5up(file){
+            /* Act on the event */
+            var form_data=new FormData();
+            form_data.append('timestamp',"{$time}");
+            form_data.append('token','{:md5("unique_salt".$time)}');
+            form_data.append("Filedata",file);
+            $.ajax({
+                url: '/admin/login/upload',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                data: form_data,
+            })
+                .done(function(data) {
+                    // alert(data);
+                    if (!data.return_status) {
+                        alert(data.info);
+                        return false;
+                    };
+                    put_img(data.savepath,data.savename);//添加图片到img_box
+                    console.log("success");
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+
+        }
+        //添加图片到img_box
+        function put_img(savepath,savename){
+            var img_url="__ROOT__"+savepath;
+            var path = '/uploads/images/';
+            var new_img='<div class="col-md-3">';
+            new_img+='<img  src="'+path+''+img_url+'" alt="test" class="img">';
+            new_img+='</div>';
+            new_img+='</div>';
+            $('.img_box').html(new_img);
+            $("#staff_portrait").val(path+img_url);
+        }
+
+        //调出修改标题input
+        $(document).on('click','.glyphicon-tag',function(event){
+            var div=$(this).parents('div.col-md-3');
+            var img_name=div.find('.img_name');
+            img_name.fadeToggle();
+        });
+
+
+        //图片放大预览
+        $(document).on('click', '.img', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            var img_url=$(this).attr('src');
+            $('#modal').modal('show');
+            $('#img_show').attr('src',img_url);
+        });
+
+        //点击modal自动隐藏
+        $('#modal').click(function(event) {
+            $(this).modal('hide');
+        });
         $('.btn').click(function(){
             $.ajax({
                 type: "POST",
@@ -94,10 +223,10 @@
                 dataType: "json",
                 success: function(data){
                    if(data.return_status){
-                       swal(data.msg);
+                       $.fn.modalMsg(data.msg, "success");
                        setTimeout(window.location.href="/admin",86000);
                    }else{
-                       swal(data.msg);
+                       $.fn.modalMsg(data.msg, "error");
                    }
                 }
             });
