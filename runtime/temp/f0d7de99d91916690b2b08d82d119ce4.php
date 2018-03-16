@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\goods\goods_save_class.html";i:1521166218;}*/ ?>
 <style>
     .box-body table tr td input{
         border-radius: 4px;
@@ -42,37 +43,36 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1">
                                     <form role="form" id="class_form" style="width: 100%; ">
-                                        <input type="hidden" name="goods_class_id" value="{$details.goods_class_id ?? ''}">
+                                        <input type="hidden" name="goods_class_id" value="<?php echo isset($details['goods_class_id'])?$details['goods_class_id']: ''; ?>">
                                         <div class="box-body" >
                                             <table class="form" style="float: left;">
                                                 <tbody>
                                                 <tr>
                                                     <th class="formTitle">分类名称<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="class_name" name="class_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="class_name" name="class_name" type="text" value="<?php echo isset($details['class_name'])?$details['class_name']: ''; ?>" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">上级分类</th>
                                                     <td class="formValue">
                                                         <select class="name border-bottom" id="child_class_one" name="child_class_one" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
-                                                            {if isset($details.child_class_name)}
-                                                            <option value="{$details.child_class_id}">{$details.child_class_name}</option>
+                                                            <?php if(isset($details['child_class_name'])): ?>
+                                                            <option value="<?php echo $details['child_class_id']; ?>"><?php echo $details['child_class_name']; ?></option>
                                                             <option value="0">顶级分类</option>
-                                                            {else}
+                                                            <?php else: ?>
                                                             <option value="0">顶级分类</option>
-                                                            {/if}
-                                                            {foreach $class_array as $k=>$v}
-                                                            <option value="{$k}">{$v}</option>
-                                                            {/foreach}
+                                                            <?php endif; foreach($class_array as $k=>$v): ?>
+                                                            <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+                                                            <?php endforeach; ?>
                                                         </select>
                                                         <select class="name border-bottom" id="child_class_two" name="child_class_two" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
-                                                            {if isset($details.subgrade_class_name)}
-                                                            <option value="{$details.subgrade_class_id}">{$details.subgrade_class_name}</option>
+                                                            <?php if(isset($details['subgrade_class_name'])): ?>
+                                                            <option value="<?php echo $details['subgrade_class_id']; ?>"><?php echo $details['subgrade_class_name']; ?></option>
                                                             <option  value="0">请选择商品分类</option>
-                                                            {else}
+                                                            <?php else: ?>
                                                             <option  value="0">请选择商品分类</option>
-                                                            {/if}
+                                                            <?php endif; ?>
 
                                                         </select>
                                                     </td>
@@ -81,21 +81,21 @@
                                                 <tr>
                                                     <th class="formTitle">导航显示</th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="is_display" name="is_display" class="make-switch" {if isset($details.is_display) && $details.is_display == 0}checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="is_display" name="is_display" class="make-switch" <?php if(isset($details['is_display']) && $details['is_display'] == 0): ?>checked <?php endif; ?> data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th class="formTitle">是否推荐</th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="is_recommend" name="is_recommend" class="make-switch" {if isset($details.is_recommend) && $details.is_recommend == 0}checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="is_recommend" name="is_recommend" class="make-switch" <?php if(isset($details['is_recommend']) && $details['is_recommend'] == 0): ?>checked <?php endif; ?> data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <th class="formTitle">排序<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_sort" name="goods_sort" type="text" class="form-control" placeholder="数字" value="{$details.goods_sort ?? ''}" isvalid="yes" checkexpession="NotNull" value="0" style="width: 13%;">
+                                                        <input id="goods_sort" name="goods_sort" type="text" class="form-control" placeholder="数字" value="<?php echo isset($details['goods_sort'])?$details['goods_sort']: ''; ?>" isvalid="yes" checkexpession="NotNull" value="0" style="width: 13%;">
                                                     </td>
                                                 </tr>
                                                 </tbody></table>
@@ -116,5 +116,5 @@
     </div>
     </div>
 </section>
-{load href="/static/js/modalmsg.js" /}
-{load href="/static/js/goods/goods_save_class.js" /}
+<script type="text/javascript" src="/static/js/modalmsg.js"></script>
+<script type="text/javascript" src="/static/js/goods/goods_save_class.js"></script>

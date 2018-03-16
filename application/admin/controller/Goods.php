@@ -7,11 +7,16 @@ use think\Controller;
 class Goods extends Base
 {
     public $details=['class_name'=>''];
-	//显示首页
+	//显示商品列表信息
     public function index()
     {
+       
        return $this->fetch('goods/goods');
     }
+
+
+
+
     //商品分类列表显示
     public function goods_class(){
         $goods_class = new GoodsClass();
@@ -111,7 +116,7 @@ class Goods extends Base
 
     }
     //商品分类新增或编辑
-    public function goods_save(){
+    public function goods_class_save(){
         $return_status = true;
         $msg = '更新成功';
         $params['goods_class_id'] = input('post.goods_class_id');//分类ID
