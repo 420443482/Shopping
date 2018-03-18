@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/goods/goods_class.html";i:1521258416;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/goods/goods_class.html";i:1521364259;}*/ ?>
 <div class="page-content-body " id="tab-page-content">
     <section class="content">
         <div class="callout callout-info">
@@ -33,7 +33,7 @@
                                 </div>
                                 </div></div>
                                 <div id="staff_list">
-                                    <div class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 100%;" id="list_staff">
+                                    <div class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 80%;" id="list_staff">
                                         <table class="table-scrollable table table-hover  table-bordered" style="width: 90%; text-align: center;">
                                             <thead>
                                             <tr>
