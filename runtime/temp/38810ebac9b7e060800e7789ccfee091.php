@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\login\login.html";i:1521163948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/login/login.html";i:1521260585;}*/ ?>
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

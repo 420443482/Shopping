@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\staff\staff_list.html";i:1521163948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/staff/staff_list.html";i:1521258416;}*/ ?>
 <div class="row pre-scrollable" style=" overflow:scroll; width:102%; max-height: 60%;" id="list_staff">
     <table class="table-scrollable table table-hover  table-bordered" style="width: 90%; text-align: center;">
         <thead>

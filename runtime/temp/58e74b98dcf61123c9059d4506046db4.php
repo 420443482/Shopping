@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\index\content.html";i:1521163948;s:80:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\public\header.html";i:1521163948;s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\public\left.html";i:1521163948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/index/content.html";i:1521258416;s:86:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/public/header.html";i:1521258416;s:84:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/public/left.html";i:1521258416;}*/ ?>
 ﻿﻿<!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from

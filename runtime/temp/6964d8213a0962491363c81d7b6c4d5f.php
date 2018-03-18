@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\goods\goods_class.html";i:1521166027;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/goods/goods.html";i:1521258416;}*/ ?>
 <div class="page-content-body " id="tab-page-content">
     <section class="content">
         <div class="callout callout-info">
@@ -49,32 +49,31 @@
                                             <tbody>
                                             <?php foreach($list as $class): ?>
                                             <tr id="class_<?php echo $class['goods_class_id']; ?>">
-                                            <td class="su_top"><a  class="class_plus" data-id="<?php echo $class['goods_class_id']; ?>" ids="icon/plus-square-o" style=" cursor:pointer"><i class="fa fa-plus-square-o"></i></a></td>
-                                            <td><?php echo $class['goods_class_id']; ?></td>
-                                            <td><?php echo $class['class_name']; ?></td>
-                                            <td><?php echo $class['is_recommend']; ?></td>
-                                            <td><?php echo $class['is_display']; ?></td>
-                                            <td><?php echo $class['goods_sort']; ?></td>
-                                            <td nowrap="nowrap">
-                                                <a href="javascript:;" class="btn btn-icon-only purple class_edit" edit-id="<?php echo $class['goods_class_id']; ?>" name="class_edit"><i class="fa fa-edit"></i></a>
-                                                <a href="javascript:;" class="btn btn-icon-only red class_delete" delete-id="<?php echo $class['goods_class_id']; ?>" name="class_delete"> <i class="fa fa-times"></i></a>
-                                            </td>
+                                                <td class="su_top"><a  class="class_plus" data-id="<?php echo $class['goods_class_id']; ?>" ids="icon/plus-square-o" style=" cursor:pointer"><i class="fa fa-plus-square-o"></i></a></td>
+                                                <td><?php echo $class['goods_class_id']; ?></td>
+                                                <td><?php echo $class['class_name']; ?></td>
+                                                <td><?php echo $class['is_recommend']; ?></td>
+                                                <td><?php echo $class['is_display']; ?></td>
+                                                <td><?php echo $class['goods_sort']; ?></td>
+                                                <td nowrap="nowrap">
+                                                    <a href="javascript:;" class="btn btn-icon-only purple class_edit" edit-id="<?php echo $class['goods_class_id']; ?>" name="class_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="javascript:;" class="btn btn-icon-only red class_delete" delete-id="<?php echo $class['goods_class_id']; ?>" name="class_delete"> <i class="fa fa-times"></i></a>
+                                                </td>
                                             </tr>
                                             <?php endforeach; ?>
 
                                             </tbody>
                                         </table>
                                     </div>
-                                    </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
     </section>
 </div>
 <script type="text/javascript" src="/static/js/modalmsg.js"></script>
-<script type="text/javascript" src="/static/js/goods/goods_class.js"></script>
