@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/goods/goods_class.html";i:1521364259;}*/ ?>
 <div class="page-content-body " id="tab-page-content">
     <section class="content">
         <div class="callout callout-info">
@@ -46,20 +47,20 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {foreach $list as $class}
-                                            <tr id="class_{$class.goods_class_id}">
-                                            <td class="su_top"><a  class="class_plus" data-id="{$class.goods_class_id}" ids="icon/plus-square-o" style=" cursor:pointer"><i class="fa fa-plus-square-o"></i></a></td>
-                                            <td>{$class.goods_class_id}</td>
-                                            <td>{$class.class_name}</td>
-                                            <td>{$class.is_recommend}</td>
-                                            <td>{$class.is_display}</td>
-                                            <td>{$class.goods_sort}</td>
+                                            <?php foreach($list as $class): ?>
+                                            <tr id="class_<?php echo $class['goods_class_id']; ?>">
+                                            <td class="su_top"><a  class="class_plus" data-id="<?php echo $class['goods_class_id']; ?>" ids="icon/plus-square-o" style=" cursor:pointer"><i class="fa fa-plus-square-o"></i></a></td>
+                                            <td><?php echo $class['goods_class_id']; ?></td>
+                                            <td><?php echo $class['class_name']; ?></td>
+                                            <td><?php echo $class['is_recommend']; ?></td>
+                                            <td><?php echo $class['is_display']; ?></td>
+                                            <td><?php echo $class['goods_sort']; ?></td>
                                             <td nowrap="nowrap">
-                                                <a href="javascript:;" class="btn btn-icon-only purple class_edit" edit-id="{$class.goods_class_id}" name="class_edit"><i class="fa fa-edit"></i></a>
-                                                <a href="javascript:;" class="btn btn-icon-only red class_delete" delete-id="{$class.goods_class_id}" name="class_delete"> <i class="fa fa-times"></i></a>
+                                                <a href="javascript:;" class="btn btn-icon-only purple class_edit" edit-id="<?php echo $class['goods_class_id']; ?>" name="class_edit"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:;" class="btn btn-icon-only red class_delete" delete-id="<?php echo $class['goods_class_id']; ?>" name="class_delete"> <i class="fa fa-times"></i></a>
                                             </td>
                                             </tr>
-                                            {/foreach}
+                                            <?php endforeach; ?>
 
                                             </tbody>
                                         </table>
@@ -75,5 +76,5 @@
 
     </section>
 </div>
-{load href="/static/js/modalmsg.js" /}
-{load href="/static/js/goods/goods_class.js" /}
+<script type="text/javascript" src="/static/js/modalmsg.js"></script>
+<script type="text/javascript" src="/static/js/goods/goods_class.js"></script>

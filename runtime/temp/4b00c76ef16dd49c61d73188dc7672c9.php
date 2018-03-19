@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\web\Shopping\public/../application/admin\view\staff\staff.html";i:1521163948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"/Applications/MAMP/htdocs/Shopping/public/../application/admin/view/staff/staff.html";i:1521261021;}*/ ?>
    <style>
        .pagination{
            margin-top: 0px;
@@ -94,7 +94,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示 1 到 <?php echo $list_num; ?> 条记录，总共<?php echo $total; ?>条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size" id="page_num"><?php echo $list_num; ?></span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li><li><a href="javascript:void(0)">50</a></li><li><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
+            <div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示 1 到 <?php echo $list_num; ?> 条记录，总共<?php echo $total; ?>条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button style="margin-top:0px;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size" id="page_num"><?php echo $list_num; ?></span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li><li><a href="javascript:void(0)">50</a></li><li><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
             <?php echo $page; ?>
             </div>
             </div>
