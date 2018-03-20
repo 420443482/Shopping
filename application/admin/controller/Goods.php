@@ -10,13 +10,18 @@ class Goods extends Base
 	//显示商品列表信息
     public function index()
     {
-       
        return $this->fetch('goods/goods');
     }
 
 
-
-
+    //商品详情页
+    public function goods_save(){
+        $title = "商品-新增";
+        $time = date('Y-m-d H:i:s',time());
+        $this->assign('title',$title);
+        $this->assign('time',$time);
+        return $this->fetch('goods/goods_save');
+    }
     //商品分类列表显示
     public function goods_class(){
         $goods_class = new GoodsClass();
@@ -72,13 +77,12 @@ class Goods extends Base
         //商品分类显示详情页
     public function goods_save_class(){
         $class_id = input('post.class_id');
-
+        $title = '商品分类-新增';
         $goods_class = new GoodsClass();
         $where['is_delete'] = 0;
         $list = $goods_class->where($where)->select();
         $details=[];
         $class_array=[];//顶级分类
-
         $list = collection($list)->toArray();
         if($list){
             $list = collection($list)->toArray();
@@ -88,6 +92,7 @@ class Goods extends Base
                 $class_array[$v['goods_class_id']] = $v['class_name'];
             }
             if(!empty($class_id) && $v['goods_class_id'] == $class_id){
+                $title = '商品分类-编辑';
                 $details = $v;
                 if($v['child_class_id'] != 0)$details['child_class_name'] =$class_array_cl[$v['child_class_id']];
                 if($v['subgrade_class_id'] != 0)$details['subgrade_class_name'] =$class_array_cl[$v['subgrade_class_id']];
@@ -95,6 +100,7 @@ class Goods extends Base
             }
         }
         }
+        $this->assign('title',$title);
         $this->assign('details',$details);
         $this->assign('class_array',$class_array);
         return $this->fetch('goods/goods_save_class');

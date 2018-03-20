@@ -79,7 +79,11 @@
                         <td>{$staff.staff_code}</td>
                         <td>{$staff.staff_phone}</td>
                         <td>{$staff.staff_address}</td>
-                        <td>{$staff.staff_sex}</td>
+                        {if $staff.staff_sex == 1}
+                        <td>男</td>
+                        {else}
+                        <td>女</td>
+                        {/if}
                         <td>{$staff.staff_wx}</td>
                         <td>{$staff.staff_qq}</td>
                         <td>{$staff.staff_add_time}</td>
