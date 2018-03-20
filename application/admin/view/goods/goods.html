@@ -4,7 +4,7 @@
             <h4 style="float: left;">提示!</h4>
 
             <p style="max-width: 100%;color:#FFF;">
-                <b style="color: #00a65a;">特别声明</b>：下列为商品分类列表信息
+                <b style="color: #00a65a;">特别声明</b>：下列为商品列表信息
             </p>
         </div>
         <div class="row">
@@ -13,7 +13,7 @@
                 <!-- AREA CHART -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">商品分类</h3>
+                        <h3 class="box-title">商品列表</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -27,7 +27,7 @@
                             <div id="main" style="width: 100%; height: 600px;">
                                 <div class="fixed-table-toolbar"><div class="bs-bars pull-left"><div id="toolbar" class="btn-group">
                                     <button id="btn_add"  type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>新增分类
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>新增商品
                                     </button>
                                 </div>
                                 </div></div>
@@ -38,28 +38,21 @@
                                             <tr>
                                                 <th></th>
                                                 <th nowrap="nowrap">序号</th>
-                                                <th nowrap="nowrap">分类名称</th>
-                                                <th nowrap="nowrap">是否推荐</th>
-                                                <th nowrap="nowrap">是否显示</th>
-                                                <th nowrap="nowrap">排序</th>
+                                                <th nowrap="nowrap">商品图片</th>
+                                                <th nowrap="nowrap">商品名称</th>
+                                                <th nowrap="nowrap">市场价</th>
+                                                <th nowrap="nowrap">进货价</th>
+                                                <th nowrap="nowrap">销售价</th>
+                                                <th nowrap="nowrap">库存</th>
+                                                <th nowrap="nowrap">是否包邮</th>
+                                                <th nowrap="nowrap">是否打折</th>
+                                                <th nowrap="nowrap">是否上架</th>
+                                                <th nowrap="nowrap">上架时间</th>
                                                 <th nowrap="nowrap"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {foreach $list as $class}
-                                            <tr id="class_{$class.goods_class_id}">
-                                                <td class="su_top"><a  class="class_plus" data-id="{$class.goods_class_id}" ids="icon/plus-square-o" style=" cursor:pointer"><i class="fa fa-plus-square-o"></i></a></td>
-                                                <td>{$class.goods_class_id}</td>
-                                                <td>{$class.class_name}</td>
-                                                <td>{$class.is_recommend}</td>
-                                                <td>{$class.is_display}</td>
-                                                <td>{$class.goods_sort}</td>
-                                                <td nowrap="nowrap">
-                                                    <a href="javascript:;" class="btn btn-icon-only purple class_edit" edit-id="{$class.goods_class_id}" name="class_edit"><i class="fa fa-edit"></i></a>
-                                                    <a href="javascript:;" class="btn btn-icon-only red class_delete" delete-id="{$class.goods_class_id}" name="class_delete"> <i class="fa fa-times"></i></a>
-                                                </td>
-                                            </tr>
-                                            {/foreach}
+
 
                                             </tbody>
                                         </table>
@@ -76,3 +69,22 @@
     </section>
 </div>
 {load href="/static/js/modalmsg.js" /}
+<script>
+    $(function(){
+        $("#btn_add").click(function(){
+            getData();
+        });
+    });
+
+    //无刷新显示数据
+    function getData() {
+        $.ajax({
+            url:'goods/goods_save',
+            type:"POST",
+            data:{},
+            success: function(data){
+                $("#tab-page-content").html(data);
+            },
+        });
+    }
+    </script>
