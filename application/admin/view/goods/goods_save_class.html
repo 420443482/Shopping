@@ -21,7 +21,7 @@
 
         </p>
     </div>
-    <div class="row">
+    <div class="row" style="height: 80%;">
         <div class="col-md-12">
 
             <!-- AREA CHART -->
@@ -68,8 +68,8 @@
                                                         </select>
                                                         <select class="name border-bottom" id="child_class_two" name="child_class_two" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
                                                             {if isset($details.subgrade_class_name)}
-                                                            <option value="{$details.subgrade_class_id}">{$details.subgrade_class_name}</option>
                                                             <option  value="0">请选择商品分类</option>
+                                                            <option value="{$details.subgrade_class_id}">{$details.subgrade_class_name}</option>
                                                             {else}
                                                             <option  value="0">请选择商品分类</option>
                                                             {/if}

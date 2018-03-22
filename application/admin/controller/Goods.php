@@ -15,11 +15,22 @@ class Goods extends Base
 
 
     //商品详情页
-    public function goods_save(){
+    public function goods_details(){
         $title = "商品-新增";
+        $goods_class = new GoodsClass();
+        $where['is_delete'] = 0;
+        $class  = $goods_class->where($where)->select();
+        $class_array = [];
+        foreach ($class as $v) {
+            if ($v['child_class_id'] == 0 && $v['subgrade_class_id'] == 0) {
+                $class_array[] = $v;
+            }
+        }
         $time = date('Y-m-d H:i:s',time());
+        $this->assign('class_array',$class_array);
         $this->assign('title',$title);
         $this->assign('time',$time);
+
         return $this->fetch('goods/goods_save');
     }
     //商品分类列表显示
@@ -105,7 +116,7 @@ class Goods extends Base
         $this->assign('class_array',$class_array);
         return $this->fetch('goods/goods_save_class');
     }
-    //分类二级显示列表
+    //分类第二级显示列表
     public function goods_class_two(){
         $return_status = true;
         $msg = "success";
@@ -117,7 +128,19 @@ class Goods extends Base
         $goods_class = new GoodsClass();
         $list = $goods_class->where($where)->select();
         if(empty($list)){$return_status=false;$msg='该分类下无子级分类，请添加';}
-//        $list = array_column($class,'class_name','goods_class_id');
+        return json(array('return_status'=>$return_status,'msg'=>$msg,'data'=>$list));
+
+    }
+    //分类第三级显示列表
+    public function goods_class_three(){
+        $return_status = true;
+        $msg = "success";
+        $subgrade_class_id = input('post.subgrade_class_id');
+        $where['is_delete'] = 0;
+        $where['subgrade_class_id'] = $subgrade_class_id;
+        $goods_class = new GoodsClass();
+        $list = $goods_class->where($where)->select();
+        if(empty($list)){$return_status=false;$msg='该分类下无子级分类，请添加';}
         return json(array('return_status'=>$return_status,'msg'=>$msg,'data'=>$list));
 
     }

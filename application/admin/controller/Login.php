@@ -67,49 +67,7 @@ class Login extends Controller
         $data = $staff->register($params);
         if($data)return json(array('return_status'=>$return_status,'msg'=>$msg));
     }
-    //上传操作
-    public function upload()
-    {
-        $token = input('post.token');
-        $timestamp = input('post.timestamp');
-        $file = request()->file('Filedata');
-        $verifyToken = md5('unique_salt' . $timestamp);
 
-        if ($file && $token == $verifyToken) {
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads/images');
-            $data = array(
-                'savename' => $info->getFilename(),//保存名称
-                'savepath' => $info->getSaveName(),//保存路径
-                'return_status' => true,//状态
-            );
-        }
-        return json($data);
-    }
-    //删除图片
-    public function del(){
-        if (!IS_AJAX) {
-            exit('需要AJAX提交信息');
-        }
-        $img_url=I('post.url');
-        $len=strlen(__ROOT__);
-        $img_url=substr($img_url, $len);
-
-        //获取缩略图地址
-        $tb_img_url=get_tb_img_url($img_url);
-        // echo $tb_img_url;die;
-        if (@unlink($img_url) && @unlink($tb_img_url)) {
-            $data=array(
-                'status'=>1,
-                'info'=>':)成功删除图片',
-            );
-        }else{
-            $data=array(
-                'status'=>0,
-                'info'=>':(删除图片失败',
-            );
-        }
-        $this->ajaxReturn($data);
-    }
 
 }
 

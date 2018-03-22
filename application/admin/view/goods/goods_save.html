@@ -1,31 +1,68 @@
+{load href="/static/css/goods/bootstrap-switch.css" /}
+
 <style>
     .box-body table tr td input{
         border-radius: 4px;
-        width: 90%;
+        width: 100%;
     }
     .box-body table tbody{
 
         width: 100%;
     }
+    .formTitle{
+        width: 25%;
+    }
     table td:nth-child(2){
         display: block;
     }
+    .col-md-3{
+        height: 120px;
+    }
     .img_box{
-        width:100px;
+        padding: 9px 14px;
+        margin-bottom: 14px;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        border-radius: 4px;
+        min-height:130px;
     }
     .img{
-        width:100px;height:100px;
+        text-align:center;
+        display: inline-block;
+        margin: auto;
+        width: 100%;
+        max-height: 200px;
+        height: 70px;
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .img_ctrl{
+        text-align:center;
+        display: inline-block;
+        /*position: absolute;*/
+        width: 100%;
+        /*height: auto;*/
+        padding: 1px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 4px;
+    }
+    .img_name{
+        display:none;
+        position:absolute;
+        z-index: 2;
+    }
+    .modal-content{
+        text-align: center;
+    }
+    #img_show{
+        max-width: 100%;
     }
     #fileselect{
-        width:100px;
-        height:100px;
-        overflow: hidden;
-        font-size: 300px;
-        position:absolute;
-        top:24%;
-        opacity: 0;
-        filter:alpha(opacity=0);
-        cursor:pointer;
+        display: none;
     }
 </style>
 <section class="content">
@@ -35,7 +72,7 @@
             <b style="color: #00a65a;">特别声明</b>：<br/>1.商品信息<br/>
         </p>
     </div>
-    <div class="row">
+    <div class="row" style="height: 90%;">
         <div class="col-md-12">
 
             <!-- AREA CHART -->
@@ -62,21 +99,106 @@
                                                 <tr>
                                                     <th class="formTitle">商品名称<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="class_name" name="class_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="class_name" name="class_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="商品名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">商品图片<font face="宋体">*</font></th>
-                                                    <td class="formValue" style="width: 100px;float: left; ">
-                                                    <div class="row img_box" id="img_box">
-                                                        <img src="/static/img/touxiang.jpg" alt="test" class="img">
+                                                    <td class="formValue">
+                                                    <div class="container" style="width: 100%;float: left;";>
+                                                        <div class="row img_box" id="img_box">
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group">
+                                                            <a class="btn btn-primary" id="selsect">选择图片</a>
+                                                            <input type="file" id="fileselect" class="form-control" name="fileselect[]" multiple="multiple"/>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <input type="file"  id="fileselect" class="form-control" name="fileselect[]" multiple="multiple"/>
+                                                    <div class="modal fade bs-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <img id="img_show" src="" alt="">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     </td>
-                                                    <td class="formValue" style="float:left; color:">
-                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品描述<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_summary" name="goods_summary" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="描述" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品分类<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <select class="name border-bottom" id="child_class_one" name="child_class_one" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            <option value="0">请选择商品分类</option>
+                                                            {foreach $class_array as $v}
+                                                            <option value="{$v.goods_class_id}">{$v.class_name}</option>
+                                                            {/foreach}
+                                                        </select>
+                                                        <select class="name border-bottom" id="child_class_two" name="child_class_two" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            <option value="0">请选择商品分类</option>
+                                                        </select>
+                                                        <select class="name border-bottom" id="child_class_three" name="child_class_three" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            <option value="0">请选择商品分类</option>
+                                                        </select>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品市场价<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_market_price" style="width: 78px;" name="goods_market_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="市场价" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品进货价<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_buying_price" style="width: 78px;" name="goods_buying_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="进货价" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品销售价<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_sales_price" style="width: 78px;" name="goods_sales_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="销售价" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品库存<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_stock"  style="width: 78px;" name="goods_stock" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="库存" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">是否包邮<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input type="checkbox" id="goods_is_shipping" name="goods_is_shipping" class="make-switch" checked data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">是否折扣<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input type="checkbox" id="goods_is_discount" name="goods_is_discount"  class="make-switch" checked  data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">是否上架<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input type="checkbox" id="goods_is_grounding" name="goods_is_grounding" class="make-switch" checked data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">上架时间<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_grounding_time" name="goods_grounding_time" type="date" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="formTitle">下架时间<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                        <input id="goods_undercarriage_time" name="goods_undercarriage_time" type="date" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -99,8 +221,15 @@
     </div>
 </section>
 {load href="/static/js/modalmsg.js" /}
+{load href="/static/js/goods/jquery.uploadify.min.js" /}
+{load href="/static/js/goods/jquery.zclip.js" /}
+{load href="/static/js/goods/jquery.livequery.js" /}
 <script>
-    $(function(){
+    $(function() {
+        $(".make-switch").bootstrapSwitch({
+            onText: '是',
+            offText: '否'
+        });
         $('#selsect').click(function(event) {
             $('#fileselect').click();
         });
@@ -122,8 +251,9 @@
             form_data.append('token','{:md5("unique_salt".$time)}');
             form_data.append("Filedata",file);
             $.ajax({
-                url: '/admin/login/upload',
+                url: '/admin/images_upload/upload',
                 type: 'POST',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
                 processData: false,
                 contentType: false,
                 data: form_data,
@@ -137,24 +267,156 @@
                     put_img(data.savepath,data.savename);//添加图片到img_box
                     console.log("success");
                 })
+
+
                 .fail(function() {
                     console.log("error");
                 })
                 .always(function() {
                     console.log("complete");
                 });
-
         }
         //添加图片到img_box
         function put_img(savepath,savename){
             var img_url="__ROOT__"+savepath;
             var path = '/uploads/images/';
+            // alert(img_url);
             var new_img='<div class="col-md-3">';
-            new_img+='<img  src="'+path+''+img_url+'" alt="test" class="img">';
+            new_img+='<img src="'+path+''+img_url+'" alt="test" class="img">';
+            new_img+='<div class="img_ctrl">';
+            new_img+='<span class="glyphicon glyphicon-cloud-download btn" data-toggle="tooltip" data-placement="bottom" title="下载链接地址" aria-hidden="true"></span>';
+            new_img+='<span class="glyphicon glyphicon-trash btn" data-toggle="tooltip" data-placement="bottom" title="删除文件" aria-hidden="true"></span>';
+            new_img+='</div>';
+            new_img+='<div class="img_name">';
+            new_img+='<form action="" class="form-inline">';
+            new_img+='<input type="text" class="form-control input-sm savename" value="'+savename+'">';
+            new_img+='<button class="btn btn-primary btn-sm save inline-block">保存</button>';
+            new_img+='</form>';
             new_img+='</div>';
             new_img+='</div>';
-            $('.img_box').html(new_img);
-            $("#staff_portrait").val(path+img_url);
+
+            $('.img_box').append(new_img);
         }
+        //复制图片地址
+        $('.glyphicon-cloud-download').livequery(function(){
+            $(this).zclip({
+                path:'/static/css/fonts/ZeroClipboard.swf',
+                copy:function(){
+                    return "http://"+"{$Think.server.HTTP_HOST}"+$(this).parents('div.col-md-3').find('.img').attr('src');
+                },
+                afterCopy:function(){
+                    alert('成功复制图片地址');
+                },
+            });
+        });
+
+        //点击保存按钮
+        $(document).on('click','.save',function(event){
+            event.preventDefault();
+            var img_name=$(this).parents('.img_name');
+            var savename=img_name.find('.savename');
+            var new_name=savename.val();
+            // alert(new_name);
+            var img=$(this).parents('div.col-md-3').find('.img');
+            var img_url=img.attr('src');
+            // alert(img_url);
+            $.ajax({
+                url: '',
+                type: 'POST',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                data: {},
+                success:function(data){
+                    // var data = $.parseJSON(data);
+                    // alert(data);return false;
+                    if (!data['status']) {
+                        alert(data['info']);
+                        return false;
+                    };
+                    savename.val(data['savename']);
+                    img.attr('src',"__ROOT__"+data['savepath']);
+                    img_name.fadeOut('slow');
+                }
+            });
+
+        });
+        //图片删除
+        $(document).on('click', '.glyphicon-trash', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            var div=$(this).parents('div.col-md-3');
+            var img_url=div.find('.img').attr('src');
+            $.ajax({
+                url: '/admin/images_upload/del',
+                type: 'POST',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                data: {img_url:img_url},
+                success:function(data){
+                    if (!data['return_status']) {
+                        $.fn.modalMsg(data.msg, "error");
+                        return false;
+                    }else{
+                        $.fn.modalMsg(data.msg, "success");
+                        div.fadeOut(2000);
+                        div.remove();
+                    };
+                }
+            });
+
+        });
+        //图片放大预览
+        $(document).on('click', '.img', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            var img_url=$(this).attr('src');
+            $('#modal').modal('show');
+            $('#img_show').attr('src',img_url);
+        });
+
+        //点击modal自动隐藏
+        $('#modal').click(function(event) {
+            $(this).modal('hide');
+        });
+        //显示二级分类
+        $('#child_class_one').change(function(){
+            var child_id = $("#child_class_one").val();
+            $.ajax({
+                url:'goods/goods_class_two',
+                type:"POST",
+                data: {child_id:child_id},
+                success: function(data){
+                    if(data.return_status){
+                        $('#child_class_two').html('');
+                        var dom = " <option style=\"display: none;\" value=\"0\">请选择商品分类</option>"
+                        for(var i = 0;i<data.data.length;i++){
+                            dom += '<option value="'+data.data[i]['goods_class_id']+'">'+data.data[i]['class_name']+'</option>';
+                        }
+                        $('#child_class_two').html(dom);
+                    }else{
+                        $.fn.modalMsg(data.msg, "error");
+                    }
+                },
+            });
+        })
+        //显示三级分类
+        $('#child_class_two').change(function(){
+            var subgrade_class_id = $("#child_class_two").val();
+            $.ajax({
+                url:'goods/goods_class_three',
+                type:"POST",
+                data: {subgrade_class_id:subgrade_class_id},
+                success: function(data){
+                    if(data.return_status){
+                        $('#child_class_three').html('');
+                        var dom = " <option style=\"display: none;\" value=\"0\">请选择商品分类</option>"
+                        for(var i = 0;i<data.data.length;i++){
+                            dom += '<option value="'+data.data[i]['goods_class_id']+'">'+data.data[i]['class_name']+'</option>';
+                        }
+                        $('#child_class_three').html(dom);
+                    }else{
+                        $.fn.modalMsg(data.msg, "error");
+                    }
+                },
+            });
+        })
     });
 </script>

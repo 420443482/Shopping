@@ -159,7 +159,7 @@
             form_data.append('token','{:md5("unique_salt".$time)}');
             form_data.append("Filedata",file);
             $.ajax({
-                url: '/admin/login/upload',
+                url: '/admin/images_upload/upload',
                 type: 'POST',
                 processData: false,
                 contentType: false,
