@@ -3,11 +3,12 @@ namespace app\admin\controller;
 use app\common\model\User;
 use think\Controller;
 use think\Session;
-    class ImagesUpload extends Base
+    class ImagesUpload extends Controller
 {
     //上传操作
     public function upload()
     {
+
         $token = input('post.token');
         $timestamp = input('post.timestamp');
         $file = request()->file('Filedata');

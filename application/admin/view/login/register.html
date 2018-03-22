@@ -168,7 +168,7 @@
                 .done(function(data) {
                     // alert(data);
                     if (!data.return_status) {
-                        alert(data.info);
+                        $.fn.modalMsg(data.msg, "error");
                         return false;
                     };
                     put_img(data.savepath,data.savename);//添加图片到img_box
