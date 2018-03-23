@@ -1,6 +1,12 @@
 {load href="/static/css/goods/bootstrap-switch.css" /}
+{load href="/static/js/ueditor/ueditor.config.js" /}
+{load href="/static/js/ueditor/ueditor.all.min.js" /}
+{load href="/static/js/ueditor/zh-cn.js" /}
 
 <style>
+    table{
+        width: 85%;
+    }
     .box-body table tr td input{
         border-radius: 4px;
         width: 100%;
@@ -64,6 +70,7 @@
     #fileselect{
         display: none;
     }
+
 </style>
 <section class="content">
     <div class="callout callout-info">
@@ -93,6 +100,9 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1">
                                     <form role="form" id="class_form" style="width: 100%; ">
+                                        <input type="hidden" name="stud[]" value="1">
+                                            <input type="hidden" name="stud[]" value="2">
+
                                         <div   class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 60%;" id="list_staff">
                                             <table class="form" style="float: left;">
                                                 <tbody>
@@ -201,6 +211,12 @@
                                                         <input id="goods_undercarriage_time" name="goods_undercarriage_time" type="date" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <th class="formTitle">商品详情<font face="宋体">*</font></th>
+                                                    <td class="formValue">
+                                                    <script id="editor" type="text/plain"  style="width:100%;min-height: 300px"/>
+                                                    </td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -219,13 +235,18 @@
         </div>
     </div>
     </div>
+
 </section>
+
 {load href="/static/js/modalmsg.js" /}
 {load href="/static/js/goods/jquery.uploadify.min.js" /}
 {load href="/static/js/goods/jquery.zclip.js" /}
 {load href="/static/js/goods/jquery.livequery.js" /}
 <script>
+    var ue = UE.getEditor('editor');
     $(function() {
+
+        var i = 0;
         $(".make-switch").bootstrapSwitch({
             onText: '是',
             offText: '否'
@@ -278,6 +299,7 @@
         }
         //添加图片到img_box
         function put_img(savepath,savename){
+            i++;
             var img_url="__ROOT__"+savepath;
             var path = '/uploads/images/';
             // alert(img_url);
@@ -285,7 +307,7 @@
             new_img+='<img src="'+path+''+img_url+'" alt="test" class="img">';
             new_img+='<div class="img_ctrl">';
             new_img+='<span class="glyphicon glyphicon-cloud-download btn" data-toggle="tooltip" data-placement="bottom" title="下载链接地址" aria-hidden="true"></span>';
-            new_img+='<span class="glyphicon glyphicon-trash btn" data-toggle="tooltip" data-placement="bottom" title="删除文件" aria-hidden="true"></span>';
+            new_img+="<span class='glyphicon glyphicon-trash btn' images-id='images_"+i+"' data-toggle='tooltip' data-placement='bottom' title='删除文件' aria-hidden='true'></span>";
             new_img+='</div>';
             new_img+='<div class="img_name">';
             new_img+='<form action="" class="form-inline">';
@@ -294,7 +316,7 @@
             new_img+='</form>';
             new_img+='</div>';
             new_img+='</div>';
-
+            $("#class_form").append("<input type='hidden' value="+path+img_url+" name='images[]' id='images_"+i+"'>")
             $('.img_box').append(new_img);
         }
         //复制图片地址
@@ -311,38 +333,22 @@
         });
 
         //点击保存按钮
-        $(document).on('click','.save',function(event){
-            event.preventDefault();
-            var img_name=$(this).parents('.img_name');
-            var savename=img_name.find('.savename');
-            var new_name=savename.val();
-            // alert(new_name);
-            var img=$(this).parents('div.col-md-3').find('.img');
-            var img_url=img.attr('src');
-            // alert(img_url);
-            $.ajax({
-                url: '',
-                type: 'POST',
-                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-                data: {},
-                success:function(data){
-                    // var data = $.parseJSON(data);
-                    // alert(data);return false;
-                    if (!data['status']) {
-                        alert(data['info']);
-                        return false;
-                    };
-                    savename.val(data['savename']);
-                    img.attr('src',"__ROOT__"+data['savepath']);
-                    img_name.fadeOut('slow');
-                }
-            });
+            $(document).on('click','#goods_class_save',function(event){
+                $.ajax({
+                    url:'goods/goods_add',
+                    type:"POST",
+                    data:$('#class_form').serialize(),
+                    success: function(data){
 
+                    },
+                });
         });
         //图片删除
         $(document).on('click', '.glyphicon-trash', function(event) {
             event.preventDefault();
             /* Act on the event */
+            var images_attr = $(this).attr("images-id");
+            $("#"+images_attr).remove();
             var div=$(this).parents('div.col-md-3');
             var img_url=div.find('.img').attr('src');
             $.ajax({

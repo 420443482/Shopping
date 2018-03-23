@@ -33,6 +33,12 @@ class Goods extends Base
 
         return $this->fetch('goods/goods_save');
     }
+    //商品新增
+    public function goods_add(){
+        $a = $_POST['images'];
+        print_r($a);
+        exit;
+    }
     //商品分类列表显示
     public function goods_class(){
         $goods_class = new GoodsClass();
@@ -52,6 +58,7 @@ class Goods extends Base
         $this->assign('list',$class);
         return $this->fetch('goods/goods_class');
     }
+
     //显示分类指定下级数据
     public function goods_class_view(){
         $return_status = true;
