@@ -1,10 +1,16 @@
 <?php
 namespace app\admin\controller;
+use app\admin\model\ImagesUploadModel;
 use app\common\model\User;
 use think\Controller;
 use think\Session;
     class ImagesUpload extends Controller
 {
+    //图片上传数据
+    public function images_add($path){
+        $images = new ImagesUploadModel();
+        $images->images_add($path);
+    }
     //上传操作
     public function upload()
     {
@@ -24,7 +30,10 @@ use think\Session;
                 'savepath' => $info->getSaveName(),//保存路径
                 'return_status' => true,//状态
             );
+            $path = '/uploads/images/'.$data['savepath'];
+            $this->images_add($path);
         }
+
         return json($data);
     }
     //删除图片

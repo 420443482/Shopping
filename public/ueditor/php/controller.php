@@ -44,7 +44,6 @@ switch ($action) {
         ));
         break;
 }
-
 /* 输出结果 */
 if (isset($_GET["callback"])) {
     if (preg_match("/^[\w_]+$/", $_GET["callback"])) {

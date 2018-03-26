@@ -100,16 +100,13 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1">
                                     <form role="form" id="class_form" style="width: 100%; ">
-                                        <input type="hidden" name="stud[]" value="1">
-                                            <input type="hidden" name="stud[]" value="2">
-
                                         <div   class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 60%;" id="list_staff">
                                             <table class="form" style="float: left;">
                                                 <tbody>
                                                 <tr>
                                                     <th class="formTitle">商品名称<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="class_name" name="class_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="商品名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_name" name="goods_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="商品名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -221,7 +218,7 @@
                                             </table>
                                         </div>
                                         <div class="box-footer" >
-                                            <button type="button" id="goods_class_save" class="btn btn-block btn-info" style="width:100px;float: left;margin-left: 6rem;">保存</button>
+                                            <button type="button" id="btn_add" class="btn btn-block btn-info" style="width:100px;float: left;margin-left: 6rem;">保存</button>
                                         </div>
                                     </form>
                                 </div>
@@ -245,8 +242,25 @@
 <script>
     var ue = UE.getEditor('editor');
     $(function() {
-
         var i = 0;
+        $("#btn_add").click(function () {
+           var content = ue.getContent();
+            $.ajax({
+                url: '/admin/goods/goods_add',
+                type: 'POST',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                data:$.param({content:content}) + '&' + $("#class_form").serialize(),
+                success:function(data){
+                    if (!data['return_status']) {
+                        $.fn.modalMsg(data.msg, "error");
+
+                    }else{
+                        $.fn.modalMsg(data.msg, "success");
+
+                    }
+                }
+            });
+        });
         $(".make-switch").bootstrapSwitch({
             onText: '是',
             offText: '否'

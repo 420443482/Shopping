@@ -35,9 +35,47 @@ class Goods extends Base
     }
     //商品新增
     public function goods_add(){
-        $a = $_POST['images'];
-        print_r($a);
-        exit;
+        $params['images'] = $_POST['images'];
+        $params['content'] = $_POST['content'];
+        $params['goods_summary'] = input('post.goods_summary');
+        $params['child_class_one'] = input('post.child_class_one');
+        $params['child_class_two'] = input('post.child_class_two');
+        $params['child_class_three'] = input('post.child_class_three');
+        $params['goods_market_price'] = input('post.goods_market_price');
+        $params['goods_buying_price'] = input('post.goods_buying_price');
+        $params['goods_sales_price'] = input('post.goods_sales_price');
+        $params['goods_stock'] = input('post.goods_stock');
+        $params['goods_is_shipping'] = input('post.goods_is_shipping');
+        $params['goods_is_discount'] = input('post.goods_is_discount');
+        $params['goods_is_grounding'] = input('post.goods_is_grounding');
+        $params['goods_grounding_time'] = input('post.goods_grounding_time');
+        $params['goods_undercarriage_time'] = input('post.goods_undercarriage_time');
+        if(!empty($content))
+        {
+            //正则表达式匹配查找图片路径
+            $pattern='/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.png]))[\'|\"].*?[\/]?>/i';
+            preg_match_all($pattern,$content,$res);
+            $num=count($res[1]);
+            for($i=0;$i<$num;$i++)
+            {
+                $ueditor_img=$res[1][$i];
+                //新建日期文件夹
+                $tmp_arr=explode('/',$ueditor_img);
+                $datefloder='./Public/Upload/ueditor/image/'.$tmp_arr[5];
+                if(!is_dir($datefloder))
+                {
+                    mkdir($datefloder,0777);
+                }
+                $tmpimg='.'.$ueditor_img;
+                $newimg=str_replace('/ueditor_temp/','/ueditor/',$tmpimg);
+                //转移图片
+                if(rename($tmpimg, $newimg))
+                {
+                    $content=str_replace('/ueditor_temp/','/ueditor/',$content);
+                }
+            }
+        }
+      
     }
     //商品分类列表显示
     public function goods_class(){

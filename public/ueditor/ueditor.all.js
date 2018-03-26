@@ -29451,16 +29451,22 @@ UE.ui = baidu.editor.ui = {};
      *  UE.getEditor('containerId'); //返回刚创建的实例
      *
      */
+    // UE.getEditor = function (id, opt) {
+    //     var editor = instances[id];
+    //     if (!editor) {
+    //         editor = instances[id] = new UE.ui.Editor(opt);
+    //         editor.render(id);
+    //     }
+    //     return editor;
+    // };
+
     UE.getEditor = function (id, opt) {
-        var editor = instances[id];
-        if (!editor) {
-            editor = instances[id] = new UE.ui.Editor(opt);
-            editor.render(id);
-        }
+
+        UE.delEditor(id);
+        var editor = new UE.ui.Editor(opt);
+        editor.render(id);
         return editor;
     };
-
-
     UE.delEditor = function (id) {
         var editor;
         if (editor = instances[id]) {
