@@ -97,7 +97,7 @@
                     <div class="chart">
 
                         <div id="main" style="width: 100%; height: auto; ">
-                            <div class="tab-content">
+                            <div class="tab-content ">
                                 <div class="tab-pane active" id="tab_1">
                                     <form role="form" id="class_form" style="width: 100%; ">
                                         <div   class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 60%;" id="list_staff">
@@ -106,7 +106,7 @@
                                                 <tr>
                                                     <th class="formTitle">商品名称<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_name" name="goods_name" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="商品名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_name" name="goods_name" type="text" value="{$goods_list.goods_name ?? ''}" class="form-control" placeholder="商品名称" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -133,7 +133,7 @@
                                                 <tr>
                                                     <th class="formTitle">商品描述<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_summary" name="goods_summary" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="描述" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_summary" name="goods_summary" type="text" value="{$goods_list.goods_summary ?? ''}" class="form-control" placeholder="描述" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -157,61 +157,64 @@
                                                 <tr>
                                                     <th class="formTitle">商品市场价<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_market_price" style="width: 78px;" name="goods_market_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="市场价" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_market_price" style="width: 78px;" name="goods_market_price" type="text" value="{$goods_list.goods_market_price ?? ''}" class="form-control" placeholder="市场价" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">商品进货价<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_buying_price" style="width: 78px;" name="goods_buying_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="进货价" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_buying_price" style="width: 78px;" name="goods_buying_price" type="text" value="{$goods_list.goods_buying_price ?? ''}" class="form-control" placeholder="进货价" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">商品销售价<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_sales_price" style="width: 78px;" name="goods_sales_price" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="销售价" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_sales_price" style="width: 78px;" name="goods_sales_price" type="text" value="{$goods_list.goods_sales_price ?? ''}" class="form-control" placeholder="销售价" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">商品库存<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_stock"  style="width: 78px;" name="goods_stock" type="text" value="{$details.class_name ?? ''}" class="form-control" placeholder="库存" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_stock"  style="width: 78px;" name="goods_stock" type="text" value="{$goods_list.goods_stock ?? ''}" class="form-control" placeholder="库存" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">是否包邮<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_shipping" name="goods_is_shipping" class="make-switch" checked data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_shipping" name="goods_is_shipping" class="make-switch" {if($goods_list.goods_is_shipping == 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">是否折扣<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_discount" name="goods_is_discount"  class="make-switch" checked  data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_discount" name="goods_is_discount"  class="make-switch" {if($goods_list.goods_is_discount == 1)} checked {/if}  data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">是否上架<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_grounding" name="goods_is_grounding" class="make-switch" checked data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_grounding" name="goods_is_grounding" class="make-switch" {if($goods_list.goods_is_grounding == 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">上架时间<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_grounding_time" name="goods_grounding_time" type="date" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_grounding_time" name="goods_grounding_time" type="date" value="{$goods_list.goods_grounding_time ?? ''}" class="form-control" placeholder="上架时间" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">下架时间<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input id="goods_undercarriage_time" name="goods_undercarriage_time" type="date" value="{$details.class_name ?? ''}" class="form-control" placeholder="分类名称" isvalid="yes" checkexpession="NotNull">
+                                                        <input id="goods_undercarriage_time" name="goods_undercarriage_time" type="date" value="{$goods_list.goods_undercarriage_time ?? ''}" class="form-control" placeholder="下架时间" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">商品详情<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                    <script id="editor" type="text/plain"  style="width:100%;min-height: 300px"/>
+                                                        <script id="editor" type="text/plain"  style="width:100%;min-height: 300px">
+                                                            {:htmlspecialchars_decode($goods_list['goods_description'])}
+                                                        </script>
+
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -241,6 +244,12 @@
 {load href="/static/js/goods/jquery.livequery.js" /}
 <script>
     var ue = UE.getEditor('editor');
+    // $(document).ready(function(){
+    //     ue.ready(function() {//编辑器初始化完成再赋值
+    //         ue.setContent("11",false);  //赋值给UEditor
+    //     });
+    //
+    // });
     $(function() {
         var i = 0;
         $("#btn_add").click(function () {
@@ -253,9 +262,9 @@
                 success:function(data){
                     if (!data['return_status']) {
                         $.fn.modalMsg(data.msg, "error");
-
                     }else{
                         $.fn.modalMsg(data.msg, "success");
+                        setTimeout($("#tab-page-content").html(data.html), 3000);
 
                     }
                 }
@@ -330,7 +339,7 @@
             new_img+='</form>';
             new_img+='</div>';
             new_img+='</div>';
-            $("#class_form").append("<input type='hidden' value="+path+img_url+" name='images[]' id='images_"+i+"'>")
+            $("#class_form").append("<input type='hidden' value="+path+img_url+" name='goods_images[]' id='images_"+i+"'>")
             $('.img_box').append(new_img);
         }
         //复制图片地址
@@ -346,17 +355,17 @@
             });
         });
 
-        //点击保存按钮
-            $(document).on('click','#goods_class_save',function(event){
-                $.ajax({
-                    url:'goods/goods_add',
-                    type:"POST",
-                    data:$('#class_form').serialize(),
-                    success: function(data){
-
-                    },
-                });
-        });
+        // //点击保存按钮
+        //     $(document).on('click','#goods_class_save',function(event){
+        //         $.ajax({
+        //             url:'goods/goods_add',
+        //             type:"POST",
+        //             data:$('#class_form').serialize(),
+        //             success: function(data){
+        //
+        //             },
+        //         });
+        // });
         //图片删除
         $(document).on('click', '.glyphicon-trash', function(event) {
             event.preventDefault();

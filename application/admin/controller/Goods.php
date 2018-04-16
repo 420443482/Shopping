@@ -2,22 +2,69 @@
 namespace app\admin\controller;
 use app\admin\model\GoodsModel;
 use app\common\model\GoodsClass;
+use app\common\model\GoodsClassRelevance;
+use app\common\model\GoodsInfo;
 use app\common\model\User;
 use think\Controller;
+use think\Loader;
+use think\Validate;
+
 class Goods extends Base
 {
-    public $details=['class_name'=>''];
-	//显示商品列表信息
+
+    //显示商品列表信息
     public function index()
     {
-       return $this->fetch('goods/goods');
+        $where = [];
+        $list_page= 0;
+        $list_num = 10;
+        $goods_page = input('post.page');//第几页
+        $goods_page_num = input('post.num');//数据显示条数
+
+
+        if(!empty($goods_page_num))$list_num = $goods_page_num;//分页显示条目
+        if(!empty($goods_page))$list_page=$goods_page;//第几页
+
+        $goods = new GoodsModel();
+        $list = $goods->goods_index($where, 0, $list_num);
+
+        // 获取分页显示
+        $page = $list->render();
+
+        foreach ($list as $v){
+            $v['goods_grounding_time'] = date('Y-m-d',$v['goods_grounding_time']);
+            $v['goods_is_shipping'] =  $v['goods_is_shipping'] == 1 ?'是':'否';
+            $v['goods_is_discount'] =  $v['goods_is_discount'] == 1 ?'是':'否';
+            $v['goods_is_grounding'] = $v['goods_is_grounding'] == 1 ?'是':'否';
+            $images = json_decode($v['goods_images'],true);
+            $v['goods_images'] = $images[0];
+        }
+
+        // 模板变量赋值
+        $this->assign('list', $list);
+        $this->assign('page', $page);
+        $this->assign('total', $list->total());
+        $this->assign('list_num',$list_num);
+        return $this->fetch('goods/goods');
     }
 
 
     //商品详情页
     public function goods_details(){
         $title = "商品-新增";
-        $goods_class = new GoodsClass();
+        $goods_id = input('post.goods_id');//商品ID
+        $title = empty($goods_id)?"商品-新增":"商品-编辑";
+        $goods = new GoodsInfo();//实例化商品信息表
+        $goods_list = [];
+        if(!empty($goods_id)){
+            $goods_list = $goods->where(array('goods_id'=>$goods_id))->find();
+            $relevance = new GoodsClassRelevance();//实例化商品信息分类关联表
+            $relevance = $relevance->where(array('goods_id'=>$goods_id))->find();
+            $goods_list['goods_grounding_time'] = date('Y-m-d',$goods_list['goods_grounding_time']);
+            $goods_list['goods_undercarriage_time'] = $goods_list['goods_undercarriage_time']>0?date('Y-m-d',$goods_list['goods_undercarriage_time']):'';
+
+        }
+        $goods_class = new GoodsClass();//实例化商品分类表
         $where['is_delete'] = 0;
         $class  = $goods_class->where($where)->select();
         $class_array = [];
@@ -26,56 +73,87 @@ class Goods extends Base
                 $class_array[] = $v;
             }
         }
+
         $time = date('Y-m-d H:i:s',time());
+        $this->assign('goods_list',$goods_list);
         $this->assign('class_array',$class_array);
         $this->assign('title',$title);
         $this->assign('time',$time);
 
         return $this->fetch('goods/goods_save');
     }
+
     //商品新增
     public function goods_add(){
-        $params['images'] = $_POST['images'];
-        $params['content'] = $_POST['content'];
-        $params['goods_summary'] = input('post.goods_summary');
-        $params['child_class_one'] = input('post.child_class_one');
-        $params['child_class_two'] = input('post.child_class_two');
-        $params['child_class_three'] = input('post.child_class_three');
-        $params['goods_market_price'] = input('post.goods_market_price');
-        $params['goods_buying_price'] = input('post.goods_buying_price');
-        $params['goods_sales_price'] = input('post.goods_sales_price');
-        $params['goods_stock'] = input('post.goods_stock');
-        $params['goods_is_shipping'] = input('post.goods_is_shipping');
-        $params['goods_is_discount'] = input('post.goods_is_discount');
-        $params['goods_is_grounding'] = input('post.goods_is_grounding');
-        $params['goods_grounding_time'] = input('post.goods_grounding_time');
-        $params['goods_undercarriage_time'] = input('post.goods_undercarriage_time');
-        if(!empty($content))
+        $return_status = true;
+        $msg = '添加成功';
+        $params['goods_images'] = isset($_POST['goods_images'])?$_POST['goods_images']:[];
+        $params['goods_description'] = $_POST['content'];
+        $params['goods_name'] = input('post.goods_name');//商品名称
+        $params['goods_summary'] = input('post.goods_summary');//商品描述
+        $params['one_class_id'] = input('post.child_class_one');//商品顶级分类
+        $params['two_class_id'] = input('post.child_class_two');//商品二级分类
+        $params['three_class_id'] = input('post.child_class_three');//商品三级分类
+        $params['goods_market_price'] = input('post.goods_market_price');//市场价
+        $params['goods_buying_price'] = input('post.goods_buying_price');//进货价
+        $params['goods_sales_price'] = input('post.goods_sales_price');//销售价
+        $params['goods_stock'] = input('post.goods_stock');//商品库存
+        $params['goods_is_shipping'] = input('post.goods_is_shipping');//是否包邮
+        $params['goods_is_discount'] = input('post.goods_is_discount');//是否折扣
+        $params['goods_is_grounding'] = input('post.goods_is_grounding');//是否上架
+        $params['goods_grounding_time'] = input('post.goods_grounding_time');//上架时间
+        $params['goods_undercarriage_time'] = input('post.goods_undercarriage_time');//下架时间
+        $images_temp = [];//临时图片存储
+        //参数验证
+        $validate = Loader:: validate('GoodsValidate');
+        if(!$validate->scene('add')->check($params)){
+            return json(array('msg'=>$validate->getError()));
+        }
+        if(count($params['goods_images'])<=0){
+            return json(array('return_status'=>false,'msg'=>'请至少上传一张商品图'));
+        }
+        //存入富文本图片
+        if(!empty($params['goods_description']))
         {
             //正则表达式匹配查找图片路径
             $pattern='/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.png]))[\'|\"].*?[\/]?>/i';
-            preg_match_all($pattern,$content,$res);
+            preg_match_all($pattern,$params['goods_description'],$res);
             $num=count($res[1]);
+            $is_path = true;
             for($i=0;$i<$num;$i++)
             {
-                $ueditor_img=$res[1][$i];
-                //新建日期文件夹
-                $tmp_arr=explode('/',$ueditor_img);
-                $datefloder='./Public/Upload/ueditor/image/'.$tmp_arr[5];
-                if(!is_dir($datefloder))
-                {
-                    mkdir($datefloder,0777);
+                $ueditor_img=$res[1][$i];//临时存储图片地址名称
+                $newimg=str_replace('/uploads_temp/','/uploads/',$ueditor_img);//指定存入正式存储路径
+                $path = substr($newimg,0,33);//存储路径
+                //新建文件夹
+                if(!is_dir($_SERVER['DOCUMENT_ROOT'].$path)){
+                    mkdir(iconv('UTF-8','GBK',$_SERVER['DOCUMENT_ROOT'].$path),0777,true);
                 }
-                $tmpimg='.'.$ueditor_img;
-                $newimg=str_replace('/ueditor_temp/','/ueditor/',$tmpimg);
                 //转移图片
-                if(rename($tmpimg, $newimg))
+                if(copy($_SERVER['DOCUMENT_ROOT'].$ueditor_img, $_SERVER['DOCUMENT_ROOT'].$newimg))
                 {
-                    $content=str_replace('/ueditor_temp/','/ueditor/',$content);
+                    $images_temp[] =$_SERVER['DOCUMENT_ROOT'].$ueditor_img;//保存临时图片路径
+//                    str_replace('/uploads_temp/','/uploads/',$ueditor_img);//正式图片地址
+//                    unlink($_SERVER['DOCUMENT_ROOT'].$ueditor_img);//删除文件
+                }else{
+                    $is_path = false;
                 }
             }
+            if($is_path)$params['goods_description'] = str_replace('/uploads_temp/','/uploads/',$params['goods_description']);//富文本中临时目录替换成正式目录
         }
-      
+        $goods = new GoodsModel();
+        $data = $goods->goods_save($params);//商品新增修改
+        $html = $this->index();
+        if(!$data){
+            $return_status = false;
+            $msg = '添加失败';
+        }else{
+            foreach ($images_temp as $v){
+                unlink($v);//删除临时图片
+            }
+        }
+        return json(array('return_status'=>$return_status,'msg'=>$msg, 'html'=>$html));
+
     }
     //商品分类列表显示
     public function goods_class(){
@@ -107,10 +185,10 @@ class Goods extends Base
 
         $where['is_delete'] = 0;
         if($action == 'child_class'){
-        $where['child_class_id'] = $child_class_id;
-        $where['subgrade_class_id'] = 0;
+            $where['child_class_id'] = $child_class_id;
+            $where['subgrade_class_id'] = 0;
         }else{
-        $where['subgrade_class_id'] = $subgrade_class_id;
+            $where['subgrade_class_id'] = $subgrade_class_id;
         }
         $goods_class = new GoodsClass();
 
@@ -130,7 +208,7 @@ class Goods extends Base
         return json(array('return_status'=>$return_status,'msg'=>$msg,'data'=>$child_class));
 
     }
-        //商品分类显示详情页
+    //商品分类显示详情页
     public function goods_save_class(){
         $class_id = input('post.class_id');
         $title = '商品分类-新增';
@@ -144,17 +222,17 @@ class Goods extends Base
             $list = collection($list)->toArray();
             $class_array_cl = array_column($list,'class_name','goods_class_id');//分类ID对应的名称
             foreach ($list as $v){
-            if($v['child_class_id']== 0 && $v['subgrade_class_id'] == 0 ){
-                $class_array[$v['goods_class_id']] = $v['class_name'];
-            }
-            if(!empty($class_id) && $v['goods_class_id'] == $class_id){
-                $title = '商品分类-编辑';
-                $details = $v;
-                if($v['child_class_id'] != 0)$details['child_class_name'] =$class_array_cl[$v['child_class_id']];
-                if($v['subgrade_class_id'] != 0)$details['subgrade_class_name'] =$class_array_cl[$v['subgrade_class_id']];
+                if($v['child_class_id']== 0 && $v['subgrade_class_id'] == 0 ){
+                    $class_array[$v['goods_class_id']] = $v['class_name'];
+                }
+                if(!empty($class_id) && $v['goods_class_id'] == $class_id){
+                    $title = '商品分类-编辑';
+                    $details = $v;
+                    if($v['child_class_id'] != 0)$details['child_class_name'] =$class_array_cl[$v['child_class_id']];
+                    if($v['subgrade_class_id'] != 0)$details['subgrade_class_name'] =$class_array_cl[$v['subgrade_class_id']];
 
+                }
             }
-        }
         }
         $this->assign('title',$title);
         $this->assign('details',$details);

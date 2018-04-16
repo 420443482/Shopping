@@ -1,3 +1,8 @@
+<style>
+    .modal-content{
+        text-align: center;
+    }
+</style>
 <div class="page-content-body " id="tab-page-content">
     <section class="content">
         <div class="callout callout-info">
@@ -26,13 +31,20 @@
 
                             <div id="main" style="width: 100%; height: 600px;">
                                 <div class="fixed-table-toolbar"><div class="bs-bars pull-left"><div id="toolbar" class="btn-group">
-                                    <button id="btn_add"  type="button" class="btn btn-default">
+                                    <button id="btn_add"  type="button" class="btn btn-default btn_save">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>新增商品
                                     </button>
                                 </div>
                                 </div></div>
-                                <div id="staff_list">
-                                    <div class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 100%;" id="list_staff">
+                                <div id="goods_list">
+                                    <div class="modal fade bs-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <img id="img_show" src="" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pre-scrollable" style=" overflow:scroll; width:100%; max-height: 100%;" id="list_goods">
                                         <table class="table-scrollable table table-hover  table-bordered" style="width: 90%; text-align: center;">
                                             <thead>
                                             <tr>
@@ -48,43 +60,135 @@
                                                 <th nowrap="nowrap">是否打折</th>
                                                 <th nowrap="nowrap">是否上架</th>
                                                 <th nowrap="nowrap">上架时间</th>
-                                                <th nowrap="nowrap"></th>
+                                                <th nowrap="nowrap">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-
+                                            {volist name='list' id='goods'}
+                                            <td class="bs-checkbox "><input data-index="0" data-goods-id="{$goods.goods_id}" name="btSelectItem" type="checkbox"></td>
+                                            <td>{$goods.goods_id}</td>
+                                            <td nowrap="nowrap"><img class="img" style="width: 50px;height: 50px;" src="{$goods.goods_images}"/></td>
+                                            <td nowrap="nowrap">{$goods.goods_name}</td>
+                                            <td nowrap="nowrap">{$goods.goods_market_price}</td>
+                                            <td nowrap="nowrap">{$goods.goods_buying_price}</td>
+                                            <td nowrap="nowrap">{$goods.goods_sales_price}</td>
+                                            <td nowrap="nowrap">{$goods.goods_stock}</td>
+                                            <td nowrap="nowrap">{$goods.goods_is_shipping}</td>
+                                            <td nowrap="nowrap">{$goods.goods_is_discount}</td>
+                                            <td nowrap="nowrap">{$goods.goods_is_grounding}</td>
+                                            <td nowrap="nowrap">{$goods.goods_grounding_time}</td>
+                                            <td nowrap="nowrap">
+                                                <a href="javascript:;" class="btn btn-icon-only purple btn_save" edit-id="{$goods.goods_id}" name="goods_edit"><i class="fa fa-edit"></i></a>
+                                                <a href="javascript:;" class="btn btn-icon-only red" data-id="{$goods.goods_id}" name="goods_delete"> <i class="fa fa-times"></i></a>
+                                            </td>
+                                            </tr>
+                                            {/volist}
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示 1 到 {$list_num} 条记录，总共{$total}条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button style="margin-top:0px;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="page-size" id="page_num">{$list_num}</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li><li><a href="javascript:void(0)">50</a></li><li><a href="javascript:void(0)">100</a></li></ul></span> 条记录</span></div><div class="pull-right pagination" style="margin: 0px;">
+                                        {$page}
+                                    </div>
+                                    </div>
                                 </div>
+                                <input type="hidden" name="default_page" value="1">
+                                <input type="hidden" name="default_num" value="10">
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </div>
 {load href="/static/js/modalmsg.js" /}
 <script>
     $(function(){
-        $("#btn_add").click(function(){
-            getData();
+        var num;
+        var page = 1;
+        $(".btn_save").click(function(){
+            var goods_id = $(this).attr("edit-id");
+            getInfoData(goods_id);
         });
-    });
+        //无刷新显示数据
+        function getInfoData(goods_id) {
+            $.ajax({
+                url:'goods/goods_details',
+                type:"POST",
+                data:{goods_id:goods_id},
+                success: function(data){
+                    $("#tab-page-content").html(data);
+                },
+            });
+        }
+        $(".pagination li a").attr('href', '#');
+        $(".pagination li a").attr('name', 'btn_a');
+        $(".dropdown-menu li a").attr('name', 'btn_num');
+        //切换数据显示条目
+        $("a[name='btn_num']").click(function(){
+            num =  $(this).html();
+            $('input[name="default_num"]').val(num);
+            getData(1);
+        });
+        //图片放大预览
+        $(document).on('click', '.img', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            var img_url=$(this).attr('src');
+            $('#modal').modal('show');
+            $('#img_show').attr('src',img_url);
+        });
+        //按条件查询
+        $("#btn_query").click(function(){
+            getData(1);
+        });
+        $('#goods_list').on('click' , 'a[name="btn_a"]' , function() {
+            page = $(this).html();
+            if(page == '»'){
+                page = parseInt($('input[name="default_page"]').val())+1;
+            }else if(page == '«'){
+                page = parseInt($('input[name="default_page"]').val())-1;
+            }else if(isNaN(page)){
+                page = 1;
+            }
+            $('input[name="default_page"]').val(page);
+            getData(page);
+        })
+        //无刷新数据分页
+        $("a[name='btn_a']").on("click",function() {
+            page = $(this).html();
+            if(page == '»'){
+                page = parseInt($('input[name="default_page"]').val())+1;
+            }else if(page == '«'){
+                page = parseInt($('input[name="default_page"]').val())-1;
+            }else if(isNaN(page)){
+                page = 1;
+            }
+            $('input[name="default_page"]').val(page);
+            getData(page);
+        });
 
-    //无刷新显示数据
-    function getData() {
-        $.ajax({
-            url:'goods/goods_details',
-            type:"POST",
-            data:{},
-            success: function(data){
-                $("#tab-page-content").html(data);
-            },
-        });
-    }
-    </script>
+        //无刷新显示数据
+        function getData(page) {
+
+            num =  $('input[name="default_num"]').val();
+            $.ajax({
+                url:'goods/index',
+                type:"POST",
+                data:$.param({'page':page,'num':num}) + '&' + $('#formSearch').serialize(),
+                success: function(data){
+                    // console.info(data);
+                    var a = $(data).find('#goods_list').html()
+                    // console.info(a);
+                    $("#goods_list").html(a);
+                    $(".pagination li a").attr('href', '#');
+                    $(".pagination li a").attr('name', 'btn_a');
+                    // jquery.getScript("staff/staff.js", function(){
+                    //
+                    // });
+                },
+            });
+        }
+    });
+</script>
