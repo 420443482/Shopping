@@ -15,7 +15,8 @@ class Goods extends Base
     //显示商品列表信息
     public function index()
     {
-        $where = [];
+        $where['is_delete']= 0;
+
         $list_page= 0;
         $list_num = 10;
         $goods_page = input('post.page');//第几页
@@ -56,13 +57,21 @@ class Goods extends Base
         $title = empty($goods_id)?"商品-新增":"商品-编辑";
         $goods = new GoodsInfo();//实例化商品信息表
         $goods_list = [];
+        $goods_image_array = [];
+        $goods_class_data = [];
         if(!empty($goods_id)){
             $goods_list = $goods->where(array('goods_id'=>$goods_id))->find();
             $relevance = new GoodsClassRelevance();//实例化商品信息分类关联表
             $relevance = $relevance->where(array('goods_id'=>$goods_id))->find();
             $goods_list['goods_grounding_time'] = date('Y-m-d',$goods_list['goods_grounding_time']);
             $goods_list['goods_undercarriage_time'] = $goods_list['goods_undercarriage_time']>0?date('Y-m-d',$goods_list['goods_undercarriage_time']):'';
-
+            $goods_images = json_decode($goods_list['goods_images'],true);
+            if(count($goods_images)>0){//详图显示
+                for ($i=0; $i<count($goods_images); $i++){
+                    $goods_image_array[$i]['images_path'] = $goods_images[$i];
+                    $goods_image_array[$i]['images_name'] = substr($goods_images[$i] , 25 );
+                }
+            }
         }
         $goods_class = new GoodsClass();//实例化商品分类表
         $where['is_delete'] = 0;
@@ -72,9 +81,25 @@ class Goods extends Base
             if ($v['child_class_id'] == 0 && $v['subgrade_class_id'] == 0) {
                 $class_array[] = $v;
             }
+            if(isset($relevance)){
+                if($v['goods_class_id'] == $relevance['one_class_id']){
+                    $goods_class_data['child_class_one']['name'] =$v['class_name'];
+                    $goods_class_data['child_class_one']['id'] =$relevance['one_class_id'];
+                }
+                if($v['goods_class_id'] == $relevance['two_class_id']){
+                    $goods_class_data['child_class_two']['name'] =$v['class_name'];
+                    $goods_class_data['child_class_two']['id'] =$relevance['two_class_id'];
+                }
+                if($v['goods_class_id'] == $relevance['three_class_id']){
+                    $goods_class_data['child_class_three']['name'] =$v['class_name'];
+                    $goods_class_data['child_class_three']['id'] =$relevance['three_class_id'];
+                }
+            }
         }
 
         $time = date('Y-m-d H:i:s',time());
+        $this->assign('goods_class_data',$goods_class_data);
+        $this->assign('goods_image_array',$goods_image_array);
         $this->assign('goods_list',$goods_list);
         $this->assign('class_array',$class_array);
         $this->assign('title',$title);
@@ -103,6 +128,9 @@ class Goods extends Base
         $params['goods_is_grounding'] = input('post.goods_is_grounding');//是否上架
         $params['goods_grounding_time'] = input('post.goods_grounding_time');//上架时间
         $params['goods_undercarriage_time'] = input('post.goods_undercarriage_time');//下架时间
+        $params['goods_undercarriage_time'] = input('post.goods_undercarriage_time');//下架时间
+        $goods_id  = input('post.goods_id');//下架时间
+
         $images_temp = [];//临时图片存储
         //参数验证
         $validate = Loader:: validate('GoodsValidate');
@@ -112,6 +140,7 @@ class Goods extends Base
         if(count($params['goods_images'])<=0){
             return json(array('return_status'=>false,'msg'=>'请至少上传一张商品图'));
         }
+
         //存入富文本图片
         if(!empty($params['goods_description']))
         {
@@ -129,6 +158,7 @@ class Goods extends Base
                 if(!is_dir($_SERVER['DOCUMENT_ROOT'].$path)){
                     mkdir(iconv('UTF-8','GBK',$_SERVER['DOCUMENT_ROOT'].$path),0777,true);
                 }
+
                 //转移图片
                 if(copy($_SERVER['DOCUMENT_ROOT'].$ueditor_img, $_SERVER['DOCUMENT_ROOT'].$newimg))
                 {
@@ -136,13 +166,17 @@ class Goods extends Base
 //                    str_replace('/uploads_temp/','/uploads/',$ueditor_img);//正式图片地址
 //                    unlink($_SERVER['DOCUMENT_ROOT'].$ueditor_img);//删除文件
                 }else{
+
                     $is_path = false;
                 }
+
             }
-            if($is_path)$params['goods_description'] = str_replace('/uploads_temp/','/uploads/',$params['goods_description']);//富文本中临时目录替换成正式目录
+
+            if($is_path || $goods_id)$params['goods_description'] = str_replace('/uploads_temp/','/uploads/',$params['goods_description']);//富文本中临时目录替换成正式目录
+
         }
         $goods = new GoodsModel();
-        $data = $goods->goods_save($params);//商品新增修改
+        $data = $goods->goods_save($params,$goods_id);//商品新增修改
         $html = $this->index();
         if(!$data){
             $return_status = false;
@@ -154,6 +188,19 @@ class Goods extends Base
         }
         return json(array('return_status'=>$return_status,'msg'=>$msg, 'html'=>$html));
 
+    }
+    //商品数据删除
+    public function goods_delete(){
+        $return_status = true;
+        $msg = '删除成功';
+        $goods_id = input("post.goods_id");
+        $goods = new GoodsModel();
+        $data = $goods->goods_delete($goods_id);//数据删除
+        if(!$data){
+            $return_status=false;
+            $msg = '删除失败';
+        }
+        return json(array('return_status'=>$return_status,'msg'=>$msg));
     }
     //商品分类列表显示
     public function goods_class(){
@@ -296,8 +343,8 @@ class Goods extends Base
         $return_status = true;
         $msg = '删除成功';
         $goods_class_id = input("post.goods_class_id");
-        $staff = new GoodsModel();
-        $data = $staff->goods_class_delete($goods_class_id);//数据删除
+        $goods_class = new GoodsModel();
+        $data = $goods_class->goods_class_delete($goods_class_id);//数据删除
         if(!$data){
             $return_status=false;
             $msg = '删除失败';

@@ -66,6 +66,7 @@
                                             <tbody>
 
                                             {volist name='list' id='goods'}
+                                            <tr id="goods_{$goods.goods_id}">
                                             <td class="bs-checkbox "><input data-index="0" data-goods-id="{$goods.goods_id}" name="btSelectItem" type="checkbox"></td>
                                             <td>{$goods.goods_id}</td>
                                             <td nowrap="nowrap"><img class="img" style="width: 50px;height: 50px;" src="{$goods.goods_images}"/></td>
@@ -80,7 +81,7 @@
                                             <td nowrap="nowrap">{$goods.goods_grounding_time}</td>
                                             <td nowrap="nowrap">
                                                 <a href="javascript:;" class="btn btn-icon-only purple btn_save" edit-id="{$goods.goods_id}" name="goods_edit"><i class="fa fa-edit"></i></a>
-                                                <a href="javascript:;" class="btn btn-icon-only red" data-id="{$goods.goods_id}" name="goods_delete"> <i class="fa fa-times"></i></a>
+                                                <a href="javascript:;" class="btn btn-icon-only red goods_delete" delete-id="{$goods.goods_id}" name="goods_delete"> <i class="fa fa-times"></i></a>
                                             </td>
                                             </tr>
                                             {/volist}
@@ -190,5 +191,26 @@
                 },
             });
         }
+    });
+    //单条数据删除
+    $(document).on('click', '.goods_delete', function(e) {
+        var  goods_id = $(this).attr("delete-id");
+        $.fn.modalConfirm("确认要删除么？", function(status) {
+            if(status == false) return false;
+            $.ajax({
+                url: 'goods/goods_delete',
+                type: "POST",
+                data: {goods_id: goods_id},
+                success: function (data) {
+                    if (data.return_status) {
+                        $("#goods_"+goods_id).remove();
+                        $.fn.modalMsg(data.msg, "success");
+                    } else {
+                        $.fn.modalMsg(data.msg, "error");
+                    }
+                }
+
+            });
+        });
     });
 </script>

@@ -114,6 +114,24 @@
                                                     <td class="formValue">
                                                     <div class="container" style="width: 100%;float: left;";>
                                                         <div class="row img_box" id="img_box">
+                                                            {foreach $goods_image_array as $k=>$v}
+                                                            <input type='hidden' value="{++$k}" name='count_images' id="count_images"/>
+                                                            <input type='hidden' value="{$v.images_path}" name='goods_images[]' id="images_{++$k}"/>
+                                                            <div class="col-md-3"><img src="{$v.images_path}" alt="test" class="img">
+                                                                <div class="img_ctrl">
+                                                                    <span class="glyphicon glyphicon-cloud-download btn" data-toggle="tooltip" data-placement="bottom" title="下载链接地址" aria-hidden="true"></span>
+                                                                    <span class="glyphicon glyphicon-trash btn" images-id="images_2" data-toggle="tooltip" data-placement="bottom" title="删除文件" aria-hidden="true"></span>
+                                                                    <div class="zclip" id="zclip-ZeroClipboardMovie_2" style="position: absolute; left: 33px; top: 73px; width: 40px; height: 34px; z-index: 99;">
+                                                                        <embed id="ZeroClipboardMovie_2" src="/static/css/fonts/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="40" height="34" name="ZeroClipboardMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=40&amp;height=34" wmode="transparent">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="img_name"><form action="" class="form-inline">
+                                                                    <input type="text" class="form-control input-sm savename" value="{$v.images_name}">
+                                                                    <button class="btn btn-primary btn-sm save inline-block">保存</button>
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                            {/foreach}
                                                         </div>
                                                         <hr>
                                                         <div class="form-group">
@@ -140,16 +158,31 @@
                                                     <th class="formTitle">商品分类<font face="宋体">*</font></th>
                                                     <td class="formValue">
                                                         <select class="name border-bottom" id="child_class_one" name="child_class_one" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            {if isset($goods_class_data['child_class_one'])}
+                                                            <option style="display: none;" value="{$goods_class_data['child_class_one']['id']}">{$goods_class_data['child_class_one']['name']}</option>
                                                             <option value="0">请选择商品分类</option>
+                                                            {else}
+                                                            <option value="0">请选择商品分类</option>
+                                                            {/if}
                                                             {foreach $class_array as $v}
                                                             <option value="{$v.goods_class_id}">{$v.class_name}</option>
                                                             {/foreach}
                                                         </select>
                                                         <select class="name border-bottom" id="child_class_two" name="child_class_two" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            {if isset($goods_class_data['child_class_two'])}
+                                                            <option style="display: none;" value="{$goods_class_data['child_class_two']['id']}">{$goods_class_data['child_class_two']['name']}</option>
                                                             <option value="0">请选择商品分类</option>
+                                                            {else}
+                                                            <option value="0">请选择商品分类</option>
+                                                            {/if}
                                                         </select>
                                                         <select class="name border-bottom" id="child_class_three" name="child_class_three" style="background-color: transparent;border:1px solid #ccc;height:34px;width:auto;border-radius:4px;font-size:14px;font:inherit; ">
+                                                            {if isset($goods_class_data['child_class_three'])}
+                                                            <option style="display: none;" value="{$goods_class_data['child_class_three']['id']}">{$goods_class_data['child_class_three']['name']}</option>
                                                             <option value="0">请选择商品分类</option>
+                                                            {else}
+                                                            <option value="0">请选择商品分类</option>
+                                                            {/if}
                                                         </select>
                                                     </td>
 
@@ -181,19 +214,19 @@
                                                 <tr>
                                                     <th class="formTitle">是否包邮<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_shipping" name="goods_is_shipping" class="make-switch" {if($goods_list.goods_is_shipping == 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_shipping" name="goods_is_shipping" class="make-switch" {if(isset($goods_list.goods_is_shipping) && $goods_list.goods_is_shipping== 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">是否折扣<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_discount" name="goods_is_discount"  class="make-switch" {if($goods_list.goods_is_discount == 1)} checked {/if}  data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_discount" name="goods_is_discount"  class="make-switch" {if(isset($goods_list.goods_is_discount) && $goods_list.goods_is_discount== 1)} checked {/if}  data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="formTitle">是否上架<font face="宋体">*</font></th>
                                                     <td class="formValue">
-                                                        <input type="checkbox" id="goods_is_grounding" name="goods_is_grounding" class="make-switch" {if($goods_list.goods_is_grounding == 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
+                                                        <input type="checkbox" id="goods_is_grounding" name="goods_is_grounding" class="make-switch" {if(isset($goods_list.goods_is_grounding) && $goods_list.goods_is_grounding == 1)} checked {/if} data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-times'></i>">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -208,11 +241,14 @@
                                                         <input id="goods_undercarriage_time" name="goods_undercarriage_time" type="date" value="{$goods_list.goods_undercarriage_time ?? ''}" class="form-control" placeholder="下架时间" isvalid="yes" checkexpession="NotNull">
                                                     </td>
                                                 </tr>
+                                                <input type="hidden" name="goods_id" value="{$goods_list.goods_id ?? ''}">
                                                 <tr>
                                                     <th class="formTitle">商品详情<font face="宋体">*</font></th>
                                                     <td class="formValue">
                                                         <script id="editor" type="text/plain"  style="width:100%;min-height: 300px">
+                                                            {if isset($goods_list['goods_description'])}
                                                             {:htmlspecialchars_decode($goods_list['goods_description'])}
+                                                            {/if}
                                                         </script>
 
                                                     </td>
@@ -244,21 +280,20 @@
 {load href="/static/js/goods/jquery.livequery.js" /}
 <script>
     var ue = UE.getEditor('editor');
-    // $(document).ready(function(){
-    //     ue.ready(function() {//编辑器初始化完成再赋值
-    //         ue.setContent("11",false);  //赋值给UEditor
-    //     });
-    //
-    // });
+    var i = $("#count_images").val();
     $(function() {
-        var i = 0;
+
+        if(isNaN($("#count_images").val())){
+            i = 0;
+        }
         $("#btn_add").click(function () {
-           var content = ue.getContent();
+            var goods_id = $("input[name='goods_id']").val();
+            var content = ue.getContent();
             $.ajax({
                 url: '/admin/goods/goods_add',
                 type: 'POST',
                 // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-                data:$.param({content:content}) + '&' + $("#class_form").serialize(),
+                data:$.param({goods_id:goods_id,content:content}) + '&' + $("#class_form").serialize(),
                 success:function(data){
                     if (!data['return_status']) {
                         $.fn.modalMsg(data.msg, "error");
@@ -448,4 +483,5 @@
             });
         })
     });
+   
 </script>

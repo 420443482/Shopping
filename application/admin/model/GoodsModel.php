@@ -3,6 +3,7 @@ namespace app\admin\model;
 use app\common\model\GoodsClass;
 use app\common\model\GoodsClassRelevance;
 use app\common\model\GoodsInfo;
+use think\Db;
 use think\Model;
 use think\Session;
 
@@ -40,7 +41,7 @@ class GoodsModel extends Model{
 
 
     //商品新增修改
-    public function goods_save($params){
+    public function goods_save($params,$goods_id=''){
         $params['goods_is_shipping'] = empty($params['goods_is_shipping'])?0:1;
         $params['goods_is_discount'] = empty($params['goods_is_discount'])?0:1;
         $params['goods_is_grounding'] = empty($params['goods_is_grounding'])?0:1;
@@ -53,13 +54,24 @@ class GoodsModel extends Model{
         $params = array_diff_key($params,$relevance);
         if(count($params['goods_images'])>0)$params['goods_images'] = json_encode($params['goods_images']);
         $goods = new GoodsInfo();
-        $data = $goods->insertGetId($params);
-
+        if(!empty($goods_id)){
+            $data = $goods->where(array('goods_id'=>$goods_id))->update($params);
+            if($data == 0)$data=true;
+        }else{
+            $data = $goods->insertGetId($params);
+        }
         if($data){
             $relevance['goods_id'] = $data;
             $goodsClassRelevance = new GoodsClassRelevance();
-            $data = $goodsClassRelevance->insertGetId($relevance);
+            if(!empty($goods_id)) {
+                $relevance['goods_id'] = $goods_id;
+                $data = $goodsClassRelevance->where(array('goods_id'=>$goods_id))->update($relevance);
+                if($data == 0)$data=true;
+            }else{
+                $data = $goodsClassRelevance->insertGetId($relevance);
+            }
         }
+
         return $data;
     }
     //商品显示数据
@@ -72,5 +84,24 @@ class GoodsModel extends Model{
         $list = $goods->where($where)->order('goods_id', 'desc')->paginate($list_num,false,$options);
 
         return $list;
+    }
+
+    //商品数据删除(修改删除状态判定是否删除)
+    public function goods_delete($goods_id){
+        Db::startTrans();
+        try{
+            $goods_class = new GoodsInfo();
+            $goods_class->where(array('goods_id'=>$goods_id))->update(['is_delete' => 1]);
+
+            $goodsClassRelevance = new GoodsClassRelevance();
+            $goodsClassRelevance->where(array('goods_id'=>$goods_id))->update(['is_delete' => 1]);
+            // 提交事务
+            Db::commit();
+            return true;
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            return false;
+        }
     }
 }
