@@ -1,0 +1,2358 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpStudy\WWW\Shopping\public/../application/home\view\index\index.html";i:1528939626;}*/ ?>
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="婴儿游运" />
+    <meta name="Description" content="婴儿游运" />
+    <title>婴儿游运</title>
+    <!--<link rel="shortcut icon" href="/static/home/font/favicon.ico" />-->
+    <link rel="stylesheet" type="text/css" href="/static/home/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/static/home/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/home/css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/static/home/css/purebox.css" />
+    <link rel="stylesheet" type="text/css" href="/static/home/css/quicklinks.css" />
+    <script type="text/javascript" src="/static/home/js/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/static/home/js/jquery.json.js"></script><script type="text/javascript" src="/static/home/js/transport_jquery.js"></script>
+    <script type="text/javascript">
+        var json_languages = {"ok":"\u786e\u5b9a","determine":"\u786e\u5b9a","cancel":"\u53d6\u6d88","drop":"\u5220\u9664","edit":"\u7f16\u8f91","remove":"\u79fb\u9664","follow":"\u5173\u6ce8","pb_title":"\u63d0\u793a","Prompt_information":"\u63d0\u793a\u4fe1\u606f","title":"\u63d0\u793a","not_login":"\u60a8\u5c1a\u672a\u767b\u5f55","close":"\u5173\u95ed","cart":"\u8d2d\u7269\u8f66","js_cart":"\u8d2d\u7269\u8f66","all":"\u5168\u90e8","go_login":"\u53bb\u767b\u9646","select_city":"\u8bf7\u9009\u62e9\u5e02","comment_goods":"\u8bc4\u8bba\u5546\u54c1","submit_order":"\u63d0\u4ea4\u8ba2\u5355","sys_msg":"\u7cfb\u7edf\u63d0\u793a","no_keywords":"\u8bf7\u8f93\u5165\u641c\u7d22\u5173\u952e\u8bcd\uff01","adv_packup_one":"\u8bf7\u53bb\u540e\u53f0\u5e7f\u544a\u4f4d\u7f6e","adv_packup_two":"\u91cc\u9762\u8bbe\u7f6e\u5e7f\u544a\uff01","more":"\u66f4\u591a","Please":"\u8bf7\u53bb","set_up":"\u8bbe\u7f6e\uff01","login_phone_packup_one":"\u8bf7\u8f93\u5165\u624b\u673a\u53f7\u7801","more_options":"\u66f4\u591a\u9009\u9879","Pack_up":"\u6536\u8d77","no_attr":"\u6ca1\u6709\u66f4\u591a\u5c5e\u6027\u4e86","search_Prompt":"\u53ef\u8f93\u5165\u6c49\u5b57,\u62fc\u97f3\u67e5\u627e\u54c1\u724c","most_input":"\u6700\u591a\u53ea\u80fd\u9009\u62e95\u9879","multi_select":"\u591a\u9009","checkbox_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u591a\u9009","radio_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u5355\u9009","contrast":"\u5bf9\u6bd4","empty_contrast":"\u6e05\u7a7a\u5bf9\u6bd4\u680f","Prompt_add_one":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a04\u4e2a\u54e6^_^","Prompt_add_two":"\u60a8\u8fd8\u53ef\u4ee5\u7ee7\u7eed\u6dfb\u52a0","button_compare":"\u6bd4\u8f83\u9009\u5b9a\u5546\u54c1","exist":"\u60a8\u5df2\u7ecf\u9009\u62e9\u4e86%s","count_limit":"\u6700\u591a\u53ea\u80fd\u9009\u62e94\u4e2a\u5546\u54c1\u8fdb\u884c\u5bf9\u6bd4","goods_type_different":"%s\u548c\u5df2\u9009\u62e9\u5546\u54c1\u7c7b\u578b\u4e0d\u540c\u65e0\u6cd5\u8fdb\u884c\u5bf9\u6bd4","compare_no_goods":"\u60a8\u6ca1\u6709\u9009\u5b9a\u4efb\u4f55\u9700\u8981\u6bd4\u8f83\u7684\u5546\u54c1\u6216\u8005\u6bd4\u8f83\u7684\u5546\u54c1\u6570\u5c11\u4e8e 2 \u4e2a\u3002","btn_buy":"\u8d2d\u4e70","is_cancel":"\u53d6\u6d88","select_spe":"\u8bf7\u9009\u62e9\u5546\u54c1\u5c5e\u6027","Province":"\u8bf7\u9009\u62e9\u6240\u5728\u7701\u4efd","City":"\u8bf7\u9009\u62e9\u6240\u5728\u5e02","District":"\u8bf7\u9009\u62e9\u6240\u5728\u533a\u57df","Street":"\u8bf7\u9009\u62e9\u6240\u5728\u8857\u9053","Detailed_address_null":"\u8be6\u7ec6\u5730\u5740\u4e0d\u80fd\u4e3a\u7a7a","Select_attr":"\u8bf7\u9009\u62e9\u5c5e\u6027","Focus_prompt_one":"\u60a8\u5df2\u5173\u6ce8\u8be5\u5e97\u94fa\uff01","Focus_prompt_login":"\u60a8\u5c1a\u672a\u767b\u5f55\u5546\u57ce\u4f1a\u5458\uff0c\u4e0d\u80fd\u5173\u6ce8\uff01","Focus_prompt_two":"\u767b\u5f55\u5546\u57ce\u4f1a\u5458\u3002","store_focus":"\u5e97\u94fa\u5173\u6ce8\u3002","Focus_prompt_three":"\u60a8\u786e\u5b9e\u8981\u5173\u6ce8\u6240\u9009\u5e97\u94fa\u5417\uff1f","Focus_prompt_four":"\u60a8\u786e\u5b9e\u8981\u53d6\u6d88\u5173\u6ce8\u5e97\u94fa\u5417\uff1f","Focus_prompt_five":"\u60a8\u8981\u5173\u6ce8\u8be5\u5e97\u94fa\u5417\uff1f","Purchase_quantity":"\u8d85\u8fc7\u9650\u8d2d\u6570\u91cf.","My_collection":"\u6211\u7684\u6536\u85cf","shiping_prompt":"\u8be5\u5730\u533a\u6682\u4e0d\u652f\u6301\u914d\u9001","Have_goods":"\u6709\u8d27","No_goods":"\u65e0\u8d27","No_shipping":"\u65e0\u6cd5\u914d\u9001","Deliver_back_order":"\u4e0b\u5355\u540e\u7acb\u5373\u53d1\u8d27","Time_delivery":" \u65f6\u53d1\u8d27","goods_over":"\u6b64\u5546\u54c1\u6682\u65f6\u552e\u5b8c","Stock_goods_null":"\u5546\u54c1\u5e93\u5b58\u4e0d\u8db3","day_not_available":"\u5f53\u65e5\u65e0\u8d27","day_yes_available":"\u5f53\u65e5\u6709\u8d27","Already_buy":"\u5df2\u8d2d\u4e70","Already_buy_two":"\u4ef6\u5546\u54c1\u8fbe\u5230\u9650\u8d2d\u6761\u4ef6,\u65e0\u6cd5\u518d\u8d2d\u4e70","Already_buy_three":"\u4ef6\u8be5\u5546\u54c1,\u53ea\u80fd\u518d\u8d2d\u4e70","goods_buy_empty_p":"\u5546\u54c1\u6570\u91cf\u4e0d\u80fd\u5c11\u4e8e1\u4ef6","goods_number_p":"\u5546\u54c1\u6570\u91cf\u5fc5\u987b\u4e3a\u6570\u5b57","search_one":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","search_two":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","search_three":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","search_four":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","jian":"\u4ef6","letter":"\u4ef6","inventory":"\u5b58\u8d27","move_collection":"\u79fb\u81f3\u6211\u7684\u6536\u85cf","select_shop":"\u8bf7\u9009\u62e9\u5957\u9910\u5546\u54c1","Parameter_error":"\u53c2\u6570\u9519\u8bef","screen_price":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","screen_price_left":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","screen_price_right":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","screen_price_dy":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","invoice_ok":"\u4fdd\u5b58\u53d1\u7968\u4fe1\u606f","invoice_desc_null":"\u8f93\u5165\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a\uff01","invoice_desc_number":"\u60a8\u6700\u591a\u53ef\u4ee5\u6dfb\u52a03\u4e2a\u516c\u53f8\u53d1\u7968\uff01","invoice_packup":"\u8bf7\u9009\u62e9\u6216\u586b\u5199\u53d1\u7968\u62ac\u5934\u90e8\u5206\uff01","invoice_tax_null":"\u8bf7\u586b\u5199\u7eb3\u7a0e\u4eba\u8bc6\u522b\u7801","add_address_10":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a010\u4e2a\u6536\u8d27\u5730\u5740","msg_phone_not":"\u624b\u673a\u53f7\u7801\u4e0d\u6b63\u786e","captcha_not":"\u9a8c\u8bc1\u7801\u4e0d\u80fd\u4e3a\u7a7a","captcha_xz":"\u8bf7\u8f93\u51654\u4f4d\u6570\u7684\u9a8c\u8bc1\u7801","captcha_cw":"\u9a8c\u8bc1\u7801\u9519\u8bef","Detailed_map":"\u8be6\u7ec6\u5730\u56fe","email_error":"\u90ae\u7bb1\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","bid_prompt_null":"\u4ef7\u683c\u4e0d\u80fd\u4e3a\u7a7a!","bid_prompt_error":"\u4ef7\u683c\u8f93\u5165\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","mobile_error_goods":"\u624b\u673a\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","null_email_goods":"\u90ae\u7bb1\u4e0d\u80fd\u4e3a\u7a7a","select_store":"\u8bf7\u9009\u62e9\u95e8\u5e97\uff01","Product_spec_prompt":"\u8bf7\u9009\u62e9\u5546\u54c1\u89c4\u683c\u7c7b\u578b","reply_desc_one":"\u56de\u590d\u5e16\u5b50\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","receive_coupons":"\u9886\u53d6\u4f18\u60e0\u5238","Immediate_use":"\u7acb\u5373\u4f7f\u7528","no_enabled":"\u5173\u95ed"};
+        //加载效果
+        var load_cart_info = '<img src="/static/home/images/loadgoods.gif" height="108" class="ml100">';
+        var load_icon = '<img src="/static/home/images/load.gif" width="200" height="200">';
+    </script></head>
+<body>
+<div class="site-nav" id="site-nav">
+    <div class="w w1200">
+        <div class="fl">
+            <div class="city-choice" id="city-choice" data-ectype="dorpdown">
+                <div class="dsc-choie dsc-cm">
+                    <i class="iconfont icon-map-marker"></i>
+                    <span class="ui-areamini-text" data-id="1" title="广州">广州</span>
+                </div>
+                <div class="dorpdown-layer">
+                    <div class="ui-areamini-content-wrap" id="ui-content-wrap">
+                        <div class="hot">
+                            <a href="javascript:get_district_list(52, 0);"  >北京</a>
+                            <a href="javascript:get_district_list(321, 0);" >上海</a>
+                            <a href="javascript:get_district_list(76, 0);"  class="city_selected">广州</a>
+                            <a href="javascript:get_district_list(77, 0);"  >深圳</a>
+                            <a href="javascript:get_district_list(322, 0);" >成都</a>
+                            <a href="javascript:get_district_list(311, 0);" >西安</a>
+                            <a href="javascript:get_district_list(343, 0);" >天津</a>
+                            <a href="javascript:get_district_list(180, 0);" >武汉</a>
+                            <a href="javascript:get_district_list(120, 0);" >海口</a>
+                            <a href="javascript:get_district_list(220, 0);" >南京</a>
+                        </div>
+                        <div class="search-first-letter">
+                            <a href="javascript:void(0);" data-letter="A">A</a>
+                            <a href="javascript:void(0);" data-letter="B">B</a>
+                            <a href="javascript:void(0);" data-letter="C">C</a>
+                            <a href="javascript:void(0);" data-letter="D">D</a>
+                            <a href="javascript:void(0);" data-letter="E">E</a>
+                            <a href="javascript:void(0);" data-letter="F">F</a>
+                            <a href="javascript:void(0);" data-letter="G">G</a>
+                            <a href="javascript:void(0);" data-letter="H">H</a>
+                            <a href="javascript:void(0);" data-letter="J">J</a>
+                            <a href="javascript:void(0);" data-letter="K">K</a>
+                            <a href="javascript:void(0);" data-letter="L">L</a>
+                            <a href="javascript:void(0);" data-letter="M">M</a>
+                            <a href="javascript:void(0);" data-letter="N">N</a>
+                            <a href="javascript:void(0);" data-letter="P">P</a>
+                            <a href="javascript:void(0);" data-letter="Q">Q</a>
+                            <a href="javascript:void(0);" data-letter="R">R</a>
+                            <a href="javascript:void(0);" data-letter="S">S</a>
+                            <a href="javascript:void(0);" data-letter="T">T</a>
+                            <a href="javascript:void(0);" data-letter="W">W</a>
+                            <a href="javascript:void(0);" data-letter="X">X</a>
+                            <a href="javascript:void(0);" data-letter="Y">Y</a>
+                            <a href="javascript:void(0);" data-letter="Z">Z</a>
+                        </div>
+                        <div class="scrollBody" id="scrollBody">
+                            <div class="all-list" id="scrollMap">
+                                <ul id="ul">
+                                    <li data-id="1" data-name="A">
+                                        <em>A</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(36, 0);" >安庆</a>
+                                            <a href="javascript:get_district_list(112, 0);" >安顺</a>
+                                            <a href="javascript:get_district_list(152, 0);" >安阳</a>
+                                            <a href="javascript:get_district_list(246, 0);" >鞍山</a>
+                                            <a href="javascript:get_district_list(259, 0);" >阿拉善盟</a>
+                                            <a href="javascript:get_district_list(312, 0);" >安康</a>
+                                            <a href="javascript:get_district_list(324, 0);" >阿坝</a>
+                                            <a href="javascript:get_district_list(345, 0);" >阿里</a>
+                                            <a href="javascript:get_district_list(352, 0);" >阿克苏</a>
+                                            <a href="javascript:get_district_list(353, 0);" >阿拉尔</a>
+                                            <a href="javascript:void(0);" class="is_district">澳门</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="2" data-name="B">
+                                        <em>B</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(37, 0);" >蚌埠</a>
+                                            <a href="javascript:get_district_list(51, 0);" >亳州</a>
+                                            <a href="javascript:get_district_list(52, 0);" >北京</a>
+                                            <a href="javascript:get_district_list(63, 0);" >白银</a>
+                                            <a href="javascript:get_district_list(99, 0);" >百色</a>
+                                            <a href="javascript:get_district_list(100, 0);" >北海</a>
+                                            <a href="javascript:get_district_list(113, 0);" >毕节</a>
+                                            <a href="javascript:get_district_list(122, 0);" >白沙</a>
+                                            <a href="javascript:get_district_list(123, 0);" >保亭</a>
+                                            <a href="javascript:get_district_list(139, 0);" >保定</a>
+                                            <a href="javascript:get_district_list(213, 0);" >白城</a>
+                                            <a href="javascript:get_district_list(214, 0);" >白山</a>
+                                            <a href="javascript:get_district_list(247, 0);" >本溪</a>
+                                            <a href="javascript:get_district_list(260, 0);" >巴彦淖尔盟</a>
+                                            <a href="javascript:get_district_list(261, 0);" >包头</a>
+                                            <a href="javascript:get_district_list(285, 0);" >滨州</a>
+                                            <a href="javascript:get_district_list(313, 0);" >宝鸡</a>
+                                            <a href="javascript:get_district_list(325, 0);" >巴中</a>
+                                            <a href="javascript:get_district_list(354, 0);" >巴音郭楞</a>
+                                            <a href="javascript:get_district_list(355, 0);" >博尔塔拉</a>
+                                            <a href="javascript:get_district_list(371, 0);" >保山</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="3" data-name="C">
+                                        <em>C</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(38, 0);" >巢湖</a>
+                                            <a href="javascript:get_district_list(39, 0);" >池州</a>
+                                            <a href="javascript:get_district_list(40, 0);" >滁州</a>
+                                            <a href="javascript:get_district_list(78, 0);" >潮州</a>
+                                            <a href="javascript:get_district_list(101, 0);" >崇左</a>
+                                            <a href="javascript:get_district_list(124, 0);" >昌江</a>
+                                            <a href="javascript:get_district_list(125, 0);" >澄迈县</a>
+                                            <a href="javascript:get_district_list(140, 0);" >沧州</a>
+                                            <a href="javascript:get_district_list(141, 0);" >承德</a>
+                                            <a href="javascript:get_district_list(197, 0);" >长沙</a>
+                                            <a href="javascript:get_district_list(199, 0);" >常德</a>
+                                            <a href="javascript:get_district_list(200, 0);" >郴州</a>
+                                            <a href="javascript:get_district_list(211, 0);" >长春</a>
+                                            <a href="javascript:get_district_list(223, 0);" >常州</a>
+                                            <a href="javascript:get_district_list(248, 0);" >朝阳</a>
+                                            <a href="javascript:get_district_list(262, 0);" >赤峰</a>
+                                            <a href="javascript:get_district_list(301, 0);" >长治</a>
+                                            <a href="javascript:get_district_list(322, 0);" >成都</a>
+                                            <a href="javascript:get_district_list(346, 0);" >昌都</a>
+                                            <a href="javascript:get_district_list(356, 0);" >昌吉</a>
+                                            <a href="javascript:get_district_list(372, 0);" >楚雄</a>
+                                            <a href="javascript:get_district_list(394, 0);" >重庆</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="4" data-name="D">
+                                        <em>D</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(64, 0);" >定西</a>
+                                            <a href="javascript:get_district_list(79, 0);" >东莞</a>
+                                            <a href="javascript:get_district_list(126, 0);" >定安县</a>
+                                            <a href="javascript:get_district_list(127, 0);" >东方</a>
+                                            <a href="javascript:get_district_list(168, 0);" >大庆</a>
+                                            <a href="javascript:get_district_list(169, 0);" >大兴安岭</a>
+                                            <a href="javascript:get_district_list(245, 0);" >大连</a>
+                                            <a href="javascript:get_district_list(249, 0);" >丹东</a>
+                                            <a href="javascript:get_district_list(286, 0);" >德州</a>
+                                            <a href="javascript:get_district_list(287, 0);" >东营</a>
+                                            <a href="javascript:get_district_list(302, 0);" >大同</a>
+                                            <a href="javascript:get_district_list(326, 0);" >达州</a>
+                                            <a href="javascript:get_district_list(327, 0);" >德阳</a>
+                                            <a href="javascript:get_district_list(373, 0);" >大理</a>
+                                            <a href="javascript:get_district_list(374, 0);" >德宏</a>
+                                            <a href="javascript:get_district_list(375, 0);" >迪庆</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="5" data-name="E">
+                                        <em>E</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(182, 0);" >鄂州</a>
+                                            <a href="javascript:get_district_list(196, 0);" >恩施</a>
+                                            <a href="javascript:get_district_list(263, 0);" >鄂尔多斯</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="6" data-name="F">
+                                        <em>F</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(41, 0);" >阜阳</a>
+                                            <a href="javascript:get_district_list(53, 0);" >福州</a>
+                                            <a href="javascript:get_district_list(80, 0);" >佛山</a>
+                                            <a href="javascript:get_district_list(102, 0);" >防城港</a>
+                                            <a href="javascript:get_district_list(234, 0);" >抚州</a>
+                                            <a href="javascript:get_district_list(250, 0);" >抚顺</a>
+                                            <a href="javascript:get_district_list(251, 0);" >阜新</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="7" data-name="G">
+                                        <em>G</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(65, 0);" >甘南</a>
+                                            <a href="javascript:get_district_list(76, 0);" class="city_selected">广州</a>
+                                            <a href="javascript:get_district_list(98, 0);" >桂林</a>
+                                            <a href="javascript:get_district_list(103, 0);" >贵港</a>
+                                            <a href="javascript:get_district_list(111, 0);" >贵阳</a>
+                                            <a href="javascript:get_district_list(235, 0);" >赣州</a>
+                                            <a href="javascript:get_district_list(271, 0);" >固原</a>
+                                            <a href="javascript:void(0);" class="is_district">果洛</a>
+                                            <a href="javascript:get_district_list(328, 0);" >甘孜</a>
+                                            <a href="javascript:get_district_list(329, 0);" >广安</a>
+                                            <a href="javascript:get_district_list(330, 0);" >广元</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="8" data-name="H">
+                                        <em>H</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(42, 0);" >淮北</a>
+                                            <a href="javascript:get_district_list(43, 0);" >淮南</a>
+                                            <a href="javascript:get_district_list(44, 0);" >黄山</a>
+                                            <a href="javascript:get_district_list(81, 0);" >河源</a>
+                                            <a href="javascript:get_district_list(82, 0);" >惠州</a>
+                                            <a href="javascript:get_district_list(104, 0);" >河池</a>
+                                            <a href="javascript:get_district_list(105, 0);" >贺州</a>
+                                            <a href="javascript:get_district_list(120, 0);" >海口</a>
+                                            <a href="javascript:get_district_list(142, 0);" >邯郸</a>
+                                            <a href="javascript:get_district_list(143, 0);" >衡水</a>
+                                            <a href="javascript:get_district_list(153, 0);" >鹤壁</a>
+                                            <a href="javascript:get_district_list(165, 0);" >漯河</a>
+                                            <a href="javascript:get_district_list(167, 0);" >哈尔滨</a>
+                                            <a href="javascript:get_district_list(170, 0);" >鹤岗</a>
+                                            <a href="javascript:get_district_list(171, 0);" >黑河</a>
+                                            <a href="javascript:get_district_list(183, 0);" >黄冈</a>
+                                            <a href="javascript:get_district_list(184, 0);" >黄石</a>
+                                            <a href="javascript:get_district_list(201, 0);" >衡阳</a>
+                                            <a href="javascript:get_district_list(202, 0);" >怀化</a>
+                                            <a href="javascript:get_district_list(224, 0);" >淮安</a>
+                                            <a href="javascript:get_district_list(252, 0);" >葫芦岛</a>
+                                            <a href="javascript:get_district_list(258, 0);" >呼和浩特</a>
+                                            <a href="javascript:get_district_list(264, 0);" >呼伦贝尔</a>
+                                            <a href="javascript:void(0);" class="is_district">海北</a>
+                                            <a href="javascript:void(0);" class="is_district">海东</a>
+                                            <a href="javascript:void(0);" class="is_district">海南</a>
+                                            <a href="javascript:void(0);" class="is_district">海西</a>
+                                            <a href="javascript:void(0);" class="is_district">黄南</a>
+                                            <a href="javascript:get_district_list(288, 0);" >菏泽</a>
+                                            <a href="javascript:get_district_list(314, 0);" >汉中</a>
+                                            <a href="javascript:get_district_list(357, 0);" >哈密</a>
+                                            <a href="javascript:get_district_list(358, 0);" >和田</a>
+                                            <a href="javascript:get_district_list(376, 0);" >红河</a>
+                                            <a href="javascript:get_district_list(383, 0);" >杭州</a>
+                                            <a href="javascript:get_district_list(384, 0);" >湖州</a>
+                                            <a href="javascript:get_district_list(3401, 0);" >合肥</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="9" data-name="J">
+                                        <em>J</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(66, 0);" >嘉峪关</a>
+                                            <a href="javascript:get_district_list(67, 0);" >金昌</a>
+                                            <a href="javascript:get_district_list(68, 0);" >酒泉</a>
+                                            <a href="javascript:get_district_list(83, 0);" >江门</a>
+                                            <a href="javascript:get_district_list(84, 0);" >揭阳</a>
+                                            <a href="javascript:get_district_list(154, 0);" >济源</a>
+                                            <a href="javascript:get_district_list(155, 0);" >焦作</a>
+                                            <a href="javascript:get_district_list(172, 0);" >鸡西</a>
+                                            <a href="javascript:get_district_list(173, 0);" >佳木斯</a>
+                                            <a href="javascript:get_district_list(185, 0);" >荆门</a>
+                                            <a href="javascript:get_district_list(186, 0);" >荆州</a>
+                                            <a href="javascript:get_district_list(212, 0);" >吉林</a>
+                                            <a href="javascript:get_district_list(236, 0);" >吉安</a>
+                                            <a href="javascript:get_district_list(237, 0);" >景德镇</a>
+                                            <a href="javascript:get_district_list(238, 0);" >九江</a>
+                                            <a href="javascript:get_district_list(253, 0);" >锦州</a>
+                                            <a href="javascript:get_district_list(283, 0);" >济南</a>
+                                            <a href="javascript:get_district_list(289, 0);" >济宁</a>
+                                            <a href="javascript:get_district_list(303, 0);" >晋城</a>
+                                            <a href="javascript:get_district_list(304, 0);" >晋中</a>
+                                            <a href="javascript:get_district_list(385, 0);" >嘉兴</a>
+                                            <a href="javascript:get_district_list(386, 0);" >金华</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="10" data-name="K">
+                                        <em>K</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(151, 0);" >开封</a>
+                                            <a href="javascript:get_district_list(359, 0);" >喀什</a>
+                                            <a href="javascript:get_district_list(360, 0);" >克拉玛依</a>
+                                            <a href="javascript:get_district_list(361, 0);" >克孜勒苏</a>
+                                            <a href="javascript:get_district_list(367, 0);" >昆明</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="11" data-name="L">
+                                        <em>L</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(45, 0);" >六安</a>
+                                            <a href="javascript:get_district_list(54, 0);" >龙岩</a>
+                                            <a href="javascript:get_district_list(62, 0);" >兰州</a>
+                                            <a href="javascript:get_district_list(69, 0);" >临夏</a>
+                                            <a href="javascript:get_district_list(70, 0);" >陇南</a>
+                                            <a href="javascript:get_district_list(106, 0);" >来宾</a>
+                                            <a href="javascript:get_district_list(107, 0);" >柳州</a>
+                                            <a href="javascript:get_district_list(114, 0);" >六盘水</a>
+                                            <a href="javascript:get_district_list(128, 0);" >乐东</a>
+                                            <a href="javascript:get_district_list(129, 0);" >临高县</a>
+                                            <a href="javascript:get_district_list(130, 0);" >陵水</a>
+                                            <a href="javascript:get_district_list(144, 0);" >廊坊</a>
+                                            <a href="javascript:get_district_list(150, 0);" >洛阳</a>
+                                            <a href="javascript:get_district_list(203, 0);" >娄底</a>
+                                            <a href="javascript:get_district_list(215, 0);" >辽源</a>
+                                            <a href="javascript:get_district_list(225, 0);" >连云港</a>
+                                            <a href="javascript:get_district_list(254, 0);" >辽阳</a>
+                                            <a href="javascript:get_district_list(290, 0);" >莱芜</a>
+                                            <a href="javascript:get_district_list(291, 0);" >聊城</a>
+                                            <a href="javascript:get_district_list(292, 0);" >临沂</a>
+                                            <a href="javascript:get_district_list(305, 0);" >临汾</a>
+                                            <a href="javascript:get_district_list(306, 0);" >吕梁</a>
+                                            <a href="javascript:get_district_list(331, 0);" >乐山</a>
+                                            <a href="javascript:get_district_list(332, 0);" >凉山</a>
+                                            <a href="javascript:get_district_list(344, 0);" >拉萨</a>
+                                            <a href="javascript:get_district_list(347, 0);" >林芝</a>
+                                            <a href="javascript:get_district_list(370, 0);" >丽江</a>
+                                            <a href="javascript:get_district_list(377, 0);" >临沧</a>
+                                            <a href="javascript:get_district_list(387, 0);" >丽水</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="12" data-name="M">
+                                        <em>M</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(46, 0);" >马鞍山</a>
+                                            <a href="javascript:get_district_list(85, 0);" >茂名</a>
+                                            <a href="javascript:get_district_list(86, 0);" >梅州</a>
+                                            <a href="javascript:get_district_list(174, 0);" >牡丹江</a>
+                                            <a href="javascript:get_district_list(323, 0);" >绵阳</a>
+                                            <a href="javascript:get_district_list(333, 0);" >眉山</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="13" data-name="N">
+                                        <em>N</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(55, 0);" >南平</a>
+                                            <a href="javascript:get_district_list(56, 0);" >宁德</a>
+                                            <a href="javascript:get_district_list(97, 0);" >南宁</a>
+                                            <a href="javascript:get_district_list(156, 0);" >南阳</a>
+                                            <a href="javascript:get_district_list(220, 0);" >南京</a>
+                                            <a href="javascript:get_district_list(226, 0);" >南通</a>
+                                            <a href="javascript:get_district_list(233, 0);" >南昌</a>
+                                            <a href="javascript:get_district_list(334, 0);" >南充</a>
+                                            <a href="javascript:get_district_list(335, 0);" >内江</a>
+                                            <a href="javascript:get_district_list(348, 0);" >那曲</a>
+                                            <a href="javascript:get_district_list(368, 0);" >怒江</a>
+                                            <a href="javascript:get_district_list(388, 0);" >宁波</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="14" data-name="P">
+                                        <em>P</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(57, 0);" >莆田</a>
+                                            <a href="javascript:get_district_list(71, 0);" >平凉</a>
+                                            <a href="javascript:get_district_list(157, 0);" >平顶山</a>
+                                            <a href="javascript:get_district_list(239, 0);" >萍乡</a>
+                                            <a href="javascript:get_district_list(255, 0);" >盘锦</a>
+                                            <a href="javascript:get_district_list(336, 0);" >攀枝花</a>
+                                            <a href="javascript:get_district_list(369, 0);" >普洱</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="15" data-name="Q">
+                                        <em>Q</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(58, 0);" >泉州</a>
+                                            <a href="javascript:get_district_list(72, 0);" >庆阳</a>
+                                            <a href="javascript:get_district_list(87, 0);" >清远</a>
+                                            <a href="javascript:get_district_list(108, 0);" >钦州</a>
+                                            <a href="javascript:get_district_list(115, 0);" >黔东南</a>
+                                            <a href="javascript:get_district_list(116, 0);" >黔南</a>
+                                            <a href="javascript:get_district_list(117, 0);" >黔西南</a>
+                                            <a href="javascript:get_district_list(131, 0);" >琼海</a>
+                                            <a href="javascript:get_district_list(132, 0);" >琼中</a>
+                                            <a href="javascript:get_district_list(145, 0);" >秦皇岛</a>
+                                            <a href="javascript:get_district_list(175, 0);" >七台河</a>
+                                            <a href="javascript:get_district_list(176, 0);" >齐齐哈尔</a>
+                                            <a href="javascript:get_district_list(187, 0);" >潜江</a>
+                                            <a href="javascript:get_district_list(284, 0);" >青岛</a>
+                                            <a href="javascript:get_district_list(378, 0);" >曲靖</a>
+                                            <a href="javascript:get_district_list(393, 0);" >衢州</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="16" data-name="R">
+                                        <em>R</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(293, 0);" >日照</a>
+                                            <a href="javascript:get_district_list(349, 0);" >日喀则</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="17" data-name="S">
+                                        <em>S</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(47, 0);" >宿州</a>
+                                            <a href="javascript:get_district_list(59, 0);" >三明</a>
+                                            <a href="javascript:get_district_list(77, 0);" >深圳</a>
+                                            <a href="javascript:get_district_list(88, 0);" >汕头</a>
+                                            <a href="javascript:get_district_list(89, 0);" >汕尾</a>
+                                            <a href="javascript:get_district_list(90, 0);" >韶关</a>
+                                            <a href="javascript:get_district_list(121, 0);" >三亚</a>
+                                            <a href="javascript:get_district_list(138, 0);" >石家庄</a>
+                                            <a href="javascript:get_district_list(158, 0);" >三门峡</a>
+                                            <a href="javascript:get_district_list(159, 0);" >商丘</a>
+                                            <a href="javascript:get_district_list(177, 0);" >双鸭山</a>
+                                            <a href="javascript:get_district_list(178, 0);" >绥化</a>
+                                            <a href="javascript:get_district_list(188, 0);" >神农架林区</a>
+                                            <a href="javascript:get_district_list(189, 0);" >十堰</a>
+                                            <a href="javascript:get_district_list(190, 0);" >随州</a>
+                                            <a href="javascript:get_district_list(204, 0);" >邵阳</a>
+                                            <a href="javascript:get_district_list(216, 0);" >四平</a>
+                                            <a href="javascript:get_district_list(217, 0);" >松原</a>
+                                            <a href="javascript:get_district_list(221, 0);" >苏州</a>
+                                            <a href="javascript:get_district_list(227, 0);" >宿迁</a>
+                                            <a href="javascript:get_district_list(240, 0);" >上饶</a>
+                                            <a href="javascript:get_district_list(244, 0);" >沈阳</a>
+                                            <a href="javascript:get_district_list(272, 0);" >石嘴山</a>
+                                            <a href="javascript:get_district_list(307, 0);" >朔州</a>
+                                            <a href="javascript:get_district_list(315, 0);" >商洛</a>
+                                            <a href="javascript:get_district_list(321, 0);" >上海</a>
+                                            <a href="javascript:get_district_list(337, 0);" >遂宁</a>
+                                            <a href="javascript:get_district_list(350, 0);" >山南</a>
+                                            <a href="javascript:get_district_list(362, 0);" >石河子</a>
+                                            <a href="javascript:get_district_list(389, 0);" >绍兴</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="18" data-name="T">
+                                        <em>T</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(48, 0);" >铜陵</a>
+                                            <a href="javascript:get_district_list(73, 0);" >天水</a>
+                                            <a href="javascript:get_district_list(118, 0);" >铜仁</a>
+                                            <a href="javascript:get_district_list(133, 0);" >屯昌县</a>
+                                            <a href="javascript:get_district_list(146, 0);" >唐山</a>
+                                            <a href="javascript:get_district_list(191, 0);" >天门</a>
+                                            <a href="javascript:get_district_list(218, 0);" >通化</a>
+                                            <a href="javascript:get_district_list(228, 0);" >泰州</a>
+                                            <a href="javascript:get_district_list(256, 0);" >铁岭</a>
+                                            <a href="javascript:get_district_list(265, 0);" >通辽</a>
+                                            <a href="javascript:get_district_list(294, 0);" >泰安</a>
+                                            <a href="javascript:get_district_list(300, 0);" >太原</a>
+                                            <a href="javascript:get_district_list(316, 0);" >铜川</a>
+                                            <a href="javascript:get_district_list(343, 0);" >天津</a>
+                                            <a href="javascript:get_district_list(363, 0);" >图木舒克</a>
+                                            <a href="javascript:get_district_list(364, 0);" >吐鲁番</a>
+                                            <a href="javascript:get_district_list(390, 0);" >台州</a>
+                                            <a href="javascript:void(0);" class="is_district">台湾</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="19" data-name="W">
+                                        <em>W</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(49, 0);" >芜湖</a>
+                                            <a href="javascript:get_district_list(74, 0);" >武威</a>
+                                            <a href="javascript:get_district_list(109, 0);" >梧州</a>
+                                            <a href="javascript:get_district_list(134, 0);" >万宁</a>
+                                            <a href="javascript:get_district_list(135, 0);" >文昌</a>
+                                            <a href="javascript:get_district_list(136, 0);" >五指山</a>
+                                            <a href="javascript:get_district_list(180, 0);" >武汉</a>
+                                            <a href="javascript:get_district_list(222, 0);" >无锡</a>
+                                            <a href="javascript:get_district_list(266, 0);" >乌海</a>
+                                            <a href="javascript:get_district_list(267, 0);" >乌兰察布市</a>
+                                            <a href="javascript:get_district_list(273, 0);" >吴忠</a>
+                                            <a href="javascript:get_district_list(295, 0);" >威海</a>
+                                            <a href="javascript:get_district_list(296, 0);" >潍坊</a>
+                                            <a href="javascript:get_district_list(317, 0);" >渭南</a>
+                                            <a href="javascript:get_district_list(351, 0);" >乌鲁木齐</a>
+                                            <a href="javascript:get_district_list(365, 0);" >五家渠</a>
+                                            <a href="javascript:get_district_list(379, 0);" >文山</a>
+                                            <a href="javascript:get_district_list(391, 0);" >温州</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="20" data-name="X">
+                                        <em>X</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(50, 0);" >宣城</a>
+                                            <a href="javascript:get_district_list(60, 0);" >厦门</a>
+                                            <a href="javascript:get_district_list(147, 0);" >邢台</a>
+                                            <a href="javascript:get_district_list(160, 0);" >新乡</a>
+                                            <a href="javascript:get_district_list(161, 0);" >信阳</a>
+                                            <a href="javascript:get_district_list(162, 0);" >许昌</a>
+                                            <a href="javascript:get_district_list(181, 0);" >仙桃</a>
+                                            <a href="javascript:get_district_list(192, 0);" >咸宁</a>
+                                            <a href="javascript:get_district_list(193, 0);" >襄樊</a>
+                                            <a href="javascript:get_district_list(194, 0);" >孝感</a>
+                                            <a href="javascript:get_district_list(205, 0);" >湘潭</a>
+                                            <a href="javascript:get_district_list(206, 0);" >湘西</a>
+                                            <a href="javascript:get_district_list(229, 0);" >徐州</a>
+                                            <a href="javascript:get_district_list(241, 0);" >新余</a>
+                                            <a href="javascript:get_district_list(268, 0);" >锡林郭勒盟</a>
+                                            <a href="javascript:get_district_list(269, 0);" >兴安盟</a>
+                                            <a href="javascript:void(0);" class="is_district">西宁</a>
+                                            <a href="javascript:get_district_list(308, 0);" >忻州</a>
+                                            <a href="javascript:get_district_list(311, 0);" >西安</a>
+                                            <a href="javascript:get_district_list(318, 0);" >咸阳</a>
+                                            <a href="javascript:get_district_list(380, 0);" >西双版纳</a>
+                                            <a href="javascript:void(0);" class="is_district">香港</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="21" data-name="Y">
+                                        <em>Y</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(91, 0);" >阳江</a>
+                                            <a href="javascript:get_district_list(92, 0);" >云浮</a>
+                                            <a href="javascript:get_district_list(110, 0);" >玉林</a>
+                                            <a href="javascript:get_district_list(166, 0);" >濮阳</a>
+                                            <a href="javascript:get_district_list(179, 0);" >伊春</a>
+                                            <a href="javascript:get_district_list(195, 0);" >宜昌</a>
+                                            <a href="javascript:get_district_list(207, 0);" >益阳</a>
+                                            <a href="javascript:get_district_list(208, 0);" >永州</a>
+                                            <a href="javascript:get_district_list(209, 0);" >岳阳</a>
+                                            <a href="javascript:get_district_list(219, 0);" >延边</a>
+                                            <a href="javascript:get_district_list(230, 0);" >盐城</a>
+                                            <a href="javascript:get_district_list(231, 0);" >扬州</a>
+                                            <a href="javascript:get_district_list(242, 0);" >宜春</a>
+                                            <a href="javascript:get_district_list(243, 0);" >鹰潭</a>
+                                            <a href="javascript:get_district_list(257, 0);" >营口</a>
+                                            <a href="javascript:get_district_list(270, 0);" >银川</a>
+                                            <a href="javascript:void(0);" class="is_district">玉树</a>
+                                            <a href="javascript:get_district_list(297, 0);" >烟台</a>
+                                            <a href="javascript:get_district_list(309, 0);" >阳泉</a>
+                                            <a href="javascript:get_district_list(310, 0);" >运城</a>
+                                            <a href="javascript:get_district_list(319, 0);" >延安</a>
+                                            <a href="javascript:get_district_list(320, 0);" >榆林</a>
+                                            <a href="javascript:get_district_list(338, 0);" >雅安</a>
+                                            <a href="javascript:get_district_list(339, 0);" >宜宾</a>
+                                            <a href="javascript:get_district_list(366, 0);" >伊犁</a>
+                                            <a href="javascript:get_district_list(381, 0);" >玉溪</a>
+                                        </div>
+                                    </li>
+                                    <li data-id="22" data-name="Z">
+                                        <em>Z</em>
+                                        <div class="itme-city">
+                                            <a href="javascript:get_district_list(61, 0);" >漳州</a>
+                                            <a href="javascript:get_district_list(75, 0);" >张掖</a>
+                                            <a href="javascript:get_district_list(93, 0);" >湛江</a>
+                                            <a href="javascript:get_district_list(94, 0);" >肇庆</a>
+                                            <a href="javascript:get_district_list(95, 0);" >中山</a>
+                                            <a href="javascript:get_district_list(96, 0);" >珠海</a>
+                                            <a href="javascript:get_district_list(119, 0);" >遵义</a>
+                                            <a href="javascript:get_district_list(137, 0);" >儋州</a>
+                                            <a href="javascript:get_district_list(148, 0);" >张家口</a>
+                                            <a href="javascript:get_district_list(149, 0);" >郑州</a>
+                                            <a href="javascript:get_district_list(163, 0);" >周口</a>
+                                            <a href="javascript:get_district_list(164, 0);" >驻马店</a>
+                                            <a href="javascript:get_district_list(198, 0);" >张家界</a>
+                                            <a href="javascript:get_district_list(210, 0);" >株洲</a>
+                                            <a href="javascript:get_district_list(232, 0);" >镇江</a>
+                                            <a href="javascript:get_district_list(274, 0);" >中卫</a>
+                                            <a href="javascript:get_district_list(298, 0);" >枣庄</a>
+                                            <a href="javascript:get_district_list(299, 0);" >淄博</a>
+                                            <a href="javascript:get_district_list(340, 0);" >资阳</a>
+                                            <a href="javascript:get_district_list(341, 0);" >自贡</a>
+                                            <a href="javascript:get_district_list(342, 0);" >泸州</a>
+                                            <a href="javascript:get_district_list(382, 0);" >昭通</a>
+                                            <a href="javascript:get_district_list(392, 0);" >舟山</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="scrollBar" id="scrollBar">
+                                <p id="city_bar"></p>
+                            </div>
+                            <input name="area_phpName" type="hidden" id="phpName" value="index.php">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="txt-info" id="ECS_MEMBERZONE">
+
+                <a href="user.php" class="link-login red">请登录</a>
+                <a href="user.php?act=register" class="link-regist">免费注册</a>
+
+            </div>
+        </div>
+        <ul class="quick-menu fr">
+            <li>
+                <div class="dt"><a href="user.php?act=order_list" >我的订单</a></div>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <div class="dt"><a href="history_list.php" >我的浏览</a></div>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <div class="dt"><a href="user.php?act=collection_list" >我的收藏</a></div>
+            </li>
+            <li class="spacer"></li>
+            <li>
+                <div class="dt"><a href="user.php?act=message_list" >客户服务</a></div>
+            </li>
+            <li class="spacer"></li>
+            <li class="li_dorpdown" data-ectype="dorpdown">
+                <div class="dt dsc-cm">网站导航<i class="iconfont icon-down"></i></div>
+                <div class="dd dorpdown-layer">
+                    <dl class="fore1">
+                        <dt>特色主题</dt>
+                        <dd>
+                            <div class="item"><a href="category.php?id=858" target="_blank">家用电器</a></div>
+                            <div class="item"><a href="category.php?id=3" target="_blank">手机数码</a></div>
+                            <div class="item"><a href="category.php?id=4" target="_blank">电脑办公</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="fore2">
+                        <dt>促销活动</dt>
+                        <dd>
+                            <div class="item"><a href="auction.php">拍卖活动</a></div>
+                            <div class="item"><a href="crowdfunding.php">共创商品</a></div>
+                            <div class="item"><a href="activity.php">优惠活动</a></div>
+                            <div class="item"><a href="wholesale.php">批发市场</a></div>
+                            <div class="item"><a href="package.php">超值礼包</a></div>
+                            <div class="item"><a href="coupons.php?act=coupons_index">优惠券</a></div>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="header">
+    <div class="w w1200">
+        <div class="logo">
+            <div class="logoImg"><a href="index.php"><img src="/static/home/images/logo.gif" /></a></div>
+            <div class="logoAdv"><a href="merchants.php"><img src="/static/home/images/ecsc-join.gif" /></a></div>
+        </div>
+        <div class="dsc-search">
+            <div class="form">
+                <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="search-form">
+                    <input autocomplete="off" onKeyUp="lookup(this.value);" name="keywords" type="text" id="keyword" value="内衣" class="search-text"/>
+                    <input type="hidden" name="store_search_cmt" value="0">
+                    <button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)" >搜商品</button>
+                    <button type="submit" class="button button-store" onclick="checkstore_search_cmt(1)" >搜店铺</button>
+                </form>
+                <ul class="keyword">
+                    <li><a href="search.php?keywords=%E7%BD%91%E8%BD%AF%E5%BF%97%E6%88%90" target="_blank">网软志成</a></li>
+                    <li><a href="search.php?keywords=%E5%91%A8%E5%A4%A7%E7%A6%8F" target="_blank">周大福</a></li>
+                    <li><a href="search.php?keywords=%E5%86%85%E8%A1%A3" target="_blank">内衣</a></li>
+                    <li><a href="search.php?keywords=Five+Plus" target="_blank">Five Plus</a></li>
+                    <li><a href="search.php?keywords=%E6%89%8B%E6%9C%BA" target="_blank">手机</a></li>
+                </ul>
+
+                <div class="suggestions_box" id="suggestions" style="display:none;">
+                    <div class="suggestions_list" id="auto_suggestions_list">
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="shopCart" data-ectype="dorpdown" id="ECS_CARTINFO" data-carteveval="0">
+
+            <div class="shopCart-con dsc-cm">
+                <a href="flow.php">
+                    <i class="iconfont icon-carts"></i>
+                    <span>我的购物车</span>
+                    <em class="count cart_num">0</em>
+                </a>
+            </div>
+            <div class="dorpdown-layer" ectype="dorpdownLayer">
+                <div class="prompt"><div class="nogoods"><b></b><span>购物车中还没有商品，赶紧选购吧！</span></div></div>
+            </div>
+
+            <script type="text/javascript">
+                function changenum(rec_id, diff, warehouse_id, area_id)
+                {
+                    var cValue = $('#cart_value').val();
+                    var goods_number =Number($('#goods_number_' + rec_id).text()) + Number(diff);
+
+                    if(goods_number < 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        change_goods_number(rec_id,goods_number, warehouse_id, area_id, cValue);
+                    }
+                }
+                function change_goods_number(rec_id, goods_number, warehouse_id, area_id, cValue)
+                {
+                    if(cValue != '' || cValue == 'undefined'){
+                        var cValue = $('#cart_value').val();
+                    }
+                    Ajax.call('flow.php?step=ajax_update_cart', 'rec_id=' + rec_id +'&goods_number=' + goods_number +'&cValue=' + cValue +'&warehouse_id=' + warehouse_id +'&area_id=' + area_id, change_goods_number_response, 'POST','JSON');
+                }
+                function change_goods_number_response(result)
+                {
+                    var rec_id = result.rec_id;
+                    if (result.error == 0)
+                    {
+                        $('#goods_number_' +rec_id).val(result.goods_number);//更新数量
+                        $('#goods_subtotal_' +rec_id).html(result.goods_subtotal);//更新小计
+                        if (result.goods_number <= 0)
+                        {
+                            //数量为零则隐藏所在行
+                            $('#tr_goods_' +rec_id).style.display = 'none';
+                            $('#tr_goods_' +rec_id).innerHTML = '';
+                        }
+                        $('#total_desc').html(result.flow_info);//更新合计
+                        if($('ECS_CARTINFO'))
+
+
+                            if(result.group.length > 0){
+                                for(var i=0; i<result.group.length; i++){
+                                    $("#" + result.group[i].rec_group).html(result.group[i].rec_group_number);//配件商品数量
+                                    $("#" + result.group[i].rec_group_talId).html(result.group[i].rec_group_subtotal);//配件商品金额
+                                }
+                            }
+
+                        $("#goods_price_" + rec_id).html(result.goods_price);
+                        $(".cart_num").html(result.subtotal_number);
+                    }
+                    else if (result.message != '')
+                    {
+                        $('#goods_number_' +rec_id).val(result.cart_Num);//更新数量
+                        alert(result.message);
+                    }
+                }
+
+                function deleteCartGoods(rec_id,index)
+                {
+                    Ajax.call('delete_cart_goods.php', 'id='+rec_id+'&index='+index, deleteCartGoodsResponse, 'POST', 'JSON');
+                }
+
+                /**
+                 * 接收返回的信息
+                 */
+                function deleteCartGoodsResponse(res)
+                {
+                    if (res.error)
+                    {
+                        alert(res.err_msg);
+                    }
+                    else if(res.index==1)
+                    {
+                        Ajax.call('get_ajax_content.php?act=get_content', 'data_type=cart_list', return_cart_list, 'POST', 'JSON');
+                    }
+                    else
+                    {
+                        $("#ECS_CARTINFO").html(res.content);
+                        $(".cart_num").html(res.cart_num);
+                    }
+                }
+
+                function return_cart_list(result)
+                {
+                    $(".cart_num").html(result.cart_num);
+                    $(".pop_panel").html(result.content);
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<div class="nav" ectype="dscNav">
+    <div class="w w1200">
+        <div class="categorys ">
+            <div class="categorys-type"><a href="categoryall.php" target="_blank">全部商品分类</a></div>
+            <div class="categorys-tab-content">
+                <div class="categorys-items" id="cata-nav">
+                    <div class="categorys-item" ectype="cateItem" data-id="858" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-ele"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=858" target="_blank">家用电器</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=1105" target="_blank">大家电</a>
+
+                                                            <a href="category.php?id=1115" target="_blank">生活电器</a>
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_858"></div>
+                                    <div class="cate_detail" ectype="subitems_858"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_858"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="3" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-digital"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=33" target="_blank" class="division_cat">手机</a>、<a href="category.php?id=64" target="_blank" class="division_cat">数码</a>、<a href="category.php?id=37" target="_blank" class="division_cat">通信</a>                                </strong>
+                                <span>
+                                                            <a href="category.php?id=112" target="_blank">智能设备</a>
+
+                                                            <a href="category.php?id=76" target="_blank">数码配件</a>
+
+
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_3"></div>
+                                    <div class="cate_detail" ectype="subitems_3"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_3"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="4" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-computer"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=4" target="_blank">电脑、办公</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=158" target="_blank">服务产品</a>
+
+                                                            <a href="category.php?id=132" target="_blank">电脑整机</a>
+
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_4"></div>
+                                    <div class="cate_detail" ectype="subitems_4"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_4"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="5" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-bed"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=5" target="_blank">家居、家具、家装、厨具</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=143" target="_blank">厨具</a>
+
+                                                            <a href="category.php?id=159" target="_blank">家装建材</a>
+
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_5"></div>
+                                    <div class="cate_detail" ectype="subitems_5"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_5"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="6" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-clothes"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=6" target="_blank">男装、女装、内衣</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=347" target="_blank">女装</a>
+
+                                                            <a href="category.php?id=463" target="_blank">男装</a>
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_6"></div>
+                                    <div class="cate_detail" ectype="subitems_6"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_6"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="8" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-shoes"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=8" target="_blank">鞋靴、箱包、钟表、奢侈品</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=362" target="_blank">奢侈品</a>
+
+                                                            <a href="category.php?id=360" target="_blank">功能箱包</a>
+
+
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_8"></div>
+                                    <div class="cate_detail" ectype="subitems_8"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_8"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="categorys-item" ectype="cateItem" data-id="860" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-heal"></i>
+                            <div class="categorys-title">
+                                <strong>
+                                    <a href="category.php?id=860" target="_blank">个人化妆、清洁用品</a>
+                                </strong>
+                                <span>
+                                                            <a href="category.php?id=876" target="_blank">面部护肤</a>
+
+                                                            <a href="category.php?id=880" target="_blank">洗发护发</a>
+
+
+
+
+
+
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+                            <div class="cate-layer-con clearfix">
+                                <div class="cate-layer-left">
+                                    <div class="cate_channel" ectype="channels_860"></div>
+                                    <div class="cate_detail" ectype="subitems_860"></div>
+                                </div>
+                                <div class="cate-layer-rihgt" ectype="brands_860"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>            </div>
+        </div>
+        <div class="nav-main" id="nav">
+            <ul class="navitems">
+                <li><a href="index.php" class="curr">首页</a></li>
+                <li><a href="category.php?id=12"  >食品特产</a></li>
+                <li><a href="category.php?id=6"  >服装城</a></li>
+                <li><a href="category.php?id=858"  >大家电</a></li>
+                <li><a href="wholesale.php"  >批发供求</a></li>
+                <li><a href="brand.php"  >品牌专区</a></li>
+                <li><a href="group_buy.php"  >聚划算</a></li>
+                <li><a href="exchange.php"  >积分商城</a></li>
+                <li><a href="presale.php"  >预售</a></li>
+                <li><a href="store_street.php"  >店铺街</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="content" ectype="lazyDscWarp">
+    <div class="banner home-banner">
+        <div class="bd">
+
+            <ul>
+                <li style="background:url(/static/home/images/1505668936008015718.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
+                <li style="background:url(/static/home/images/1490122707106036304.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
+                <li style="background:url(/static/home/images/1490122697974513454.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
+            </ul>            </div>
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <!--<div class="vip-outcon">-->
+            <!--<div class="vip-con">-->
+                <!--<div class="avatar">-->
+                    <!--<a href="user.php?act=profile"><img src="/static/home/images/avatar.png"></a>-->
+                <!--</div>-->
+                <!--<div class="login-info">-->
+                    <!--<span>Hi，欢迎来到网软志成商城!</span>-->
+                    <!--<a href="user.php" class="login-button">请登录</a>-->
+                    <!--<a href="merchants.php" target="_blank" class="register_button">我要开店</a>-->
+                <!--</div>-->
+                <!--<div class="vip-item">-->
+                    <!--<div class="tit">-->
+                        <!--<a href="javascript:void(0);" class="tab_head_item">公告</a>-->
+                        <!--<a href="javascript:void(0);" class="tab_head_item">促销</a>-->
+                    <!--</div>-->
+                    <!--<div class="con">-->
+                        <!--<ul >-->
+                            <!--<li><a href="article.php?id=63" target="_blank">服务店突破2000多家</a></li>-->
+                            <!--<li><a href="article.php?id=62" target="_blank">我们成为中国最大家电零售B2B2C系统</a></li>-->
+                            <!--<li><a href="article.php?id=61" target="_blank">三大国际腕表品牌签约</a></li>-->
+                        <!--</ul>-->
+                        <!--<ul style="display:none;">-->
+                            <!--<li><a href="article.php?id=60" target="_blank">春季家装季，家电买一送一</a></li>-->
+                            <!--<li><a href="article.php?id=59" target="_blank">抢百元优惠券，享4.22%活期</a></li>-->
+                            <!--<li><a href="article.php?id=58" target="_blank">Macbook最高返50000消费豆！</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="vip-item">-->
+                    <!--<div class="tit">快捷入口</div>-->
+                    <!--<div class="kj_con">-->
+                        <!--<div class="item item_1">-->
+                            <!--<a href="history_list.php" target="_blank">-->
+                                <!--<i class="iconfont icon-browse"></i>-->
+                                <!--<span>我的浏览</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="item item_2">-->
+                            <!--<a href="user.php?act=collection_list" target="_blank">-->
+                                <!--<i class="iconfont icon-zan-alt"></i>-->
+                                <!--<span>我的收藏</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="item item_3">-->
+                            <!--<a href="user.php?act=order_list" target="_blank">-->
+                                <!--<i class="iconfont icon-order"></i>-->
+                                <!--<span>我的订单</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="item item_4">-->
+                            <!--<a href="user.php?act=account_safe" target="_blank">-->
+                                <!--<i class="iconfont icon-password-alt"></i>-->
+                                <!--<span>账号安全</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="item item_5">-->
+                            <!--<a href="user.php?act=affiliate" target="_blank">-->
+                                <!--<i class="iconfont icon-share-alt"></i>-->
+                                <!--<span>我要分享</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<div class="item item_6">-->
+                            <!--<a href="merchants.php" target="_blank">-->
+                                <!--<i class="iconfont icon-settled"></i>-->
+                                <!--<span>商家入驻</span>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>            </div>-->
+    </div>
+    <div class="channel-content" ectype="channel">
+        <div class="seckill-channel" id="h-seckill">
+            <div class="box-hd clearfix">
+                <i class="box_hd_arrow"></i>
+                <i class="box_hd_dec"></i>
+                <i class="box-hd-icon"></i>
+                <div class="sk-time-cd">
+                    <div class="sk-cd-tit">距结束</div>
+                    <div class="cd-time fl" ectype="time" data-time='2018-06-13 22:00:00'>
+                        <div class="days hide"></div>
+                        <span class="split hide">天</span>
+                        <div class="hours"></div>
+                        <span class="split">时</span>
+                        <div class="minutes"></div>
+                        <span class="split">分</span>
+                        <div class="seconds"></div>
+                        <span class="split">秒</span>
+                    </div>
+                </div>
+                <div class="sk-more"><a href="seckill.php" target="_blank">更多秒杀</a> <i class="arrow"></i></div>
+            </div>
+            <div class="box-bd clearfix">
+                <ul>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=57" target="_blank"><img src="/static/home/images/0_thumb_g_1490209796384.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=57" target="_blank" title="航科家用按摩椅全自动全身电动多功能太空舱按摩器老人沙发椅 智能大腿气囊按摩 脚底3D推拿">航科家用按摩椅全自动全身电动多功能太空舱按摩器老人沙发椅 智能大腿气囊按摩 脚底3D推拿</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>2133.00</span>
+                                    <span class="original-price"><em>￥</em>2616.00</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=57&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=8" target="_blank"><img src="/static/home/images/0_thumb_g_1489102753231.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=8" target="_blank" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>145.00</span>
+                                    <span class="original-price"><em>￥</em>360.00</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=8&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=58" target="_blank"><img src="/static/home/images/0_thumb_g_1489106192791.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=58" target="_blank" title="歌梵 床头柜 地中海美式乡村蓝色田园床边柜 储物卧室家具 品质保障 用料环保 质保5年&#45;&#45;不单卖">歌梵 床头柜 地中海美式乡村蓝色田园床边柜 储物卧室家具 品质保障 用料环保 质保5年&#45;&#45;不单卖</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>2312.00</span>
+                                    <span class="original-price"><em>￥</em>240.00</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=58&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=9" target="_blank"><img src="/static/home/images/0_thumb_g_1489102950633.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=9" target="_blank" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>145.00</span>
+                                    <span class="original-price"><em>￥</em>540.00</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=9&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=10" target="_blank"><img src="/static/home/images/0_thumb_g_1490174741051.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=10" target="_blank" title="初棉纯色圆领长袖T恤打底衫秋衣女上衣体恤女士修身打底衣春秋 挺拔有型 棉氨材质 柔软舒适 耐洗耐磨">初棉纯色圆领长袖T恤打底衫秋衣女上衣体恤女士修身打底衣春秋 挺拔有型 棉氨材质 柔软舒适 耐洗耐磨</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>145.00</span>
+                                    <span class="original-price"><em>￥</em>78.00</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=10&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=54" target="_blank"><img src="/static/home/images/0_thumb_g_1490205126945.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=54" target="_blank" title="海得曼无线门铃 家用 不用电池门铃 智能自发电远距离一拖一拖二 按钮 不要电池 防水设计 两年换新">海得曼无线门铃 家用 不用电池门铃 智能自发电远距离一拖一拖二 按钮 不要电池 防水设计 两年换新</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>334.00</span>
+                                    <span class="original-price"><em>￥</em>99.60</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=54&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=6" target="_blank"><img src="/static/home/images/0_thumb_g_1489100550574.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=6" target="_blank" title="法国DK正品文胸套装女内衣性感蕾丝聚拢深V调整型小胸品牌收副乳 法国正品 蕾丝性感 原装包装 送女神必备">法国DK正品文胸套装女内衣性感蕾丝聚拢深V调整型小胸品牌收副乳 法国正品 蕾丝性感 原装包装 送女神必备</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>145.00</span>
+                                    <span class="original-price"><em>￥</em>309.59</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=6&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=55" target="_blank"><img src="/static/home/images/0_thumb_g_1490205156678.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=55" target="_blank" title="闽豹家用工具套装 五金工具箱 电工木工德国维修工具组套修理组合 质量稳定 坚固耐用 彩套包装 可团购定制">闽豹家用工具套装 五金工具箱 电工木工德国维修工具组套修理组合 质量稳定 坚固耐用 彩套包装 可团购定制</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>534.00</span>
+                                    <span class="original-price"><em>￥</em>99.60</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=55&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=7" target="_blank"><img src="/static/home/images/0_thumb_g_1489102299856.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=7" target="_blank" title="新款学院风韩版时尚太空棉宽松长袖印花圆领卫衣女">新款学院风韩版时尚太空棉宽松长袖印花圆领卫衣女</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>145.00</span>
+                                    <span class="original-price"><em>￥</em>279.59</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=7&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="seckill.php?id=56" target="_blank"><img src="/static/home/images/0_thumb_g_1490205189180.jpg" class="img-lazyload"></a></div>
+                        <div class="p-name"><a href="seckill.php?id=56" target="_blank" title="JOMOO 厨房水槽套餐双槽304不锈钢洗碗池 洗菜盆加厚水盆一体水槽 官方正品 赠运费险 五年联保 领券更实惠">JOMOO 厨房水槽套餐双槽304不锈钢洗碗池 洗菜盆加厚水盆一体水槽 官方正品 赠运费险 五年联保 领券更实惠</a></div>
+                        <div class="p-over">
+                            <div class="p-info">
+                                <div class="p-price">
+                                    <span class="shop-price"><em>￥</em>834.00</span>
+                                    <span class="original-price"><em>￥</em>1078.80</span>
+                                </div>
+                            </div>
+                            <div class="p-btn">
+                                <a href="seckill.php?id=56&amp;act=view"  target="_blank">立即抢购</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:void(0);" class="prev"><i class="iconfont icon-left"></i></a>
+                <a href="javascript:void(0);" class="next"><i class="iconfont icon-right"></i></a>
+            </div>
+        </div>
+        <input type="hidden" value="1" name="seckill_goods"/>		<div class="need-channel clearfix" id="h-need">
+        <div class="channel-column" style="background:url(/static/home/images/1489108932830636804.jpg) no-repeat;">
+            <div class="column-title">
+                <h3>优质新品</h3>
+                <p>专注生活美学</p>
+            </div>
+            <div class="column-img"><img src="/static/home/images/1489108932305373215.png"></div>
+            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
+        </div>
+        <div class="channel-column" style="background:url(/static/home/images/1489109017412962486.jpg) no-repeat;">
+            <div class="column-title">
+                <h3>品牌精选</h3>
+                <p>潮牌尖货 初春换新</p>
+            </div>
+            <div class="column-img"><img src="/static/home/images/1489109017453223398.png"></div>
+            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
+        </div>
+        <div class="channel-column" style="background:url(/static/home/images/1489109075453550789.jpg) no-repeat;">
+            <div class="column-title">
+                <h3>潮流女装</h3>
+                <p>春装流行款抢购</p>
+            </div>
+            <div class="column-img"><img src="/static/home/images/1489109075626843283.png"></div>
+            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
+        </div>
+        <div class="channel-column" style="background:url(/static/home/images/1489109174107416929.jpg) no-repeat;">
+            <div class="column-title">
+                <h3>人气美鞋</h3>
+                <p>新外貌“鞋”会</p>
+            </div>
+            <div class="column-img"><img src="/static/home/images/1489109174067528878.png"></div>
+            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
+        </div>
+        <div class="channel-column" style="background:url(/static/home/images/1489109238964052790.jpg) no-repeat;">
+            <div class="column-title">
+                <h3>护肤彩妆</h3>
+                <p>春妆必买清单 低至3折</p>
+            </div>
+            <div class="column-img"><img src="/static/home/images/1489109238803807019.png"></div>
+            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
+        </div>
+    </div>
+        <input type="hidden" value="1" name="index_ad_cat"/>
+        <div class="brand-channel clearfix" id="h-brand">
+            <div class="home-brand-adv slide_lr_info"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1490896397653643539.jpg" width="484" height="178" class="slide_lr_img"></a></div>
+            <div class="brand-list" id="recommend_brands">
+                <ul>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=204" target="_blank"><img src="/static/home/images/1490039286075654490.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="204" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=204" target="_blank">关注人数<br><div id="collect_count_204">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=93" target="_blank"><img src="/static/home/images/1490072850306019115.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="93" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=93" target="_blank">关注人数<br><div id="collect_count_93">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=209" target="_blank"><img src="/static/home/images/1490075378902486254.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="209" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=209" target="_blank">关注人数<br><div id="collect_count_209">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=203" target="_blank"><img src="/static/home/images/1490228332533535072.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="203" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=203" target="_blank">关注人数<br><div id="collect_count_203">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=200" target="_blank"><img src="/static/home/images/1490074447209712752.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="200" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=200" target="_blank">关注人数<br><div id="collect_count_200">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=195" target="_blank"><img src="/static/home/images/1490075385239594909.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="195" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=195" target="_blank">关注人数<br><div id="collect_count_195">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=71" target="_blank"><img src="/static/home/images/1490071974970349584.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="71" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=71" target="_blank">关注人数<br><div id="collect_count_71">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=72" target="_blank"><img src="/static/home/images/1490072313895957648.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="72" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=72" target="_blank">关注人数<br><div id="collect_count_72">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=73" target="_blank"><img src="/static/home/images/1490072329183966195.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="73" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=73" target="_blank">关注人数<br><div id="collect_count_73">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=74" target="_blank"><img src="/static/home/images/1490072344340492758.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="74" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=74" target="_blank">关注人数<br><div id="collect_count_74">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=75" target="_blank"><img src="/static/home/images/1490072358487439203.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="75" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=75" target="_blank">关注人数<br><div id="collect_count_75">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=76" target="_blank"><img src="/static/home/images/1490072373278367315.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="76" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=76" target="_blank">关注人数<br><div id="collect_count_76">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=77" target="_blank"><img src="/static/home/images/1490072384627679069.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="77" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=77" target="_blank">关注人数<br><div id="collect_count_77">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=78" target="_blank"><img src="/static/home/images/1490072399542595828.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="78" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=78" target="_blank">关注人数<br><div id="collect_count_78">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=79" target="_blank"><img src="/static/home/images/1490072677495061584.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="79" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=79" target="_blank">关注人数<br><div id="collect_count_79">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=80" target="_blank"><img src="/static/home/images/1490072417755830176.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="80" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=80" target="_blank">关注人数<br><div id="collect_count_80">0</div></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="brand-img"><a href="brandn.php?id=81" target="_blank"><img src="/static/home/images/1490072685002270742.jpg"></a></div>
+                        <div class="brand-mash">
+                            <div data-bid="81" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+                            <div class="coupon"><a href="brandn.php?id=81" target="_blank">关注人数<br><div id="collect_count_81">0</div></a></div>
+                        </div>
+                    </li>
+                </ul>
+                <input type="hidden" name="user_id" value="0">
+                <a href="javascript:void(0);" ectype="changeBrand" class="refresh-btn"><i class="iconfont icon-rotate-alt"></i><span>换一批</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="floor-content" ectype="goods_cat_level">
+
+    </div>
+    <div class="floor-loading" ectype="floor-loading"><div class="floor-loading-warp"><img src="/static/home/images/loading.gif"></div></div>
+    <div class="other-content">
+        <div class="master-channel" id="master">
+            <div class="ftit"><h3>达人专区</h3></div>
+            <div class="master-con">
+                <div class="m-c-item m-c-i-1" style="background:url(/static/home/images/1490915252102177200.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>纯棉质品</h3>
+                            <span>把好货带回家</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096584382939358.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-2" style="background:url(/static/home/images/1490915247993555311.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>团购热卖</h3>
+                            <span>每一款都是好货</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096593220418206.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-3" style="background:url(/static/home/images/1490915242570296715.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>团购热卖</h3>
+                            <span>都是好货</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096600517435313.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-4" style="background:url(/static/home/images/1490915236292888895.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>舒适童鞋</h3>
+                            <span>帮宝宝学走路</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096607113568601.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-5" style="background:url(/static/home/images/1490915231687856118.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>双十二运动鞋</h3>
+                            <span>品牌直降</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096615934856180.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="store-channel" id="storeRec">
+            <div class="ftit"><h3>推荐店铺</h3></div>
+            <div class="rec-store-list">
+                <div class="rec-store-item opacity_img">
+                    <a href="http://www.wygk.cn/" target="_blank">
+                        <div class="p-img"><img src="/static/home/images/1490809761217876585.png" width="386" height="187"></div>
+                        <div class="info">
+                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809962606266227.png"></div></div>
+                            <div class="s-title">
+                                <div class="tit">美宝莲</div>
+                                <div class="ui-tit">纽约高街潮妆</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="rec-store-item opacity_img">
+                    <a href="http://www.wygk.cn/" target="_blank">
+                        <div class="p-img"><img src="/static/home/images/1490809806968463857.png" width="386" height="187"></div>
+                        <div class="info">
+                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809975987863603.png"></div></div>
+                            <div class="s-title">
+                                <div class="tit">三只松鼠</div>
+                                <div class="ui-tit">就是这个味</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="rec-store-item opacity_img">
+                    <a href="http://www.wygk.cn/" target="_blank">
+                        <div class="p-img"><img src="/static/home/images/1490809848143312315.png" width="386" height="187"></div>
+                        <div class="info">
+                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809989737429921.png"></div></div>
+                            <div class="s-title">
+                                <div class="tit">绿联旗舰店</div>
+                                <div class="ui-tit">给生活多点精彩</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="rec-store-item opacity_img">
+                    <a href="http://www.wygk.cn/" target="_blank">
+                        <div class="p-img"><img src="/static/home/images/1490809371858823504.png" width="386" height="187"></div>
+                        <div class="info">
+                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809605496323484.jpg"></div></div>
+                            <div class="s-title">
+                                <div class="tit">韩都衣舍</div>
+                                <div class="ui-tit">满249减50</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="lift-channel clearfix" id="guessYouLike">
+            <div class="ftit"><h3>还没逛够</h3></div>
+            <ul>
+                <li class="opacity_img">
+                    <a href="goods.php?id=684">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109583798.jpg"></div>
+                        <div class="p-name" title="【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮">【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>555.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=685">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109633806.jpg"></div>
+                        <div class="p-name" title="春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮">春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>1000.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=679">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489108999364.jpg"></div>
+                        <div class="p-name" title="特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险">特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>200.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=634">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102753231.jpg"></div>
+                        <div class="p-name" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>300.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=735">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1490165304408.jpg"></div>
+                        <div class="p-name" title="【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香">【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>29.80</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=683">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109337889.jpg"></div>
+                        <div class="p-name" title="igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修">igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>330.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=682">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109282145.jpg"></div>
+                        <div class="p-name" title="波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保">波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>250.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=681">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109130174.jpg"></div>
+                        <div class="p-name" title="2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋">2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>458.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=657">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489106146615.jpg"></div>
+                        <div class="p-name" title="创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低">创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>78888.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=635">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102950633.jpg"></div>
+                        <div class="p-name" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>450.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="attached-search-container" ectype="suspColumn">
+<div class="w w1200">
+<div class="categorys site-mast">
+<div class="categorys-type"><a href="categoryall.php" target="_blank">全部商品分类</a></div>
+<div class="categorys-tab-content">
+<div class="categorys-items" id="cata-nav">
+<div class="categorys-item" ectype="cateItem" data-id="858" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-ele"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=858" target="_blank">家用电器</a>
+</strong>
+<span>
+<a href="category.php?id=1105" target="_blank">大家电</a>
+
+<a href="category.php?id=1115" target="_blank">生活电器</a>
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_858"></div>
+<div class="cate_detail" ectype="subitems_858"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_858"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="3" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-digital"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=33" target="_blank" class="division_cat">手机</a>、<a href="category.php?id=64" target="_blank" class="division_cat">数码</a>、<a href="category.php?id=37" target="_blank" class="division_cat">通信</a>                                </strong>
+<span>
+<a href="category.php?id=112" target="_blank">智能设备</a>
+
+<a href="category.php?id=76" target="_blank">数码配件</a>
+
+
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_3"></div>
+<div class="cate_detail" ectype="subitems_3"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_3"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="4" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-computer"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=4" target="_blank">电脑、办公</a>
+</strong>
+<span>
+<a href="category.php?id=158" target="_blank">服务产品</a>
+
+<a href="category.php?id=132" target="_blank">电脑整机</a>
+
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_4"></div>
+<div class="cate_detail" ectype="subitems_4"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_4"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="5" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-bed"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=5" target="_blank">家居、家具、家装、厨具</a>
+</strong>
+<span>
+<a href="category.php?id=143" target="_blank">厨具</a>
+
+<a href="category.php?id=159" target="_blank">家装建材</a>
+
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_5"></div>
+<div class="cate_detail" ectype="subitems_5"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_5"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="6" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-clothes"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=6" target="_blank">男装、女装、内衣</a>
+</strong>
+<span>
+<a href="category.php?id=347" target="_blank">女装</a>
+
+<a href="category.php?id=463" target="_blank">男装</a>
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_6"></div>
+<div class="cate_detail" ectype="subitems_6"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_6"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="8" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-shoes"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=8" target="_blank">鞋靴、箱包、钟表、奢侈品</a>
+</strong>
+<span>
+<a href="category.php?id=362" target="_blank">奢侈品</a>
+
+<a href="category.php?id=360" target="_blank">功能箱包</a>
+
+
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_8"></div>
+<div class="cate_detail" ectype="subitems_8"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_8"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="categorys-item" ectype="cateItem" data-id="860" data-eveval="0">
+<div class="item item-content">
+<i class="iconfont icon-heal"></i>
+<div class="categorys-title">
+<strong>
+<a href="category.php?id=860" target="_blank">个人化妆、清洁用品</a>
+</strong>
+<span>
+<a href="category.php?id=876" target="_blank">面部护肤</a>
+
+<a href="category.php?id=880" target="_blank">洗发护发</a>
+
+
+
+
+
+
+</span>
+</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+<div class="cate-layer-left">
+<div class="cate_channel" ectype="channels_860"></div>
+<div class="cate_detail" ectype="subitems_860"></div>
+</div>
+<div class="cate-layer-rihgt" ectype="brands_860"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>            	</div>
+</div>
+<div class="mall-search">
+<div class="dsc-search">
+<div class="form">
+<form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="search-form">
+<input autocomplete="off" name="keywords" type="text" id="keyword2" value="周大福" class="search-text"/>
+<input type="hidden" name="store_search_cmt" value="0">
+<button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)" >搜商品</button>
+<button type="submit" class="button button-store" onclick="checkstore_search_cmt(1)" >搜店铺</button>
+</form>
+</div>
+</div>
+</div>
+<div class="suspend-login">
+<a href="user.php">登录</a>
+|
+<a href="user.php?act=register">注册</a>
+</div>
+<div class="shopCart" id="ECS_CARTINFO">
+
+<div class="shopCart-con dsc-cm">
+<a href="flow.php">
+<i class="iconfont icon-carts"></i>
+<span>我的购物车</span>
+<em class="count cart_num">0</em>
+</a>
+</div>
+<div class="dorpdown-layer" ectype="dorpdownLayer">
+<div class="prompt"><div class="nogoods"><b></b><span>购物车中还没有商品，赶紧选购吧！</span></div></div>
+</div>
+
+    <script type="text/javascript">
+        function changenum(rec_id, diff, warehouse_id, area_id)
+        {
+            var cValue = $('#cart_value').val();
+            var goods_number =Number($('#goods_number_' + rec_id).text()) + Number(diff);
+
+            if(goods_number < 1)
+            {
+                return false;
+            }
+            else
+            {
+                change_goods_number(rec_id,goods_number, warehouse_id, area_id, cValue);
+            }
+        }
+        function change_goods_number(rec_id, goods_number, warehouse_id, area_id, cValue)
+        {
+            if(cValue != '' || cValue == 'undefined'){
+                var cValue = $('#cart_value').val();
+            }
+            Ajax.call('flow.php?step=ajax_update_cart', 'rec_id=' + rec_id +'&goods_number=' + goods_number +'&cValue=' + cValue +'&warehouse_id=' + warehouse_id +'&area_id=' + area_id, change_goods_number_response, 'POST','JSON');
+        }
+        function change_goods_number_response(result)
+        {
+            var rec_id = result.rec_id;
+            if (result.error == 0)
+            {
+                $('#goods_number_' +rec_id).val(result.goods_number);//更新数量
+                $('#goods_subtotal_' +rec_id).html(result.goods_subtotal);//更新小计
+                if (result.goods_number <= 0)
+                {
+                    //数量为零则隐藏所在行
+                    $('#tr_goods_' +rec_id).style.display = 'none';
+                    $('#tr_goods_' +rec_id).innerHTML = '';
+                }
+                $('#total_desc').html(result.flow_info);//更新合计
+                if($('ECS_CARTINFO'))
+                {//更新购物车数量
+                    $('#ECS_CARTINFO').html(result.cart_info);
+                }
+
+                if(result.group.length > 0){
+                    for(var i=0; i<result.group.length; i++){
+                        $("#" + result.group[i].rec_group).html(result.group[i].rec_group_number);//配件商品数量
+                        $("#" + result.group[i].rec_group_talId).html(result.group[i].rec_group_subtotal);//配件商品金额
+                    }
+                }
+
+                $("#goods_price_" + rec_id).html(result.goods_price);
+                $(".cart_num").html(result.subtotal_number);
+            }
+            else if (result.message != '')
+            {
+                $('#goods_number_' +rec_id).val(result.cart_Num);//更新数量
+                alert(result.message);
+            }
+        }
+
+        function deleteCartGoods(rec_id,index)
+        {
+            Ajax.call('delete_cart_goods.php', 'id='+rec_id+'&index='+index, deleteCartGoodsResponse, 'POST', 'JSON');
+        }
+
+        /**
+         * 接收返回的信息
+         */
+        function deleteCartGoodsResponse(res)
+        {
+            if (res.error)
+            {
+                alert(res.err_msg);
+            }
+            else if(res.index==1)
+            {
+                Ajax.call('get_ajax_content.php?act=get_content', 'data_type=cart_list', return_cart_list, 'POST', 'JSON');
+            }
+            else
+            {
+                $("#ECS_CARTINFO").html(res.content);
+                $(".cart_num").html(res.cart_num);
+            }
+        }
+
+        function return_cart_list(result)
+        {
+            $(".cart_num").html(result.cart_num);
+            $(".pop_panel").html(result.content);
+        }
+    </script>            </div>
+</div>
+</div>
+
+<!--<div class="lift lift-hide" ectype="lift" style="z-index:100001">-->
+    <!--<div class="lift-list" ectype="liftList">-->
+        <!--<div class="lift-item lift-h-seckill lift-item-first" ectype="liftItem" data-target="#h-seckill"><span>秒杀</span></div>-->
+        <!--<div class="lift-item lift-h-need lift-item-current" ectype="liftItem" data-target="#h-need"><span>推荐</span></div>-->
+        <!--<div class="lift-item" ectype="liftItem" data-target="#h-brand"><span>品牌</span></div>-->
+        <!--<div class="lift-item lift-floor-item" ectype="liftItem"><span>男装女装</span></div>-->
+        <!--<div class="lift-item lift-floor-item" ectype="liftItem"><span>鞋靴箱包</span></div>-->
+        <!--<div class="lift-item lift-floor-item" ectype="liftItem"><span>食品酒水</span></div>-->
+        <!--<div class="lift-item lift-floor-item" ectype="liftItem"><span>家用电器</span></div>-->
+        <!--<div class="lift-item lift-master" ectype="liftItem" data-target="#master"><span>达人</span></div>-->
+        <!--<div class="lift-item lift-storeRec" ectype="liftItem" data-target="#storeRec"><span>店铺</span></div>-->
+        <!--<div class="lift-item" ectype="liftItem" data-target="#guessYouLike"><span>商品</span></div>-->
+        <!--<div class="lift-item lift-item-top" ectype="liftItem"><i class="iconfont icon-returntop"></i></div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="ejectAdv" ectype="ejectAdv">-->
+    <!--<div class="mui-mbar-tabs">-->
+        <!--<div class="quick_link_mian" data-userid="0">-->
+            <!--<div class="quick_links_panel">-->
+                <!--<div id="quick_links" class="quick_links">-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<a href="user.php"><i class="setting"></i></a>-->
+                            <!--<div class="ibar_login_box status_login">-->
+                                <!--<div class="avatar_box">-->
+                                    <!--<p class="avatar_imgbox">-->
+                                        <!--<img src="/static/home/images/touxiang.jpg" width="100" height="100"/>-->
+                                    <!--</p>-->
+                                    <!--<ul class="user_info">-->
+                                        <!--<li>用户名：暂无</li>-->
+                                        <!--<li>级&nbsp;别：暂无</li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<div class="login_btnbox">-->
+                                    <!--<a href="user.php?act=order_list" class="login_order">我的订单</a>-->
+                                    <!--<a href="user.php?act=collection_list" class="login_favorite">我的收藏</a>-->
+                                <!--</div>-->
+                                <!--<i class="icon_arrow_white"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+
+                        <!--<li id="shopCart">-->
+                            <!--<a href="javascript:void(0);" class="cart_list">-->
+                                <!--<i class="message"></i>-->
+                                <!--<div class="span">购物车</div>-->
+                                <!--<span class="cart_num">0</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_order"><i class="chongzhi"></i></a>-->
+                            <!--<div class="mp_tooltip">-->
+                                <!--<font id="mpbtn_money" style="font-size:12px; cursor:pointer;">我的订单</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_yhq"><i class="yhq"></i></a>-->
+                            <!--<div class="mp_tooltip">-->
+                                <!--<font id="mpbtn_money" style="font-size:12px; cursor:pointer;">优惠券</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_total"><i class="view"></i></a>-->
+                            <!--<div class="mp_tooltip" style=" visibility:hidden;">-->
+                                <!--<font id="mpbtn_myMoney" style="font-size:12px; cursor:pointer;">我的资产</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_history"><i class="zuji"></i></a>-->
+                            <!--<div class="mp_tooltip">-->
+                                <!--<font id="mpbtn_histroy" style="font-size:12px; cursor:pointer;">我的足迹</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_collection"><i class="wdsc"></i></a>-->
+                            <!--<div class="mp_tooltip">-->
+                                <!--<font id="mpbtn_wdsc" style="font-size:12px; cursor:pointer;">我的收藏</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<a href="javascript:void(0);" class="mpbtn_email"><i class="email"></i></a>-->
+                            <!--<div class="mp_tooltip">-->
+                                <!--<font id="mpbtn_email" style="font-size:12px; cursor:pointer;">邮箱订阅</font>-->
+                                <!--<i class="icon_arrow_right_black"></i>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="quick_toggle">-->
+                    <!--<ul>-->
+                        <!--<li>-->
+
+
+                            <!--<a id="IM" IM_type="dsc" onclick="openWin(this)" href="javascript:;"><i class="kfzx"></i></a>-->
+                            <!--<div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>-->
+
+                        <!--</li>-->
+                        <!--<li class="returnTop">-->
+                            <!--<a href="javascript:void(0);" class="return_top"><i class="top"></i></a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="quick_links_pop" class="quick_links_pop"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="email_sub">-->
+        <!--<div class="attached_bg"></div>-->
+        <!--<div class="w1200">-->
+            <!--<div class="email_sub_btn">-->
+                <!--<input type="input" id="user_email" name="user_email" autocomplete="off" placeholder="请输入您的邮箱帐号">-->
+                <!--<a href="javascript:void(0);" onClick="add_email_list();" class="emp_btn">订阅</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="footer">-->
+        <!--<div class="dsc-service">-->
+            <!--<div class="w w1200 relative">-->
+                <!--<ul class="service-list">-->
+                    <!--<li>-->
+                        <!--<div class="service-tit service-zheng"><i class="iconfont icon-zheng"></i></div>-->
+                        <!--<div class="service-txt">正品保障</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="service-tit service-qi"><i class="iconfont icon-qi"></i></div>-->
+                        <!--<div class="service-txt">七天包退</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="service-tit service-hao"><i class="iconfont icon-grin"></i></div>-->
+                        <!--<div class="service-txt">好评如潮</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="service-tit service-shan"><i class="iconfont icon-light"></i></div>-->
+                        <!--<div class="service-txt">闪电发货</div>-->
+                    <!--</li>-->
+                    <!--<li class="last">-->
+                        <!--<div class="service-tit service-quan"><i class="iconfont icon-trophy"></i></div>-->
+                        <!--<div class="service-txt">权威荣誉</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dsc-help">-->
+            <!--<div class="w w1200">-->
+                <!--<div class="help-list">-->
+                    <!--<div class="help-item">-->
+                        <!--<h3>新手上路 </h3>-->
+                        <!--<ul>-->
+                            <!--<li><a href="article.php?id=9"  title="售后流程" target="_blank">售后流程</a></li>-->
+                            <!--<li><a href="article.php?id=10"  title="购物流程" target="_blank">购物流程</a></li>-->
+                            <!--<li><a href="article.php?id=11"  title="订购方式" target="_blank">订购方式</a></li>-->
+                        <!--</ul>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="help-item">-->
+                        <!--<h3>配送与支付 </h3>-->
+                        <!--<ul>-->
+                            <!--<li><a href="article.php?id=15"  title="货到付款区域" target="_blank">货到付款区域</a></li>-->
+                            <!--<li><a href="article.php?id=16"  title="配送支付智能查询 " target="_blank">配送支付智能查询</a></li>-->
+                            <!--<li><a href="article.php?id=17"  title="支付方式说明" target="_blank">支付方式说明</a></li>-->
+                        <!--</ul>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="help-item">-->
+                        <!--<h3>会员中心</h3>-->
+                        <!--<ul>-->
+                            <!--<li><a href="article.php?id=18"  title="资金管理" target="_blank">资金管理</a></li>-->
+                            <!--<li><a href="article.php?id=19"  title="我的收藏" target="_blank">我的收藏</a></li>-->
+                            <!--<li><a href="article.php?id=20"  title="我的订单" target="_blank">我的订单</a></li>-->
+                        <!--</ul>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="help-item">-->
+                        <!--<h3>服务保证 </h3>-->
+                        <!--<ul>-->
+                            <!--<li><a href="article.php?id=21"  title="退换货原则" target="_blank">退换货原则</a></li>-->
+                            <!--<li><a href="article.php?id=22"  title="售后服务保证" target="_blank">售后服务保证</a></li>-->
+                            <!--<li><a href="article.php?id=23"  title="产品质量保证 " target="_blank">产品质量保证</a></li>-->
+                        <!--</ul>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+                    <!--<div class="help-item">-->
+                        <!--<h3>联系我们 </h3>-->
+                        <!--<ul>-->
+                            <!--<li><a href="article.php?id=24"  title="网站故障报告" target="_blank">网站故障报告</a></li>-->
+                            <!--<li><a href="article.php?id=25"  title="选机咨询 " target="_blank">选机咨询</a></li>-->
+                            <!--<li><a href="article.php?id=26"  title="投诉与建议 " target="_blank">投诉与建议</a></li>-->
+                        <!--</ul>-->
+                        <!--</dl>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="help-cover">-->
+                    <!--<div class="help-ctn">-->
+                        <!--<div class="help-ctn-mt">-->
+                            <!--<span>服务热线</span>-->
+                            <!--<strong>020-34506590</strong>-->
+                        <!--</div>-->
+                        <!--<div class="help-ctn-mb">-->
+
+                            <!--<a id="IM" IM_type="dsc" onclick="openWin(this)" href="javascript:;" class="btn-ctn"><i class="iconfont icon-csu"></i>咨询客服</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="help-scan">-->
+                        <!--<ul class="tabs">-->
+                            <!--<li class="curr">APP</li>-->
+                            <!--<li>微信</li>-->
+                        <!--</ul>-->
+                        <!--<div class="code">-->
+                            <!--<div class="code_tp"><img src="/static/home/images/ecjia_qrcode.png" /></div>-->
+                            <!--<div class="code_tp" style="display:none;"><img src="/static/home/images/ectouch_qrcode.png"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<div class="ico" ectype="switch" title="切换"><i class="iconfont icon-switch"></i></div>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dsc-copyright">-->
+            <!--<div class="w w1200">-->
+
+                <!--<p class="copyright_links">-->
+                    <!--<a href="index.php" >首页</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="article.php?id=2" >隐私保护</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="article.php?id=4" >联系我们</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="article.php?id=1" >免责条款</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="article.php?id=5" >公司简介</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="merchants.php"  target="_blank" >商家入驻</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="message.php" >意见反馈</a>-->
+
+
+                <!--</p>-->
+                <!--<p class="copyright_info">-->
+                    <!--<a href="http://www.wygk.cn" target="_blank" title="网软志成">网软志成</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="http://www.baidu.com" target="_blank" title="百度">百度</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="http://www.jd.com" target="_blank" title="京东商城">京东商城</a>-->
+
+                    <!--|-->
+
+                    <!--<a href="http://http;//www.tmall.com" target="_blank" title="天猫商城">天猫商城</a>-->
+
+                <!--</p>-->
+
+                <!--<b>ICP备案证书号:<a href="http://www.miibeian.gov.cn/" target="_blank">粤ICP备06122404号</a> <a href="http://www.b2b2c.wygk.cn/" target="_blank">POWERED BY WygkCn</a></b>-->
+                <!--<p style="display:none">共执行 129 个查询，用时 0.296017 秒，在线 258 人，Gzip 已禁用，占用内存 5.494 MB<img src="/static/home/images/cron.php" alt="" style="width:0px;height:0px;" /></p>-->
+                <!--<p>&nbsp;</p>-->
+                <!--<p style="text-align:right; display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id= cnzz_stat_icon_1000200717 %3E%3C/span%3E%3Cscript src= " + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000200717%26show%3Dpic1  type= text/javascript %3E%3C/script%3E"));</script>-->
+                    <!--<script language="JavaScript" src="/static/home/js/347107.js" type="text/javascript" charset="utf-8"></script></p>-->
+                <!--<p class="copyright_auth">&nbsp;</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="hide" id="pd_coupons">-->
+        <!--<span class="success-icon m-icon"></span>-->
+        <!--<div class="item-fore">-->
+            <!--<h3>领取成功！感谢您的参与，祝您购物愉快~</h3>-->
+            <!--<div class="txt ftx-03">本活动为概率性事件，不能保证所有客户成功领取优惠券</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="hidden">-->
+        <!--<input name="seller_kf_IM" ru_id="" value="" type="hidden" rev="">-->
+        <!--<input name="seller_kf_qq" value="394223545" type="hidden">-->
+        <!--<input name="seller_kf_tel" value="020-34506590" type="hidden">-->
+    <!--</div>-->
+    <!--<script type="text/javascript" src="/static/home/js/suggest.js"></script><script type="text/javascript" src="/static/home/js/scroll_city.js"></script><script type="text/javascript" src="/static/home/js/utils.js"></script>-->
+    <!--<script type="text/javascript" src="/static/home/js/warehouse_area.js"></script>-->
+    <!--<script type="text/javascript">-->
+        <!--//IM-->
+        <!--function openWin(obj) {-->
+
+            <!--var where_goods = "";-->
+            <!--if($(obj).attr('goods_id')){-->
+                <!--where_goods = '&goods_id=' + $(obj).attr('goods_id');-->
+            <!--}-->
+
+            <!--var where_seller = "";-->
+            <!--if($(obj).attr('ru_id')){-->
+                <!--where_seller = '&ru_id=' + $(obj).attr('ru_id');-->
+            <!--}-->
+            <!--if($(obj).attr('IM_type') != 'dsc'){-->
+                <!--var where = where_goods + where_seller;-->
+            <!--}else{-->
+                <!--var where = '';-->
+            <!--}-->
+            <!--var url='online.php?act=service' + where                   //转向网页的地址;-->
+            <!--var name='webcall';                         //网页名称，可为空;-->
+            <!--var iWidth=700;                          //弹出窗口的宽度;-->
+            <!--var iHeight=500;                         //弹出窗口的高度;-->
+            <!--//获得窗口的垂直位置-->
+            <!--var iTop = (window.screen.availHeight - 30 - iHeight) / 2;-->
+            <!--//获得窗口的水平位置-->
+            <!--var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;-->
+            <!--window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');-->
+        <!--}-->
+    <!--</script>                        <script type="text/javascript" src="/static/home/js/jquery.superslide.2.1.1.js"></script><script type="text/javascript" src="/static/home/js/jquery.yomi.js"></script><script type="text/javascript" src="/static/home/js/cart_common.js"></script><script type="text/javascript" src="/static/home/js/cart_quick_links.js"></script>    <script type="text/javascript" src="/static/home/js/dsc-common.js"></script>-->
+    <!--<script type="text/javascript" src="/static/home/js/asyloadfloor.js"></script>-->
+    <!--<script type="text/javascript" src="/static/home/js/jquery.purebox.js"></script>-->
+    <!--<script type="text/javascript">-->
+        <!--/*首页轮播*/-->
+        <!--var length = $(".banner .bd").find("li").length;-->
+        <!--if(length>1){-->
+            <!--$(".banner").slide({titCell:".hd ul",mainCell:".bd ul",effect:"fold",interTime:3500,delayTime:500,autoPlay:true,autoPage:true,trigger:"click",endFun:function(i,c,s){-->
+                    <!--$(window).resize(function(){-->
+                        <!--var width = $(window).width();-->
+                        <!--s.find(".bd li").css("width",width);-->
+                    <!--});-->
+                <!--}});-->
+        <!--}else{-->
+            <!--$(".banner .hd").hide();-->
+        <!--}-->
+        <!--$(".vip-item").slide({titCell:".tit a",mainCell:".con"});-->
+        <!--$(".seckill-channel").slide({mainCell:".box-bd ul",effect:"leftLoop",autoPlay:true,autoPage:true,interTime:5000,delayTime:500,vis:5,scroll:1,trigger:"click"});-->
+
+        <!--function load_js_content(key){-->
+            <!--var Floor = $("#floor_" + key);-->
+            <!--Floor.slide({titCell:".hd-tags li",mainCell:".floor-tabs-content",titOnClassName:"current"});-->
+            <!--Floor.find(".floor-left-slide").slide({titCell:".hd ul",mainCell:".bd ul",effect:"left",interTime:3500,delayTime:500,autoPlay:true,autoPage:true});-->
+        <!--}-->
+        <!--$("*[ectype='time']").each(function(){-->
+            <!--$(this).yomi();-->
+        <!--});-->
+
+        <!--//页面刷新自动返回顶部-->
+        <!--$("body,html").animate({scrollTop:0},50);-->
+
+        <!--$(function(){-->
+            <!--//判断首页那些广告位是否存在，处理左侧悬浮楼层栏-->
+            <!--var index_ad_cat = $("input[name='index_ad_cat']").val();-->
+
+            <!--if(index_ad_cat == 0){-->
+                <!--$(".lift-h-need").hide();-->
+            <!--}else{-->
+                <!--$(".lift-h-need").show();-->
+            <!--}-->
+
+            <!--//秒杀活动-->
+            <!--var seckill_goods = $("input[name='seckill_goods']").val();-->
+            <!--if(seckill_goods == 0){-->
+                <!--$(".lift-h-seckill").hide();-->
+            <!--}else{-->
+                <!--$(".lift-h-seckill").show();-->
+            <!--}-->
+        <!--});-->
+
+        <!--//楼层异步加载封装函数调用-->
+        <!--$.homefloorLoad();-->
+
+        <!--$(window).scroll(function(){-->
+            <!--var scrollTop = $(document).scrollTop();-->
+            <!--var navTop = $("*[ectype='channel']").offset().top;  //by yanxin-->
+
+            <!--if(scrollTop>navTop){-->
+                <!--$("*[ectype='suspColumn']").addClass("show");-->
+            <!--}else{-->
+                <!--$("*[ectype='suspColumn']").removeClass("show");-->
+            <!--}-->
+        <!--});-->
+
+        <!--//去掉悬浮框 我的购物车-->
+        <!--$(".attached-search-container .shopCart-con a span").text("");-->
+    <!--</script>-->
+</body>
+</html>

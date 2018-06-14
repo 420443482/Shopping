@@ -1,4 +1,4 @@
-﻿<aside class="main-sidebar">
+﻿<aside class="main-sidebar" style="min-width: 12%;">
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left image">
@@ -19,8 +19,56 @@
                         </span>
             </div>
         </form>
-        <ul class="sidebar-menu"></ul>
+        <ul class="sidebar-menu">
+            <li class="header">我的工作台</li>
+            {foreach $menu_one as $v}
+            {if !isset($menu_two[$v['id']])}
+            <li class="treeview" data-level="0">
+                <a class="nav-link ajaxify" href="{$v['menu_href']}" target="myFrame"  >
+                    <i class="{$v['icon']}"></i>
+                    <span class="title menu-text"></span>{$v['menu_name']}<span></span>
+                </a>
+            </li>
+            {else}
+            <li class="treeview" data-level="0">
+                <a class="nav-link"><i class="{$v['icon']}"></i><span class="title menu-text">{$v['menu_name']}</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                <ul class="treeview-menu">
+                    {foreach $menu_two[$v['id']] as $i}
+                    <li class="treeview" data-level="1">
+                        <a style="padding-left:20px" class="nav-link ajaxify" href="{$i['menu_href']}" target="myFrame"><i class="{$i['icon']}"></i>
+                            <span class="title menu-text">{$i['menu_name']}</span><span></span></a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </li>
+            {/if}
+            {/foreach}
+            <!--<li class="treeview" data-level="0"><a class="nav-link ajaxify" href="goods.html" target="myFrame"  ><i class="fa fa-bar-chart-o"></i><span class="title menu-text">统计中心</span><span></span></a></li>-->
+            <!--<li class="treeview active" data-level="0">-->
+                <!--<a class="nav-link"><i class="fa fa-gift"></i><span class="title menu-text">商品中心</span>-->
+                    <!--<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>-->
+                <!--<ul class="treeview-menu menu-open" style="display: block;"><li class="treeview" data-level="1">-->
+                    <!--<a style="padding-left:20px" class="nav-link ajaxify" href="./goods/goods_class"><i class="icon-diamond"></i>-->
+                        <!--<span class="title menu-text">商品分类</span><span></span></a></li><li class="treeview" data-level="1">-->
+                    <!--<a style="padding-left:20px" class="nav-link ajaxify" href="./goods"><i class="icon-diamond"></i>-->
+                        <!--<span class="title menu-text">商品管理</span><span></span></a></li>-->
+                <!--</ul></li>-->
+        </ul>
+
     </section>
 </aside>
-<script src="/static/js/left/left.js" type="text/javascript"></script>
+<!--<script src="/static/js/left/left.js" type="text/javascript"></script>-->
 </body>
+
+<script>
+    $(".treeview").click(function(){
+        $(".treeview").removeClass("active");
+        if($(this).attr("data-level") == 1){
+            $(".treeview").removeAttr("id");
+            $(this).attr("id","mos");
+        }
+        $(this).addClass("active");
+        $(this).find("#mos").addClass("active");
+    });
+    </script>
