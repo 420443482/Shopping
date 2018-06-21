@@ -104,7 +104,7 @@ $(function(){
 			layer.find("*[ectype='subitems_" + goods_class_id + "']").html('<img src="/static/home/images/loadGoods.gif" width="200" height="200" class="lazy">');
 			$.ajax({
 			   type: "POST",
-			   url: "/index/class_menu",
+			   url: "/home/index/class_menu",
 			   data:  {goods_class_id:goods_class_id},
 			   dataType:'json',
 			   success: function(data){
