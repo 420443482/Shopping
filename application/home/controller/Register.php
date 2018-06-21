@@ -32,8 +32,5 @@ class Register extends Controller
     public function sendMail($phone_yzm){
         return true;
     }
-    public function a(){
-        return true;
-    }
 }
 
