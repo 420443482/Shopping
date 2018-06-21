@@ -101,7 +101,7 @@ $(function(){
 		if(eveval != 1){
 			T.data('eveval', '1');
 			/*加载中by wu*/
-			layer.find("*[ectype='subitems_" + goods_class_id + "']").html('<img src="/static/home/images/loadGoods.gif" width="200" height="200" class="lazy">');
+			layer.find("*[ectype='subitems_" + goods_class_id + "']").html('<img src="/static/home/images/loadgoods.gif" width="200" height="200" class="lazy">');
 			$.ajax({
 			   type: "POST",
 			   url: "/home/index/class_menu",
