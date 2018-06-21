@@ -33,7 +33,7 @@ use think\Session;
     }
     //分类菜单显示
     public function class_menu(){
-        $
+       
     }
 }
 
