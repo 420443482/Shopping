@@ -427,14 +427,7 @@ function return_login(result)
 	}
 	else
 	{
-            if(result.ucdata){
-                $("body").append(result.ucdata)
-            }
-		if(result.code == 1){
-		// 	location.href = result.url;
-		// }else{
-			location.href = "index";
-		}
+		location.href = "index";
 	}
 }
 

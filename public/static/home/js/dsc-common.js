@@ -94,30 +94,46 @@ $(function(){
 	//导航栏全部分类展开
 	$("*[ectype='cateItem']").on('mouseenter',function(){
 		var T = $(this),
-			cat_id = T.data('id'),
+			goods_class_id = T.data('id'),
 			eveval = T.data('eveval'),
 			layer = T.find("*[ectype='cateLayer']");
 		
 		if(eveval != 1){
 			T.data('eveval', '1');
 			/*加载中by wu*/
-			layer.find("*[ectype='subitems_" + cat_id + "']").html('<img src="themes/wrzcnet_wygk2017/images/load/loadGoods.gif" width="200" height="200" class="lazy">');
+			layer.find("*[ectype='subitems_" + goods_class_id + "']").html('<img src="/static/home/images/loadGoods.gif" width="200" height="200" class="lazy">');
 			$.ajax({
-			   type: "GET",
-			   url: "ajax_dialog.php",
-			   data: "act=getCategoryCallback&cat_id=" + cat_id,
+			   type: "POST",
+			   url: "index/class_menu",
+			   data:  {goods_class_id:goods_class_id},
 			   dataType:'json',
 			   success: function(data){
-					var strLength = Number(data.topic_content.length),
-						channels = $("*[ectype='channels_" + data.cat_id + "']"),
-						subitems = $("*[ectype='subitems_" + data.cat_id + "']"),
-						brands = $("*[ectype='brands_" + data.cat_id + "']");
-					if(strLength == 2 || strLength == 0){
-						channels.hide();
-					}
-					channels.html(data.topic_content);
-					subitems.html(data.cat_content);
-					brands.html(data.brands_ad_content);
+					var	channels = $("*[ectype='channels_" + 1 + "']"),
+						subitems = $("*[ectype='subitems_" + 1 + "']"),
+						brands = $("*[ectype='brands_" + 1 + "']");
+					// if(strLength == 2 || strLength == 0){
+					// 	channels.hide();
+					// }
+                   channels.html("                     <div class=\"categorys-title\">\n" +
+                       "                <strong>\n" +
+                       "                                <a href=\"category.php?id=4\" target=\"_blank\">电脑、办公</a>\n" +
+                       "                                </strong>\n" +
+                       "                            </div>");
+                   subitems.html("<dl class=\"dl_fore1\">\n" +
+                       "    <dt><a href=\"category.php?id=1105\" target=\"_blank\">大家电</a></dt>\n" +
+                       "    <dd>\n" +
+                       "                <a href=\"category.php?id=1106\" target=\"_blank\">平板电视</a>\n" +
+                       "                <a href=\"category.php?id=1107\" target=\"_blank\">空调</a>\n" +
+                       "                <a href=\"category.php?id=1108\" target=\"_blank\">冰箱</a>\n" +
+                       "                <a href=\"category.php?id=1109\" target=\"_blank\">洗衣机</a>\n" +
+                       "                <a href=\"category.php?id=1110\" target=\"_blank\">家庭影院</a>\n" +
+                       "                <a href=\"category.php?id=1111\" target=\"_blank\">DVD</a>\n" +
+                       "                <a href=\"category.php?id=1112\" target=\"_blank\">迷你音响</a>\n" +
+                       "                <a href=\"category.php?id=1113\" target=\"_blank\">热水器</a>\n" +
+                       "                <a href=\"category.php?id=1114\" target=\"_blank\">冷吧/冰柜</a>\n" +
+                       "            </dd>\n" +
+                       "</dl>");
+                   brands.html(1);
 			   }
 			});
 		}

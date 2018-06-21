@@ -90,10 +90,6 @@
 				if(document.getElementById("scrollBody").attachEvent)
 				document.getElementById("scrollBody").onmousewheel = wheel;
 				document.getElementById("scrollBody").attachEvent('DOMMouseScroll',wheel,false);
-			}else{
-				if(document.getElementById("scrollBody").addEventListener)
-				document.getElementById("scrollBody").addEventListener('DOMMouseScroll',wheel,true);
-				document.getElementById("scrollBody").onmousewheel=wheel;
 			}
 						
 			function searchClick(letter){

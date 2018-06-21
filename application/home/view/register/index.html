@@ -28,7 +28,7 @@
 function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sType == 'show') {oDiv.style.display = 'block';} if (sType == 'hide') {oDiv.style.display = 'none';} }
 </script>
 <div class="logo-r">
-  <div class="logo-info-r"> <a href="./" class="logo"></a> <span class="findpw">欢迎注册</span> <a href="#" class="qq"></a> 
+  <div class="logo-info-r"><span class="findpw">欢迎注册</span> <a href="#" class="qq"></a>
 <a href="#" class="sina"></a> 
 <div class="user-weixin weixin">
 	<span></span>
@@ -53,11 +53,10 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
           <input type="hidden" id="register_type" name="register_type" value="${register_type}" />
           <ul class="register-tab">
             <li id="li-register-type-mobile" class="tab-item fl" register_type="mobile">手机注册<span class="bg-ff"></span></li>
-            <li id="li-register-type-email" class="tab-item cur fl" register_type="email">邮箱注册<span class="bg-ff"></span></li>
             <li class="have-account fr">已有账号！<a href="user.php?act=login">登录</a></li>
           </ul>
         </form>
-        <form action="register.php" method="post" id="formUser" name="formUser" >
+        <form action="" method="post" id="formUser" name="formUser"  onSubmit="userRegister();return false;">
           <div class="form">
             <input type="hidden" name="register_type" value="mobile" />
                         <div class="item">
@@ -78,34 +77,23 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
                       <td width="33%" id="pwd_high">强</td>
                     </tr>
                   </table>
-                  </span> </div>
+                  </span>
+                </div>
               </div>
               <div class="item">
                 <input type="password" id="conform_password" name="confirm_password" class="text" placeholder="确认密码" onblur="check_conform_password(this.value);" autocomplete="off" />
                 <i class="i-pass"></i>
                 <div> <span class="label" id="conform_password_notice"></span> </div>
-              </div>
             </div>
-            
-             
-            
-                        <div class="item">
-              <input type="text" id="captcha" size="8" name="captcha" class="text text-te" placeholder="验证码" style="ime-mode: disabled" autocomplete="off" MaxLength="6" />
-              <label class="img" style="margin-left: 5px"> <img id="captcha_img" src="images/captcha.php" alt="captcha" style="vertical-align: middle; cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </label>
-              <i class="i-captcha"></i>
-              <div style="clear:both"> <span class="label" id="captcha_notice"></span> </div>
-            </div>
-             
-            
-             
-            
+
             <div class="item">
               <input id="mobile_code" class="text text-te fl" type="text" placeholder="手机验证码" name="mobile_code">
               <i class="i-phone"></i>
               <input id="zphone" class="zphone" type="button" value="获取手机验证码 ">
               <div> <span id="extend_field5i" class="label"></span> </div>
             </div>
-                        <div class="safety">
+
+            <div class="safety">
             	<input name="agreement" type="checkbox" value="1" checked="checked" class="checkbox" />
             	<label for="remember" class="mar-b">我已看过并接受《<a href="article.php?cat_id=-1" style="color:blue" target="_blank">用户协议</a>》</label>
           	</div>

@@ -206,7 +206,6 @@ function checkMobilePhone(mobile, callback) {
 	if (mobile == '') {
 		document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_blank;
 		document.getElementById('mobile_phone_notice').style.color = '#C81623';
-		submit_disabled = true;
 
 		if (mobileObj != null) {
 			mobileObj.focus();
@@ -215,7 +214,6 @@ function checkMobilePhone(mobile, callback) {
 	} else if (!Utils.isMobile(mobile)) {
 		document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_format;
 		document.getElementById('mobile_phone_notice').style.color = '#C81623';
-		submit_disabled = true;
 
 		if (mobileObj != null) {
 			mobileObj.focus();
@@ -223,12 +221,14 @@ function checkMobilePhone(mobile, callback) {
 	} else if(!checkMobile(mobile)){
 		document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_format;
 		document.getElementById('mobile_phone_notice').style.color = '#C81623';
-		submit_disabled = true;
+
 
 		if (mobileObj != null) {
 			mobileObj.focus();
 		}
-	}
+	}else{
+        document.getElementById('mobile_phone_notice').innerHTML = '';
+    }
 
 	if (submit_disabled) {
 		document.forms['formUser'].elements['Submit'].disabled = 'disabled';
@@ -242,48 +242,48 @@ function checkMobilePhone(mobile, callback) {
 	}
 }
 
-var cur_mobile_phone = null;
-function checkMobilePhoneExist(mobile, callback) {
-	var mobileObj = null;
-
-	if (typeof (mobile) == 'object') {
-		mobileObj = $(mobile);
-		mobile = mobileObj.val();
-	}
-
-	if (mobile == cur_mobile_phone && !$.isFunction(callback)) {
-		return;
-	}
-
-	$.post('register.php?act=check_mobile_exist', {
-		mobile: mobile
-	}, function(result) {
-		if (result == 'false') {
-			document.getElementById('mobile_phone_notice').innerHTML = msg_can_rg;
-			document.getElementById('mobile_phone_notice').style.color = '#093';
-			document.forms['formUser'].elements['Submit'].disabled = '';
-
-			if ($.isFunction(callback)) {
-				callback(true);
-			}
-		} else {
-			document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_registered;
-			document.getElementById('mobile_phone_notice').style.color = '#C81623';
-			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
-
-			if (mobileObj != null) {
-				mobileObj.focus();
-			}
-
-			if ($.isFunction(callback)) {
-				callback(false);
-			}
-		}
-
-		cur_mobile_phone = mobile;
-
-	}, 'text');
-}
+// var cur_mobile_phone = null;
+// function checkMobilePhoneExist(mobile, callback) {
+// 	var mobileObj = null;
+//
+// 	if (typeof (mobile) == 'object') {
+// 		mobileObj = $(mobile);
+// 		mobile = mobileObj.val();
+// 	}
+//
+// 	if (mobile == cur_mobile_phone && !$.isFunction(callback)) {
+// 		return;
+// 	}
+//
+// 	$.post('register.php?act=check_mobile_exist', {
+// 		mobile: mobile
+// 	}, function(result) {
+// 		if (result == 'false') {
+// 			document.getElementById('mobile_phone_notice').innerHTML = msg_can_rg;
+// 			document.getElementById('mobile_phone_notice').style.color = '#093';
+// 			document.forms['formUser'].elements['Submit'].disabled = '';
+//
+// 			if ($.isFunction(callback)) {
+// 				callback(true);
+// 			}
+// 		} else {
+// 			document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_registered;
+// 			document.getElementById('mobile_phone_notice').style.color = '#C81623';
+// 			document.forms['formUser'].elements['Submit'].disabled = 'disabled';
+//
+// 			if (mobileObj != null) {
+// 				mobileObj.focus();
+// 			}
+//
+// 			if ($.isFunction(callback)) {
+// 				callback(false);
+// 			}
+// 		}
+//
+// 		cur_mobile_phone = mobile;
+//
+// 	}, 'text');
+// }
 
 /**
  * 用户注册
@@ -509,7 +509,7 @@ function reg_by_mobile() {
 	}
 
 	if (msg.length > 0) {
-		alert(msg);
+		// alert(msg);
 		return false;
 	} else {
 		return true;
@@ -552,7 +552,27 @@ function sendEmailCode(emailObj, emailCodeObj, sendButton) {
 		}
 	});
 }
-
+function showMesInfo(msg) {
+    document.getElementById('conform_password_notice').innerHTML = msg;
+    document.getElementById('conform_password_notice').style.color = "#C81623";
+}
+//账户注册
+function userRegister() {
+    if(reg_by_mobile() == true){
+        Ajax.call( 'register/register', $("#formUser").serialize(), return_register , 'POST', 'JSON');
+    }
+}
+function return_register(result) {
+    if(result.code==0)
+    {
+        showMesInfo(result.msg);
+    }
+    else
+    {
+    	alert(result.msg)
+        location.href = "login";
+    }
+}
 /**
  * 发送手机验证码
  * 

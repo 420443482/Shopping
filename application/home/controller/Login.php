@@ -15,8 +15,7 @@ class Login extends Controller
         $username = input('post.username');//登陆账号
         $password = input('post.password');//登陆密码
         $remember = input('post.remember');//是否保存这个登陆信息
-        $user = Db::name('user_info')->where(array('user_name'=>$username,'user_password'=>md5($password)))->find();
-
+        $user = Db::name('user_info')->where(array('user_name'=>$username,'user_password'=>md5($password)))->whereOr(array('user_phone'=>$username))->find();
         if(!$user){
             //记录登陆信息
             $msg['code'] = '0';

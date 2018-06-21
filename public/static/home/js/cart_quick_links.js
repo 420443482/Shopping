@@ -76,7 +76,7 @@ jQuery(function($){
 			
 			quickShell.css({width:320});
 			
-			Ajax.call('get_ajax_content.php?act=get_content', 'data_type=' + type, return_content, 'POST', 'JSON');
+			// Ajax.call('get_ajax_content.php?act=get_content', 'data_type=' + type, return_content, 'POST', 'JSON');
 			
 			function return_content(result)
 			{
