@@ -10,7 +10,6 @@ use think\Session;
     {
         $user_id = session('user_id');
         $user_info = [];
-        list($activity_goods)=[];
         if(!empty($user_id)){
             $user_info = Db::name('user_info')->where(array('user_id'=>$user_id))->find();
         }
@@ -23,7 +22,8 @@ use think\Session;
 
         //侧边菜单显示
         $class_list = Db::name('goods_class')->where(array('is_display'=>0,'is_delete'=>0))->select();
-        list($class,$goods_class_array) = [];
+        list($class,$goods_class_array,$activity_goods) = array([],[],[]);
+
         foreach ($class_list as $k=>$v){
             if($v['child_class_id'] == 0){
                 $class[$k]['class_name'] =  $v['class_name'];
@@ -36,15 +36,23 @@ use think\Session;
         }
         array_values($class);
         //活动商品显示
-        $activity = Db::name('activity')->where(array('is_status'=>0))->select();
+        $date = time();//当前时间
+        $activity = Db::name('activity')->where(array('is_status'=>0,'activity_start_time'=>array('elt',$date)))->select();
         foreach ($activity as $k=>$v){
             $goods_id = json_decode($v['goods_id']);
+            $v['activity_end_time'] = date('Y-m-d H:i:s',$v['activity_end_time']);
             $activity_goods[$k] = $v;
-            foreach ($goods_id as $g){
-                if(isset($goods_Array[$g]))
-                $activity_goods[$k]['goods_info'][] =$goods_Array[$g];//指定活动旗下商品
+            foreach ($goods_id as $key=>$g){
+                if(isset($goods_Array[$g])) {
+                    $images =  json_decode($goods_Array[$g]['goods_images']);
+                    $goods_Array[$g]['goods_images'] =$images[0];
+                    $activity_goods[$k]['goods_info'][] = $goods_Array[$g];//指定活动旗下商品
+                }
             }
         }
+//        echo "<pre>";
+//        print_r($activity_goods);
+//        exit;
         $this->assign('activity_goods',$activity_goods);
         $this->assign('class',$class);
         $this->assign('goods_class_array',$goods_class_array);

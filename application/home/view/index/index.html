@@ -279,6 +279,7 @@
         </div>
     </div>
     <div class="channel-content" ectype="channel">
+        {foreach $activity_goods as $goods}
         <div class="seckill-channel" id="h-seckill">
             <div class="box-hd clearfix">
                 <i class="box_hd_arrow"></i>
@@ -286,9 +287,9 @@
                 <i class="box-hd-icon"></i>
                 <div class="sk-time-cd">
                     <div class="sk-cd-tit">距结束</div>
-                    <div class="cd-time fl" ectype="time" data-time='2018-06-13 22:00:00'>
-                        <div class="days hide"></div>
-                        <span class="split hide">天</span>
+                    <div class="cd-time fl" ectype="time" data-time="{$goods['activity_end_time']}">
+                        <div class="days"></div>
+                        <span class="split">天</span>
                         <div class="hours"></div>
                         <span class="split">时</span>
                         <div class="minutes"></div>
@@ -297,165 +298,33 @@
                         <span class="split">秒</span>
                     </div>
                 </div>
-                <div class="sk-more"><a href="seckill.php" target="_blank">更多秒杀</a> <i class="arrow"></i></div>
+                <div class="sk-more"><a href="seckill.php" target="_blank">更多{$goods.activity_name}</a> <i class="arrow"></i></div>
             </div>
             <div class="box-bd clearfix">
-                <ul>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=57" target="_blank"><img src="/static/home/images/0_thumb_g_1490209796384.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=57" target="_blank" title="航科家用按摩椅全自动全身电动多功能太空舱按摩器老人沙发椅 智能大腿气囊按摩 脚底3D推拿">航科家用按摩椅全自动全身电动多功能太空舱按摩器老人沙发椅 智能大腿气囊按摩 脚底3D推拿</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>2133.00</span>
-                                    <span class="original-price"><em>￥</em>2616.00</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=57&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=8" target="_blank"><img src="/static/home/images/0_thumb_g_1489102753231.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=8" target="_blank" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>145.00</span>
-                                    <span class="original-price"><em>￥</em>360.00</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=8&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=58" target="_blank"><img src="/static/home/images/0_thumb_g_1489106192791.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=58" target="_blank" title="歌梵 床头柜 地中海美式乡村蓝色田园床边柜 储物卧室家具 品质保障 用料环保 质保5年&#45;&#45;不单卖">歌梵 床头柜 地中海美式乡村蓝色田园床边柜 储物卧室家具 品质保障 用料环保 质保5年&#45;&#45;不单卖</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>2312.00</span>
-                                    <span class="original-price"><em>￥</em>240.00</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=58&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=9" target="_blank"><img src="/static/home/images/0_thumb_g_1489102950633.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=9" target="_blank" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>145.00</span>
-                                    <span class="original-price"><em>￥</em>540.00</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=9&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=10" target="_blank"><img src="/static/home/images/0_thumb_g_1490174741051.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=10" target="_blank" title="初棉纯色圆领长袖T恤打底衫秋衣女上衣体恤女士修身打底衣春秋 挺拔有型 棉氨材质 柔软舒适 耐洗耐磨">初棉纯色圆领长袖T恤打底衫秋衣女上衣体恤女士修身打底衣春秋 挺拔有型 棉氨材质 柔软舒适 耐洗耐磨</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>145.00</span>
-                                    <span class="original-price"><em>￥</em>78.00</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=10&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=54" target="_blank"><img src="/static/home/images/0_thumb_g_1490205126945.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=54" target="_blank" title="海得曼无线门铃 家用 不用电池门铃 智能自发电远距离一拖一拖二 按钮 不要电池 防水设计 两年换新">海得曼无线门铃 家用 不用电池门铃 智能自发电远距离一拖一拖二 按钮 不要电池 防水设计 两年换新</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>334.00</span>
-                                    <span class="original-price"><em>￥</em>99.60</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=54&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=6" target="_blank"><img src="/static/home/images/0_thumb_g_1489100550574.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=6" target="_blank" title="法国DK正品文胸套装女内衣性感蕾丝聚拢深V调整型小胸品牌收副乳 法国正品 蕾丝性感 原装包装 送女神必备">法国DK正品文胸套装女内衣性感蕾丝聚拢深V调整型小胸品牌收副乳 法国正品 蕾丝性感 原装包装 送女神必备</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>145.00</span>
-                                    <span class="original-price"><em>￥</em>309.59</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=6&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=55" target="_blank"><img src="/static/home/images/0_thumb_g_1490205156678.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=55" target="_blank" title="闽豹家用工具套装 五金工具箱 电工木工德国维修工具组套修理组合 质量稳定 坚固耐用 彩套包装 可团购定制">闽豹家用工具套装 五金工具箱 电工木工德国维修工具组套修理组合 质量稳定 坚固耐用 彩套包装 可团购定制</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>534.00</span>
-                                    <span class="original-price"><em>￥</em>99.60</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=55&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=7" target="_blank"><img src="/static/home/images/0_thumb_g_1489102299856.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=7" target="_blank" title="新款学院风韩版时尚太空棉宽松长袖印花圆领卫衣女">新款学院风韩版时尚太空棉宽松长袖印花圆领卫衣女</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>145.00</span>
-                                    <span class="original-price"><em>￥</em>279.59</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=7&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="opacity_img">
-                        <div class="p-img"><a href="seckill.php?id=56" target="_blank"><img src="/static/home/images/0_thumb_g_1490205189180.jpg" class="img-lazyload"></a></div>
-                        <div class="p-name"><a href="seckill.php?id=56" target="_blank" title="JOMOO 厨房水槽套餐双槽304不锈钢洗碗池 洗菜盆加厚水盆一体水槽 官方正品 赠运费险 五年联保 领券更实惠">JOMOO 厨房水槽套餐双槽304不锈钢洗碗池 洗菜盆加厚水盆一体水槽 官方正品 赠运费险 五年联保 领券更实惠</a></div>
-                        <div class="p-over">
-                            <div class="p-info">
-                                <div class="p-price">
-                                    <span class="shop-price"><em>￥</em>834.00</span>
-                                    <span class="original-price"><em>￥</em>1078.80</span>
-                                </div>
-                            </div>
-                            <div class="p-btn">
-                                <a href="seckill.php?id=56&amp;act=view"  target="_blank">立即抢购</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+               <ul>
+                   {foreach $goods['goods_info'] as $v}
+                   <li class="opacity_img">
+                       <div class="p-img"><a href="seckill.php?id=57" target="_blank"><img src="{$v['goods_images']}" class="img-lazyload"></a></div>
+                       <div class="p-name"><a href="seckill.php?id=57" target="_blank" title="{$v['goods_summary']}">{$v['goods_name']}</a></div>
+                       <div class="p-over">
+                           <div class="p-info">
+                               <div class="p-price">
+                                   <span class="shop-price"><em>￥</em>{$v['goods_sales_price']}</span>
+                                   <span class="original-price"><em>￥</em>{$v['goods_sales_price']}</span>
+                               </div>
+                           </div>
+                           <div class="p-btn">
+                               <a href="seckill.php?id=57&amp;act=view"  target="_blank">立即抢购</a>
+                           </div>
+                       </div>
+                   </li>
+                   {/foreach}
+               </ul>
                 <a href="javascript:void(0);" class="prev"><i class="iconfont icon-left"></i></a>
                 <a href="javascript:void(0);" class="next"><i class="iconfont icon-right"></i></a>
             </div>
         </div>
+        {/foreach}
         <input type="hidden" value="1" name="seckill_goods"/>		<div class="need-channel clearfix" id="h-need">
         <div class="channel-column" style="background:url(/static/home/images/1489108932830636804.jpg) no-repeat;">
             <div class="column-title">

@@ -6,14 +6,25 @@
 {include file="public/base" /}
 
 <div class="page-content-body " id="tab-page-content">
-    <section class="content">
-        <div class="callout callout-info">
-            <h4 style="float: left;">提示!</h4>
-
-            <p style="max-width: 100%;color:#FFF;">
-                <b style="color: #00a65a;">特别声明</b>：下列为商品列表信息
-            </p>
+    <div class="panel panel-default" >
+        <div class="panel-heading">查询条件</div>
+        <div class="panel-body">
+            <form id="formSearchs" action="goods.html" method="post" class="form-horizontals">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1" for="goods_name">商品名称</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="goods_name" name="goods_name" value="{$font['goods_name'] ?? ''}">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:15px">
+                    <div class="col-sm-2" style="text-align:right; float: right">
+                        <button type="submit" style="margin-left:50px" id="btn_query"   class="btn btn-primary">查询</button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+    <section class="content">
         <div class="row">
             <div class="col-md-12">
 
@@ -105,7 +116,7 @@
         </div>
     </section>
 </div>
-{load href="/static/js/modalmsg.js" /}
+<!--{load href="/static/admin/js/modalmsg.js" /}-->
 {include file="public/bottom" /}
 <script>
     $(function(){

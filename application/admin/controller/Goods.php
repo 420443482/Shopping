@@ -15,8 +15,14 @@ class Goods extends Base
     //显示商品列表信息
     public function index()
     {
+        $goods_name = input('post.goods_name');
+        list($font) = array([]);
+        if(!empty($goods_name))
+        {
+            $font['goods_name'] = $goods_name;
+            $where['goods_name'] = array('like',"%$goods_name%");
+        }
         $where['is_delete']= 0;
-
         $list_page= 0;
         $list_num = 10;
         $goods_page = input('post.page');//第几页
@@ -27,10 +33,10 @@ class Goods extends Base
         if(!empty($goods_page))$list_page=$goods_page;//第几页
 
         $goods = new GoodsModel();
-        $list = $goods->goods_index($where, 0, $list_num);
-
+        $list = $goods->goods_index($where, $list_page, $list_num);
         // 获取分页显示
         $page = $list->render();
+
 
         foreach ($list as $v){
             $v['goods_grounding_time'] = date('Y-m-d',$v['goods_grounding_time']);
@@ -42,6 +48,7 @@ class Goods extends Base
         }
 
         // 模板变量赋值
+        $this->assign('font', $font);
         $this->assign('list', $list);
         $this->assign('page', $page);
         $this->assign('total', $list->total());
