@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\wxxs\controller;
 use app\common\model\User;
 use think\Controller;
 class Str extends Controller
