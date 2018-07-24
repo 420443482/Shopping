@@ -37,7 +37,8 @@ class Novel extends Controller
     //搜索小说
     public function getItem($word,$p=1){
         header("Content-Type:text/html;charset=UTF-8");
-        $url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
+        //本地测试连接:$url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
+        $url = "https://www.xxbiquge.com/search.php?keyword=".$word.'&page='.$p;
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
         curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
