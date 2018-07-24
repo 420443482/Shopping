@@ -15,7 +15,7 @@ class Novel extends Controller
     {
 
         $keyword = $_REQUEST['name'];
-        $keyword = '大主宰';
+//        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
         $array = [];
 
@@ -47,7 +47,6 @@ class Novel extends Controller
         if ($content == FALSE) {
             echo "error:" . curl_error ( $ch );
         }
-
         curl_close ( $ch );
         return $content;
     }
