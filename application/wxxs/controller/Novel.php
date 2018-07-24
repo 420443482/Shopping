@@ -13,16 +13,31 @@ class Novel extends Controller
     //显示首页
     public function novel_list()
     {
-        $input = $_REQUEST['name'];
-        $keyword = '斗罗大陆';
+        $input_name = $_REQUEST['name'];
+        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
+        $array = [];
+
+        if($data['page']>1){
+            for($p=1; $data['page']>=$p; $p++){
+               $translate =  $this->getItem($keyword,$p);
+               $list['translate']   =  array_merge($translate['translate'],$array);
+               $array = $list['translate'];
+            }
+            $data = isset($list)?$list:[];
+        }
+        foreach ($data['translate'] as $k=>&$v){
+            $v['sort'] = levenshtein($keyword,$v['novel_name']);//相似度匹配
+
+        }
+        array_multisort(array_column($data['translate'],'sort'),SORT_ASC,$data['translate']);//根据指定索引的值排序
         echo  json_encode(array('data'=>$data));
-        exit;
+
     }
     //搜索小说
-    public function getItem($word){
+    public function getItem($word,$p=1){
         header("Content-Type:text/html;charset=UTF-8");
-        $url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word);
+        $url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
         curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -100,8 +115,8 @@ class Novel extends Controller
         //小说页数
         preg_match_all("/<div class=\"search-result-page-main\".*?>.*?<\/div>/ism",$content,$page);
         $page = substr(preg_replace('/\D/s', '', $page[0][0]),-1);
-        $data['list'] = $link_array;//小说资料
-        $data['max_page'] = $page;//小说最大页码
+        $data['translate'] = $link_array;//小说资料
+        $data['page'] = empty($page)?$p:$page;
         return $data;
     }
 
