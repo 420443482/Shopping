@@ -13,8 +13,8 @@ class Novel extends Controller
     //显示首页
     public function novel_list()
     {
-        $input_name = $_REQUEST['name'];
-        $keyword = '大主宰';
+        $keyword = $_REQUEST['name'];
+//        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
         $array = [];
 
