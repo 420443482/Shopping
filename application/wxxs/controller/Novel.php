@@ -32,7 +32,7 @@ class Novel extends Controller
         }
         array_multisort(array_column($data['translate'],'sort'),SORT_ASC,$data['translate']);//根据指定索引的值排序
         echo  json_encode(array('data'=>$data));
-
+        exit;
     }
     //搜索小说
     public function getItem($word,$p=1){
