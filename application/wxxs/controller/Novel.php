@@ -135,7 +135,7 @@ class Novel extends Controller
 //       echo "<pre>";
 //        print_r($page[0][0]);
 //        exit;
-       $data=str_replace(array("&nbsp;"),array(""),$data[0][0]);
+       $data=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$data[0][0]);
 
         echo json_encode(array('code'=>1,'data'=>strip_tags($data[0][0])));
         exit;
