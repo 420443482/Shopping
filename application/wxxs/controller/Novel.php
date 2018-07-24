@@ -27,7 +27,7 @@ class Novel extends Controller
             $data = isset($list)?$list:[];
         }
         foreach ($data['translate'] as $k=>&$v){
-            $v['sort'] = levenshtein($keyword,$v['novel_name']);//相似度匹配
+            $v['sort'] = levenshtein(urldecode($keyword),$v['novel_name']);//相似度匹配
 
         }
         array_multisort(array_column($data['translate'],'sort'),SORT_ASC,$data['translate']);//根据指定索引的值排序
