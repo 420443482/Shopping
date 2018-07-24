@@ -15,7 +15,7 @@ class Novel extends Controller
     {
 
         $keyword = $_REQUEST['name'];
-//        $keyword = '大主宰';
+        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
         $array = [];
 
@@ -36,23 +36,26 @@ class Novel extends Controller
         echo  json_encode(array('code'=>1,'data'=>$data, 'count'=>count($data['translate'])));
         exit;
     }
-    //搜索小说
-    public function getItem($word,$p=1){
+    //请求CURL
+    public function curl($url){
         header("Content-Type:text/html;charset=UTF-8");
-        //本地测试连接:$url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
-        $url = "https://www.xxbiquge.com/search.php?keyword=".$word.'&page='.$p;
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
         curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//这个是重点。
         $content = curl_exec ($ch);
-//        print_r($content);
-//        exit;
         if ($content == FALSE) {
             echo "error:" . curl_error ( $ch );
         }
 
         curl_close ( $ch );
+        return $content;
+    }
+    //搜索小说
+    public function getItem($word,$p=1){
+//        本地测试连接:$url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
+        $url = "https://www.xxbiquge.com/search.php?keyword=".$word.'&page='.$p;
+        $content = $this->curl($url);
         /***
          * 小说目录链接($link_array)
          *$link_array[$j]['whole']:小说完整目录
@@ -123,7 +126,19 @@ class Novel extends Controller
         return $data;
     }
 
-
+    //截取小说内容
+    public function intercept_content(){
+        $url = $_REQUEST['href'];
+        $url = 'http://www.xxbiquge.com/0_142/8884200.html';
+        $url = str_replace("http","https",$url);
+        $content = $this->curl($url);
+        preg_match_all("/<div id=\"content\".*?>.*?<\/div>/ism",$content,$data);
+//       echo "<pre>";
+//        print_r($page[0][0]);
+//        exit;
+        echo json_encode(array('code'=>1,'data'=>$data[0][0]));
+        exit;
+    }
 
 
 }
