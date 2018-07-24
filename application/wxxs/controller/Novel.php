@@ -13,6 +13,7 @@ class Novel extends Controller
     //显示首页
     public function novel_list()
     {
+
         $keyword = $_REQUEST['name'];
 //        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
@@ -30,8 +31,9 @@ class Novel extends Controller
             $v['sort'] = levenshtein(urldecode($keyword),$v['novel_name']);//相似度匹配
 
         }
+
         array_multisort(array_column($data['translate'],'sort'),SORT_ASC,$data['translate']);//根据指定索引的值排序
-        echo  json_encode(array('code'=>1,'data'=>$data));
+        echo  json_encode(array('code'=>1,'data'=>$data, 'count'=>count($data['translate'])));
         exit;
     }
     //搜索小说
