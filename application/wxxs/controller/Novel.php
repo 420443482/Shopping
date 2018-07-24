@@ -127,7 +127,9 @@ class Novel extends Controller
 
     //截取小说内容
     public function intercept_content(){
-        $url = $_REQUEST['url'];
+        $url = urldecode($_REQUEST['url']);
+        print_r($url);
+        exit;
 //        $url = 'http://www.xxbiquge.com/0_142/8884200.html';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
