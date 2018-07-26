@@ -135,12 +135,55 @@ class Novel extends Controller
 //       echo "<pre>";
 //        print_r($page[0][0]);
 //        exit;
-       $data=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$data[0][0]);
+        $data=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$data[0][0]);//替换HTML标签
 
         echo json_encode(array('code'=>1,'data'=>strip_tags($data)));
         exit;
     }
-
+    //显示小说所有章节目录
+    public function chapter_directory(){
+//        $url = urldecode($_REQUEST['url']);
+        $url = 'http://www.xxbiquge.com/0_142/';
+        $url = str_replace("http","https",$url);
+        $content = $this->curl($url);
+        //小说作者信息
+        preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
+        preg_match_all("/<p>(.*?)<\/p>/",$user[0][0],$u);//作者名称，时间，最新章节等
+        preg_match_all("/<h1>(.*?)<\/h1>/",$user[0][0],$h);//小说标题
+        //小说简介
+        preg_match_all("/<div id=\"intro\".*?>.*?<\/div>/ism",$content,$intro);
+        preg_match_all("/<p>(.*?)<\/p>/",$intro[0][0],$in);
+        $data['intro'] = $in[1][0];//简介
+        preg_match_all("/href=\"(.*)\" /", $u[0][3], $link);//最新章节链接
+        $link_m = 'http://www.xxbiquge.com';
+        $data['link'] = $link_m.$link[1][0];//最新章节链接
+        //小说章节目录
+        preg_match_all("/<div id=\"list\".*?>.*?<\/div>/ism",$content,$chapter);
+        preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
+        foreach ($c[0] as $k=>$v){
+            preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
+            $data[$k]['directory_name'] = $directory_name[1];
+            preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
+            $data[$k]['directory_link'] = $link_m.$directory_link[1];
+        }
+        $user_array = ['name','status','update_time','chapter'];
+        foreach ($u[0] as $k=>$v){
+            $v = strip_tags($v);
+            $info = str_replace(array("&nbsp;","<br />"),array(" ","\n"),$v);//替换HTML标签
+            if($k==0){
+               $info = substr($info,-12);//名称
+            }elseif ($k == 1){
+                $info = substr($info,13,-26);//状态
+            }elseif ($k == 2){
+                $info = substr($info,15);//更新时间
+            }elseif ($k == 3){
+                $info = substr($info,15);//最新章节名称
+            }
+            $data[$user_array[$k]]=$info;
+        }
+        echo json_encode(array('code'=>1,'data'=>$data));
+        exit;
+    }
 
 }
 
