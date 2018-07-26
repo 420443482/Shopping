@@ -126,18 +126,27 @@ class Novel extends Controller
     }
 
     //截取小说内容
-    public function intercept_content(){
+        public function intercept_content(){
+        $link_m = 'http://www.xxbiquge.com';
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/0_142/8884200.html';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
-        preg_match_all("/<div id=\"content\".*?>.*?<\/div>/ism",$content,$data);
+        preg_match("/<div class=\"bookname\".*?>.*?<\/div>/ism",$content,$chapter);
+        preg_match("/<h1>(.*?)<\/h1>/",$chapter[0],$chapter_title);//标题
+        $data['chapter_title'] = $chapter_title[1];
+        preg_match("/<div class=\"bottem1\".*?>.*?<\/div>/ism",$content,$directory);
+        preg_match_all("/<a .*?href=\"(.*?)\".*?>/is", $directory[0], $directory_link);//上下章节目录链接
+        $data['prevlink'] = $link_m.$directory_link[1][0];
+        $data['chapterlink'] =$link_m.$directory_link[1][1];
+        $data['nextlink'] =$link_m.$directory_link[1][2];
+        preg_match_all("/<div id=\"content\".*?>.*?<\/div>/ism",$content,$list);
 //       echo "<pre>";
 //        print_r($page[0][0]);
 //        exit;
-        $data=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$data[0][0]);//替换HTML标签
-
-        echo json_encode(array('code'=>1,'data'=>strip_tags($data)));
+        $list=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$list[0][0]);//替换HTML标签
+        $data['content'] = strip_tags($list);
+        echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
     //显示小说所有章节目录
