@@ -163,10 +163,11 @@ class Novel extends Controller
         preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
         foreach ($c[0] as $k=>$v){
             preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
-            $data[$k]['directory_name'] = $directory_name[1];
+            $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
             preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
-            $data[$k]['directory_link'] = $link_m.$directory_link[1];
+            $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
+        
         $user_array = ['name','status','update_time','chapter'];
         foreach ($u[0] as $k=>$v){
             $v = strip_tags($v);
