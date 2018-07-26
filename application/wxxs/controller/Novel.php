@@ -150,10 +150,11 @@ class Novel extends Controller
         preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
         preg_match_all("/<p>(.*?)<\/p>/",$user[0][0],$u);//作者名称，时间，最新章节等
         preg_match_all("/<h1>(.*?)<\/h1>/",$user[0][0],$h);//小说标题
+        $data['title'] = $h[1];
         //小说简介
         preg_match_all("/<div id=\"intro\".*?>.*?<\/div>/ism",$content,$intro);
         preg_match_all("/<p>(.*?)<\/p>/",$intro[0][0],$in);
-        $data['intro'] = $in[1][0];//简介
+        $data['intro'] =str_replace(array("&nbsp;","<br />"),array(" ","\n"),$in[1][0]); //简介
         preg_match_all("/href=\"(.*)\" /", $u[0][3], $link);//最新章节链接
         $link_m = 'http://www.xxbiquge.com';
         $data['link'] = $link_m.$link[1][0];//最新章节链接
