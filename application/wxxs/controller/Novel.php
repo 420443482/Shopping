@@ -142,8 +142,8 @@ class Novel extends Controller
     }
     //显示小说所有章节目录
     public function chapter_directory(){
-//        $url = urldecode($_REQUEST['url']);
-        $url = 'http://www.xxbiquge.com/0_142/';
+        $url = urldecode($_REQUEST['url']);
+//        $url = 'http://www.xxbiquge.com/0_142/';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         //小说作者信息
@@ -167,7 +167,7 @@ class Novel extends Controller
             preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
             $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
-        
+
         $user_array = ['name','status','update_time','chapter'];
         foreach ($u[0] as $k=>$v){
             $v = strip_tags($v);
