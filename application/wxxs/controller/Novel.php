@@ -37,8 +37,12 @@ class Novel extends Controller
         exit;
     }
     //请求CURL
-    public function curl($url){
-        header("Content-Type:text/html;charset=UTF-8");
+    public function curl($url,$mode=''){
+        if(!empty($mode)){
+            header("Content-Type:text/html;charset=GBK");
+        }else{
+            header("Content-Type:text/html;charset=UTF-8");
+        }
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
         curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -152,7 +156,7 @@ class Novel extends Controller
     //显示小说所有章节目录
     public function chapter_directory(){
         $url = urldecode($_REQUEST['url']);
-//        $url = 'http://www.xxbiquge.com/0_142/';
+    //        $url = 'http://www.xxbiquge.com/0_142/';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         //小说作者信息
@@ -193,6 +197,17 @@ class Novel extends Controller
             $data[$user_array[$k]]=$info;
         }
         echo json_encode(array('code'=>1,'data'=>$data));
+        exit;
+    }
+
+    //小说热搜榜
+    public  function hot_search()
+    {
+        $url = 'https://top.baidu.com/buzz/book.html';
+        $content = $this->curl($url, 'GBK');
+        preg_match_all('#<a[^>]*?class=\"list-title\"[^>]*>(.*?)</a>#is',$content,$chapter_name);
+        $data[]
+        print_r();
         exit;
     }
 
