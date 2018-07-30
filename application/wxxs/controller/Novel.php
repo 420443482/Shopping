@@ -213,8 +213,7 @@ class Novel extends Controller
                 if(!isset($chapter_name[1][$i])) break;
                 $data[] = mb_convert_encoding($chapter_name[1][$i], "UTF-8", "GBK");
         }
-        print_r($data);
-        exit;
+       
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
