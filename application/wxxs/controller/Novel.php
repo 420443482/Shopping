@@ -147,7 +147,7 @@ class Novel extends Controller
         $list=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$list[0][0]);//替换HTML标签
         $data['content'] = strip_tags($list);
         echo json_encode(array('code'=>1,'data'=>$data));
-        exit;
+        exit;   
     }
     //显示小说所有章节目录
     public function chapter_directory(){
