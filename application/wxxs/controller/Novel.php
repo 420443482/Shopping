@@ -203,11 +203,16 @@ class Novel extends Controller
     //小说热搜榜
     public  function hot_search()
     {
+        $count = isset($_REQUEST['count'])?$_REQUEST['count']:0;
         $url = 'https://top.baidu.com/buzz/book.html';
         $content = $this->curl($url, 'GBK');
+        $data = [];
         preg_match_all('#<a[^>]*?class=\"list-title\"[^>]*>(.*?)</a>#is',$content,$chapter_name);
-        $data[]
-        print_r();
+        for($i=$count*17; $i<=$count+17; $i++){
+                if(!isset($chapter_name[1][$i])) break;
+                $data[] = $chapter_name[1][$i];
+        }
+        echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
 
