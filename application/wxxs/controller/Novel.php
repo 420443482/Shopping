@@ -208,10 +208,13 @@ class Novel extends Controller
         $content = $this->curl($url, 'GBK');
         $data = [];
         preg_match_all('#<a[^>]*?class=\"list-title\"[^>]*>(.*?)</a>#is',$content,$chapter_name);
-        for($i=$count*17; $i<=$count+17; $i++){
+        $sum = $count*17+17;
+        for($i=$count*17; $i<=$sum; $i++){
                 if(!isset($chapter_name[1][$i])) break;
                 $data[] = mb_convert_encoding($chapter_name[1][$i], "UTF-8", "GBK");
         }
+        print_r($data);
+        exit;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
