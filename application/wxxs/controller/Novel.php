@@ -210,7 +210,7 @@ class Novel extends Controller
         preg_match_all('#<a[^>]*?class=\"list-title\"[^>]*>(.*?)</a>#is',$content,$chapter_name);
         for($i=$count*17; $i<=$count+17; $i++){
                 if(!isset($chapter_name[1][$i])) break;
-                $data[] = $chapter_name[1][$i];
+                $data[] = mb_convert_encoding($chapter_name[1][$i], "UTF-8", "GBK");
         }
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
