@@ -98,7 +98,9 @@ class Novel extends Controller
         preg_match_all("/<p class=\"result-game-item-desc\".*?>.*?<\/p>/ism",$content,$brief);
         foreach ($brief[0] as $k=>$v){
             preg_match('/>.*</', $v, $b);
-            $link_array[$k]['brief'] = substr($b[0],1,strlen($b[0])-2);
+            $briefs = substr($b[0],1,strlen($b[0])-2);
+            $briefs_array=str_replace(array("&nbsp;","<br />","<br>"),array("　","\n","\n"),$briefs);//替换HTML标签
+            $link_array[$k]['brief'] = $briefs_array;
         }
         //小说名称和作者名称
         preg_match_all("/<span>.*?<\/span>/ism",$content,$name);
@@ -168,7 +170,7 @@ class Novel extends Controller
         //小说简介
         preg_match_all("/<div id=\"intro\".*?>.*?<\/div>/ism",$content,$intro);
         preg_match_all("/<p>(.*?)<\/p>/",$intro[0][0],$in);
-        $data['intro'] =str_replace(array("&nbsp;","<br />","<br>"),array(" ","\n"," "),$in[1][0]); //简介
+        $data['intro'] =str_replace(array("&nbsp;","<br />","<br>"),array("　","\n","\n"),$in[1][0]); //简介
         preg_match_all("/href=\"(.*)\" /", $u[0][3], $link);//最新章节链接
         $link_m = 'http://www.xxbiquge.com';
         $data['link'] = $link_m.$link[1][0];//最新章节链接
