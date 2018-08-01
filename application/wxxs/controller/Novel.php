@@ -156,7 +156,7 @@ class Novel extends Controller
     //显示小说所有章节目录
     public function chapter_directory(){
         $url = urldecode($_REQUEST['url']);
-    //        $url = 'http://www.xxbiquge.com/0_142/';
+//            $url = 'http://www.xxbiquge.com/75_75939/';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         //小说作者信息
@@ -167,7 +167,7 @@ class Novel extends Controller
         //小说简介
         preg_match_all("/<div id=\"intro\".*?>.*?<\/div>/ism",$content,$intro);
         preg_match_all("/<p>(.*?)<\/p>/",$intro[0][0],$in);
-        $data['intro'] =str_replace(array("&nbsp;","<br />"),array(" ","\n"),$in[1][0]); //简介
+        $data['intro'] =str_replace(array("&nbsp;","<br />","<br>"),array(" ","\n"," "),$in[1][0]); //简介
         preg_match_all("/href=\"(.*)\" /", $u[0][3], $link);//最新章节链接
         $link_m = 'http://www.xxbiquge.com';
         $data['link'] = $link_m.$link[1][0];//最新章节链接
@@ -196,6 +196,9 @@ class Novel extends Controller
             }
             $data[$user_array[$k]]=$info;
         }
+//        echo "<pre>";
+//        print_r($data);
+//        exit;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
@@ -213,7 +216,7 @@ class Novel extends Controller
                 if(!isset($chapter_name[1][$i])) break;
                 $data[] = mb_convert_encoding($chapter_name[1][$i], "UTF-8", "GBK");
         }
-       
+
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
