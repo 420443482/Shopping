@@ -133,9 +133,10 @@ class Novel extends Controller
         public function intercept_content(){
         $link_m = 'http://www.xxbiquge.com';
         $url = urldecode($_REQUEST['url']);
-//        $url = 'http://www.xxbiquge.com/0_142/8884200.html';
+        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
+
         preg_match("/<div class=\"bookname\".*?>.*?<\/div>/ism",$content,$chapter);
         preg_match("/<h1>(.*?)<\/h1>/",$chapter[0],$chapter_title);//标题
         $data['chapter_title'] = $chapter_title[1];
@@ -148,7 +149,7 @@ class Novel extends Controller
 //       echo "<pre>";
 //        print_r($page[0][0]);
 //        exit;
-        $list=str_replace(array("&nbsp;","<br />"),array(" ","\n"),$list[0][0]);//替换HTML标签
+        $list=str_replace(array("&nbsp;","<br>"),array("&nbsp;","\n"),$list[0][0]);//替换HTML标签
         $data['content'] = strip_tags($list);
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;   
