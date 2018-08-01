@@ -149,7 +149,7 @@ class Novel extends Controller
 //       echo "<pre>";
 //        print_r($page[0][0]);
 //        exit;
-        $list=str_replace(array("&nbsp;","<br />","<br>"),array("　　","\n","\n"),$list[0][0]);//替换HTML标签
+        $list=str_replace(array("&nbsp;","<br />","<br>"),array("　","\n","\n"),$list[0][0]);//替换HTML标签
             $data['content'] = strip_tags($list);
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;   
