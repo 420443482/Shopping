@@ -183,7 +183,7 @@ class Novel extends Controller
 
         //小说图片
         preg_match('/<img.*?src="(.*?)".*?>/is', $content, $cover);
-        $data['title'] = $cover[1];
+        $data['u_images'] = $cover[1];
         //小说作者信息
         preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
         preg_match_all("/<p>(.*?)<\/p>/",$user[0][0],$u);//作者名称，时间，最新章节等
