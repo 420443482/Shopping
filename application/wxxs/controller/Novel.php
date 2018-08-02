@@ -163,6 +163,9 @@ class Novel extends Controller
         $content = $this->curl($url);
         $link_m = 'http://www.xxbiquge.com';
         //小说章节目录
+        preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
+        preg_match_all("/<h1>(.*?)<\/h1>/",$user[0][0],$h);//小说标题
+        $data['title'] = $h[1];
         $data = [];
         preg_match_all("/<div id=\"list\".*?>.*?<\/div>/ism",$content,$chapter);
         preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
