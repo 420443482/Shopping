@@ -135,7 +135,7 @@ class Novel extends Controller
         public function intercept_content(){
         $link_m = 'http://www.xxbiquge.com';
         $url = urldecode($_REQUEST['url']);
-        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
+//        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
 
@@ -158,10 +158,14 @@ class Novel extends Controller
     }
     //显示小说所有章节目录
     public function chapter_directory(){
-        $url = urldecode($_REQUEST['url']);
-//            $url = 'http://www.xxbiquge.com/75_75939/';
+//        $url = urldecode($_REQUEST['url']);
+            $url = 'http://www.xxbiquge.com/75_75939/';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
+
+        //小说图片
+        preg_match('/<img.*?src="(.*?)".*?>/is', $content, $cover);
+        $data['title'] = $cover[1];
         //小说作者信息
         preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
         preg_match_all("/<p>(.*?)<\/p>/",$user[0][0],$u);//作者名称，时间，最新章节等
@@ -177,12 +181,13 @@ class Novel extends Controller
         //小说章节目录
         preg_match_all("/<div id=\"list\".*?>.*?<\/div>/ism",$content,$chapter);
         preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
-        foreach ($c[0] as $k=>$v){
-            preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
-            $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
-            preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
-            $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
-        }
+        $data['count'] = count($c[0]);
+//        foreach ($c[0] as $k=>$v){
+//            preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
+//            $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
+/*            preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);*/
+//            $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
+//        }
 
         $user_array = ['name','status','update_time','chapter'];
         foreach ($u[0] as $k=>$v){
