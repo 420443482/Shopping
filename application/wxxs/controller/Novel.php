@@ -205,7 +205,7 @@ class Novel extends Controller
         preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
         $data['count'] = count($c[0]);
         //小说链接
-        $data['url'] = urlencode($_REQUEST['url']);
+        $data['u_url'] = urlencode($_REQUEST['url']);
         $user_array = ['name','status','update_time','chapter'];
         foreach ($u[0] as $k=>$v){
             $v = strip_tags($v);
