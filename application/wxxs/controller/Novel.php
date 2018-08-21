@@ -158,8 +158,8 @@ class Novel extends Controller
     }
     //显示小说所有章节
     public function directory(){
-//      $url = urldecode($_REQUEST['url']);
-        $url = 'http://www.xxbiquge.com/75_75939/';
+        $url = urldecode($_REQUEST['url']);
+//        $url = 'http://www.xxbiquge.com/75_75939/';
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         $link_m = 'http://www.xxbiquge.com';
