@@ -169,12 +169,31 @@ class Novel extends Controller
         $data['title'] = $h[1];
         preg_match_all("/<div id=\"list\".*?>.*?<\/div>/ism",$content,$chapter);
         preg_match_all("/<dd>(.*?)<\/dd>/",$chapter[0][0],$c);
+        $sum_directory = count($c[0]);//共多少章节
+        $sy_directory = ceil($sum_directory/100);
+        $j = 0;
+        $x = 1;
+        $directory_class =[];
+        for ($i=1; $i<=$sy_directory; $i++){
+            if($i == $sy_directory){
+                $directory_class[$j]['top'] = $x;
+                $directory_class[$j]['bottom'] = $sum_directory;
+            }else{
+                $directory_class[$j]['top'] = $x;
+                $directory_class[$j]['bottom'] = $i*100;
+            }
+            $x = $directory_class[$j]['bottom'];
+            $j++;
+        }
+
+
         foreach ($c[0] as $k=>$v){
             preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
             $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
                     preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
             $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
+        $data['directory_class'] = $directory_class;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
     }
