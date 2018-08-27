@@ -187,14 +187,15 @@ class Novel extends Controller
             $x = $directory_class[$j]['bottom'];
             $j++;
         }
-        $list = array_slice($c[0],$w_top-1,$w_bottom);
+        $list = array_slice($c[0],$w_top-1,100);
+
         foreach ($list as $k=>$v){
             preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
             $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
                     preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
             $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
-        
+        $data['directory_sm'] = $w_top.'-'.$w_bottom.'章';
         $data['directory_class'] = $directory_class;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
