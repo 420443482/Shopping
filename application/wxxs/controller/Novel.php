@@ -158,8 +158,10 @@ class Novel extends Controller
     }
     //显示小说所有章节
     public function directory(){
-        $url = urldecode($_REQUEST['url']);
-//        $url = 'http://www.xxbiquge.com/75_75939/';
+//        $url = urldecode($_REQUEST['url']);
+        $url = 'http://www.xxbiquge.com/75_75939/';
+        $w_top = isset($_REQUEST['top'])?$_REQUEST['top']:1;
+        $w_bottom = isset($_REQUEST['bottom'])?$_REQUEST['bottom']:100;
         $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         $link_m = 'http://www.xxbiquge.com';
@@ -185,14 +187,14 @@ class Novel extends Controller
             $x = $directory_class[$j]['bottom'];
             $j++;
         }
-
-
-        foreach ($c[0] as $k=>$v){
+        $list = array_slice($c[0],$w_top-1,$w_bottom);
+        foreach ($list as $k=>$v){
             preg_match("/<a href=\"[^\"]*\"[^>]*>(.*)<\/a>/",$v,$directory_name);
             $data['chapter_directory'][$k]['directory_name'] = $directory_name[1];
                     preg_match("/<a .*?href=\"(.*?)\".*?>/is", $v, $directory_link);
             $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
+        
         $data['directory_class'] = $directory_class;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
