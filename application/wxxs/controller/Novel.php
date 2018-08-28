@@ -196,6 +196,9 @@ class Novel extends Controller
             $data['chapter_directory'][$k]['directory_link'] = $link_m.$directory_link[1];
         }
         $data['directory_sm'] = $w_top.'-'.$w_bottom.'章';
+        $data['directory_top'] = $w_top;
+        $data['directory_bottom'] = $w_bottom;
+        $data['directory_count'] = $sum_directory;
         $data['directory_class'] = $directory_class;
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;
@@ -211,6 +214,7 @@ class Novel extends Controller
         preg_match('/<img.*?src="(.*?)".*?>/is', $content, $cover);
         $data['u_images'] = $cover[1];
         //小说作者信息
+
         preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
         preg_match_all("/<p>(.*?)<\/p>/",$user[0][0],$u);//作者名称，时间，最新章节等
         preg_match_all("/<h1>(.*?)<\/h1>/",$user[0][0],$h);//小说标题
