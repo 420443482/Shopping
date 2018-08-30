@@ -11,6 +11,7 @@ class Video extends Controller
        if(empty($type))$this->error('请选择视频分类');
        $data = Db::name('video')->where(array('video_type'=>$type))->select();
        echo json_encode(array('code'=>1,'data'=>$data));
+       exit;
    }
 }
 
