@@ -1,0 +1,202 @@
+{extend name="template/edit_base" /}
+{block name="content"}
+<style>
+    .check_css3 span {position: relative;}
+    .check_css3 .input_check {position: absolute;visibility: hidden;}
+    .check_css3 .input_check+label {display: inline-block;width: 16px;height: 16px;border: 1px solid #ddd;}
+    .check_css3 .input_check:checked+label:after {content: "";position: absolute;left: 2px;bottom: 12px;width: 9px;height: 4px; border: 2px solid #e92333;border-top-color: transparent;border-right-color: transparent; -ms-transform: rotate(-60deg); -moz-transform: rotate(-60deg); -webkit-transform: rotate(-60deg); transform: rotate(-45deg);}
+</style>
+<div class="page-container">
+    <form class="form form-horizontal" id="form-article-add"  method="post" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="hidden" value="{$list.goods_id ?? ''}" name="goods_id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_name ?? ''}" placeholder="" name="goods_name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_summary ?? ''}" placeholder="" name="goods_summary">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品分类：</label>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="one_class_id" class="select" id="class_level_1">
+                    {if isset($list.one_class_id)}
+                    <option style="display: none;" value="{$list.one_class_id}">{$class_name[$list.one_class_id]}</option>
+                    {/if}
+					<option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="two_class_id" class="select" id="class_level_2">
+                    {if isset($list.two_class_id)}
+                    <option style="display: none;" value="{$list.two_class_id}">{$class_name[$list.two_class_id]}</option>
+                    {/if}
+                    <option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="three_class_id" class="select" id="class_level_3">
+                    {if isset($list.three_class_id)}
+                    <option style="display: none;" value="{$list.three_class_id}">{$class_name[$list.three_class_id]}</option>
+                    {/if}
+                    <option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">市场价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_market_price}" placeholder=""  name="goods_market_price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">进货价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_buying_price}" placeholder=""  name="goods_buying_price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">销售价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_sales_price}" placeholder=""  name="goods_sales_price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">库存：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.goods_stock}" placeholder=""  name="goods_stock">
+            </div>
+        </div>
+        <div class="row cl check_css3" >
+            <label class="form-label col-xs-4 col-sm-2">是否包邮：</label>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check4" name="goods_is_shipping"><label for="check4" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl check_css3">
+            <label class="form-label col-xs-4 col-sm-2">是否包邮：</label>
+            <span style="margin-left:14px;"><input type="checkbox"class="input_check"  {if isset($list.goods_is_discount) && $list.goods_is_discount == 1} checked {/if} id="check5" name="goods_is_discount"><label for="check5" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl check_css3">
+            <label class="form-label col-xs-4 col-sm-2">是否上架：</label>
+            <span style="margin-left:14px;"><input type="checkbox"class="input_check" {if isset($list.goods_is_grounding) && $list.goods_is_grounding == 1} checked {/if} id="check6" name="goods_is_grounding"><label for="check6" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上架日期：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="date" class="input-text" value="{if isset($list.goods_grounding_time)}{$list.goods_grounding_time|date='Y-m-d',###}{/if}" placeholder=""  name="goods_grounding_time">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下架日期：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="date" class="input-text" value="{if isset($list.goods_undercarriage_time)}{$list.goods_undercarriage_time|date='Y-m-d',###}{/if}" placeholder=""  name="goods_undercarriage_time">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">商品简介：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="goods_description" cols="" rows="" class="textarea" placeholder="最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onkeyup="$.Huitextarealength(this,200)">{$list.goods_description ?? ''}</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">详图：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <div class="uploader-list-container">
+                    <div class="queueList">
+                        <div id="dndArea" class="placeholder">
+                            <div id="filePicker-2" class="webuploader-container"><div class="webuploader-pick">点击选择图片</div><div id="rt_rt_1cptr52vh1d0si111ldk1pqh12mt6" style="position: absolute; top: 20px; left: 0px; width: 168px; height: 44px; overflow: hidden; bottom: auto; right: auto;"><input type="file" name="file" class="webuploader-element-invisible" multiple="multiple"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
+                            <p>或将照片拖到这里，单次最多可选300张</p>
+                        </div>
+                        <ul class="filelist"></ul></div>
+                    <div class="statusBar" style="display:none;">
+                        <div class="progress" style="display: none;"> <span class="text">0%</span> <span class="percentage" style="width: 0%;"></span> </div>
+                        <div class="info">共0张（0B），已上传0张</div>
+                        <div class="btns">
+                            <div id="filePicker2" class="webuploader-container"><div class="webuploader-pick">继续添加</div><div id="rt_rt_1cptr52vie317k51jlt1cglc5i9" style="position: absolute; top: 0px; left: 0px; width: 38px; height: 2px; overflow: hidden; bottom: auto; right: auto;"><input type="file" name="file" class="webuploader-element-invisible" multiple="multiple"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
+                            <div class="uploadBtn state-pedding">开始上传</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary radius">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/upload.js"></script>
+<script type="text/javascript" src="__STATIC__/js/map_uploader.js"></script>
+
+<script type="text/javascript">
+        //加载商品分类下拉菜单
+        function goods_class_list(data) {
+            var  node = "#class_level_"+data.node;
+            $.ajax({
+                type: "POST",
+                url: "/spadmin/goods/goods_class_spinner",
+                data: {'class_level':data.class_level,'goods_class_id':data.goods_class_id},
+                dataType: "json",
+                success: function(data){
+                    if(data.code == 1){
+                        $.each(data.data,function(key,val){
+                            $(node).append("<option value="+val.goods_class_id+">"+val.class_name+"</option>\n");
+                        });
+                    }else{
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        }
+
+        //初始化最顶级分类菜单
+        $(document).ready(function(){
+            goods_class_list({'class_level':1,'goods_class_id':'','node':1});
+        });
+
+        //通过顶级加载子级分类菜单
+        $("#class_level_1").bind("change",function(){
+            $("#class_level_2").html("<option value='0'>请选择</option>\n");
+            var goods_class_id = $(this).val();
+            goods_class_list({'class_level':2,'goods_class_id':goods_class_id,'node':2});
+        })
+
+        //通过子级加载顶级分类菜单
+        $("#class_level_2").bind("change",function(){
+            $("#class_level_3").html("<option value='0'>请选择</option>\n");
+            var goods_class_id = $(this).val();
+            goods_class_list({'class_level':3,'goods_class_id':goods_class_id,'node':3});
+        })
+
+        //异步表单提交
+        $("#form-article-add").Validform({
+        tiptype: 2,
+        ajaxPost: true,
+        showAllError: true,
+        callback: function (ret) {
+            ajax_progress(ret);
+            if(ret.code == 1){
+                setTimeout(function () {
+                    window.parent.location.reload();
+                },1500);
+            }
+        }
+    });
+
+</script>
+{/block}

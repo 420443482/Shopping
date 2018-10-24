@@ -13,7 +13,7 @@ namespace think;
 
 use think\exception\ClassNotFoundException;
 
-class Validate
+class   Validate
 {
     // 实例
     protected static $instance;

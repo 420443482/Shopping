@@ -1,0 +1,97 @@
+{extend name="template/base" /}
+{block name="content"}
+<div class="page-container" style="min-width:900px;">
+    <form class="form form-horizontal" id="form"  method="post" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="hidden" value="{$list.role_id ?? ''}" name="role_id">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.role_name ?? ''}" placeholder="" id="role_name" name="role_name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$list.role_remark ?? ''}" placeholder="" id="role_remark" name="role_remark">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">权限：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                {foreach $column[0] as $v}
+                <dl class="permission-list">
+                    <dt>
+                        <label>
+                            <input type="checkbox" {if isset($in_role_ids)}{if in_array($v['powe_id'],$in_role_ids)} checked {/if}{/if} value="{$v['powe_id']}" name="role_powe_ids[]" id="user-Character-0">
+                            {$v['powe_name']}</label>
+                    </dt>
+                    <dd>
+                        {foreach $column[$v['powe_id']] as $v2}
+                        <dl class="cl permission-list2">
+                            <dt>
+                                <label class="">
+                                    <input type="checkbox" value="{$v2['powe_id']}"  {if isset($in_role_ids)}{if in_array($v2['powe_id'],$in_role_ids)} checked {/if}{/if} name="role_powe_ids[]" id="user-Character-0-0">
+                                    {$v2['powe_name']}:</label>
+                            </dt>
+                            <dd>
+                                {foreach $column[$v2['powe_id']] as $v3}
+                                <label class="">
+                                    <input type="checkbox" value="{$v3['powe_id']}"  {if isset($in_role_ids)}{if in_array($v3['powe_id'],$in_role_ids)} checked {/if}{/if} name="role_powe_ids[]  " id="user-Character-0-0-0">
+                                    {$v3['powe_name']}</label>
+                                {/foreach}
+                            </dd>
+                        </dl>
+                        {/foreach}
+                    </dd>
+                </dl>
+                {/foreach}
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/upload.js"></script>
+<script>
+    $(".permission-list dt input:checkbox").click(function(){
+        $(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+    });
+    $(".permission-list2 dd input:checkbox").click(function(){
+        var l =$(this).parent().parent().find("input:checked").length;
+        var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+        if($(this).prop("checked")){
+            $(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+            $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+        }
+        else{
+            if(l==0){
+                $(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+            }
+            if(l2==0){
+                $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+            }
+        }
+    });
+
+    $("#form").Validform({
+        tiptype: 2,
+        ajaxPost: true,
+        showAllError: true,
+        callback: function (ret) {
+            ajax_progress(ret);
+            if(ret.code == 1){
+                setTimeout(function () {
+                    window.parent.location.reload();
+                },1500);
+            }
+        }
+    });
+
+</script>
+{/block}

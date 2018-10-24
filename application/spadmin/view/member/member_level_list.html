@@ -1,0 +1,81 @@
+{extend name="template/base" /}
+{block name="content"}
+<style>
+
+.shuangji input{
+    text-align: center;
+    border:1px solid #fff;
+    height: 20px;
+    padding: 2px 10px;
+    font-size: 12px;
+    line-height: 20px;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #fff;
+}
+.bgClass{
+
+}
+</style>
+<div class="page-container" style="min-width:900px;">
+    <form class="mb-20" style="margin-bottom: 30px;" method="get" action="{:\\think\\Request::instance()->baseUrl()}">
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray">
+        <span class="l">
+            <!--<a class="btn btn-primary radius mr-5" href="javascript:;" onclick="layer_open('添加','{:\\think\\Url::build(\'manage/system/add\')}')"><i class="Hui-iconfont">&#xe600;</i> 添加</a></span>-->
+        <span class="r pt-5 pr-5">
+            共有数据 ：<strong>{$count}</strong> 条
+        </span>
+        </span>
+    </div>
+    <table class="table table-border table-bordered table-hover table-bg mt-20">
+        <thead>
+        <tr class="text-c">
+            <th>序号</th>
+            <th>等级</th>
+            <th width="200">等级名称</th>
+            <th>升级积分度</th>
+            <th>折扣比例</th>
+            <!--<th>操作</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        {volist name ="list" id ="val"}
+            <tr>
+                <td>{$val.level_id}</td>
+                <td>{$val.level_size}</td>
+                <td class="shuangji" style="text-align: center">{$val.level_name}</td>
+                <td>{$val.level_upgrade}</td>
+                <td>{$val.level_discount}</td>
+                <!--<td>-->
+                    <!--<a href="javascript:;" onclick="del(this,'{$val.member_id}','/spadmin/member/member_delete?member_id={$val.member_id}')" ><i class="Hui-iconfont del3" >&#xe6e2;</i></a>-->
+                <!--</td>-->
+            </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page-bootstrap">{$page}</div>
+</div>
+{/block}
+{block name='script'}
+<script>
+    $(".shuangji").dblclick(function(){
+        if(!$(this).children().is("input")){
+            var tdVla = $(this).html();
+            $(this).html("<input >").children().attr("value",tdVla).addClass()
+        }
+    })
+    $(document).click(function(){
+        if($(".shuangji").children().is("input")){
+            var valueInputFather = $(".shuangji").children("input").parent();
+            var valueInput = $(".shuangji").children("input").val();
+            valueInputFather.html(valueInput)
+        }
+
+    })
+
+    $(".shuangji").on('click','input',function(event){
+        event.stopPropagation();
+
+    })
+</script>
+{/block}

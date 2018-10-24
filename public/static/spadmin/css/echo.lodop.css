@@ -1,0 +1,52 @@
+
+body { font-size: 14px; font-family:"SimHei"; line-height: 1.5; background: #fff;}
+*{margin: 0; padding: 0;}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    content: ".";
+}
+li { list-style: none;}
+.tl { text-align: left;}
+.tr { text-align: right;}
+.pr { position: relative;}
+.page { width: 100mm; /*height: 180mm;*/ margin:0 auto 30px; border: 1px solid #000;}
+.divtop { padding-bottom: 2mm; height: 110mm; border-bottom: 2px dashed #000;}
+.topul { padding-top: 6px;}
+.topul li { display: table-cell; white-space: nowrap;}
+.topul .li1 { font-size: 30px;}
+.topul .li2 { font-size: 18px; text-align: center;}
+.toptable { border-top: 1px solid #000;}
+.toptable thead th,.toptable tbody td { font-size: 20px; padding: 1mm 0;}
+.toptable thead th { text-align: left;}
+.toptable tbody td { border-top: 1px solid #000; border-left: 1px solid #000;}
+.toptable tbody td:first-child { border-left: none;}
+.toptable tbody td.pl1 { padding-left: 1mm;}
+.toptable tbody td.tds1 { width: 10mm; text-align: center; line-height: 10mm;}
+.toptable tbody td.tds2 { padding:1mm 1mm;}
+.toptable tbody td.tds3 { width: 200px; font-size: 15px;}
+.toptable tbody td.tds4 { font-size: 18px; padding: 1mm;}
+.toptable tbody td.tds4 .subdiv { font-size: 15px; line-height: 1.5;}
+.toptable tbody td.tdsys { text-align: center; line-height: 1.5; height: 30mm; width: 30mm;}
+.toptable .tit,.toptable .cont { display: inline-block; *zoom:1; vertical-align: top;}
+.toptable .tit { width: 64px; text-align: right;}
+.toptable tbody td.td15 { font-size: 15px;}
+.sjzhi { font-size: 20px;}
+.footdiv .toptable thead th,.footdiv .toptable tbody td { padding: 0;}
+
+.text-center { text-align: center; padding-top: 20px;}
+.content-but {
+    font-family: Microsoft YaHei,Helvitica,Verdana,Arial,san-serif;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+button { font-family: inherit;}

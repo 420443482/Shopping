@@ -1,0 +1,105 @@
+{extend name="template/base" /}
+{block name="content"}
+<div class="page-container" style="min-width:900px;">
+    <form class="form form-horizontal" id="form" name="my_form" method="post" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="hidden" value="{$list.powe_id ?? ''}" name="powe_id">
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red"></span></label>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>栏目名称：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$list.powe_name ?? ''}" placeholder="" name="powe_name"
+                       nullmsg="栏目名称">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>上级栏目：</label>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="pid_one" class="select" id="pid_1">
+                    {if isset($list.pid_one) && $list.pid_one != 0}
+                    <option style="display: none;" value="{$list.pid_one}">{$role_powe_name[$list.pid_one]}</option>
+                    {/if}
+					<option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="pid_two" class="select" id="pid_2">
+                    {if isset($list.pid_two) && $list.pid_two != 0}
+                    <option style="display: none;" value="{$list.pid_two}">{$role_powe_name[$list.pid_two]}</option>
+                    {/if}
+                    <option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>功能：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$list.powe_url ?? ''}" placeholder="" name="powe_url"
+                       nullmsg="功能">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+
+                <button type="submit" class="btn btn-primary radius">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/upload.js"></script>
+<script>
+    $("#form").Validform({
+        tiptype: 2,
+        ajaxPost: true,
+        showAllError: true,
+        callback: function (ret) {
+            ajax_progress(ret);
+            if(ret.code == 1){
+                setTimeout(function () {
+                    window.parent.location.reload();
+                },1500);
+            }
+        }
+    });
+    //加载商品分类下拉菜单
+    function role_powe_list(data) {
+        var  node = "#pid_"+data.node;
+        $.ajax({
+            type: "POST",
+            url: "/spadmin/role/role_powe_spinner",
+            data: {'pid':data.pid},
+            dataType: "json",
+            success: function(data){
+                if(data.code == 1){
+                    $.each(data.data,function(key,val){
+                        $(node).append("<option value="+val.powe_id+">"+val.powe_name+"</option>\n");
+                    });
+                }else{
+                    layer.msg(data.msg);
+                }
+            }
+        });
+    }
+    //初始化最顶级分类菜单
+    $(document).ready(function(){
+        role_powe_list({'pid':0,'node':1});
+    });
+    //通过顶级加载子级分类菜单
+    $("#pid_1").bind("change",function(){
+        $("#pid_2").html("<option value='0'>请选择</option>\n");
+        var pid = $(this).val();
+        role_powe_list({'pid':pid,'node':2});
+    })
+</script>
+{/block}

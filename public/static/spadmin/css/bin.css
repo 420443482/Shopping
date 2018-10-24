@@ -1,0 +1,10 @@
+.login-bin-label { text-align: right!important; }
+select {
+    border: solid 1px #ddd;
+    box-sizing: border-box;
+    cursor: pointer;
+    line-height: normal;
+    font-weight: normal;
+    width: 100%;
+    white-space: nowrap;
+}

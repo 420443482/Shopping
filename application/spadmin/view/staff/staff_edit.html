@@ -1,0 +1,151 @@
+{extend name="template/base" /}
+<style>
+    .img_box{
+        padding: 9px 14px;
+        margin-bottom: 14px;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        border-radius: 4px;
+        min-height:130px;
+    }
+    .img{
+        text-align:center;
+        display: inline-block;
+        margin: auto;
+        width: 100%;
+        max-height: 200px;
+        height: 70px;
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    #fileselect{
+        display: none;
+    }
+</style>
+{block name="content"}
+<div class="page-container" style="min-width:900px;">
+    <form class="form form-horizontal" id="form" name="my_form" method="post" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="hidden"  class="input-text" name="upload_img" id="upload_img"  value="{$val.staff_portrait ?? ''}">
+        <input type="hidden" name="staff_id" value="{$staff_id}">
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>头像：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <div class="row img_box" id="img_box">
+                    {if $val.staff_portrait != ''}
+                    <img src="{$val.staff_portrait}" style="width:150px;height: 100px; margin-left:15px; margin-top: -10px;" alt="test" class="img">
+                    {/if}
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary" id="selsect">选择图片</a>
+                    <input type="file" style="display: none;" id="fileselect" class="form-control" name="fileselect[]" multiple="multiple"/>
+                </div>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>姓名：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$val.staff_name ?? ''}" placeholder="" name="staff_name"
+                       nullmsg="姓名">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>账号：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$val.staff_account ?? ''}" placeholder="" name="staff_account"
+                       nullmsg="账号">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>密码：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="password" class="input-text" value="{$val.staff_password ?? ''}" placeholder="" name="staff_password"
+                       nullmsg="密码">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div><div class="row cl">
+        <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>确认密码：</label>
+        <div class="formControls col-xs-6 col-sm-6">
+            <input type="password" class="input-text" value="{$val.staff_password ?? ''}" placeholder="" name="password"
+                   nullmsg="确认密码">
+        </div>
+        <div class="col-xs-3 col-sm-3"></div>
+        </div><div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>联系方式：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$val.staff_phone ?? ''}" placeholder="" name="staff_phone"
+                       nullmsg="联系方式">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+
+        <div class="row cl">
+        <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>住址：</label>
+        <div class="formControls col-xs-6 col-sm-6">
+            <input type="text" class="input-text" value="{$val.staff_address ?? ''}" placeholder="" name="staff_address"
+                   nullmsg="住址">
+        </div>
+        <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>微信：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$val.staff_wx ?? ''}" placeholder="" name="staff_wx"
+                       nullmsg="微信">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>QQ：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$val.staff_qq ?? ''}" placeholder="" name="staff_qq"
+                       nullmsg="QQ">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>性别：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <select class="input-text" name="staff_sex">
+                    {if isset($val['staff_sex'])}
+                    <option style="display: none;" value="{$val['staff_sex']}">{$Think.config.sex[$val['staff_sex']]}</option>
+                    {/if}
+                    {foreach $Think.config.sex as $key=>$val}
+                        <option value="{$key}">{$val}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+
+                <button type="submit" class="btn btn-primary radius">{if !empty($staff_id)}修改{else}新增{/if}</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/upload.js"></script>
+<script>
+    $("#form").Validform({
+        tiptype: 2,
+        ajaxPost: true,
+        showAllError: true,
+        callback: function (ret) {
+            ajax_progress(ret);
+            if(ret.code == 1){
+                setTimeout(function () {
+                    window.parent.location.reload();
+                },1500);
+            }
+        }
+    });
+</script>
+{/block}

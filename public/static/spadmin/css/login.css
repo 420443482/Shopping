@@ -1,0 +1,37 @@
+@charset "utf-8";
+/*通用*/
+*{
+	/*box-sizing:border-box;*/
+}
+html{
+	/*font-size: 12px;*/
+	
+}
+body {
+	font: 12px "microsoft yahei", Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+    margin:0px;
+    padding:0px;
+    font-size:12px;
+    background-image: url(../images/56a46b7590f5672af5b8.jpg);width:100%;height:100%;
+    
+}
+ul,li,p,h1,h2,h3,h4,h5,h6,dl,dt,dd {
+    margin:0px;
+    padding:0px;
+    border:none;
+    list-style:none;
+}
+input {border:none;}
+.lf   {float:left;}
+.rt  {float:right;}
+.clearfix {zoom:1;}
+.clearfix:after {content:""; display:table; clear:both;}
+
+.contentLogin{
+	position:absolute;top:0;left:0;right:0;bottom:0;width:300px;height:300px;margin:auto;color:#fff;text-align: center;font-size:18px;
+}
+.userName{
+	margin-left:20px;border-color: #fff;background-color: transparent;border:none;border:1px solid #fff;height:30px;width:250px;padding:0 10px;border-radius: 4px;
+}
+.upwd{margin-left:20px;border-color: #fff;background-color: transparent;border:none;border:1px solid #fff;height:30px;width:250px;padding:0 10px;border-radius: 4px;}

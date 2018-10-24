@@ -1,0 +1,15 @@
+<select name="pro" id="loc_province" class="select" style="width:85px;">
+</select>
+<select name="city" id="loc_city" class="select" style="width: 120px;">
+</select>
+<select name="area" id="loc_town" class="select" style="width: 120px;">
+</select>
+
+<script type="text/javascript" location.js"></script>
+<script type="text/javascript" src="area.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    showLocation();
+});
+</script>

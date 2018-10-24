@@ -1,0 +1,45 @@
+    <dl>
+        <dt class="selected"><i class="Hui-iconfont">&#xe667;</i>员工管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dd>
+            <ul>
+                <li><a _href="/spadmin/staff/staff_list" data-title="员工列表" href="javascript:;" data-nav="员工列表 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 员工列表">员工列表</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt class="selected"><i class="Hui-iconfont">&#xe667;</i>会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dd>
+            <ul>
+                <li><a _href="/spadmin/member/member_list" data-title="会员列表" href="javascript:;" data-nav="会员列表 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 会员列表">会员列表</a></li>
+                <li><a _href="/spadmin/member/member_level_list" data-title="会员等级" href="javascript:;" data-nav="会员等级 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 会员等级">会员等级</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt class="selected"><i class="Hui-iconfont">&#xe667;</i>商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dd>
+            <ul>
+                <li><a _href="/spadmin/goods/goods_list" data-title="商品列表" href="javascript:;" data-nav="商品列表 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 商品列表">商品列表</a></li>
+                <li><a _href="/spadmin/goods/goods_class_list" data-title="商品分类" href="javascript:;" data-nav="商品分类 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 商品分类">商品分类</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt class="selected"><i class="Hui-iconfont">&#xe667;</i>权限管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dd>
+            <ul>
+                <li><a _href="/spadmin/role/role_list" data-title="角色列表" href="javascript:;" data-nav="角色列表 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 角色列表">角色列表</a></li>
+                <li><a _href="/spadmin/role/role_powe_list" data-title="栏目列表" href="javascript:;" data-nav="栏目列表 <span class=&quot;c-gray en&quot;>&amp;gt;</span> 栏目列表">栏目列表</a></li>
+            </ul>
+        </dd>
+    </dl>
+<script>
+
+    function logout() {
+        layer.confirm('您确定要退出登录？',{title:'登出提醒'},function (index) {
+            location.href = '{:\\think\\Url::build("admin/login/logout",["logout" => 1])}'
+        })
+    }
+</script>
+</script>
+

@@ -1,0 +1,58 @@
+{extend name="template/base" /}
+{block name="content"}
+<div class="page-container" style="min-width:900px;">
+    <form class="mb-20" method="post">
+        <button type="button" onclick="layer_open('添加','/spadmin/staff/staff_add')" class="btn btn-primary radius"><i class="Hui-iconfont add">&#xe600;</i> 添加员工</button>
+    </form>
+    <form class="mb-20" method="get" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="text" class="input-text" style="width:250px" placeholder="编号" name="code"
+               value="{$where['code'] ?? ''}">
+        <input type="text" class="input-text" style="width:250px" placeholder="电话" name="phone"
+               value="{$where['phone'] ?? ''}">
+        <input type="text" class="input-text" style="width:250px" placeholder="姓名" name="name"
+               value="{$where['name'] ?? ''}">
+        <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray">
+        <span class="l">
+            <!--<a class="btn btn-primary radius mr-5" href="javascript:;" onclick="layer_open('添加','{:\\think\\Url::build(\'manage/system/add\')}')"><i class="Hui-iconfont">&#xe600;</i> 添加</a></span>-->
+        <span class="r pt-5 pr-5">
+            共有数据 ：<strong>{$count}</strong> 条
+        </span>
+    </div>
+    <table class="table table-border table-bordered table-hover table-bg mt-20">
+        <thead>
+        <tr class="text-c">
+            <th>序号</th>
+            <th>姓名</th>
+            <th>编号</th>
+            <th>联系方式</th>
+            <th>性别</th>
+            <th>入职时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name ="list" id ="val"}
+            <tr>
+                <td>{$val.staff_id}</td>
+                <td>{$val.staff_name}</td>
+                <td>{$val.staff_code}</td>
+                <td>{$val.staff_phone}</td>
+                <td>{$Think.config.sex[$val.staff_sex]}</td>
+                <td>{$val.ctime}</td>
+                <td>
+                    <a href="javascript:;" onclick="layer_open('编辑','/spadmin/staff/staff_edit?staff_id={$val.staff_id}')"><i class="Hui-iconfont edit">&#xe6df;</i> </a>
+                    <a href="javascript:;" onclick="del(this,'{$val.staff_id}','/spadmin/staff/staff_delete?staff_id={$val.staff_id}')" ><i class="Hui-iconfont del3" >&#xe6e2;</i></a>
+                </td>
+            </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page-bootstrap">{$page}</div>
+</div>
+{/block}
+{block name='script'}
+<script>
+</script>
+{/block}

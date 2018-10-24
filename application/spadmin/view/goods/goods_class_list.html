@@ -1,0 +1,69 @@
+{extend name="template/base" /}
+{block name="content"}
+<div class="page-container" style="min-width:900px;">
+    <form class="mb-20" method="post">
+        <a class="btn btn-primary radius" onclick="layer_open('添加商品分类','/spadmin/goods/goods_class_add')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i>添加商品分类</a>
+    </form>
+    <form class="mb-20" method="get" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="text" class="input-text" style="width:250px" placeholder="名称" name="class_name"
+               value="{$where['class_name'] ?? ''}">
+        <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray">
+        <span class="l">
+            <!--<a class="btn btn-primary radius mr-5" href="javascript:;" onclick="layer_open('添加','{:\\think\\Url::build(\'manage/system/add\')}')"><i class="Hui-iconfont">&#xe600;</i> 添加</a></span>-->
+        <span class="r pt-5 pr-5">
+            共有数据 ：<strong>{$count}</strong> 条
+            {if isset($goods_class)}
+            |
+            上级分类 : {$goods_class['class_name']}
+            {/if}
+        </span>
+
+            </span>
+        {if isset($goods_class)}
+        <a href="#" style="color: blue; float: right;" onclick="javascript:history.back(-1);">返回上一层</a>
+        {/if}
+    </div>
+    <table class="table table-border table-bordered table-hover table-bg mt-20">
+        <thead>
+        <tr class="text-c">
+            <th>序号</th>
+            <th>分类名称</th>
+            <th>是否推荐</th>
+            <th>是否显示</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name ="list" id ="val"}
+            <tr>
+                <td>{$val.goods_class_id}</td>
+                <td><a style="color: blue;" href="/spadmin/goods/goods_class_list?class_level={$val.class_level}&goods_class_id={$val.goods_class_id}">{$val.class_name}</a></td>
+                <td>{$Think.config.is_true[$val.is_recommend]}</td>
+                <td>{$Think.config.is_true[$val.is_display]}</td>
+                <td>{$val.ctime}</td>
+                <td>
+                    <a href="javascript:;" onclick="picture_add('编辑','/spadmin/goods/goods_class_edit?goods_class_id={$val.goods_class_id}')"><i class="Hui-iconfont edit">&#xe6df;</i> </a>
+                    <a href="javascript:;" onclick="del(this,'{$val.goods_class_id}','/spadmin/goods/goods_class_delete?goods_class_id={$val.goods_class_id}')" ><i class="Hui-iconfont del3" >&#xe6e2;</i></a>
+                </td>
+            </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="page-bootstrap">{$page}</div>
+</div>
+{/block}
+{block name='script'}
+<script>
+    function picture_add(title,url){
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+</script>
+{/block}

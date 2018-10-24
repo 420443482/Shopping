@@ -1,0 +1,112 @@
+{extend name="template/base" /}
+
+{block name="content"}
+<style>
+    .check_css3 span {position: relative;}
+    .check_css3 .input_check {position: absolute;visibility: hidden;}
+    .check_css3 .input_check+label {display: inline-block;width: 16px;height: 16px;border: 1px solid #ddd;}
+    .check_css3 .input_check:checked+label:after {content: "";position: absolute;left: 2px;bottom: 12px;width: 9px;height: 4px; border: 2px solid #e92333;border-top-color: transparent;border-right-color: transparent; -ms-transform: rotate(-60deg); -moz-transform: rotate(-60deg); -webkit-transform: rotate(-60deg); transform: rotate(-45deg);}
+</style>
+<div class="page-container" style="min-width:900px;">
+    <form class="form form-horizontal" id="form" name="my_form" method="post" action="{:\\think\\Request::instance()->baseUrl()}">
+        <input type="hidden" value="{$list.goods_class_id ?? ''}" name="goods_class_id">
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red"></span></label>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>分类名称：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <input type="text" class="input-text" value="{$list.class_name ?? ''}" placeholder="" name="class_name"
+                       nullmsg="分类名称">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>上级分类：</label>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="child_class_id" class="select" id="class_level_1">
+                    {if isset($list.child_class_id) && $list.child_class_id != ''}
+                    <option style="display: none;" value="{$list.child_class_id}">{$class_name[$list.child_class_id]}</option>
+                    {/if}
+					<option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+				<span class="select-box">
+				<select name="subgrade_class_id" class="select" id="class_level_2">
+                    {if isset($list.subgrade_class_id) && $list.subgrade_class_id != ''}
+                    <option style="display: none;" value="{$list.subgrade_class_id}">{$class_name[$list.subgrade_class_id]}</option>
+                    {/if}
+                    <option value="0">请选择</option>
+				</select>
+				</span>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl check_css3" >
+            <label class="form-label col-xs-3 col-sm-3">是否推荐：</label>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check4" name="is_recommend"><label for="check4" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl check_css3" >
+            <label class="form-label col-xs-3 col-sm-3">是否显示：</label>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check5" name="is_display"><label for="check5" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+
+                <button type="submit" class="btn btn-primary radius">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/upload.js"></script>
+<script>
+    $("#form").Validform({
+        tiptype: 2,
+        ajaxPost: true,
+        showAllError: true,
+        callback: function (ret) {
+            ajax_progress(ret);
+            if(ret.code == 1){
+                setTimeout(function () {
+                    window.parent.location.reload();
+                },1500);
+            }
+        }
+    });
+    //加载商品分类下拉菜单
+    function goods_class_list(data) {
+        var  node = "#class_level_"+data.node;
+        $.ajax({
+            type: "POST",
+            url: "/spadmin/goods/goods_class_spinner",
+            data: {'class_level':data.class_level,'goods_class_id':data.goods_class_id},
+            dataType: "json",
+            success: function(data){
+                if(data.code == 1){
+                    $.each(data.data,function(key,val){
+                        $(node).append("<option value="+val.goods_class_id+">"+val.class_name+"</option>\n");
+                    });
+                }else{
+                    layer.msg(data.msg);
+                }
+            }
+        });
+    }
+    //初始化最顶级分类菜单
+    $(document).ready(function(){
+        goods_class_list({'class_level':1,'goods_class_id':'','node':1});
+    });
+    //通过顶级加载子级分类菜单
+    $("#class_level_1").bind("change",function(){
+        $("#class_level_2").html("<option value='0'>请选择</option>\n");
+        var goods_class_id = $(this).val();
+        goods_class_list({'class_level':2,'goods_class_id':goods_class_id,'node':2});
+    })
+</script>
+{/block}
