@@ -8,6 +8,7 @@ use think\Session;
 	//显示首页
     public function index()
     {
+
         $user_id = session('user_id');
         $user_info = [];
         if(!empty($user_id)){
@@ -50,9 +51,7 @@ use think\Session;
                 }
             }
         }
-//        echo "<pre>";
-//        print_r($activity_goods);
-//        exit;
+
         $this->assign('activity_goods',$activity_goods);
         $this->assign('class',$class);
         $this->assign('goods_class_array',$goods_class_array);
@@ -60,7 +59,7 @@ use think\Session;
         return $this->fetch('index');
     }
     //分类菜单整体显示
-    public function class_menu(){
+        public function class_menu(){
         $goods_class_id = input('post.goods_class_id');
         $class_list = Db::name('goods_class')->where(array('goods_class_id'=>$goods_class_id))->whereOr(array('child_class_id'=>$goods_class_id))->order('child_class_id asc')->select();
         $max_class = $class_list[0];

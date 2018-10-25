@@ -1,4 +1,3 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpStudy\WWW\Shopping\public/../application/home\view\index\index.html";i:1528939626;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -14,11 +13,8 @@
     <link rel="stylesheet" type="text/css" href="/static/home/css/quicklinks.css" />
     <script type="text/javascript" src="/static/home/js/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/static/home/js/jquery.json.js"></script><script type="text/javascript" src="/static/home/js/transport_jquery.js"></script>
     <script type="text/javascript">
-        var json_languages = {"ok":"\u786e\u5b9a","determine":"\u786e\u5b9a","cancel":"\u53d6\u6d88","drop":"\u5220\u9664","edit":"\u7f16\u8f91","remove":"\u79fb\u9664","follow":"\u5173\u6ce8","pb_title":"\u63d0\u793a","Prompt_information":"\u63d0\u793a\u4fe1\u606f","title":"\u63d0\u793a","not_login":"\u60a8\u5c1a\u672a\u767b\u5f55","close":"\u5173\u95ed","cart":"\u8d2d\u7269\u8f66","js_cart":"\u8d2d\u7269\u8f66","all":"\u5168\u90e8","go_login":"\u53bb\u767b\u9646","select_city":"\u8bf7\u9009\u62e9\u5e02","comment_goods":"\u8bc4\u8bba\u5546\u54c1","submit_order":"\u63d0\u4ea4\u8ba2\u5355","sys_msg":"\u7cfb\u7edf\u63d0\u793a","no_keywords":"\u8bf7\u8f93\u5165\u641c\u7d22\u5173\u952e\u8bcd\uff01","adv_packup_one":"\u8bf7\u53bb\u540e\u53f0\u5e7f\u544a\u4f4d\u7f6e","adv_packup_two":"\u91cc\u9762\u8bbe\u7f6e\u5e7f\u544a\uff01","more":"\u66f4\u591a","Please":"\u8bf7\u53bb","set_up":"\u8bbe\u7f6e\uff01","login_phone_packup_one":"\u8bf7\u8f93\u5165\u624b\u673a\u53f7\u7801","more_options":"\u66f4\u591a\u9009\u9879","Pack_up":"\u6536\u8d77","no_attr":"\u6ca1\u6709\u66f4\u591a\u5c5e\u6027\u4e86","search_Prompt":"\u53ef\u8f93\u5165\u6c49\u5b57,\u62fc\u97f3\u67e5\u627e\u54c1\u724c","most_input":"\u6700\u591a\u53ea\u80fd\u9009\u62e95\u9879","multi_select":"\u591a\u9009","checkbox_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u591a\u9009","radio_Packup":"\u8bf7\u6536\u8d77\u5168\u90e8\u5355\u9009","contrast":"\u5bf9\u6bd4","empty_contrast":"\u6e05\u7a7a\u5bf9\u6bd4\u680f","Prompt_add_one":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a04\u4e2a\u54e6^_^","Prompt_add_two":"\u60a8\u8fd8\u53ef\u4ee5\u7ee7\u7eed\u6dfb\u52a0","button_compare":"\u6bd4\u8f83\u9009\u5b9a\u5546\u54c1","exist":"\u60a8\u5df2\u7ecf\u9009\u62e9\u4e86%s","count_limit":"\u6700\u591a\u53ea\u80fd\u9009\u62e94\u4e2a\u5546\u54c1\u8fdb\u884c\u5bf9\u6bd4","goods_type_different":"%s\u548c\u5df2\u9009\u62e9\u5546\u54c1\u7c7b\u578b\u4e0d\u540c\u65e0\u6cd5\u8fdb\u884c\u5bf9\u6bd4","compare_no_goods":"\u60a8\u6ca1\u6709\u9009\u5b9a\u4efb\u4f55\u9700\u8981\u6bd4\u8f83\u7684\u5546\u54c1\u6216\u8005\u6bd4\u8f83\u7684\u5546\u54c1\u6570\u5c11\u4e8e 2 \u4e2a\u3002","btn_buy":"\u8d2d\u4e70","is_cancel":"\u53d6\u6d88","select_spe":"\u8bf7\u9009\u62e9\u5546\u54c1\u5c5e\u6027","Province":"\u8bf7\u9009\u62e9\u6240\u5728\u7701\u4efd","City":"\u8bf7\u9009\u62e9\u6240\u5728\u5e02","District":"\u8bf7\u9009\u62e9\u6240\u5728\u533a\u57df","Street":"\u8bf7\u9009\u62e9\u6240\u5728\u8857\u9053","Detailed_address_null":"\u8be6\u7ec6\u5730\u5740\u4e0d\u80fd\u4e3a\u7a7a","Select_attr":"\u8bf7\u9009\u62e9\u5c5e\u6027","Focus_prompt_one":"\u60a8\u5df2\u5173\u6ce8\u8be5\u5e97\u94fa\uff01","Focus_prompt_login":"\u60a8\u5c1a\u672a\u767b\u5f55\u5546\u57ce\u4f1a\u5458\uff0c\u4e0d\u80fd\u5173\u6ce8\uff01","Focus_prompt_two":"\u767b\u5f55\u5546\u57ce\u4f1a\u5458\u3002","store_focus":"\u5e97\u94fa\u5173\u6ce8\u3002","Focus_prompt_three":"\u60a8\u786e\u5b9e\u8981\u5173\u6ce8\u6240\u9009\u5e97\u94fa\u5417\uff1f","Focus_prompt_four":"\u60a8\u786e\u5b9e\u8981\u53d6\u6d88\u5173\u6ce8\u5e97\u94fa\u5417\uff1f","Focus_prompt_five":"\u60a8\u8981\u5173\u6ce8\u8be5\u5e97\u94fa\u5417\uff1f","Purchase_quantity":"\u8d85\u8fc7\u9650\u8d2d\u6570\u91cf.","My_collection":"\u6211\u7684\u6536\u85cf","shiping_prompt":"\u8be5\u5730\u533a\u6682\u4e0d\u652f\u6301\u914d\u9001","Have_goods":"\u6709\u8d27","No_goods":"\u65e0\u8d27","No_shipping":"\u65e0\u6cd5\u914d\u9001","Deliver_back_order":"\u4e0b\u5355\u540e\u7acb\u5373\u53d1\u8d27","Time_delivery":" \u65f6\u53d1\u8d27","goods_over":"\u6b64\u5546\u54c1\u6682\u65f6\u552e\u5b8c","Stock_goods_null":"\u5546\u54c1\u5e93\u5b58\u4e0d\u8db3","day_not_available":"\u5f53\u65e5\u65e0\u8d27","day_yes_available":"\u5f53\u65e5\u6709\u8d27","Already_buy":"\u5df2\u8d2d\u4e70","Already_buy_two":"\u4ef6\u5546\u54c1\u8fbe\u5230\u9650\u8d2d\u6761\u4ef6,\u65e0\u6cd5\u518d\u8d2d\u4e70","Already_buy_three":"\u4ef6\u8be5\u5546\u54c1,\u53ea\u80fd\u518d\u8d2d\u4e70","goods_buy_empty_p":"\u5546\u54c1\u6570\u91cf\u4e0d\u80fd\u5c11\u4e8e1\u4ef6","goods_number_p":"\u5546\u54c1\u6570\u91cf\u5fc5\u987b\u4e3a\u6570\u5b57","search_one":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","search_two":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","search_three":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","search_four":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","jian":"\u4ef6","letter":"\u4ef6","inventory":"\u5b58\u8d27","move_collection":"\u79fb\u81f3\u6211\u7684\u6536\u85cf","select_shop":"\u8bf7\u9009\u62e9\u5957\u9910\u5546\u54c1","Parameter_error":"\u53c2\u6570\u9519\u8bef","screen_price":"\u8bf7\u586b\u5199\u7b5b\u9009\u4ef7\u683c","screen_price_left":"\u8bf7\u586b\u5199\u7b5b\u9009\u5de6\u8fb9\u4ef7\u683c","screen_price_right":"\u8bf7\u586b\u5199\u7b5b\u9009\u53f3\u8fb9\u4ef7\u683c","screen_price_dy":"\u5de6\u8fb9\u4ef7\u683c\u4e0d\u80fd\u5927\u4e8e\u6216\u7b49\u4e8e\u53f3\u8fb9\u4ef7\u683c","invoice_ok":"\u4fdd\u5b58\u53d1\u7968\u4fe1\u606f","invoice_desc_null":"\u8f93\u5165\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a\uff01","invoice_desc_number":"\u60a8\u6700\u591a\u53ef\u4ee5\u6dfb\u52a03\u4e2a\u516c\u53f8\u53d1\u7968\uff01","invoice_packup":"\u8bf7\u9009\u62e9\u6216\u586b\u5199\u53d1\u7968\u62ac\u5934\u90e8\u5206\uff01","invoice_tax_null":"\u8bf7\u586b\u5199\u7eb3\u7a0e\u4eba\u8bc6\u522b\u7801","add_address_10":"\u6700\u591a\u53ea\u80fd\u6dfb\u52a010\u4e2a\u6536\u8d27\u5730\u5740","msg_phone_not":"\u624b\u673a\u53f7\u7801\u4e0d\u6b63\u786e","captcha_not":"\u9a8c\u8bc1\u7801\u4e0d\u80fd\u4e3a\u7a7a","captcha_xz":"\u8bf7\u8f93\u51654\u4f4d\u6570\u7684\u9a8c\u8bc1\u7801","captcha_cw":"\u9a8c\u8bc1\u7801\u9519\u8bef","Detailed_map":"\u8be6\u7ec6\u5730\u56fe","email_error":"\u90ae\u7bb1\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","bid_prompt_null":"\u4ef7\u683c\u4e0d\u80fd\u4e3a\u7a7a!","bid_prompt_error":"\u4ef7\u683c\u8f93\u5165\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","mobile_error_goods":"\u624b\u673a\u683c\u5f0f\u4e0d\u6b63\u786e\uff01","null_email_goods":"\u90ae\u7bb1\u4e0d\u80fd\u4e3a\u7a7a","select_store":"\u8bf7\u9009\u62e9\u95e8\u5e97\uff01","Product_spec_prompt":"\u8bf7\u9009\u62e9\u5546\u54c1\u89c4\u683c\u7c7b\u578b","reply_desc_one":"\u56de\u590d\u5e16\u5b50\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","receive_coupons":"\u9886\u53d6\u4f18\u60e0\u5238","Immediate_use":"\u7acb\u5373\u4f7f\u7528","no_enabled":"\u5173\u95ed"};
-        //加载效果
-        var load_cart_info = '<img src="/static/home/images/loadgoods.gif" height="108" class="ml100">';
-        var load_icon = '<img src="/static/home/images/load.gif" width="200" height="200">';
-    </script></head>
+    </script>
+</head>
 <body>
 <div class="site-nav" id="site-nav">
     <div class="w w1200">
@@ -125,7 +121,7 @@
                 <div class="prompt"><div class="nogoods"><b></b><span>购物车中还没有商品，赶紧选购吧！</span></div></div>
             </div>
 
-            <script type="text/javascript">
+ <script type="text/javascript">
                 function changenum(rec_id, diff, warehouse_id, area_id)
                 {
                     var cValue = $('#cart_value').val();
@@ -211,7 +207,7 @@
                     $(".cart_num").html(result.cart_num);
                     $(".pop_panel").html(result.content);
                 }
-            </script>
+ </script>
         </div>
     </div>
 </div>
@@ -268,106 +264,292 @@
 <div class="content" ectype="lazyDscWarp">
     <div class="banner home-banner">
         <div class="bd">
-
             <ul>
                 <li style="background:url(/static/home/images/1505668936008015718.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
                 <li style="background:url(/static/home/images/1490122707106036304.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
                 <li style="background:url(/static/home/images/1490122697974513454.jpg) center center no-repeat;"><div class="banner-width"><a href="http://www.wygk.cn/" target="_blank"></a></div></li>
-            </ul>            </div>
+            </ul>
+        </div>
         <div class="hd">
             <ul></ul>
         </div>
     </div>
     <div class="channel-content" ectype="channel">
-        {foreach $activity_goods as $goods}
-        <div class="seckill-channel" id="h-seckill">
-            <div class="box-hd clearfix">
-                <i class="box_hd_arrow"></i>
-                <i class="box_hd_dec"></i>
-                <i class="box-hd-icon"></i>
-                <div class="sk-time-cd">
-                    <div class="sk-cd-tit">距结束</div>
-                    <div class="cd-time fl" ectype="time" data-time="{$goods['activity_end_time']}">
-                        <div class="days"></div>
-                        <span class="split">天</span>
-                        <div class="hours"></div>
-                        <span class="split">时</span>
-                        <div class="minutes"></div>
-                        <span class="split">分</span>
-                        <div class="seconds"></div>
-                        <span class="split">秒</span>
-                    </div>
-                </div>
-                <div class="sk-more"><a href="seckill.php" target="_blank">更多{$goods.activity_name}</a> <i class="arrow"></i></div>
-            </div>
-            <div class="box-bd clearfix">
-               <ul>
-                   {foreach $goods['goods_info'] as $v}
-                   <li class="opacity_img">
-                       <div class="p-img"><a href="seckill.php?id=57" target="_blank"><img src="{$v['goods_images']}" class="img-lazyload"></a></div>
-                       <div class="p-name"><a href="seckill.php?id=57" target="_blank" title="{$v['goods_summary']}">{$v['goods_name']}</a></div>
-                       <div class="p-over">
-                           <div class="p-info">
-                               <div class="p-price">
-                                   <span class="shop-price"><em>￥</em>{$v['goods_sales_price']}</span>
-                                   <span class="original-price"><em>￥</em>{$v['goods_sales_price']}</span>
-                               </div>
-                           </div>
-                           <div class="p-btn">
-                               <a href="seckill.php?id=57&amp;act=view"  target="_blank">立即抢购</a>
-                           </div>
-                       </div>
-                   </li>
-                   {/foreach}
-               </ul>
-                <a href="javascript:void(0);" class="prev"><i class="iconfont icon-left"></i></a>
-                <a href="javascript:void(0);" class="next"><i class="iconfont icon-right"></i></a>
-            </div>
-        </div>
-        {/foreach}
-        <input type="hidden" value="1" name="seckill_goods"/>		<div class="need-channel clearfix" id="h-need">
-        <div class="channel-column" style="background:url(/static/home/images/1489108932830636804.jpg) no-repeat;">
-            <div class="column-title">
-                <h3>优质新品</h3>
-                <p>专注生活美学</p>
-            </div>
-            <div class="column-img"><img src="/static/home/images/1489108932305373215.png"></div>
-            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
-        </div>
-        <div class="channel-column" style="background:url(/static/home/images/1489109017412962486.jpg) no-repeat;">
-            <div class="column-title">
-                <h3>品牌精选</h3>
-                <p>潮牌尖货 初春换新</p>
-            </div>
-            <div class="column-img"><img src="/static/home/images/1489109017453223398.png"></div>
-            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
-        </div>
-        <div class="channel-column" style="background:url(/static/home/images/1489109075453550789.jpg) no-repeat;">
-            <div class="column-title">
-                <h3>潮流女装</h3>
-                <p>春装流行款抢购</p>
-            </div>
-            <div class="column-img"><img src="/static/home/images/1489109075626843283.png"></div>
-            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
-        </div>
-        <div class="channel-column" style="background:url(/static/home/images/1489109174107416929.jpg) no-repeat;">
-            <div class="column-title">
-                <h3>人气美鞋</h3>
-                <p>新外貌“鞋”会</p>
-            </div>
-            <div class="column-img"><img src="/static/home/images/1489109174067528878.png"></div>
-            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
-        </div>
-        <div class="channel-column" style="background:url(/static/home/images/1489109238964052790.jpg) no-repeat;">
-            <div class="column-title">
-                <h3>护肤彩妆</h3>
-                <p>春妆必买清单 低至3折</p>
-            </div>
-            <div class="column-img"><img src="/static/home/images/1489109238803807019.png"></div>
-            <a href="http://www.wygk.cn/" target="_blank" class="column-btn">去看看</a>
-        </div>
-    </div>
+
+        <input type="hidden" value="1" name="seckill_goods"/>
         <input type="hidden" value="1" name="index_ad_cat"/>
+    </div>
+    <div class="floor-content" ectype="goods_cat_level">
+
+    </div>
+    <div class="other-content">
+
+        <div class="lift-channel clearfix" >
+            <div class="ftit"><h3>婴儿用品</h3></div>
+            <ul>
+                <li class="opacity_img">
+                    <a href="goods.php?id=684">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109583798.jpg"></div>
+                        <div class="p-name" title="【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮">【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>555.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=685">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109633806.jpg"></div>
+                        <div class="p-name" title="春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮">春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>1000.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=679">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489108999364.jpg"></div>
+                        <div class="p-name" title="特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险">特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>200.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=634">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102753231.jpg"></div>
+                        <div class="p-name" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>300.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=735">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1490165304408.jpg"></div>
+                        <div class="p-name" title="【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香">【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>29.80</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=683">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109337889.jpg"></div>
+                        <div class="p-name" title="igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修">igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>330.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=682">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109282145.jpg"></div>
+                        <div class="p-name" title="波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保">波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>250.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=681">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109130174.jpg"></div>
+                        <div class="p-name" title="2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋">2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>458.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=657">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489106146615.jpg"></div>
+                        <div class="p-name" title="创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低">创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>78888.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=635">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102950633.jpg"></div>
+                        <div class="p-name" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>450.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="lift-channel clearfix">
+            <div class="ftit"><h3>孕产用品</h3></div>
+            <ul>
+                <li class="opacity_img">
+                    <a href="goods.php?id=684">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109583798.jpg"></div>
+                        <div class="p-name" title="【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮">【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>555.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=685">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109633806.jpg"></div>
+                        <div class="p-name" title="春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮">春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>1000.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=679">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489108999364.jpg"></div>
+                        <div class="p-name" title="特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险">特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>200.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=634">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102753231.jpg"></div>
+                        <div class="p-name" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>300.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=735">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1490165304408.jpg"></div>
+                        <div class="p-name" title="【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香">【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>29.80</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=683">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109337889.jpg"></div>
+                        <div class="p-name" title="igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修">igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>330.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=682">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109282145.jpg"></div>
+                        <div class="p-name" title="波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保">波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>250.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=681">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109130174.jpg"></div>
+                        <div class="p-name" title="2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋">2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>458.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=657">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489106146615.jpg"></div>
+                        <div class="p-name" title="创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低">创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>78888.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="opacity_img">
+                    <a href="goods.php?id=635">
+                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102950633.jpg"></div>
+                        <div class="p-name" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</div>
+                        <div class="p-price">
+                            <div class="shop-price"><em>￥</em>450.00</div>
+                            <div class="original-price"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="master-channel" id="master">
+            <div class="ftit"><h3>达人专区</h3></div>
+            <div class="master-con">
+                <div class="m-c-item m-c-i-1" style="background:url(/static/home/images/1490915252102177200.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>纯棉质品</h3>
+                            <span>把好货带回家</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096584382939358.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-2" style="background:url(/static/home/images/1490915247993555311.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>团购热卖</h3>
+                            <span>每一款都是好货</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096593220418206.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-3" style="background:url(/static/home/images/1490915242570296715.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>团购热卖</h3>
+                            <span>都是好货</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096600517435313.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-4" style="background:url(/static/home/images/1490915236292888895.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>舒适童鞋</h3>
+                            <span>帮宝宝学走路</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096607113568601.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+                <div class="m-c-item m-c-i-5" style="background:url(/static/home/images/1490915231687856118.jpg) center center no-repeat;">
+                    <div class="m-c-main">
+                        <div class="title">
+                            <h3>双十二运动鞋</h3>
+                            <span>品牌直降</span>
+                        </div>
+                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
+                    </div>
+                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096615934856180.png" style="max-width:99px; max-height:72px;"></a></div>
+                </div>
+
+            </div>
+        </div>
         <div class="brand-channel clearfix" id="h-brand">
             <div class="home-brand-adv slide_lr_info"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1490896397653643539.jpg" width="484" height="178" class="slide_lr_img"></a></div>
             <div class="brand-list" id="recommend_brands">
@@ -496,227 +678,7 @@
                 <a href="javascript:void(0);" ectype="changeBrand" class="refresh-btn"><i class="iconfont icon-rotate-alt"></i><span>换一批</span></a>
             </div>
         </div>
-    </div>
-    <div class="floor-content" ectype="goods_cat_level">
 
-    </div>
-    <div class="floor-loading" ectype="floor-loading"><div class="floor-loading-warp"><img src="/static/home/images/loading.gif"></div></div>
-    <div class="other-content">
-        <div class="master-channel" id="master">
-            <div class="ftit"><h3>达人专区</h3></div>
-            <div class="master-con">
-                <div class="m-c-item m-c-i-1" style="background:url(/static/home/images/1490915252102177200.jpg) center center no-repeat;">
-                    <div class="m-c-main">
-                        <div class="title">
-                            <h3>纯棉质品</h3>
-                            <span>把好货带回家</span>
-                        </div>
-                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
-                    </div>
-                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096584382939358.png" style="max-width:99px; max-height:72px;"></a></div>
-                </div>
-                <div class="m-c-item m-c-i-2" style="background:url(/static/home/images/1490915247993555311.jpg) center center no-repeat;">
-                    <div class="m-c-main">
-                        <div class="title">
-                            <h3>团购热卖</h3>
-                            <span>每一款都是好货</span>
-                        </div>
-                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
-                    </div>
-                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096593220418206.png" style="max-width:99px; max-height:72px;"></a></div>
-                </div>
-                <div class="m-c-item m-c-i-3" style="background:url(/static/home/images/1490915242570296715.jpg) center center no-repeat;">
-                    <div class="m-c-main">
-                        <div class="title">
-                            <h3>团购热卖</h3>
-                            <span>都是好货</span>
-                        </div>
-                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
-                    </div>
-                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096600517435313.png" style="max-width:99px; max-height:72px;"></a></div>
-                </div>
-                <div class="m-c-item m-c-i-4" style="background:url(/static/home/images/1490915236292888895.jpg) center center no-repeat;">
-                    <div class="m-c-main">
-                        <div class="title">
-                            <h3>舒适童鞋</h3>
-                            <span>帮宝宝学走路</span>
-                        </div>
-                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
-                    </div>
-                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096607113568601.png" style="max-width:99px; max-height:72px;"></a></div>
-                </div>
-                <div class="m-c-item m-c-i-5" style="background:url(/static/home/images/1490915231687856118.jpg) center center no-repeat;">
-                    <div class="m-c-main">
-                        <div class="title">
-                            <h3>双十二运动鞋</h3>
-                            <span>品牌直降</span>
-                        </div>
-                        <a href="http://www.wygk.cn/" class="m-c-btn" target="_blank">去见识</a>
-                    </div>
-                    <div class="img"><a href="http://www.wygk.cn/" target="_blank"><img src="/static/home/images/1489096615934856180.png" style="max-width:99px; max-height:72px;"></a></div>
-                </div>
-
-            </div>
-        </div>
-        <div class="store-channel" id="storeRec">
-            <div class="ftit"><h3>推荐店铺</h3></div>
-            <div class="rec-store-list">
-                <div class="rec-store-item opacity_img">
-                    <a href="http://www.wygk.cn/" target="_blank">
-                        <div class="p-img"><img src="/static/home/images/1490809761217876585.png" width="386" height="187"></div>
-                        <div class="info">
-                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809962606266227.png"></div></div>
-                            <div class="s-title">
-                                <div class="tit">美宝莲</div>
-                                <div class="ui-tit">纽约高街潮妆</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="rec-store-item opacity_img">
-                    <a href="http://www.wygk.cn/" target="_blank">
-                        <div class="p-img"><img src="/static/home/images/1490809806968463857.png" width="386" height="187"></div>
-                        <div class="info">
-                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809975987863603.png"></div></div>
-                            <div class="s-title">
-                                <div class="tit">三只松鼠</div>
-                                <div class="ui-tit">就是这个味</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="rec-store-item opacity_img">
-                    <a href="http://www.wygk.cn/" target="_blank">
-                        <div class="p-img"><img src="/static/home/images/1490809848143312315.png" width="386" height="187"></div>
-                        <div class="info">
-                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809989737429921.png"></div></div>
-                            <div class="s-title">
-                                <div class="tit">绿联旗舰店</div>
-                                <div class="ui-tit">给生活多点精彩</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="rec-store-item opacity_img">
-                    <a href="http://www.wygk.cn/" target="_blank">
-                        <div class="p-img"><img src="/static/home/images/1490809371858823504.png" width="386" height="187"></div>
-                        <div class="info">
-                            <div class="s-logo"><div class="img"><img src="/static/home/images/1490809605496323484.jpg"></div></div>
-                            <div class="s-title">
-                                <div class="tit">韩都衣舍</div>
-                                <div class="ui-tit">满249减50</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="lift-channel clearfix" id="guessYouLike">
-            <div class="ftit"><h3>还没逛够</h3></div>
-            <ul>
-                <li class="opacity_img">
-                    <a href="goods.php?id=684">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109583798.jpg"></div>
-                        <div class="p-name" title="【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮">【情侣款】Camel骆驼男靴 时尚潮流英伦风马丁靴高帮皮靴 爆卖1万双！ 情侣马丁靴 好评如潮</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>555.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=685">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109633806.jpg"></div>
-                        <div class="p-name" title="春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮">春季马丁靴男真皮男靴黄靴工装军靴韩版短靴沙漠靴高帮男鞋大黄靴 头层牛皮</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>1000.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=679">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489108999364.jpg"></div>
-                        <div class="p-name" title="特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险">特步女鞋2017春季新款运动鞋休闲鞋女慢跑步鞋旅游鞋轻便舒适时尚 早春特惠 爆款休闲女鞋 赠运费险</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>200.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=634">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102753231.jpg"></div>
-                        <div class="p-name" title="新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮">新款韩版chic学生宽松短款外套上衣字母长袖连帽套头卫衣女潮</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>300.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=735">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1490165304408.jpg"></div>
-                        <div class="p-name" title="【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香">【周黑鸭-休闲装】鸭锁骨200g 鸭架子 武汉特产零食 微甜爽辣 回味久远 休闲包装 携带方便 肉质鲜香</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>29.80</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=683">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109337889.jpg"></div>
-                        <div class="p-name" title="igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修">igtt铝框行李箱拉杆箱旅行箱万向轮男女20/24/26寸密码箱登机箱子 铝合金框 加强密码锁 万向轮 终身保修</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>330.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=682">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109282145.jpg"></div>
-                        <div class="p-name" title="波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保">波米铝框拉杆箱万向轮密码旅行箱子20/24寸行李箱女登机箱男26/28 顺丰速运赠运费险赠十礼品终身质保</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>250.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=681">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489109130174.jpg"></div>
-                        <div class="p-name" title="2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋">2016秋冬季新款尖头粗跟短靴女高跟真皮加绒中跟马丁靴女靴子女鞋 优质全头层牛皮，品质女鞋</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>458.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=657">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489106146615.jpg"></div>
-                        <div class="p-name" title="创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低">创意真皮床双人床现代婚床1.8米1.5榻榻米床储物床皮艺床软床大床 床侧储物 升降靠背 双ll价格 更低</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>78888.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-                <li class="opacity_img">
-                    <a href="goods.php?id=635">
-                        <div class="p-img"><img src="/static/home/images/0_thumb_g_1489102950633.jpg"></div>
-                        <div class="p-name" title="韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服">韩都衣舍2017韩版女装新款黑白拼接插肩棒球服春季短外套HH5597妠 朴信惠同款 黑白拼接 插肩袖 棒球服</div>
-                        <div class="p-price">
-                            <div class="shop-price"><em>￥</em>450.00</div>
-                            <div class="original-price"></div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
 </div>
 <div class="attached-search-container" ectype="suspColumn">
@@ -759,21 +721,6 @@
 </div>
 </div>
 
-<div class="lift lift-hide" ectype="lift" style="z-index:100001">
-    <div class="lift-list" ectype="liftList">
-        <div class="lift-item lift-h-seckill lift-item-first" ectype="liftItem" data-target="#h-seckill"><span>秒杀</span></div>
-        <div class="lift-item lift-h-need lift-item-current" ectype="liftItem" data-target="#h-need"><span>推荐</span></div>
-        <div class="lift-item" ectype="liftItem" data-target="#h-brand"><span>品牌</span></div>
-        <div class="lift-item lift-floor-item" ectype="liftItem"><span>男装女装</span></div>
-        <div class="lift-item lift-floor-item" ectype="liftItem"><span>鞋靴箱包</span></div>
-        <div class="lift-item lift-floor-item" ectype="liftItem"><span>食品酒水</span></div>
-        <div class="lift-item lift-floor-item" ectype="liftItem"><span>家用电器</span></div>
-        <div class="lift-item lift-master" ectype="liftItem" data-target="#master"><span>达人</span></div>
-        <div class="lift-item lift-storeRec" ectype="liftItem" data-target="#storeRec"><span>店铺</span></div>
-        <div class="lift-item" ectype="liftItem" data-target="#guessYouLike"><span>商品</span></div>
-        <div class="lift-item lift-item-top" ectype="liftItem"><i class="iconfont icon-returntop"></i></div>
-    </div>
-</div>
 <div class="ejectAdv" ectype="ejectAdv">
     <div class="email_sub">
         <div class="attached_bg"></div>

@@ -26,8 +26,6 @@ class Staff  extends Base
     public $staff;//员工表
     public $images_upload;//图片库
     public $role;//角色表
-//    public $request_url;//请求地址
-//    public $powe_list;//拥有的权限组
     public function  __construct()
     {
         parent::__construct();
@@ -38,8 +36,7 @@ class Staff  extends Base
         $this->staff =new Save($data);
         $this->images_upload = new Save($img_data);
         $this->role =new Save($role_data);
-//        $this->request_url = $_SERVER['REQUEST_URI'];
-//        $this->powe_list = Session::get('powe_list');
+
     }
 
     //员工列表信息
