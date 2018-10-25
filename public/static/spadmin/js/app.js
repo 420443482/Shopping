@@ -663,7 +663,7 @@ function _del_recycle(obj, id, url, msg, returnMsg, fn) {
         icon: 3
     }, function () {
         $.post(url, {id: id}, function (data) {
-            if (data.code == 0) {
+            if (data.code == 1) {
                 layer.msg(returnMsg, {icon: 1, time: 1000});
                 $(obj).parents("tr").fadeOut();
             } else {

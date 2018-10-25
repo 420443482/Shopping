@@ -34,11 +34,13 @@
                                     {$v2['powe_name']}:</label>
                             </dt>
                             <dd>
+                                {if isset($column[$v2['powe_id']])}
                                 {foreach $column[$v2['powe_id']] as $v3}
                                 <label class="">
                                     <input type="checkbox" value="{$v3['powe_id']}"  {if isset($in_role_ids)}{if in_array($v3['powe_id'],$in_role_ids)} checked {/if}{/if} name="role_powe_ids[]  " id="user-Character-0-0-0">
                                     {$v3['powe_name']}</label>
                                 {/foreach}
+                                {/if}
                             </dd>
                         </dl>
                         {/foreach}

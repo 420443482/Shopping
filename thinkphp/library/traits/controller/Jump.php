@@ -84,6 +84,7 @@ trait Jump
         }
 
         $type = $this->getResponseType();
+
         $result = [
             'code' => 0,
             'msg'  => $msg,

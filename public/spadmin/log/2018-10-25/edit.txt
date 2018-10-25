@@ -1,0 +1,3 @@
+执行日期：
+2018-10-25 15:47:00 
+UPDATE `yr_role`  SET `role_powe_ids`='1,2,13,38,9,10,26,17,22',`role_name`='普通员工',`role_remark`='部分权限'  WHERE  `role_id` = 3

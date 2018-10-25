@@ -56,14 +56,14 @@ class Save extends Controller
         return $list;
     }
     //单条查询
-    public function selectFind($data)
+    public function selectFind($data=[])
     {
         $list = Db::name($this->table_name)->where($data['where'])->find();
         ding_log('select',Db::name('')->getLastSql());
         return $list;
     }
     //全部查询
-    public function selectAll($data)
+    public function selectAll($data=[])
     {
         $list = Db::name($this->table_name)->where($data['where'])->select();
         ding_log('select',Db::name('')->getLastSql());

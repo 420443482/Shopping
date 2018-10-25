@@ -7,6 +7,7 @@ use app\common\controller\Upload;
 use think\Config;
 use think\Db;
 use think\Loader;
+use think\Session;
 
 class Staff  extends Base
 {
@@ -24,14 +25,21 @@ class Staff  extends Base
      * */
     public $staff;//员工表
     public $images_upload;//图片库
+    public $role;//角色表
+//    public $request_url;//请求地址
+//    public $powe_list;//拥有的权限组
     public function  __construct()
     {
         parent::__construct();
         $data['table_name'] = 'staff_info';
         $data['order'] = 'staff_id desc';
         $img_data['table_name'] = 'images_upload';
+        $role_data['table_name'] = 'role';
         $this->staff =new Save($data);
         $this->images_upload = new Save($img_data);
+        $this->role =new Save($role_data);
+//        $this->request_url = $_SERVER['REQUEST_URI'];
+//        $this->powe_list = Session::get('powe_list');
     }
 
     //员工列表信息
@@ -74,6 +82,7 @@ class Staff  extends Base
         $params['staff_sex'] = $_REQUEST['staff_sex'];
         $params['staff_wx'] = $_REQUEST['staff_wx'];
         $params['staff_qq'] = $_REQUEST['staff_qq'];
+        $params['staff_role'] = $_REQUEST['staff_role'];
         $params['staff_code'] = date('Ymd').rand(1000,9999);
         $params['staff_update_time'] = date('Y-m-d H:i:s');
         //验证器验证
@@ -105,6 +114,13 @@ class Staff  extends Base
         //正常操作
         $params['staff_password'] = md5($params['staff_password']);
         return $params;
+    }
+    //角色信息
+    public function staff_role(){
+        $data['where']['is_delete'] = 0;
+        $list = $this->role->selectAll($data);
+        $result = array_column($list,'role_name','role_id');
+        $this->success('','',$result);
     }
     //新增员工信息
     public function staff_add(){
@@ -148,6 +164,8 @@ class Staff  extends Base
             $staff_id = $_REQUEST['staff_id'];
             $data['where']['staff_id']= $staff_id;
             $result = $this->staff->selectFind($data);
+            $role_list = role_list();
+            $this->assign('role_list',$role_list);
             $this->assign('val',$result);
             $this->assign('staff_id',$staff_id);
         }

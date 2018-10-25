@@ -1,0 +1,3 @@
+执行日期：
+2018-10-25 15:57:31 
+SELECT * FROM `yr_goods_class` WHERE  `is_delete` = 0  AND `class_level` = 1 ORDER BY ctime desc LIMIT 0,10

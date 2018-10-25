@@ -20,11 +20,15 @@ class Login extends Controller
         if($this->request->isPost()){
             $account = $_REQUEST['staff_account'];
             $pwd = $_REQUEST['staff_password'];
-
-            $admin_account = Db::name('staff_info')->where(array('staff_account'=>$account,'staff_password'=>md5($pwd)))->find();
+            $admin_account = Db::name('staff_info')->where(array('staff_account'=>$account,'staff_password'=>md5($pwd),'staff_delete_status'=>0))->find();
+            $role = Db::name('role')->where(array('role_id'=>$admin_account['staff_role']))->find();
+            if(empty($role)){
+                $this->error('该账户角色不存在，需管理员重新分配');
+            }
             if($admin_account){
                 Session::set('pass',1);
                 Session::set('staff_id',$admin_account['staff_id']);
+                Session::set('staff_role',$admin_account['staff_role']);
                 $this->success('成功',url('/spadmin/index/index','','',true));
             }else{
                 $this->error('账号或密码错误');

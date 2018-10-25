@@ -81,6 +81,7 @@ class Role  extends Base
                         'powe_name'=> $v['powe_name']
                     ];
             }
+
             $this->assign('column',$column);
         }
         return view('role_edit');

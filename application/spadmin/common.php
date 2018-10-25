@@ -590,9 +590,16 @@ function createDir($path){
     }
 
 }
+//角色信息
+function role_list(){
+    $list = Db::name('role')->where(array('is_delete'=>0))->select();
+    $result = array_column($list,'role_name','role_id');
+    return $result;
+}
 //栏目名称
 function role_powe_name(){
-    $role_powe = Db::name('role_powe')->select();
+    $data['where']['is_delete'] = 0;
+    $role_powe = Db::name('role_powe')->where(array('is_delete'=>0))->select();
     $role_powe_name = array_column($role_powe,'powe_name','powe_id');
     return $role_powe_name;
 }
