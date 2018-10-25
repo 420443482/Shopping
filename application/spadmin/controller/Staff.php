@@ -2,7 +2,7 @@
 namespace app\spadmin\controller;
 
 
-use app\common\Controller\Save;
+use app\common\controller\Save;
 use app\common\controller\Upload;
 use think\Config;
 use think\Db;

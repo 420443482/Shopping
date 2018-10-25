@@ -2,7 +2,7 @@
 namespace app\spadmin\controller;
 
 
-use app\common\Controller\Save;
+use app\common\controller\Save;
 use think\Controller;
 use think\Db;
 use think\Exception;
