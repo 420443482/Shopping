@@ -1,0 +1,3 @@
+执行日期：
+2018-10-26 17:15:11 
+INSERT INTO `yr_goods_class` (`class_name` , `child_class_id` , `subgrade_class_id` , `is_recommend` , `is_display` , `goods_update_time` , `class_level`) VALUES ('鞋子' , 0 , 0 , 1 , 1 , '2018-10-26 17:15:10' , 1)

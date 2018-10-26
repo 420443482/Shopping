@@ -114,7 +114,7 @@ class Goods  extends Base
         if($class_level != 1 && $goods_class_id == 0){
             $this->error('请点击有效分类');
         }
-        $data = [];
+        $data['where']['is_delete'] = 0;
 
         switch ($class_level){
             case '2':

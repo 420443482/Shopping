@@ -8,22 +8,14 @@ use think\Session;
 	//显示首页
     public function index()
     {
-
+        list($class,$goods_class_array) = array([],[]);
         $user_id = session('user_id');
         $user_info = [];
         if(!empty($user_id)){
             $user_info = Db::name('user_info')->where(array('user_id'=>$user_id))->find();
         }
-        //商品显示
-        $goods  = Db::name('goods_info')->where(array('is_delete'=>0))->select();
-        $goods_Array = array_reduce($goods,function(&$goods_Array,$v){
-            $goods_Array[$v['goods_id']] = $v;
-            return $goods_Array;
-        });
-
         //侧边菜单显示
-        $class_list = Db::name('goods_class')->where(array('is_display'=>0,'is_delete'=>0))->select();
-        list($class,$goods_class_array,$activity_goods) = array([],[],[]);
+        $class_list = Db::name('goods_class')->where(array('is_display'=>1,'is_delete'=>0))->select();
 
         foreach ($class_list as $k=>$v){
             if($v['child_class_id'] == 0){
@@ -36,30 +28,15 @@ use think\Session;
             }
         }
         array_values($class);
-        //活动商品显示
-        $date = time();//当前时间
-        $activity = Db::name('activity')->where(array('is_status'=>0,'activity_start_time'=>array('elt',$date)))->select();
-        foreach ($activity as $k=>$v){
-            $goods_id = json_decode($v['goods_id']);
-            $v['activity_end_time'] = date('Y-m-d H:i:s',$v['activity_end_time']);
-            $activity_goods[$k] = $v;
-            foreach ($goods_id as $key=>$g){
-                if(isset($goods_Array[$g])) {
-                    $images =  json_decode($goods_Array[$g]['goods_images']);
-                    $goods_Array[$g]['goods_images'] =$images[0];
-                    $activity_goods[$k]['goods_info'][] = $goods_Array[$g];//指定活动旗下商品
-                }
-            }
-        }
 
-        $this->assign('activity_goods',$activity_goods);
+
         $this->assign('class',$class);
         $this->assign('goods_class_array',$goods_class_array);
         $this->assign('user_info',$user_info);
         return $this->fetch('index');
     }
     //分类菜单整体显示
-        public function class_menu(){
+    public function class_menu(){
         $goods_class_id = input('post.goods_class_id');
         $class_list = Db::name('goods_class')->where(array('goods_class_id'=>$goods_class_id))->whereOr(array('child_class_id'=>$goods_class_id))->order('child_class_id asc')->select();
         $max_class = $class_list[0];

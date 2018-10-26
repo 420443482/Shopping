@@ -1,0 +1,3 @@
+执行日期：
+2018-10-26 17:15:28 
+SELECT * FROM `yr_goods_class` WHERE  `is_delete` = 0  AND `child_class_id` = 66  AND `subgrade_class_id` = 0
