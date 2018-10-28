@@ -28,8 +28,33 @@ use think\Session;
             }
         }
         array_values($class);
+        //商城首页商品
+        $where = [
+            'i.goods_is_exhibition' => 1,
+            'i.is_delete' => 0,
+            'c.is_display' => 1,
+            'c.is_delete' => 0,
+        ];
+        $field = 'i.goods_name,i.goods_id,r.goods_id,r.one_class_id,
+                  c.goods_class_id,i.goods_sales_price,i.goods_summary,i.goods_images';
+        $goods_list = Db::name('goods_info')
+            ->alias('i')
+            ->join('yr_goods_class_relevance r','i.goods_id = r.goods_id')
+            ->join('yr_goods_class c','r.one_class_id = c.goods_class_id')
+            ->where($where)
+            ->field($field)
+            ->order('c.goods_sort desc')
+            ->select();
+        $goods_column = [];
+        foreach ($goods_list as $k=>$v){
+            $images = json_decode($v['goods_images'],true);
+            $v['goods_images'] = $images[0];
+            $goods_column[$v['goods_class_id']][] = $v;
+        }
 
-
+        $goods_class_name = array_column($class_list,'class_name','goods_class_id');
+        $this->assign('goods_class_name',$goods_class_name);
+        $this->assign('goods_column',$goods_column);
         $this->assign('class',$class);
         $this->assign('goods_class_array',$goods_class_array);
         $this->assign('user_info',$user_info);

@@ -79,11 +79,15 @@
             </div>
         </div>
         <div class="row cl check_css3" >
+            <label class="form-label col-xs-4 col-sm-2">是否展示：</label>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_exhibition) && $list.goods_is_exhibition == 1} checked {/if} class="input_check" id="check3" name="goods_is_exhibition"><label for="check3" style="margin-top:4px;"></label></span>
+        </div>
+        <div class="row cl check_css3" >
             <label class="form-label col-xs-4 col-sm-2">是否包邮：</label>
             <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check4" name="goods_is_shipping"><label for="check4" style="margin-top:4px;"></label></span>
         </div>
         <div class="row cl check_css3">
-            <label class="form-label col-xs-4 col-sm-2">是否包邮：</label>
+            <label class="form-label col-xs-4 col-sm-2">是否折扣：</label>
             <span style="margin-left:14px;"><input type="checkbox"class="input_check"  {if isset($list.goods_is_discount) && $list.goods_is_discount == 1} checked {/if} id="check5" name="goods_is_discount"><label for="check5" style="margin-top:4px;"></label></span>
         </div>
         <div class="row cl check_css3">

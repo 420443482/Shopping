@@ -71,7 +71,7 @@ class Goods  extends Base
     public function  goods_parameter_list(){
         $params['staff_id'] = Session::get('staff_id');
         $params['goods_name'] = isset($_REQUEST['goods_name'])?$_REQUEST['goods_name']:'';
-        $params['goods_images'] = isset($_REQUEST['map_images'])?$_REQUEST['map_images']:[];
+        $params['goods_images'] = isset($_REQUEST['map_images'])?$_REQUEST['map_images']:1;
         $params['goods_summary'] = isset($_REQUEST['goods_summary'])?$_REQUEST['goods_summary']:'';
         $params['goods_stock'] = isset($_REQUEST['goods_stock'])?$_REQUEST['goods_stock']:0;
         $params['goods_market_price'] = isset($_REQUEST['goods_market_price'])?$_REQUEST['goods_market_price']:0;
@@ -80,6 +80,7 @@ class Goods  extends Base
         $params['one_class_id'] = isset($_REQUEST['one_class_id'])?$_REQUEST['one_class_id']:0;
         $params['two_class_id'] = isset($_REQUEST['two_class_id'])?$_REQUEST['two_class_id']:0;
         $params['three_class_id'] = isset($_REQUEST['three_class_id'])?$_REQUEST['three_class_id']:0;
+        $params['goods_is_exhibition'] = isset($_REQUEST['goods_is_exhibition'])?1:0;
         $params['goods_is_shipping'] = isset($_REQUEST['goods_is_shipping'])?1:0;
         $params['goods_is_discount'] = isset($_REQUEST['goods_is_discount'])?1:0;
         $params['goods_is_grounding'] = isset($_REQUEST['goods_is_grounding'])?1:0;
@@ -91,11 +92,30 @@ class Goods  extends Base
         if(!$validate->scene('save')->check($params)){
             $this->error($validate->getError());
         }
+
+        if($params['goods_images'] == 1 && empty($_REQUEST['goods_id'])){
+            $this->error('请至少上传一张图片');
+        }
+
+
         if(!empty($params['goods_undercarriage_time'])){
             if( $params['goods_grounding_time'] > $params['goods_undercarriage_time']){
                 $this->error('上架时间不能大于下架时间');
             }
         }
+        if($params['goods_is_exhibition'] > 0 ){
+            isset($_REQUEST['goods_id'])?$where['g.goods_id'] = array('neq',$_REQUEST['goods_id']):$where = [];
+            $goods_ex_count = Db::name('goods_info')
+                ->alias('g')
+                ->join('yr_goods_class_relevance r','g.goods_id = r.goods_id')
+                ->where(array('r.one_class_id'=>$params['one_class_id'],'g.goods_is_exhibition'=>$params['goods_is_exhibition']))
+                ->where($where)
+                ->count();
+            if($goods_ex_count > 10){
+                $this->error('首页展示数量超出限制，请去除一个展示商品');
+            }
+        }
+
         $params['goods_images'] = json_encode($params['goods_images']);
         //需要去掉的索引，在商品表中不存在
         $unset_array = [
@@ -171,7 +191,17 @@ class Goods  extends Base
         if($this->request->isAjax()){
             $params = $this->goods_parameter_list();
             $params['where']['goods_id'] = $goods_id;
+
             try{
+                if($params['data']['goods_images'] == 1){
+                    unset($params['data']['goods_images']);
+                }else{
+                    $images = json_decode($params['data']['goods_images']);
+                    $implode_images = implode(',',$images);
+                    $images['where']['images_adress'] = array('IN',$implode_images);
+                    $images['data']['status'] = 1;
+                    $this->images_upload->edit($images);
+                }
                 $this->goods->edit($params);
                 $relevance['data'] = [
                     'one_class_id'=> $params['relevance']['one_class_id'],
@@ -180,11 +210,7 @@ class Goods  extends Base
                 ];
                 $relevance['where']['goods_id'] = $goods_id;
                 $this->goods_class_relevance->edit($relevance);
-                $images = json_decode($params['data']['goods_images']);
-                $implode_images = implode(',',$images);
-                $images['where']['images_adress'] = array('IN',$implode_images);
-                $images['data']['status'] = 1;
-                $this->images_upload->edit($images);
+
                 Db::commit();
                 $result = true;
             }catch (\Exception $e) {
@@ -276,6 +302,7 @@ class Goods  extends Base
         $params['subgrade_class_id'] = isset($_REQUEST['subgrade_class_id'])?$_REQUEST['subgrade_class_id']:0;
         $params['is_recommend'] = isset($_REQUEST['is_recommend'])?1:0;
         $params['is_display'] = isset($_REQUEST['is_display'])?1:0;
+        $params['goods_sort'] = isset($_REQUEST['goods_sort'])?$_REQUEST['goods_sort']:0;
         $params['goods_update_time'] = date('Y-m-d H:i:s',time());
         if($params['child_class_id'] != 0 && $params['subgrade_class_id'] == 0){
             $params['class_level'] = 2;

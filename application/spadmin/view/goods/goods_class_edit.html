@@ -46,12 +46,23 @@
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl check_css3" >
+            <label class="form-label col-xs-3 col-sm-3">推荐排序：</label>
+            <div class="formControls col-xs-2 col-sm-2">
+                <input type="text" class="input-text" value="{$list.goods_sort ?? 0}" placeholder="" name="goods_sort"
+                       nullmsg="推荐排序">
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+                <h5>*值越大，商品首页显示越前</h5>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl check_css3" >
             <label class="form-label col-xs-3 col-sm-3">是否推荐：</label>
-            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check4" name="is_recommend"><label for="check4" style="margin-top:4px;"></label></span>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.is_recommend) && $list.is_recommend == 1} checked {/if} class="input_check" id="check4" name="is_recommend"><label for="check4" style="margin-top:4px;"></label></span>
         </div>
         <div class="row cl check_css3" >
             <label class="form-label col-xs-3 col-sm-3">是否显示：</label>
-            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.goods_is_shipping) && $list.goods_is_shipping == 1} checked {/if} class="input_check" id="check5" name="is_display"><label for="check5" style="margin-top:4px;"></label></span>
+            <span style="margin-left:14px;"><input type="checkbox" {if isset($list.is_display) && $list.is_display == 1} checked {/if} class="input_check" id="check5" name="is_display"><label for="check5" style="margin-top:4px;"></label></span>
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">

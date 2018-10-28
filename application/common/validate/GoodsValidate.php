@@ -12,7 +12,6 @@ class GoodsValidate extends Validate{
         ['goods_buying_price','number' ,'请输入数字(进货价)'],
         ['goods_sales_price', 'number' ,'请输入数字(销售价)'],
         ['goods_stock', 'number' ,'请输入数字(库存)'],
-        ['goods_images' ,'min:1' ,'商品详图至少上传一张'],
 
     ];
 //    //提示信息

@@ -18,6 +18,7 @@ class Base extends Controller
         if(!Session::get('pass')){
             $this->redirect(url('spadmin/login/login'));
         }
+
         if($_SERVER['PATH_INFO'] != '/spadmin/index/index'){
             if($_SERVER['PATH_INFO'] != '/spadmin/index/desktop.html'){
                 if (!in_array($_SERVER['PATH_INFO'],Session::get('powe_list'))) {
