@@ -49,9 +49,10 @@ class Save extends Controller
     //分页查询
     public function select($data = [])
     {
+
         $this->order = isset($data['order'])?$data['order']:$this->order;
         $listRows =  Config::get("paginate.list_rows");
-        $list = Db::name($this->table_name)->where($data['where'])->order($this->order)->paginate($listRows, false);
+        $list = Db::name($this->table_name)->where($data['where'])->order($this->order)->paginate($listRows, false,['query' => $_REQUEST]);
         ding_log('select',Db::name('')->getLastSql());
         return $list;
     }

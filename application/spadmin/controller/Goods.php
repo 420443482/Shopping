@@ -36,7 +36,6 @@ class Goods  extends Base
     public  $goods_class;//商品分类
     public  $goods_class_relevance;//商品和商品分类关联
     public  $images_upload;//图片库
-
     public function __construct(Request $request = null)
     {
         parent::__construct($request);
@@ -52,17 +51,20 @@ class Goods  extends Base
     //商品列表
     public function goods_list()
     {
+
         list($font,$data) = array([],[]);
+
         $goods_name = isset($_REQUEST['goods_name'])?$_REQUEST['goods_name']:'';
         if(!empty($goods_name)){
             $data['where']['goods_name'] = array('like','%'.$goods_name.'%');
             $font['goods_name'] = $goods_name;
         }
         $data['where']['is_delete'] = 0;
+
         $list = $this->goods->select($data);
 
         $this->assign("page", $list->render());
-        $this->assign("count",$list->count());
+        $this->assign("count",$list->total());
         $this->assign('list',$list);
         $this->assign('where',$font);
         return view();
@@ -290,7 +292,7 @@ class Goods  extends Base
 
         $list = $this->goods_class->select($data);
         $this->assign("page", $list->render());
-        $this->assign("count",$list->count());
+        $this->assign("count",$list->total());
         $this->assign('list',$list);
         $this->assign('where',$font);
         return view();

@@ -1,0 +1,3 @@
+执行日期：
+2018-10-29 15:54:22 
+INSERT INTO `yr_role_powe` (`powe_name` , `powe_url` , `powe_pid`) VALUES ('系统设置' , '/spadmin/system/system_index' , 41)

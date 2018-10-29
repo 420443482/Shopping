@@ -7,11 +7,6 @@
     <form class="mb-20" method="get" action="{:\\think\\Request::instance()->baseUrl()}">
         <input type="text" class="input-text" style="width:250px" placeholder="名称" name="goods_name"
                value="{$where['goods_name'] ?? ''}">
-        <select class="input-text" style="width:250px;position:relative;top:2px;" name="level">
-            {if !empty($where['level'])}
-                <option style="display: none;" value="{$where['level']}">{$level_name[$where['level']]}</option>
-            {/if}
-        </select>
         <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </form>
     <div class="cl pd-5 bg-1 bk-gray">
@@ -25,17 +20,18 @@
     <table class="table table-border table-bordered table-hover table-bg mt-20">
         <thead>
         <tr class="text-c">
-            <th>序号</th>
+            <th>序号<a href="/spadmin/goods/goods_list?order_c=goods_id"><img style="float: right;cursor:pointer" src="__STATIC__/images/sort_both.png"></a></th>
             <th>商品名称</th>
             <th>商品图片</th>
-            <th>市场价</th>
-            <th>进货价</th>
-            <th>销售价</th>
-            <th>库存</th>
-            <th>是否包邮</th>
-            <th>是否折扣</th>
-            <th>是否上架</th>
-            <th>创建时间</th>
+            <th>市场价<img class="order_img" style="float: right;cursor:pointer" order_c="goods_market_price" src="__STATIC__/images/sort_both.png"></th>
+            <th>进货价<img class="order_img" style="float: right;cursor:pointer" order_c="goods_buying_price" src="__STATIC__/images/sort_both.png"></th>
+            <th>销售价<img class="order_img" style="float: right;cursor:pointer" order_c="goods_sales_price" src="__STATIC__/images/sort_both.png"></th>
+            <th>库存<img class="order_img" style="float: right;cursor:pointer" order_c="goods_stock" src="__STATIC__/images/sort_both.png"></th>
+            <th>是否展示<img class="order_img"  style="float: right;cursor:pointer" order_c="goods_is_exhibition" src="__STATIC__/images/sort_both.png"></th>
+            <th>是否包邮<img class="order_img"  style="float: right;cursor:pointer" order_c="goods_is_shipping" src="__STATIC__/images/sort_both.png"></th>
+            <th>是否折扣<img class="order_img" style="float: right;cursor:pointer" order_c="goods_is_discount" src="__STATIC__/images/sort_both.png"></th>
+            <th>是否上架<img class="order_img" style="float: right;cursor:pointer" order_c="goods_is_grounding" src="__STATIC__/images/sort_both.png"></th>
+            <th>创建时间<img class="order_img" style="float: right;cursor:pointer" order_c="ctime" src="__STATIC__/images/sort_both.png"></th>
             <th>操作</th>
         </tr>
         </thead>
@@ -49,6 +45,7 @@
                 <td>{$val.goods_buying_price}</td>
                 <td>{$val.goods_sales_price}</td>
                 <td>{$val.goods_stock}</td>
+                <td>{$Think.config.is_true[$val.goods_is_exhibition]}</td>
                 <td>{$Think.config.is_true[$val.goods_is_shipping]}</td>
                 <td>{$Think.config.is_true[$val.goods_is_discount]}</td>
                 <td>{$Think.config.is_true[$val.goods_is_grounding]}</td>
@@ -66,6 +63,7 @@
 {/block}
 {block name='script'}
 <script>
+
     function picture_add(title,url){
         var index = layer.open({
             type: 2,

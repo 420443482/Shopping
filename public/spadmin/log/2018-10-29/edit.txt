@@ -1,0 +1,3 @@
+执行日期：
+2018-10-29 16:19:00 
+UPDATE `yr_role_powe`  SET `powe_name`='基础设置',`powe_url`='/spadmin/system/system_index',`powe_pid`=41  WHERE  `powe_id` = 42
