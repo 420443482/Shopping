@@ -4,59 +4,7 @@
     <div class="w w1200 relative">
         <div class="crumbs-nav">
             <div class="crumbs-nav-main clearfix">
-                <div class="crumbs-nav-item">
-                    <div class="menu-drop">
-                        <div class="trigger">
-                            <a href="category.php?id=858"><span>家用电器</span></a>
-                            <i class="iconfont icon-down"></i>
-                        </div>
-                        <div class="menu-drop-main">
-                            <ul>
-                                <li><a href="category.php?id=1105">大家电</a></li>
-                                <li><a href="category.php?id=1115">生活电器</a></li>
-                                <li><a href="category.php?id=1129">厨房电器</a></li>
-                                <li><a href="category.php?id=1145">个护健康</a></li>
-                                <li><a href="category.php?id=1160">五金家装</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <i class="iconfont icon-right"></i>		</div>
-                <div class="crumbs-nav-item">
-                    <div class="menu-drop">
-                        <div class="trigger">
-                            <a href="category.php?id=1129"><span>厨房电器</span></a>
-                            <i class="iconfont icon-down"></i>
-                        </div>
-                        <div class="menu-drop-main">
-                            <ul>
-                                <li><a href="category.php?id=1130">电压力锅</a></li>
-                                <li><a href="category.php?id=1131">电饭煲</a></li>
-                                <li><a href="category.php?id=1132">豆浆机</a></li>
-                                <li><a href="category.php?id=1133">面包机</a></li>
-                                <li><a href="category.php?id=1134">咖啡机</a></li>
-                                <li><a href="category.php?id=1135">微波炉</a></li>
-                                <li><a href="category.php?id=1136">料理/榨汁机</a></li>
-                                <li><a href="category.php?id=1137">电烤箱</a></li>
-                                <li><a href="category.php?id=1138">电磁炉</a></li>
-                                <li><a href="category.php?id=1139">电饼铛/烧火盘</a></li>
-                                <li><a href="category.php?id=1140">煮蛋器</a></li>
-                                <li><a href="category.php?id=1141">酸奶机</a></li>
-                                <li><a href="category.php?id=1142">电水壶/热水瓶</a></li>
-                                <li><a href="category.php?id=1143">电饭盒</a></li>
-                                <li><a href="category.php?id=1144">其他厨房电器</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <i class="iconfont icon-right"></i>		</div>
-                <div class="crumbs-nav-item">
-                    <div class="menu-drop">
-                        <div class="trigger bottom">
-                            <a href="category.php?id=1130"><span>电压力锅</span></a>
-                            <i class="iconfont icon-down"></i>
-                        </div>
-                    </div>
-                    <i class="iconfont icon-right"></i>		</div>
-                <span class="cn-goodsName">Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢</span>
+                <span class="cn-goodsName">{$goods_list.goods_name}/{$goods_list.goods_summary}</span>
             </div>
         </div>
     </div>
@@ -74,7 +22,20 @@
                 <div class="gallery_wrap">
                     <ul>
                         <li ectype="img">
-                            <a href="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" class="MagicZoomPlus" id="Zoomer" rel="hint-text: ; selectors-effect: false; selectors-class: img-hover; selectors-change: mouseover; zoom-distance: 10;zoom-width: 400; zoom-height: 474;" title="" style="position: relative; display: inline-block; text-decoration: none; outline: 0px; overflow: hidden; margin: auto; width: auto; height: auto;"><img src="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" id="J_prodImg" alt="Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢" style="opacity: 1;"><div class="MagicZoomPup" style="z-index: 10; position: absolute; overflow: hidden; display: none; visibility: hidden; width: 197px; height: 234px; opacity: 0.5; left: 199px; top: 0px;"></div><div class="MagicZoomPlusHint" style="display: block; overflow: hidden; position: absolute; visibility: visible; z-index: 1; left: 2px; right: auto; top: 2px; bottom: auto; opacity: 0.75; max-width: 394px;"></div></a>
+                            <a href="{$goods_images[0]}" class="MagicZoomPlus" id="Zoomer" rel="hint-text: ;
+                            selectors-effect: false; selectors-class: img-hover; selectors-change: mouseover;
+                            zoom-distance: 10;zoom-width: 400; zoom-height: 474;" title=""
+                               style="position: relative; display: inline-block; text-decoration: none; outline: 0px;
+                                overflow: hidden; margin: auto; width: auto; height: auto;">
+                                <img src="{$goods_images[0]}" id="J_prodImg"
+                                     alt="{$goods_list.goods_name}/{$goods_list.goods_summary}"
+                                     style="opacity: 1; ">
+                                <div class="MagicZoomPup" style="z-index: 10; position: absolute; overflow: hidden; display:
+                                 none; visibility: hidden; width: 197px; height: 234px; opacity: 0.5; left: 199px; top: 0px;"></div>
+                                <div class="MagicZoomPlusHint" style="display: block; overflow: hidden; position: absolute; visibility:
+                                visible; z-index: 1; left: 2px; right: auto; top: 2px; bottom: auto; opacity: 0.75; max-width: 394px;">
+                                </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -82,22 +43,13 @@
                     <a href="javascript:void(0);" class="spec-prev prevStop"><i class="iconfont icon-left"></i></a>
                     <div class="spec-items">
                         <ul>
-
+                            {foreach $goods_images as $v}
                             <li data-type="img">
-                                <a href="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" rel="zoom-id: Zoomer" rev="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" class="MagicThumb-swap" style="outline: none; display: inline-block;">
-                                    <img src="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" alt="Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢" width="58" height="58">
+                                <a href="{$v}" rel="zoom-id: Zoomer" rev="{$v}" class="MagicThumb-swap" style="outline: none; display: inline-block;">
+                                    <img src="{$v}" alt="{$goods_list.goods_name}/{$goods_list.goods_summary}" width="58" height="58">
                                 </a>
                             </li>
-                            <li data-type="img">
-                                <a href="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" rel="zoom-id: Zoomer" rev="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" class="MagicThumb-swap img-hover" id="mt-1049572475654" style="outline: none; display: inline-block;">
-                                    <img src="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" alt="Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢" width="58" height="58">
-                                </a>
-                            </li>
-                            <li data-type="img">
-                                <a href="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" rel="zoom-id: Zoomer" rev="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" class="MagicThumb-swap" id="mt-981358718572" style="outline: none; display: inline-block;">
-                                    <img src="http://mall.wygk.cn/images/201703/goods_img/0_P_1489105257637.jpg" alt="Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢" width="58" height="58">
-                                </a>
-                            </li>
+                            {/foreach}
 
                         </ul>
                     </div>
@@ -172,24 +124,24 @@
             </script>
             <div class="product-wrap">
                 <form action="javascript:addToCart(648)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
-                    <div class="name">Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢</div>
+                    <div class="name">{$goods_list.goods_name}/{$goods_list.goods_summary}</div>
                     <div class="summary">
                         <div class="summary-price-wrap">
                             <div class="s-p-w-wrap">
                                 <div class="summary-item si-shop-price">
                                     <div class="si-tit">商 城 价</div>
                                     <div class="si-warp">
-                                        <strong class="shop-price" id="ECS_SHOPPRICE" ectype="SHOP_PRICE"><em>¥</em>300.00</strong>
+                                        <strong class="shop-price" id="ECS_SHOPPRICE" ectype="SHOP_PRICE"><em>¥</em>{$goods_list.goods_sales_price}</strong>
                                         <span class="price-notify" data-userid="0" data-goodsid="648" ectype="priceNotify">降价通知</span>
                                     </div>
                                 </div>
                                 <div class="summary-item si-market-price">
                                     <div class="si-tit">市 场 价</div>
-                                    <div class="si-warp"><div class="m-price" id="ECS_MARKETPRICE"><em>¥</em>360.00</div></div>
+                                    <div class="si-warp"><div class="m-price" id="ECS_MARKETPRICE"><em>¥</em>{$goods_list.goods_market_price}</div></div>
                                 </div>
                                 <div class="si-info">
                                     <div class="si-cumulative">累计评价<em>0</em></div>
-                                    <div class="si-cumulative">累计销量<em>0</em></div>
+                                    <div class="si-cumulative">累计销量<em>{$goods_list.goods_volume ?? 0}</em></div>
                                 </div>
                                 <div class="si-phone-code">
                                     <div class="qrcode-wrap">
@@ -199,26 +151,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="summary-item si-coupon">
-                                    <div class="si-tit">领 券</div>
-                                    <div class="si-warp">
-                                        <a class="J-open-tb" href="#none" data-goodsid="648">
-                                            <div class="quan-item"><i class="i-left"></i>满2000减100<i class="i-right"></i></div>
-                                        </a>
-                                        <a class="J-open-tb" href="#none" data-goodsid="648">
-                                            <div class="quan-item"><i class="i-left"></i>满1000减35<i class="i-right"></i></div>
-                                        </a>
-                                        <a class="J-open-tb" href="#none" data-goodsid="648">
-                                            <div class="quan-item"><i class="i-left"></i>满10000减500<i class="i-right"></i></div>
-                                        </a>
-                                        <a class="J-open-tb" href="#none" data-goodsid="648">
-                                            <div class="quan-item"><i class="i-left"></i>满10000减888<i class="i-right"></i></div>
-                                        </a>
-                                        <a class="J-open-tb" href="#none" data-goodsid="648">
-                                            <div class="quan-item"><i class="i-left"></i>满50000减5888<i class="i-right"></i></div>
-                                        </a>
-                                    </div>
-                                </div>
+                                <!--<div class="summary-item si-coupon">-->
+                                    <!--<div class="si-tit">领 券</div>-->
+                                    <!--<div class="si-warp">-->
+                                        <!--<a class="J-open-tb" href="#none" data-goodsid="648">-->
+                                            <!--<div class="quan-item"><i class="i-left"></i>满2000减100<i class="i-right"></i></div>-->
+                                        <!--</a>-->
+                                        <!--<a class="J-open-tb" href="#none" data-goodsid="648">-->
+                                            <!--<div class="quan-item"><i class="i-left"></i>满1000减35<i class="i-right"></i></div>-->
+                                        <!--</a>-->
+                                        <!--<a class="J-open-tb" href="#none" data-goodsid="648">-->
+                                            <!--<div class="quan-item"><i class="i-left"></i>满10000减500<i class="i-right"></i></div>-->
+                                        <!--</a>-->
+                                        <!--<a class="J-open-tb" href="#none" data-goodsid="648">-->
+                                            <!--<div class="quan-item"><i class="i-left"></i>满10000减888<i class="i-right"></i></div>-->
+                                        <!--</a>-->
+                                        <!--<a class="J-open-tb" href="#none" data-goodsid="648">-->
+                                            <!--<div class="quan-item"><i class="i-left"></i>满50000减5888<i class="i-right"></i></div>-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                                 <div class="clear"></div>
                             </div>
@@ -230,7 +182,7 @@
                                 <div class="si-tit">服务</div>
                                 <div class="si-warp">
                                     <div class="fl">
-                                        由 <a href="javascript:void(0)" class="link-red">网软自营</a> 发货并提供售后服务
+                                        由 <a href="javascript:void(0)" class="link-red">YC</a> 发货并提供售后服务
                                     </div>
                                     <div class="fl pl10" id="user_area_shipping"><span class="gary">[ 暂不支持配送 ]</span></div>
                                 </div>
@@ -247,8 +199,8 @@
                                     <div class="amount-warp">
                                         <input class="text buy-num" ectype="quantity" value="1" name="number" defaultnumber="1">
                                         <div class="a-btn">
-                                            <a href="javascript:void(0);" class="btn-add" ectype="btnAdd"><i class="iconfont icon-up"></i></a>
-                                            <a href="javascript:void(0);" class="btn-reduce btn-disabled" ectype="btnReduce"><i class="iconfont icon-down"></i></a>
+                                            <a href="javascript:void(0);" class="btn-add" ectype="btnAdd"><i class="iconfont icon-up icon-upAdd"></i></a>
+                                            <a href="javascript:void(0);" class="btn-reduce btn-disabled" ectype="btnReduce"><i class="iconfont icon-down icon-down-btn"></i></a>
                                             <input type="hidden" name="perNumber" id="perNumber" ectype="perNumber" value="1000">
                                             <input type="hidden" name="perMinNumber" id="perMinNumber" ectype="perMinNumber" value="1">
                                         </div>
@@ -285,7 +237,7 @@
             <div class="track" id="see_more_goods"><div class="track_warp">
                 <div class="track-tit"><h3>看了又看</h3><span></span></div>
                 <div class="track-con">
-                    <div class="tempWrap" style="overflow:hidden; position:relative; height:555px"><ul style="top: 0px; position: relative; padding: 0px; margin: 0px;">
+                    <div class="tempWrap" style="overflow:hidden; position:relative; height:555px"><ul class="animationPage" style="top: 0px; position: relative; padding: 0px; margin: 0px;">
                         <li style="height: 180px;">
                             <div class="p-img"><a href="goods.php?id=698" target="_blank" title="Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
                             <div class="p-name"><a href="goods.php?id=698" target="_blank" title="Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机">Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机</a></div>
@@ -324,8 +276,8 @@
                     </ul></div>
                 </div>
                 <div class="track-more">
-                    <a href="javascript:void(0);" class="sprite-up prevStop"><i class="iconfont icon-up"></i></a>
-                    <a href="javascript:void(0);" class="sprite-down"><i class="iconfont icon-down"></i></a>
+                    <a href="javascript:void(0);" class="sprite-up prevStop"><i class="iconfont icon-up animation-up" style="color:#ccc;"></i></a>
+                    <a href="javascript:void(0);" class="sprite-down"><i class="iconfont icon-down animation-down"></i></a>
                 </div>
             </div>
             </div>
@@ -534,7 +486,7 @@
                                                     </div>
                                                     <input name="confirm_type" id="confirm_type" type="hidden" value="3">
                                                 </div>
-                                                <span class="lh30 ml10">库存&nbsp;<em ectype="goods_attr_num">1000</em>&nbsp;个</span>
+                                                <span class="lh30 ml10">库存&nbsp;<em ectype="goods_attr_num" class="kucunTotal">1000</em>&nbsp;个</span>
                                             </div>
                                         </div>
                                         <div class="tb-list">
@@ -648,6 +600,58 @@
                                                 $(".comment_nice").addClass("selected");
                                             }
                                         }
+                                        var productTotal = 0
+                                        $('.icon-upAdd').click(function(){
+                                            $(".icon-down-btn").css('color','#000')
+                                            productTotal = Number($(".kucunTotal").text());
+                                            var buyNum = Number($('.buy-num').val());
+                                            if(buyNum<productTotal){
+                                                buyNum++;
+                                                $('.buy-num').val(buyNum);
+                                            } else {
+                                                alert("库存数不够");
+                                            }
+                                        });
+
+                                        $(".icon-down-btn").click(function(){
+                                            productTotal = Number($(".kucunTotal").text());
+                                            var buyNum = Number($('.buy-num').val());
+                                            if(buyNum>1){
+                                                buyNum--;
+                                                $('.buy-num').val(buyNum);
+                                            } else {
+                                                alert("购买数量不能为0")
+                                            }
+                                        });
+                                        var animationNum = 0;
+                                        $(".animation-up").click(function(){
+                                                animationNum--;
+                                                if(animationNum<0){
+                                                    $(this).css("color","#ccc")
+                                                } else {
+                                                    var moveTop = animationNum*185
+                                                    $(".animationPage").animate({
+                                                        top:-moveTop+"px"
+                                                    });
+                                                }
+
+                                                console.log(animationNum)
+                                        })
+
+                                        $(".animation-down").click(function(){
+                                            $(".animation-up").css("color","#000")
+                                            if(animationNum<2&&animationNum>-2){
+                                                animationNum++;
+                                                var moveTop = animationNum*185
+                                                $(".animationPage").animate({
+                                                    top:-moveTop+"px"
+                                                });
+                                            } else {
+                                                $(this).css("color","#ccc")
+                                            }
+                                            console.log(animationNum)
+                                        })
+
                                     </script></div>                                </div>
                         </div>
                     </div>
@@ -799,5 +803,6 @@
         <div class="tm-dl-overlay-content"></div>
     </div>
     <div class="tm-dl-overlay-mask"></div>
+</div>
 </div>
 {/block}

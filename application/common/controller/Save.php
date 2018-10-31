@@ -24,7 +24,7 @@ class Save extends Controller
     public function add($data)
     {
         $result = Db::name($this->table_name)->insertGetId($data['data']);
-        ding_log('add',Db::name('')->getLastSql());
+//        ding_log('add',Db::name('')->getLastSql());
         return $result;
     }
 
@@ -32,7 +32,7 @@ class Save extends Controller
     public function del($data)
     {
         $result = Db::name($this->table_name)->where($data['where'])->delete();
-        ding_log('del',Db::name('')->getLastSql());
+//        ding_log('del',Db::name('')->getLastSql());
         return $result;
     }
 
@@ -40,7 +40,7 @@ class Save extends Controller
     public function edit($data)
     {
         $result = Db::name($this->table_name)->where($data['where'])->update($data['data']);
-        ding_log('edit',Db::name('')->getLastSql());
+//        ding_log('edit',Db::name('')->getLastSql());
         //防止修改是，数据未做变动提交返回false的问题
         $result !== false ?  $result = true : $result = false;
         return $result;
@@ -53,21 +53,21 @@ class Save extends Controller
         $this->order = isset($data['order'])?$data['order']:$this->order;
         $listRows =  Config::get("paginate.list_rows");
         $list = Db::name($this->table_name)->where($data['where'])->order($this->order)->paginate($listRows, false,['query' => $_REQUEST]);
-        ding_log('select',Db::name('')->getLastSql());
+//        ding_log('select',Db::name('')->getLastSql());
         return $list;
     }
     //单条查询
     public function selectFind($data=[])
     {
         $list = Db::name($this->table_name)->where($data['where'])->find();
-        ding_log('select',Db::name('')->getLastSql());
+//        ding_log('select',Db::name('')->getLastSql());
         return $list;
     }
     //全部查询
     public function selectAll($data=[])
     {
         $list = Db::name($this->table_name)->where($data['where'])->select();
-        ding_log('select',Db::name('')->getLastSql());
+//        ding_log('select',Db::name('')->getLastSql());
         return $list;
     }
 }

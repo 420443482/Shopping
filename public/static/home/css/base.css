@@ -121,7 +121,7 @@ a:focus{ outline:none;}
 .checkbox_item{ float:left;}
 
 /*左右滚动轮播 按钮*/
-.prevStop .iconfont,.nextStop .iconfont{ color:#ccc !important;}
+.prevStop .iconfont,.nextStop .iconfont{ color:#ccc;}
 
 /*网友讨论圈 小图标*/
 .icon-tie{ width:21px; height:20px; display:inline-block; position:absolute; top:5px; left:0;}
