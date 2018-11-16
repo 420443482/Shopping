@@ -1,0 +1,94 @@
+*{
+	margin:0; padding:0;
+}
+body {
+    font-family: "Microsoft Yahei",verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:13px;
+    margin:0;
+	background:#fff;
+	line-height:1.9;
+	background:#f7f7f7;
+}
+a { text-decoration:none; font-size:12px;}
+a,img { border:0 none;}
+a,input,textarea { outline:none;}
+textarea { resize:none; vertical-align:top}
+h2 {
+    font-size:18px;
+    font-weight:bold;
+    margin:0;
+    margin-bottom:15px;
+}
+li {
+	list-style:none;
+}
+.fl { float:left;}
+.fr { float:right;}
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+.eli{
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.imgVa {
+	/*非IE的主流浏览器识别的垂直居中的方法*/
+	display: table-cell;
+	vertical-align:middle;
+	
+	/*设置水平居中*/
+	text-align:center;
+	
+	/* 针对IE的Hack */
+	*display: block;
+	/**font-size:175px;约为高度的0.873，200*0.873 约为175*/
+	*font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
+	/*height:200px;*/
+}
+.img img {
+	/*设置图片垂直居中*/
+	vertical-align:middle;
+}
+
+
+@media print {.content-but {display: none;}   }
+.main{width:80%;margin:0 auto;text-align: center;}
+.content-but{padding:5px 10px;margin-bottom: 10px;}
+
+/*-------------------------韵达-----------------------------*/
+.yd_img-bg{width:800px;height:450px;background:url("../images/yd_bg.jpg") no-repeat;background-size:800px;margin:0 auto;position: relative;}
+.yd_img-bg p{position: absolute; color:blue;}
+.yd_img-bg .my-name{left:111px;top:78px;}
+.yd_img-bg .str-address{left:256px;top:78px;}
+.yd_img-bg .send-address{left:111px;top:130px;text-align: left;}
+.yd_img-bg .my-phone{left:136px;top:216px;}
+.yd_img-bg .my-code{left:280px;top:216px;}
+
+.yd_img-bg .he-name{left:440px;top:216px; }
+.yd_img-bg .end-address{left:444px;top:78px;}
+.yd_img-bg .receive-address{left:444px;top:130px;text-align: left;}
+.yd_img-bg .he-phone{left:640px;top:78px;}
+.yd_img-bg .he-code{left:637px;top:216px;}
+.yd_img-bg .order{left:50px;top:8px;}
+/*-------------------------韵达-----------------------------*/
+
+
+
+
+
+
+
+
+
+

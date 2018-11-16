@@ -57,6 +57,17 @@
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl check_css3" >
+            <label class="form-label col-xs-3 col-sm-3">分类编号：</label>
+            <div class="formControls col-xs-2 col-sm-2">
+                <input type="text" class="input-text" value="{$list.class_code ?? ''}" placeholder="" name="class_code"
+                       nullmsg="分类编号">
+            </div>
+            <div class="formControls col-xs-3 col-sm-3">
+                <h5>*商品编号前的字母</h5>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="row cl check_css3" >
             <label class="form-label col-xs-3 col-sm-3">是否推荐：</label>
             <span style="margin-left:14px;"><input type="checkbox" {if isset($list.is_recommend) && $list.is_recommend == 1} checked {/if} class="input_check" id="check4" name="is_recommend"><label for="check4" style="margin-top:4px;"></label></span>
         </div>

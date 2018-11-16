@@ -86,9 +86,10 @@ class Goods  extends Base
         $params['goods_is_shipping'] = isset($_REQUEST['goods_is_shipping'])?1:0;
         $params['goods_is_discount'] = isset($_REQUEST['goods_is_discount'])?1:0;
         $params['goods_is_grounding'] = isset($_REQUEST['goods_is_grounding'])?1:0;
-        $params['goods_grounding_time'] = isset($_REQUEST['goods_grounding_time'])?strtotime($_REQUEST['goods_grounding_time']):time();
-        $params['goods_undercarriage_time'] = isset($_REQUEST['goods_undercarriage_time'])?strtotime($_REQUEST['goods_undercarriage_time']):'';
+        $params['goods_grounding_time'] = !empty($_REQUEST['goods_grounding_time'])?strtotime($_REQUEST['goods_grounding_time']):time();
+        $params['goods_undercarriage_time'] = !empty($_REQUEST['goods_undercarriage_time'])?strtotime($_REQUEST['goods_undercarriage_time']):'';
         $params['goods_description'] = isset($_REQUEST['goods_description'])?$_REQUEST['goods_description']:'';
+
         //验证器验证
         $validate = Loader:: validate('GoodsValidate');
         if(!$validate->scene('save')->check($params)){
@@ -159,6 +160,8 @@ class Goods  extends Base
     public function goods_add(){
         if($this->request->isAjax()){
             $params = $this->goods_parameter_list();
+            $code = $this->goods_class->selectFind(array('where'=>['goods_class_id'=>$params['relevance']['one_class_id']]));
+            $params['data']['goods_code'] = $code['class_code'].date('Ymd',time()).rand(1000,9999);
             try{
                 $goods_id = $this->goods->add($params);
                 $relevance['data'] = [
@@ -300,6 +303,7 @@ class Goods  extends Base
     //商品分类参数列表
     public function goods_class_parameter_list(){
         $params['class_name'] = isset($_REQUEST['class_name'])?$_REQUEST['class_name']:'';
+        $params['class_code'] = isset($_REQUEST['class_code'])?$_REQUEST['class_code']:'';
         $params['child_class_id'] = isset($_REQUEST['child_class_id'])?$_REQUEST['child_class_id']:0;
         $params['subgrade_class_id'] = isset($_REQUEST['subgrade_class_id'])?$_REQUEST['subgrade_class_id']:0;
         $params['is_recommend'] = isset($_REQUEST['is_recommend'])?1:0;
@@ -315,6 +319,15 @@ class Goods  extends Base
         }
         if(empty($params['class_name'])){
             $this->error('请填写分类名称');
+        }
+        if($params['class_level'] == 1 && empty($params['class_code'])){
+            $this->error('请填写分类编号');
+        }
+        if($params['class_level'] !=1 && !empty($params['class_code'])){
+            $this->error('子级分类无需填写分类编号');
+        }
+        if(!preg_match('/^[A-Z]+$/', $params['class_code'])){
+            $this->error('请输入大写字母');
         }
         return $params;
     }

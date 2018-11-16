@@ -1,0 +1,687 @@
+{extend name="template/base" /}
+{block name="content"}
+<style>
+    .new_address_wrapper{
+        position:fixed;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+        background:rgba(0,0,0,.2);
+        z-index: 999;
+        display:none;
+    }
+</style>
+<div class="new_address_wrapper">
+    <div id="new_address" class="pb" style="z-index: 100003; width: 900px; top: 168px; left: 192px;">
+        <div class="cboxContent">
+            <div class="pb-hd">
+                <a class="pb-x close_new_address">✕</a><span class="pb-title">新增收货人地址</span>
+            </div>
+            <div class="pb-bd">
+                <div class="pb-ct">
+                    <div class="user-form foreg-form">
+                        <form action="javascript:;" method="get" name="theForm" id="theForm" class="user-form">
+                            <div class="form-row">
+                                <div class="form-label"><span class="red">*</span>收货人：</div>
+                                <div class="form-value">
+                                    <input type="text" class="form-input" value="" maxlength="20" name="receipt_name" id="consignee_name">
+                                    <div class="form_prompt"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-label"><span class="red">*</span>手机号码：</div>
+                                <div class="form-value">
+                                    <input type="text" class="form-input" maxlength="11" name="receipt_phone" value="" id="consignee_mobile">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-label form-label-lh"><span class="red">*</span>所在地区：</div>
+                                <div class="form-value" ectype="regionLinkage">
+                                    <dl class="mod-select mod-select-small fl" ectype="smartdropdown" id="selCountries_">
+                                        <dt>
+                                            <span class="txt" ectype="txt">中国</span>
+                                            <input type="hidden" value="1" name="country">
+                                        </dt>
+                                        <dd ectype="layer" style="display: none;">
+                                            <div class="option" data-value="1" data-text="中国" ectype="ragionItem" data-type="1">中国</div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="mod-select mod-select-small fl" ectype="smartdropdown" id="selProvinces_">
+                                        <dt>
+                                            <span class="txt" ectype="txt">请选择</span>
+                                            <input type="hidden" value="0" name="province">
+                                        </dt>
+                                        <dd ectype="layer" class="ps-container" style="display: none;">        <div class="option" data-value="2" data-type="2" data-text="北京" ectype="ragionItem">北京</div>
+                                            <div class="option" data-value="3" data-type="2" data-text="安徽" ectype="ragionItem">安徽</div>
+                                            <div class="option" data-value="4" data-type="2" data-text="福建" ectype="ragionItem">福建</div>
+                                            <div class="option" data-value="5" data-type="2" data-text="甘肃" ectype="ragionItem">甘肃</div>
+                                            <div class="option" data-value="6" data-type="2" data-text="广东" ectype="ragionItem">广东</div>
+                                            <div class="option" data-value="7" data-type="2" data-text="广西" ectype="ragionItem">广西</div>
+                                            <div class="option" data-value="8" data-type="2" data-text="贵州" ectype="ragionItem">贵州</div>
+                                            <div class="option" data-value="9" data-type="2" data-text="海南" ectype="ragionItem">海南</div>
+                                            <div class="option" data-value="10" data-type="2" data-text="河北" ectype="ragionItem">河北</div>
+                                            <div class="option" data-value="11" data-type="2" data-text="河南" ectype="ragionItem">河南</div>
+                                            <div class="option" data-value="12" data-type="2" data-text="黑龙江" ectype="ragionItem">黑龙江</div>
+                                            <div class="option" data-value="13" data-type="2" data-text="湖北" ectype="ragionItem">湖北</div>
+                                            <div class="option" data-value="14" data-type="2" data-text="湖南" ectype="ragionItem">湖南</div>
+                                            <div class="option" data-value="15" data-type="2" data-text="吉林" ectype="ragionItem">吉林</div>
+                                            <div class="option" data-value="16" data-type="2" data-text="江苏" ectype="ragionItem">江苏</div>
+                                            <div class="option" data-value="17" data-type="2" data-text="江西" ectype="ragionItem">江西</div>
+                                            <div class="option" data-value="18" data-type="2" data-text="辽宁" ectype="ragionItem">辽宁</div>
+                                            <div class="option" data-value="19" data-type="2" data-text="内蒙古" ectype="ragionItem">内蒙古</div>
+                                            <div class="option" data-value="20" data-type="2" data-text="宁夏" ectype="ragionItem">宁夏</div>
+                                            <div class="option" data-value="21" data-type="2" data-text="青海" ectype="ragionItem">青海</div>
+                                            <div class="option" data-value="22" data-type="2" data-text="山东" ectype="ragionItem">山东</div>
+                                            <div class="option" data-value="23" data-type="2" data-text="山西" ectype="ragionItem">山西</div>
+                                            <div class="option" data-value="24" data-type="2" data-text="陕西" ectype="ragionItem">陕西</div>
+                                            <div class="option" data-value="25" data-type="2" data-text="上海" ectype="ragionItem">上海</div>
+                                            <div class="option" data-value="26" data-type="2" data-text="四川" ectype="ragionItem">四川</div>
+                                            <div class="option" data-value="27" data-type="2" data-text="天津" ectype="ragionItem">天津</div>
+                                            <div class="option" data-value="28" data-type="2" data-text="西藏" ectype="ragionItem">西藏</div>
+                                            <div class="option" data-value="29" data-type="2" data-text="新疆" ectype="ragionItem">新疆</div>
+                                            <div class="option" data-value="30" data-type="2" data-text="云南" ectype="ragionItem">云南</div>
+                                            <div class="option" data-value="31" data-type="2" data-text="浙江" ectype="ragionItem">浙江</div>
+                                            <div class="option" data-value="32" data-type="2" data-text="重庆" ectype="ragionItem">重庆</div>
+                                            <div class="option" data-value="33" data-type="2" data-text="香港" ectype="ragionItem">香港</div>
+                                            <div class="option" data-value="34" data-type="2" data-text="澳门" ectype="ragionItem">澳门</div>
+                                            <div class="option" data-value="35" data-type="2" data-text="台湾" ectype="ragionItem">台湾</div>
+                                            <div class="ps-scrollbar-x-rail" style="width: 118px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 250px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></dd>
+                                    </dl>
+                                    <dl class="mod-select mod-select-small fl visible" ectype="smartdropdown" id="selCities_">
+                                        <dt>
+                                            <span class="txt" ectype="txt">请选择</span>
+                                            <input type="hidden" value="0" name="city">
+                                        </dt>
+                                        <dd ectype="layer" class="ps-container" style="display: block;">    <div class="ps-scrollbar-x-rail" style="width: 118px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></dd>
+                                    </dl>
+                                    <dl class="mod-select mod-select-small fl" ectype="smartdropdown" id="selDistricts_" style="display:none;">
+                                        <dt>
+                                            <span class="txt" ectype="txt">请选择</span>
+                                            <input type="hidden" value="0" name="district">
+                                        </dt>
+                                        <dd ectype="layer" class="ps-container" style="display: none;">    <div class="ps-scrollbar-x-rail" style="width: 118px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></dd>
+                                    </dl>
+                                    <dl class="mod-select mod-select-small fl" ectype="smartdropdown" id="selStreets_" style="display:none;">
+                                        <dt>
+                                            <span class="txt" ectype="txt">请选择</span>
+                                            <input type="hidden" value="0" name="street" class="ignore">
+                                        </dt>
+                                        <dd ectype="layer" class="ps-container" style="display: none;">    <div class="ps-scrollbar-x-rail" style="width: 118px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></dd>
+                                    </dl>
+                                    <div class="form_prompt lh40"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-label"><span class="red">*</span>详细信息：</div>
+                                <div class="form-value">
+                                    <input type="text" class="form-input form-input-long" name="xx_address" value="" id="consignee_address">
+                                    <div class="form_prompt"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-label">邮编：</div>
+                                <div class="form-value">
+                                    <input type="text" class="form-input" name="zip_code" value="" id="consignee_zipcode">
+                                    <span id="consigneeZipcodeNote" class="status error"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-label">地址别名：</div>
+                                <div class="form-value"><input type="text" class="form-input fl" value="" name="address_bname" id="consignee_sign_building"><div class="notic">设置一个易记的名称，如：'送到家里'、'送到公司'&nbsp;&nbsp;</div></div>
+                                <span id="consigneeAliasNote" class="status error hide">请您填写地址别名</span>
+                            </div>
+
+                            <input name="goods_flow_type" value="101" type="hidden">
+                            <input name="address_id" value="" type="hidden">
+
+                    </div>
+                </div>
+                <div class="tip-box icon-box"><div class="pb-ft"><a class="pb-btn pb-ok">保存收货人信息</a><a class="pb-btn pb-cl hide_new_address_wrapper">取消</a></div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="channel-content" ectype="channel">
+
+    <input type="hidden" value="1" name="seckill_goods"/>
+    <input type="hidden" value="1" name="index_ad_cat"/>
+</div>
+<div class="container">
+    <form action="flow.php" method="post" name="doneTheForm" class="validator" id="theForm">
+        <div class="w w1200">
+            <div class="checkout-warp">
+
+                <div class="ck-step" id="consignee_list">
+                    <div class="ck-step-tit">
+                        <h3>收货人信息</h3>
+                        <a href="user.php?act=address_list" class="extra-r" target="_blank">管理收货人地址</a>
+                    </div>
+                    <div class="ck-step-cont" id="consignee-addr">
+                        <div class="consignee-warp">
+                            {foreach $receipt_address_list as $v}
+                            <div class="cs-w-item {if $v.is_default} cs-selected{/if}" data-addressid="{$v.address_id}" >
+                                <div class="item-tit">
+                                    <h3 class="username">{$v.receipt_name}</h3>
+                                    <span class="remark"></span>
+                                </div>
+                                <div class="item-tel">
+                                    <span class="contact">{$v.receipt_phone}</span>
+                                </div>
+                                <div class="item-address">{$v.province}  {$v.city}  {$v.area} </div>
+                                <i class="icon"></i>
+                                <a href="javascript:void(0);" class="edit" ectype="dialog_checkout" data-value="{&quot;divId&quot;:&quot;edit_address&quot;,&quot;id&quot;:2,&quot;url&quot;:&quot;flow.php?step=edit_Consignee&quot;,&quot;width&quot;:900,&quot;title&quot;:&quot;编辑收货人地址&quot;}">修改</a>
+                                <a href="javascript:void(0);" class="delete" ectype="dialog_checkout" data-value="{&quot;divId&quot;:&quot;del_address&quot;,&quot;id&quot;:2,&quot;url&quot;:&quot;flow.php?step=delete_Consignee&quot;,&quot;width&quot;:450,&quot;height&quot;:50,&quot;title&quot;:&quot;删除收货人地址&quot;}">删除</a>
+                                <input type="radio" checked="checked" class="ui-radio" name="consignee_radio" value="2" id="radio_2">
+                            </div>
+                            {/foreach}
+                            <div class="cs-w-item">
+                                <a href="javascript:void(0);" class="add-new-address" ectype="dialog_checkout111" data-value="{&quot;divId&quot;:&quot;new_address&quot;,&quot;id&quot;:0,&quot;url&quot;:&quot;flow.php?step=edit_Consignee&quot;,&quot;width&quot;:900,&quot;height&quot;:450,&quot;title&quot;:&quot;新增收货人地址&quot;}">
+                                    <i class="iconfont icon-add-quer"></i><span>添加新地址</span>
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="ck-step checkout">
+                    <div class="ck-step-tit">
+                        <h3>支付方式</h3>
+                    </div>
+                    <div class="ck-step-cont">
+                        <div class="payment-warp">
+                            <div class="payment-list" ectype="paymentType">
+                                {foreach $payment_mode_list as $v}
+                                <div class="p-radio-item payment-item  {if $v.payment_name == '余额支付'}item-selected{/if}" payment="{$v.payment_id}" data-value="{&quot;type&quot;:&quot;cod&quot;,&quot;payid&quot;:&quot;16&quot;,&quot;allow&quot;:&quot;&quot;}">
+										<span>
+                                            <input type="radio" iscod="1" name="payment" class="ui-radio" value="{$v.payment_id}">
+                                            <input type="radio" name="pay_code" class="ui-radio" value="cod">
+                                            {$v.payment_name}                                        </span>
+                                    <b></b>
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="ck-step">
+                    <div class="ck-step-tit">
+                        <h3>商品信息</h3>
+                        <a href="flow.php" class="extra-r">返回购物车</a>
+                    </div>
+                    <div class="ck-step-cont">
+                        <div class="ck-goods-warp" id="goods_inventory">
+
+                            <div class="ck-goods-list">
+                                <div class="ck-goods-item" ectype="shoppingList">
+                                    <div class="ck-goods-tit">
+                                        <div class="ck-store">
+                                            <a href="javascript:;" class="shop-name">YC自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu  p-c-violet" target="_blank"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                        <div class="ck-dis-modes">
+                                            <div class="ck-dis-tit">配送方式：</div>
+                                            <span class="ftx-01">暂不支持配送</span>
+
+                                            <input type="hidden" name="ru_id[]" value="0">
+                                            <input type="hidden" name="ru_name[]" value="网软自营">
+                                            <input type="hidden" name="shipping[]" class="shipping_0" data-sellerid="0" value="0" autocomplete="off">
+                                            <input type="hidden" name="shipping_code[]" class="shipping_code_0" value="" autocomplete="off">
+                                            <input type="hidden" name="shipping_type[]" class="shipping_type_0" value="0" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="ck-goods-cont">
+                                        {foreach $cart_list as $v}
+                                        <div style="display: none;">{$sum_price += $v['goods_sales_price'] * $v['number']}</div>
+                                        <div class="cg-item">
+                                            <div class="c-col cg-name">
+                                                <input name="cart_info[]" type="hidden" value="0|64_636_2_0">
+                                                <a href="goods.php?id=636" target="_blank">
+                                                    <div class="p-img"><img src="<?php $images = json_decode($v['goods_images'],true); echo $images[0]; ?>" width="48" height="48"></div>
+                                                    <div class="p-info">
+                                                        <div class="p-name">{$v.goods_name}/{$v.goods_summary}</div>
+                                                        <div class="p-attr"></div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="c-col cg-price">
+                                                <span class="fr cl"><em>¥</em>{$v.goods_sales_price}</span>
+                                            </div>
+                                            <div class="c-col cg-number">x{$v.number}</div>
+                                            <div class="c-col cg-state">
+                    <span>
+                                                    有货                            <input name="rec_number" type="hidden" id="64" value="0">
+                        													<input name="shipping_prompt" type="hidden" id="64" value="1">
+						                    </span>
+                                            </div>
+                                            <div class="c-col cg-sum"><em>¥</em>{$v.goods_sales_price*$v.number}</div>
+                                            <div class="cg-item-line"></div>
+                                            <i class="dian"></i>
+                                        </div>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ck-order-remark">
+                            <input name="postscript" type="text" id="remarkText" maxlength="45" size="15" class="text" placeholder="订单备注 限60个字" autocomplete="off" onblur="if(this.value==''||this.value=='订单备注 限60个字'){this.value='订单备注 限60个字';this.style.color='#cccccc'}" onfocus="if(this.value=='订单备注 限60个字') {this.value='';};this.style.color='#666';">
+                            <span class="prompt">提示：请勿填写有关支付、收货、发票方面的信息</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="ck-step">
+                    <div class="ck-step-tit">
+                        <h3>发票信息</h3>
+                        <div class="tips-new-white">
+                            <b></b><span><i></i>开企业抬头发票须填写纳税人识别号，以免影响报销</span>
+                        </div>
+                    </div>
+                    <div class="ck-step-cont" id="inv_content">
+                        <div class="invoice-warp">
+                            <div class="invoice-part">
+                                <span>
+                                	<em class="invoice_type">普通发票（纸质）</em>
+                                    <em class="inv_payee">个人</em>
+                                    <em class="inv_content">不开发票</em>
+                                </span>
+                                <a href="javascript:void(0);" class="i-edit" ectype="invEdit" data-value="{&quot;divid&quot;:&quot;edit_invoice&quot;,&quot;url&quot;:&quot;ajax_dialog.php?act=edit_invoice&quot;,&quot;title&quot;:&quot;发票信息&quot;}">编辑</a>
+                                <input type="hidden" name="inv_payee" value="个人">
+                                <input type="hidden" name="inv_content" value="不开发票">
+                                <input type="hidden" name="invoice_type" value="0">
+                                <input type="hidden" name="tax_id" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="ck-step">
+                    <div class="ck-step-tit">
+                        <h3>其他信息</h3>
+                    </div>
+                    <div class="ck-step-cont">
+                        <div class="other-warp">
+                            <div class="other-list">
+
+
+
+                                <div class="qt_item">
+                                    <div class="item_label">缺货处理：</div>
+                                    <div class="item_value">
+
+                                        <div class="radio-item">
+                                            <input type="radio" name="how_oos" class="ui-radio" value="0" checked="" id="checkbox_0" onclick="changeOOS(this)" autocomplete="off">
+                                            <label for="checkbox_0" class="ui-radio-label">等待所有商品备齐后再发</label>
+                                        </div>
+
+                                        <div class="radio-item">
+                                            <input type="radio" name="how_oos" class="ui-radio" value="1" id="checkbox_1" onclick="changeOOS(this)" autocomplete="off">
+                                            <label for="checkbox_1" class="ui-radio-label">取消订单</label>
+                                        </div>
+
+                                        <div class="radio-item">
+                                            <input type="radio" name="how_oos" class="ui-radio" value="2" id="checkbox_2" onclick="changeOOS(this)" autocomplete="off">
+                                            <label for="checkbox_2" class="ui-radio-label">与店主协商</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="ck-step ck-step-other">
+                    <div class="ck-step-tit ck-toggle ck-toggle-off" ectype="ck-toggle">
+                        <h3>优惠券/储值卡/我的红包</h3>
+                        <i class="iconfont icon-down"></i>
+                    </div>
+                    <div class="ck-step-cont" style="display:none;">
+                        <div class="order-virtual-tabs">
+                            <ul>
+                                <li class="curr"><span>优惠券</span></li>                                                                                            </ul>
+                        </div>
+
+                        <div class="toggle-panel-main">
+                            <div class="toggle-panl-warp panl-coupon" ectype="order_coupoms_list" style="display: block;">
+
+
+                                <div class="panl-bot">
+                                    <div class="panl-items ps-container">
+                                        <div class="panl-item panl-item-disabled">
+                                            <i class="i-left"></i>
+                                            <div class="panl-item-warp">
+                                                <div class="panl-item-top">
+                                                    <strong>￥100</strong>                            <span>满2000</span>
+                                                </div>
+                                                <div class="panl-item-bot">
+                                                    <p>范   围：[注册券][全品类通用]</p>
+                                                    <p>商家：网软自营</p>
+                                                    <p>有效期至：2021-03-23</p>
+                                                </div>
+                                            </div>
+                                            <i class="i-right"></i>
+                                        </div>
+                                        <div class="ps-scrollbar-x-rail" style="width: 1120px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <input type="hidden" name="uc_id" id="uc_id" value="0" autocomplete="off">
+                        <input type="hidden" name="not_freightfree" id="not_freightfree" value="0" autocomplete="off">
+
+                        <input type="hidden" name="bonus" id="bonus_id" value="0" autocomplete="off">
+                        <input type="hidden" name="vc_id" id="ECS_VALUE_CARD" value="0" autocomplete="off">
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" value="{$cart_id}" name="cart_ids" id="cart_ids">
+            <div id="ECS_ORDERTOTAL">
+
+                <div class="order-summary">
+                    <div class="statistic">
+                        <div class="list">
+                            <span><em><?php echo count($cart_list);?></em> 件商品，总商品金额：</span>
+                            <em class="price" id="warePriceId"><em>¥</em>{$sum_price}</em>
+                        </div>
+                        <div class="list">
+                            <span>应付总额：</span>
+                            <em class="price-total"><em>¥</em>{$sum_price}</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-foot" ectype="tfoot-toolbar">
+                    <div class="w w1200">
+                        <div class="btn-area submit-done"><input type="button" class="submit-btn" id="submit-done" value="提交订单"></div>
+                        <div class="d-address">
+                            <span id="sendAddr">寄送至：{$receipt_address_list[0]['xx_address']}</span>
+                            <span id="sendMobile">收货人：{$receipt_address_list[0]['receipt_name']}&nbsp;&nbsp;{$receipt_address_list[0]['receipt_phone']}</span>
+                        </div>
+                    </div>
+                    <input name="goods_flow_type" value="101" type="hidden">
+                    <input name="rec_number_str" value="" type="hidden">
+                    <input name="shipping_prompt_str" value="64,63" type="hidden">
+                    <input type="hidden" id="store_id" name="store_id" value="0">
+                    <input type="hidden" id="store_seller" value="" name="store_seller">
+                    <input type="hidden" value="3" name="warehouse_id">
+                    <input type="hidden" value="29" name="area_id">
+                    <input name="sc_guid" value="37B9D9A6-EA9B-420E-BF05-1944CBCFE562" type="hidden" autocomplete="off">
+                    <input name="sc_rand" value="3818" type="hidden" autocomplete="off">
+                </div>
+                <script type="text/javascript">
+                    //提交订单
+                    $('.submit-done').click(function () {
+                        var address_id = $('.cs-selected').attr('data-addressid');//获取收货地址ID
+                        var payment_mone_id = $('.item-selected').attr('payment');//获取支付方式ID
+                        var cart_ids = $("#cart_ids").val();
+                        var remarkText = $("#remarkText").val();
+                        $.ajax({
+                            url: '/home/payment/submit_order',
+                            type: 'POST',
+                            // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                            data:{'remarkText':remarkText,'address_id':address_id,'payment_mone_id':payment_mone_id,'cart_ids':cart_ids},
+                            success:function(data){
+                                if(data.code == 1){
+                                    window.location.href='/home/payment/payment_success';
+                                }else{
+                                    layer.msg(data.msg);
+                                }
+                            }
+                        });
+                    });
+                    $('.cs-w-item').click(function(){
+                        $(".cs-w-item").addClass("cs-selected");
+                        $(this).siblings().removeClass('cs-selected')
+                    });
+                    $('.pb-ok').click(function(){
+                        $.ajax({
+                            url: '/home/payment/address_add',
+                            type: 'POST',
+                            // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                            data:$("#theForm").serialize(),
+                            success:function(data){
+                                 if(data.code == 1){
+                                     window.location.reload();
+                                 }else{
+                                     layer.msg(data.msg);
+                                 }
+                            }
+                        });
+                    });
+                     $(function(){
+                    //     $(":input[name='order_bonus_sn']").val('');
+                    //
+                    //     $("input[name='rec_number']").each(function(index, element) {
+                    //         if($(element).val() == 1){
+                    //             var store_id = document.getElementById('store_id').value;
+                    //             var warehouse_id = $(":input[name='warehouse_id']").val();
+                    //             var area_id = $(":input[name='area_id']").val();
+                    //
+                    //             (store_id > 0) ? store_id : 0;
+                    //             $(".checkout-foot .btn-area").removeClass('no_shipping');
+                    //             $(".checkout-foot .btn-area").addClass('no_goods');
+                    //             $(".checkout-foot .btn-area").attr('data-url', 'ajax_dialog.php?act=goods_stock_exhausted&warehouse_id=' + warehouse_id + '&area_id=' + area_id + '&store_id=' + store_id + '&store_seller=');
+                    //             $(".checkout-foot .btn-area").html('<input type="button" class="submit-btn" id="submit-done" value="'+json_languages.submit_order+'"/>');
+                    //             return false;
+                    //         }
+                    //     });
+
+                        var rec_number = new Array();
+                        $("input[name='rec_number']").each(function(index, element) {
+                            if($(element).val() == 1){
+                                rec_number.push($(element).attr('id'));
+                            }
+                        });
+
+                        $("input[name='rec_number_str']").val(rec_number);
+
+                        // $("input[name='shipping_prompt']").each(function(index, element) {
+                        //
+                        //     var store_id = Number($(".checkout-foot :input[name='store_id']").val());
+                        //
+                        //     if($(element).val() == 1 && store_id == 0){
+                        //         var store_id = document.getElementById('store_id').value;
+                        //         var warehouse_id = $(":input[name='warehouse_id']").val();
+                        //         var area_id = $(":input[name='area_id']").val();
+                        //
+                        //         (store_id > 0) ? store_id : 0;
+                        //         $(".checkout-foot .btn-area").removeClass('no_goods');
+                        //         $(".checkout-foot .btn-area").addClass('no_shipping');
+                        //
+                        //         $(".checkout-foot .btn-area").attr('data-url', 'ajax_dialog.php?act=goods_stock_exhausted&warehouse_id=' + warehouse_id + '&area_id=' + area_id + '&store_id=' + store_id);
+                        //
+                        //         $(".checkout-foot .btn-area").html('<input type="button" class="submit-btn" id="submit-done" value="'+json_languages.submit_order+'"/>');
+                        //         return false;
+                        //     }
+                        // });
+
+                        var shipping_prompt = new Array();
+                        $("input[name='shipping_prompt']").each(function(index, element) {
+                            if($(element).val() == 1){
+                                shipping_prompt.push($(element).attr('id'));
+                            }
+                        });
+
+                        $("input[name='shipping_prompt_str']").val(shipping_prompt);
+
+
+                        $(document).on("click","#submit-done",function(){
+                            var value = new Array();
+                            var rec_id = new Array();
+                            var shipping_list = $(":input[name='shipping[]']");
+                            var cart_list = $(":input[name='cart_info[]']");
+                            var store_id = Number($(".checkout-foot :input[name='store_id']").val());
+                            var cart_value = $(":input[name='done_cart_value']").val();
+                            var warehouse_id = $(":input[name='warehouse_id']").val();
+                            var area_id = $(":input[name='area_id']").val();
+                            var number_erorr = 0;
+
+                            var parents = $(this).parents(".btn-area");
+                            if(parents.hasClass("no_goods")){
+                                var rec_number = $("input[name='rec_number_str']").val();
+                                var url = parents.data('url');
+                                if(rec_number != ''){
+                                    url = url + "&rec_number=" + rec_number;
+                                }
+
+                                Ajax.call(url,'',noGoods, 'POST', 'JSON');
+                                function noGoods(result){
+                                    if(result.error == 1){
+                                        pb({
+                                            id:'noGoods',
+                                            title:json_languages.No_goods,
+                                            width:670,
+                                            ok_title:json_languages.go_up,  //按钮名称
+                                            cl_title:json_languages.back_cart,  //按钮名称
+                                            content:result.content,   //调取内容
+                                            drag:false,
+                                            foot:true,
+                                            onOk:function(){
+                                                $("form[name='stockFormCart']").submit();
+                                            },
+                                            onCancel:function(){
+                                                location.href = "flow.php";
+                                            }
+                                        });
+                                        $('.pb-ok').addClass('color_df3134');
+                                    }else{
+                                        $("form[name='doneTheForm']").submit();
+                                    }
+                                }
+                                return false;
+                            }
+
+                            if(parents.hasClass("no_shipping")){
+                                var shipping_prompt = $("input[name='shipping_prompt_str']").val();
+                                var url = parents.data('url');
+                                if(shipping_prompt != ''){
+                                    url = url + "&shipping_prompt=" + shipping_prompt;
+                                }
+
+                                Ajax.call(url,'',noShipping, 'POST', 'JSON');
+                                function noShipping(result){
+                                    if(result.error == 1){
+                                        pb({
+                                            id:'noGoods',
+                                            title:json_languages.No_shipping,
+                                            width:670,
+                                            ok_title:json_languages.go_up,  //按钮名称
+                                            cl_title:json_languages.back_cart,  //按钮名称
+                                            content:result.content,   //调取内容
+                                            drag:false,
+                                            foot:true,
+                                            onOk:function(){
+                                                $("form[name='stockFormCart']").submit();
+                                            },
+                                            onCancel:function(){
+                                                location.href = "flow.php";
+                                            }
+                                        });
+                                        $('.pb-ok').addClass('color_df3134');
+                                    }else{
+                                        $("form[name='doneTheForm']").submit();
+                                    }
+                                }
+                            }
+
+                            // if(checkOrderForm("form[name='doneTheForm']") == false){
+                            //     return false;
+                            // }else{
+                            //     if(store_id > 0){
+                            //         //防止表单重复提交
+                            //         if(checkSubmit() == true){
+                            //             $("form[name='doneTheForm']").submit();
+                            //         }else{
+                            //             return false;
+                            //         }
+                            //     }else{
+                            //         shipping_list.each(function(index, element) {
+                            //
+                            //             var val = $(this).data("sellerid") + "-" + $(this).val();
+                            //
+                            //             value.push(val);
+                            //         });
+                            //
+                            //         cart_list.each(function(index, element) {
+                            //             rec_id.push($(this).val());
+                            //         });
+                            //
+                            //         var where = '&warehouse_id=' + warehouse_id + '&area_id=' + area_id + '&store_id=' + store_id + '&store_seller=';
+                            //         Ajax.call('ajax_dialog.php', 'act=flow_shipping&shipping_list=' + value + '&rec_id=' + rec_id + where, notShippingResponse, 'POST', 'JSON');
+                            //     }
+                            //     return true;
+                            // }
+                        });
+
+                        function notShippingResponse(result){
+                            if(result.error == 1){
+                                pb({
+                                    id:'noGoods',
+                                    title:json_languages.No_shipping,
+                                    width:670,
+                                    ok_title:json_languages.go_up, 	//按钮名称
+                                    cl_title:json_languages.back_cart, 	//按钮名称
+                                    content:result.content, 	//调取内容
+                                    drag:false,
+                                    foot:true,
+                                    onOk:function(){
+                                        $("form[name='stockFormCart']").submit();
+                                    },
+                                    onCancel:function(){
+                                        location.href = "flow.php";
+                                    }
+                                });
+                                $('.pb-ok').addClass('color_df3134');
+                            }else{
+                                //加载中
+                                ajaxLoadFunc();
+
+                                //防止表单重复提交
+                                if(checkSubmit() == true){
+                                    $("form[name='doneTheForm']").submit();
+                                }else{
+                                    return false;
+                                }
+                            }
+                        }
+                        $(".add-new-address").click(function(){
+                            $(".new_address_wrapper").show();
+                        });
+                        $(".hide_new_address_wrapper").click(function(){
+                            $(".new_address_wrapper").hide();
+                        });
+                        $(".close_new_address").click(function(){
+                            $(".new_address_wrapper").hide();
+                        })
+                    });
+                </script>            </div>
+
+            <input type="hidden" name="user_id" value="63" autocomplete="off">
+            <input type="hidden" name="done_cart_value" value="64,63" autocomplete="off">
+            <input type="hidden" name="step" value="done" autocomplete="off">
+            <input type="hidden" name="is_address" value="0" autocomplete="off">
+        </div>
+    </form>
+</div>
+
+{/block}

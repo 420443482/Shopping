@@ -1,0 +1,738 @@
+{extend name="template/base" /}
+{block name="content"}
+<div class="w w1390">
+    <div class="crumbs-nav">
+        <div class="crumbs-nav-main clearfix">
+            <span><a href=".">首页</a></span><span class="arrow">&gt;</span> <span class="finish">搜索商品_大米</span>            </div>
+    </div>
+</div>
+<div class="channel-content" ectype="channel">
+
+    <input type="hidden" value="1" name="seckill_goods"/>
+    <input type="hidden" value="1" name="index_ad_cat"/>
+</div>
+<div class="container">
+    <div class="w w1390">
+        <div class="selector">
+
+            <div class="right-extra" rewrite="0">
+                <div class="u_cloose" style="display: none;">
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd>
+                            &nbsp;
+                        </dd>
+                        <dd class="give_up_all"><a href="search.php?&amp;keywords=大米" class="ftx-05">全部撤销</a></dd>
+                    </dl>
+                </div>
+
+                <div class="click_more s-more" style="display: none;"><span class="sm-wrap" style="display: none;"><strong>更多选项</strong><i class="iconfont icon-down"></i></span></div>
+            </div>
+        </div>
+        <div class="filter">
+            <div class="filter-wrap">
+                <div class="filter-sort">
+                    <a href="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;is_ship=&amp;order=ASC" class="curr">默认<i class="iconfont icon-arrow-down"></i></a>
+                    <a href="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=sales_volume&amp;is_ship=&amp;order=DESC" class="">销量<i class="iconfont icon-arrow-up"></i></a>
+                    <a href="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=last_update&amp;is_ship=&amp;order=DESC" class="">新品<i class="iconfont icon-arrow-up"></i></a>
+                    <a href="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=comments_number&amp;is_ship=&amp;order=ASC#goods_list" class="">评论数<i class="iconfont icon-arrow-up"></i></a>
+                    <a href="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=shop_price&amp;is_ship=&amp;order=ASC" class="">价格<i class="iconfont icon-arrow-up"></i></a>
+                </div>
+                <div class="filter-range">
+                    <div class="fprice">
+                        <form method="GET" class="sort" name="listform" action="">
+                            <div class="fP-box">
+                                <input type="text" name="price_min" class="f-text price-min" autocomplete="off" maxlength="6" id="price-min" placeholder="￥" value="">
+                                <span>&nbsp;~&nbsp;</span>
+                                <input type="text" name="price_max" class="f-text price-max" autocomplete="off" maxlength="6" id="price-max" value="" placeholder="￥">
+                            </div>
+                            <div class="fP-expand" style="display: none;">
+                                <a class="ui-btn-s ui-btn-clear" href="javascript:void(0);" id="clear_price">清空</a>
+                                <a href="javascript:void(0);" class="ui-btn-s ui-btn-s-primary ui-btn-submit">确定</a>
+                            </div>
+                            <input type="hidden" name="keywords" value="大米">
+                            <input type="hidden" name="display" value="list" id="display">
+                            <input type="hidden" name="is_ship" value="">
+                            <input type="hidden" name="sort" value="goods_id">
+                            <input type="hidden" name="order" value="DESC">
+                        </form>
+                    </div>
+
+                    <div class="fcheckbox">
+                        <div class="checkbox_items">
+                            <div class="checkbox_item ">
+                                <input type="checkbox" name="fk-type" class="ui-checkbox" value="" id="store-checkbox-011">
+                                <label class="ui-label" for="store-checkbox-011">包邮</label>
+                                <i id="input-i1" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;is_ship=is_shipping"></i>
+                                <i id="input-i2" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;order=DESC"></i>
+                            </div>
+                            <div class="checkbox_item ">
+                                <input type="checkbox" name="fk-type" class="ui-checkbox" value="" id="store-checkbox-012">
+                                <label class="ui-label" for="store-checkbox-012">自营商品</label>
+                                <i id="input-i1" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;is_self=1"></i>
+                                <i id="input-i2" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;order=DESC"></i>
+                            </div>
+                            <div class="checkbox_item ">
+                                <input type="checkbox" name="fk-type" class="ui-checkbox" value="" id="store-checkbox-012">
+                                <label class="ui-label" for="store-checkbox-013">仅显示有货</label>
+                                <i id="input-i1" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;have=1"></i>
+                                <i id="input-i2" rev="search.php?keywords=大米&amp;display=list&amp;price_min=0&amp;price_max=0&amp;page=1&amp;sort=goods_id&amp;order=DESC"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-right">
+                    <div class="button-page">
+                        <span class="pageState"><span>1</span>/1</span>
+                        <a href="javascript:void(0);" title="上一页"><i class="iconfont icon-left"></i></a>
+                        <a href="javascript:void(0);" title="下一页"><i class="iconfont icon-right"></i></a>
+                    </div>
+
+                    <div class="styles">
+                        <ul class="items" ectype="fsortTab">
+                            <li class="item current" data-type="large"><a href="javascript:void(0)" title="大图模式"><span class="iconfont icon-switch-grid"></span>大图</a></li>
+                            <li class="item" data-type="samll"><a href="javascript:void(0)" title="小图模式"><span class="iconfont icon-switch-list"></span>小图</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>    </div>
+        <div class="g-view w">
+            <div class="goods-list" ectype="gMain">
+                <div class="gl-warp gl-warp-large">
+                    <div class="goods-list-warp">
+                        <ul ectype="items">
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=900" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234264758.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234264989.jpg" width="26" height="26"></li>
+                                            <li><img src="images/201703/thumb_img/_thumb_P_1490234267626.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>36.90                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=900" title="润穗苏北软香稻米5kg 香软弹滑 苏北大米 苏软香 口感上层 洁白纤长 香糯可口" target="_blank"><span>润穗苏北软香稻米5kg 香软弹滑 苏北<font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font> 苏软香 口感上层 洁白纤长 香糯可口</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="900" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(900);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(900,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234264758.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=899" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234225950.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234225404.jpg" width="26" height="26"></li>
+                                            <li><img src="images/201703/thumb_img/_thumb_P_1490234227521.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>55.00                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=899" title="【天猫超市】柴火大院长粒香大米5kg东北大米长粒香米杂粮伴侣 粒粒精选 颗粒饱满 香软甜滑 嫩黏筋道 东北大米" target="_blank"><span>【天猫超市】柴火大院长粒香<font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font>5kg东北<font style="color:#ec5151;">大米</font>长粒香米杂粮伴侣 粒粒精选 颗粒饱满 香软甜滑 嫩黏筋道 东北大米</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="899" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(899);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(899,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234225950.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=898" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234195923.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234195425.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>69.90                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=898" title="【兆丰年】 上海崇明岛绿色生态五斤 大米 寿司米 无抛光 新米 不抛光 无农药残留 自然农法" target="_blank"><span>【兆丰年】 上海崇明岛绿色生态五斤 <font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font> 寿司米 无抛光 新米 不抛光 无农药残留 自然农法</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="898" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(898);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(898,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234195923.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=897" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234165600.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234165114.jpg" width="26" height="26"></li>
+                                            <li><img src="images/201703/thumb_img/_thumb_P_1490234169744.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>60.00                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=897" title="谷绿农品 有机大米稻花香2号新米10斤东北大米黑龙江5kg包邮 有机大米 稻花香有机 不满意包退" target="_blank"><span>谷绿农品 有机<font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font>稻花香2号新米10斤东北<font style="color:#ec5151;">大米</font>黑龙江5kg包邮 有机大米 稻花香有机 不满意包退</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="897" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(897);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(897,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234165600.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=896" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234132934.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234132836.jpg" width="26" height="26"></li>
+                                            <li><img src="images/201703/thumb_img/_thumb_P_1490234135949.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>36.00                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=896" title="馨达大米五常长粒香大米5kg正宗东北特产黑龙江优质袋装大米10斤 小批量碾磨 正宗五常大米 东北大米" target="_blank"><span>馨达<font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font>五常长粒香<font style="color:#ec5151;">大米</font>5kg正宗东北特产黑龙江优质袋装大米10斤 小批量碾磨 正宗五常大米 东北大米</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="896" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(896);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(896,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234132934.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img"><a href="goods.php?id=895" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234099339.jpg"></a></div>
+                                    <div class="sider">
+                                        <a href="javascript:void(0);" class="sider-prev prevStop"><i class="iconfont icon-left"></i></a>
+                                        <ul>
+                                            <li class="curr"><img src="images/201703/thumb_img/0_thumb_P_1490234099662.jpg" width="26" height="26"></li>
+                                            <li><img src="images/201703/thumb_img/_thumb_P_1490234104539.jpg" width="26" height="26"></li>
+                                        </ul>
+                                        <a href="javascript:void(0);" class="sider-next nextStop"><i class="iconfont icon-right"></i></a>
+                                    </div>
+                                    <div class="p-lie">
+                                        <div class="p-price">
+                                            <em>¥</em>39.90                                                                    </div>
+                                        <div class="p-num">售出<em>0</em>件</div>
+                                    </div>
+                                    <div class="p-name"><a href="goods.php?id=895" title="爱心农场2016新米黑龙江东北长粒香大米优质东北特产大米5kg10斤 2016新米超值10斤装小批量现碾东北米" target="_blank"><span>爱心农场2016新米黑龙江东北长粒香<font style="color:#ec5151;"><font style="color:#ec5151;">大米</font></font>优质东北特产<font style="color:#ec5151;">大米</font>5kg10斤 2016新米超值10斤装小批量现碾东北米</span></a></div>
+                                    <div class="p-store">
+                                        <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                        <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu p-c-violet"><i class="iconfont icon-kefu"></i></a>
+
+                                    </div>
+                                    <div class="p-activity">
+                                                                                                                                <span class="tag tac-mb">
+                                    <i class="i-left"></i>
+                                    精品                                    <i class="i-right"></i>
+                                </span>
+                                        <span class="tag tac-sr">
+                                    <i class="i-left"></i>
+                                    自营                                    <i class="i-right"></i>
+                                </span>
+                                    </div>
+                                    <div class="p-operate">
+                                        <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                            <input id="895" type="checkbox" name="duibi" class="ui-checkbox">
+                                            <label class="ui-label">对比</label>
+                                        </a>
+                                        <a href="javascript:collect(895);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                        <a href="javascript:void(0);" onclick="javascript:addToCart(895,0,event,this,'flyItem');" rev="images/201703/thumb_img/0_thumb_G_1490234099339.jpg" data-dialog="addCart_dialog" data-divid="addCartLog" data-title="请选择属性" class="addcart">
+                                            <i class="iconfont icon-carts"></i>加入购物车                                    </a>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div id="flyItem" class="fly_item"><img src="" width="40" height="40"></div>
+                </div>
+                <div class="gl-warp gl-warp-samll">
+                    <div class="goods-list-warp">
+                        <ul ectype="items">
+                            <li class="gl-h-item ">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=900" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234264758.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=900" title="润穗苏北软香稻米5kg 香软弹滑 苏北大米 苏软香 口感上层 洁白纤长 香糯可口" target="_blank">润穗苏北软香稻米5kg 香软弹滑 苏北大米 苏软香 口感上层 洁白纤长 香糯可口</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>36.90                                                                    </div>
+                                            <div class="original-price"><em>¥</em>44.27</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_900" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(900);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(900,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234264758.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="gl-h-item item_bg">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=899" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234225950.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=899" title="【天猫超市】柴火大院长粒香大米5kg东北大米长粒香米杂粮伴侣 粒粒精选 颗粒饱满 香软甜滑 嫩黏筋道 东北大米" target="_blank">【天猫超市】柴火大院长粒香大米5kg东北大米长粒香米杂粮伴侣 粒粒精选 颗粒饱满 香软甜滑 嫩黏筋道 东北大米</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>55.00                                                                    </div>
+                                            <div class="original-price"><em>¥</em>66.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_899" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(899);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(899,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234225950.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="gl-h-item ">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=898" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234195923.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=898" title="【兆丰年】 上海崇明岛绿色生态五斤 大米 寿司米 无抛光 新米 不抛光 无农药残留 自然农法" target="_blank">【兆丰年】 上海崇明岛绿色生态五斤 大米 寿司米 无抛光 新米 不抛光 无农药残留 自然农法</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>69.90                                                                    </div>
+                                            <div class="original-price"><em>¥</em>83.88</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_898" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(898);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(898,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234195923.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="gl-h-item item_bg">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=897" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234165600.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=897" title="谷绿农品 有机大米稻花香2号新米10斤东北大米黑龙江5kg包邮 有机大米 稻花香有机 不满意包退" target="_blank">谷绿农品 有机大米稻花香2号新米10斤东北大米黑龙江5kg包邮 有机大米 稻花香有机 不满意包退</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>60.00                                                                    </div>
+                                            <div class="original-price"><em>¥</em>72.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_897" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(897);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(897,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234165600.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="gl-h-item ">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=896" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234132934.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=896" title="馨达大米五常长粒香大米5kg正宗东北特产黑龙江优质袋装大米10斤 小批量碾磨 正宗五常大米 东北大米" target="_blank">馨达大米五常长粒香大米5kg正宗东北特产黑龙江优质袋装大米10斤 小批量碾磨 正宗五常大米 东北大米</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>36.00                                                                    </div>
+                                            <div class="original-price"><em>¥</em>43.19</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_896" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(896);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(896,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234132934.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="gl-h-item item_bg">
+                                <div class="gl-i-wrap">
+                                    <div class="col col-1">
+                                        <div class="p-img"><a href="goods.php?id=895" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490234099339.jpg"></a></div>
+                                        <div class="p-right">
+                                            <div class="p-name"><a href="goods.php?id=895" title="爱心农场2016新米黑龙江东北长粒香大米优质东北特产大米5kg10斤 2016新米超值10斤装小批量现碾东北米" target="_blank">爱心农场2016新米黑龙江东北长粒香大米优质东北特产大米5kg10斤 2016新米超值10斤装小批量现碾东北米</a></div>
+                                            <div class="p-lie">
+                                                <div class="p-num">销量：0</div>
+                                                <div class="p-comm">评价：0+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-2">
+                                        <div class="p-store">
+                                            <a href="javascript:;" title="网软自营" class="store">网软自营</a>
+
+                                            <a href="javascript:;" id="IM" onclick="openWin(this)" ru_id="0" class="p-kefu"><i class="iconfont icon-kefu"></i></a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="p-price">
+                                            <div class="shop-price">
+                                                <em>¥</em>39.90                                                                    </div>
+                                            <div class="original-price"><em>¥</em>47.87</div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="p-operate">
+                                            <a href="javascript:void(0);" id="compareLink" title="没有设置属性类型无法对比" class="not_compareLink">
+                                                <input id="duibi_895" type="checkbox" name="duibi" class="ui-checkbox">
+                                                <label class="ui-label">对比</label>
+                                            </a>
+                                            <a href="javascript:collect(895);" class="choose-btn-coll"><i class="iconfont icon-zan-alt"></i>收藏</a>
+                                            <a href="javascript:void(0);" onclick="javascript:addToCart(895,0,event,this,'flyItem2');" rev="images/201703/thumb_img/0_thumb_G_1490234099339.jpg" data-dialog="addCart_dialog" data-id="" data-divid="addCartLog" data-url="" data-title="请选择属性" class="addcart">
+                                                <i class="iconfont icon-carts"></i>加入购物车                                </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div id="flyItem2" class="fly_item2"><img src="" width="40" height="40"></div>
+                </div>
+                <input type="hidden" value="3" id="region_id" name="region_id">
+                <input type="hidden" value="29" id="area_id" name="area_id">
+
+
+
+
+
+                <div class="clear"></div>
+            </div>
+            <div class="goods-spread">
+                <a href="javascript:void(0);" class="g-stop" ectype="gstop"><i class="iconfont icon-right"></i></a>
+                <div class="gs-warp">
+                    <div class="gs-tit">推广商品</div>
+                    <ul class="gs-list">
+                        <li class="opacity_img">
+                            <div class="">
+                                <div class="p-img"><a href="goods.php?id=864" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211620029.jpg" width="190" height="190"></a></div>
+                                <div class="p-price">
+                                    <em>¥</em>128.00                                                </div>
+                                <div class="p-name"><a href="goods.php?id=864" target="_blank" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
+                                <div class="p-num">售出<em>0</em>件</div>
+                            </div>
+                        </li>
+                        <li class="opacity_img">
+                            <div class="">
+                                <div class="p-img"><a href="goods.php?id=863" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211575591.jpg" width="190" height="190"></a></div>
+                                <div class="p-price">
+                                    <em>¥</em>98.00                                                </div>
+                                <div class="p-name"><a href="goods.php?id=863" target="_blank" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
+                                <div class="p-num">售出<em>0</em>件</div>
+                            </div>
+                        </li>
+                        <li class="opacity_img">
+                            <div class="">
+                                <div class="p-img"><a href="goods.php?id=865" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211700709.jpg" width="190" height="190"></a></div>
+                                <div class="p-price">
+                                    <em>¥</em>89.00                                                </div>
+                                <div class="p-name"><a href="goods.php?id=865" target="_blank" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
+                                <div class="p-num">售出<em>0</em>件</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="p-panel-main guess-love">
+            <div class="ftit ftit-delr"><h3>猜你喜欢</h3></div>
+            <div class="gl-list clearfix">
+                <ul class="clearfix">
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=864" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211620029.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>128.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=864" target="_blank" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=863" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211575591.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>98.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=863" target="_blank" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=865" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490211700709.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>89.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=865" target="_blank" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=627" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1489099773629.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>200.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=627" target="_blank" title="2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套">2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=626" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1489099544749.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>168.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=626" target="_blank" title="秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男">秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=625" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1489099437211.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>120.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=625" target="_blank" title="秋季新款男士套头卫衣印花外套韩版简约百搭潮流男生上衣服">秋季新款男士套头卫衣印花外套韩版简约百搭潮流男生上衣服</a></div>
+                        <div class="p-num">售出<em>1</em>件</div>
+                    </li>
+                    <li class="opacity_img">
+                        <div class="p-img"><a href="goods.php?id=784" target="_blank"><img src="images/201703/thumb_img/0_thumb_G_1490174019725.jpg" width="190" height="190"></a></div>
+                        <div class="p-price">
+                            <em>¥</em>98.00                                                            </div>
+                        <div class="p-name"><a href="goods.php?id=784" target="_blank" title="HLA/海澜之家撞色长袖T恤春季热卖圆领修身拼接T恤男 简约圆领 微弹修身 撞色拼接 触感柔软">HLA/海澜之家撞色长袖T恤春季热卖圆领修身拼接T恤男 简约圆领 微弹修身 撞色拼接 触感柔软</a></div>
+                        <div class="p-num">售出<em>0</em>件</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <input name="script_name" value="search" type="hidden">
+        <input name="cur_url" value="search.php?encode=YTozOntzOjg6ImtleXdvcmRzIjtzOjY6IuWkp%2bexsyI7czoxNjoic3RvcmVfc2VhcmNoX2NtdCI7czoxOiIwIjtzOjE4OiJzZWFyY2hfZW5jb2RlX3RpbWUiO2k6MTU0MjE3NjkwODt9" type="hidden">
+    </div>
+</div>
+{/block}

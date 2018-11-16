@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="Keywords" content="婴儿游运" />
     <meta name="Description" content="婴儿游运" />
-    <title>婴儿游运</title>
+    <title>{:lang('hh')}</title>
     <!--<link rel="shortcut icon" href="/static/home/font/favicon.ico" />-->
     <link rel="stylesheet" type="text/css" href="/static/home/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/static/home/css/style.css" />
@@ -13,7 +13,10 @@
     <link rel="stylesheet" type="text/css" href="/static/home/css/quicklinks.css" />
     <script type="text/javascript" src="/static/home/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/static/home/js/jquery.json.js"></script>
+    <script type="text/javascript" src="/static/home/js/cart.js"></script>
     <script type="text/javascript" src="/static/home/js/transport_jquery.js"></script>
+    <script type="text/javascript" src="__LIB__/layer/2.4/layer.js"></script>
+
     <script type="text/javascript">
     </script>
 </head>
@@ -22,14 +25,16 @@
     <div class="w w1200">
         <div class="fl">
             <div class="city-choice" id="city-choice" data-ectype="dorpdown">
+                <!--<button id="change">中英文切换</button>-->
+
                 <div class="dsc-choie dsc-cm">
                     <i class="iconfont icon-map-marker"></i>
                     <span class="ui-areamini-text" data-id="1" title="广州">广州</span>
                 </div>
             </div>
             <div class="txt-info" id="ECS_MEMBERZONE">
-                {if isset($user_info) && $user_info['user_name'] != ''}
-                <a href="#" class="link-login red">{$user_info['user_name']}</a>
+                {if isset($member_info) && $member_info['member_id'] != ''}
+                <a href="#" class="link-login red">{$member_info['member_name']}</a>
                 {else}
                 <a href="/home/login" class="link-login red">请登录</a>
                 {/if}
@@ -92,7 +97,6 @@
                     <input autocomplete="off" onKeyUp="lookup(this.value);" name="keywords" type="text" id="keyword" value="内衣" class="search-text"/>
                     <input type="hidden" name="store_search_cmt" value="0">
                     <button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)" >搜商品</button>
-                    <button type="submit" class="button button-store" onclick="checkstore_search_cmt(1)" >搜店铺</button>
                 </form>
                 <ul class="keyword">
                     <li><a href="search.php?keywords=%E7%BD%91%E8%BD%AF%E5%BF%97%E6%88%90" target="_blank">婴儿游运</a></li>
@@ -113,10 +117,11 @@
         <div class="shopCart" data-ectype="dorpdown" id="ECS_CARTINFO" data-carteveval="0">
 
             <div class="shopCart-con dsc-cm">
-                <a href="flow.php">
-                    <i class="iconfont icon-carts"></i>
+                <a href="/home/details/
+">
+                      <i class="iconfont icon-carts"></i>
                     <span>我的购物车</span>
-                    <em class="count cart_num">0</em>
+                    <em class="count cart_num">{$cart_count}</em>
                 </a>
             </div>
             <div class="dorpdown-layer" ectype="dorpdownLayer">
@@ -124,6 +129,43 @@
             </div>
 
             <script type="text/javascript">
+                $(function(){
+                //       $("#change").click(function(){
+                //         translate();
+                //     })
+                //     // do something
+                //     var script=document.createElement("script");
+                //     script.type="text/javascript";
+                //     script.src="http://www.microsoftTranslator.com/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**";
+                //     document.getElementsByTagName('head')[0].appendChild(script);
+                //     var value = sessionStorage.getItem("language");
+                //     document.onreadystatechange = function () {
+                //         if (document.readyState == 'complete') {
+                //             if(value==="1"){
+                //                 Microsoft.Translator.Widget.Translate('zh-CHS', 'en', onProgress, onError, onComplete, onRestoreOriginal, 2000);
+                //             }
+                //         }
+                //     }
+                //     function onProgress(value) {
+                //     }
+                //     function onError(error) {
+                //     }
+                //     function onComplete() {
+                //         $("#WidgetFloaterPanels").hide();
+                //     }
+                //     function onRestoreOriginal() {
+                //     }
+                // });
+                //
+                // function translate(){
+                //     var value = sessionStorage.getItem("language");
+                //     if(value==="1"){
+                //         sessionStorage.setItem("language", "0");
+                //     }else{
+                //         sessionStorage.setItem("language", "1");
+                //     }
+                //     window.location.reload();//刷新当前页面.
+                // }
                 function changenum(rec_id, diff, warehouse_id, area_id)
                 {
                     var cValue = $('#cart_value').val();

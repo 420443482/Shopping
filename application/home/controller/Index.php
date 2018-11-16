@@ -2,10 +2,19 @@
 namespace app\home\controller;
 use think\Controller;
 use think\Db;
+use think\Request;
 use think\Session;
     class Index extends Controller
 {
-	//显示首页
+    public $member_info;
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $member_id = Session::get('member_id');
+        !empty($member_id)?$this->member_info = Db::name('member_info')->where(array('member_id'=>$member_id))->find():$this->member_info = [];
+    }
+
+        //显示首页
     public function index()
     {
         list($class,$goods_class_array) = array([],[]);
@@ -51,8 +60,15 @@ use think\Session;
             $v['goods_images'] = $images[0];
             $goods_column[$v['goods_class_id']][] = $v;
         }
-
+        //显示购物车数量
+        if(!empty($this->member_info['member_id'])){
+            $cart_count = Db::name('goods_cart')->where(array('member_id'=>$this->member_info['member_id'], 'is_delete'=>0, 'is_purchase'=>0,'is_submit'=>0))->count();
+        }else{
+            $cart_count = 0;
+        }
         $goods_class_name = array_column($class_list,'class_name','goods_class_id');
+        $this->assign('cart_count',$cart_count);
+        $this->assign('member_info',$this->member_info);
         $this->assign('goods_class_name',$goods_class_name);
         $this->assign('goods_column',$goods_column);
         $this->assign('class',$class);

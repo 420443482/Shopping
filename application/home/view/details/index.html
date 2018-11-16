@@ -1,5 +1,6 @@
 {extend name="template/base" /}
 {block name="content"}
+
 <div class="full-main-n">
     <div class="w w1200 relative">
         <div class="crumbs-nav">
@@ -140,7 +141,7 @@
                                     <div class="si-warp"><div class="m-price" id="ECS_MARKETPRICE"><em>¥</em>{$goods_list.goods_market_price}</div></div>
                                 </div>
                                 <div class="si-info">
-                                    <div class="si-cumulative">累计评价<em>0</em></div>
+                                    <div class="si-cumulative">累计评价<em>{$goods_assess_count}</em></div>
                                     <div class="si-cumulative">累计销量<em>{$goods_list.goods_volume ?? 0}</em></div>
                                 </div>
                                 <div class="si-phone-code">
@@ -212,8 +213,8 @@
                             <div class="clear"></div>
                         </div>
                         <div class="choose-btns ml60 clearfix">
-                            <a href="javascript:addToCart(648)" data-type="0" class="btn-buynow" ectype="btn-buynow">立即购买</a>
-                            <a href="javascript:addToCartShowDiv(648)" class="btn-append" ectype="btn-append"><i class="iconfont icon-carts"></i>加入购物车</a>
+                            <a href="javascript:addToCart({$goods_list.goods_id})" data-type="0" class="btn-buynow" ectype="btn-buynow">立即购买</a>
+                            <a href="javascript:addToCartShowDiv({$goods_list.goods_id})" class="btn-append" ectype="btn-append"><i class="iconfont icon-carts"></i>加入购物车</a>
 
 
                         </div>
@@ -238,41 +239,17 @@
                 <div class="track-tit"><h3>看了又看</h3><span></span></div>
                 <div class="track-con">
                     <div class="tempWrap" style="overflow:hidden; position:relative; height:555px"><ul class="animationPage" style="top: 0px; position: relative; padding: 0px; margin: 0px;">
+                        {foreach $goods_to5 as $v}
                         <li style="height: 180px;">
-                            <div class="p-img"><a href="goods.php?id=698" target="_blank" title="Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
-                            <div class="p-name"><a href="goods.php?id=698" target="_blank" title="Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机">Haier/海尔 EG10014B39GU1 10公斤kg智能变频滚筒全自动洗衣机</a></div>
+                            <div class="p-img"><a href="/home/details?goods_id={$v['goods_id']}" target="_blank" title="{$v['goods_name']}/{$v['goods_summary']}">
+                                <img src="<?php $img = json_decode($v['goods_images'],true); echo $img[0] ?>" width="140" height="140"></a></div>
+                            <div class="p-name"><a href="/home/details?goods_id={$v['goods_id']}" target="_blank" title="{$v['goods_name']}/{$v['goods_summary']}">
+                                {$v['goods_name']}/{$v['goods_summary']}</a></div>
                             <div class="price">
-                                <em>¥</em>3299.00
+                                <em>¥</em>{$v['goods_sales_price']}
                             </div>
                         </li>
-                        <li style="height: 180px;">
-                            <div class="p-img"><a href="goods.php?id=651" target="_blank" title="Konka/康佳 A48F 48英寸高清智能网络平板 LED液晶电视机 50 49 已累计爆售 1万台 大屏购物 镇店爆款"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
-                            <div class="p-name"><a href="goods.php?id=651" target="_blank" title="Konka/康佳 A48F 48英寸高清智能网络平板 LED液晶电视机 50 49 已累计爆售 1万台 大屏购物 镇店爆款">Konka/康佳 A48F 48英寸高清智能网络平板 LED液晶电视机 50 49 已累计爆售 1万台 大屏购物 镇店爆款</a></div>
-                            <div class="price">
-                                <em>¥</em>3500.00
-                            </div>
-                        </li>
-                        <li style="height: 180px;">
-                            <div class="p-img"><a href="goods.php?id=697" target="_blank" title="Galanz/格兰仕 G80F23CN3L-C2(R0)正品微波炉23L 智能光波炉家用 800w速热23升容量1级能效智能预约"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
-                            <div class="p-name"><a href="goods.php?id=697" target="_blank" title="Galanz/格兰仕 G80F23CN3L-C2(R0)正品微波炉23L 智能光波炉家用 800w速热23升容量1级能效智能预约">Galanz/格兰仕 G80F23CN3L-C2(R0)正品微波炉23L 智能光波炉家用 800w速热23升容量1级能效智能预约</a></div>
-                            <div class="price">
-                                <em>¥</em>599.00
-                            </div>
-                        </li>
-                        <li style="height: 180px;">
-                            <div class="p-img"><a href="goods.php?id=693" target="_blank" title="Changhong/长虹 55G6 55吋液晶电视机4k曲面平板电视智能网络wifi 曲面 4K超清 双64位 U-MAX"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
-                            <div class="p-name"><a href="goods.php?id=693" target="_blank" title="Changhong/长虹 55G6 55吋液晶电视机4k曲面平板电视智能网络wifi 曲面 4K超清 双64位 U-MAX">Changhong/长虹 55G6 55吋液晶电视机4k曲面平板电视智能网络wifi 曲面 4K超清 双64位 U-MAX</a></div>
-                            <div class="price">
-                                <em>¥</em>4099.00
-                            </div>
-                        </li>
-                        <li style="height: 180px;">
-                            <div class="p-img"><a href="goods.php?id=621" target="_blank" title="三星C24F396FH曲面显示器23.5英寸电脑显示器24液晶显示屏幕超22"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="140" height="140"></a></div>
-                            <div class="p-name"><a href="goods.php?id=621" target="_blank" title="三星C24F396FH曲面显示器23.5英寸电脑显示器24液晶显示屏幕超22">三星C24F396FH曲面显示器23.5英寸电脑显示器24液晶显示屏幕超22</a></div>
-                            <div class="price">
-                                <em>¥</em>2200.00
-                            </div>
-                        </li>
+                        {/foreach}
                     </ul></div>
                 </div>
                 <div class="track-more">
@@ -291,8 +268,8 @@
                     <div class="mt"><h3>店内客服</h3></div>
                     <div class="mc">
                         <ul>
-                            <li class="service_qq"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=38306293&amp;site=qq&amp;menu=yes" target="_blank"><i class="icon i-kefu"></i><span>客服一</span></a></li>
-                            <li class="service_qq"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=290116505&amp;site=qq&amp;menu=yes" target="_blank"><i class="icon i-kefu"></i><span>客服二</span></a></li>
+                            <li class="service_qq"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=245722582&amp;site=qq&amp;menu=yes" target="_blank"><i class="icon i-kefu"></i><span>客服一</span></a></li>
+                            <li class="service_qq"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=245722582&amp;site=qq&amp;menu=yes" target="_blank"><i class="icon i-kefu"></i><span>客服二</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -305,40 +282,18 @@
                     <div class="mc">
                         <div class="mc-warp">
                             <div class="items">
-                                <div class="item"><a href="category.php?id=1130" target="_blank">电压力锅</a></div>
-                                <div class="item"><a href="category.php?id=1131" target="_blank">电饭煲</a></div>
-                                <div class="item"><a href="category.php?id=1132" target="_blank">豆浆机</a></div>
-                                <div class="item"><a href="category.php?id=1133" target="_blank">面包机</a></div>
-                                <div class="item"><a href="category.php?id=1134" target="_blank">咖啡机</a></div>
-                                <div class="item"><a href="category.php?id=1135" target="_blank">微波炉</a></div>
-                                <div class="item"><a href="category.php?id=1136" target="_blank">料理/榨汁机</a></div>
-                                <div class="item"><a href="category.php?id=1137" target="_blank">电烤箱</a></div>
-                                <div class="item"><a href="category.php?id=1138" target="_blank">电磁炉</a></div>
-                                <div class="item"><a href="category.php?id=1139" target="_blank">电饼铛/烧火盘</a></div>
+                                {foreach $goods_xg_class as $v}
+                                <div class="item"><a href="category.php?id=1130" target="_blank">{$v['class_name']}</a></div>
+                                {/foreach}
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="g-main">
-                    <div class="mt">
-                        <h3>同类其他品牌</h3>
-                    </div>
-                    <div class="mc">
-                        <div class="mc-warp">
-                            <div class="items">
-                                <div class="item"><a href="brand.php?id=151" target="_blank">姬芮</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
 
                 <div class="g-main g-rank">
                     <div class="mc">
                         <ul class="mc-tab mcThree" ectype="rankMcTab">
-                            <li class="curr">新品</li>                                <li>推荐</li>                                <li>热销</li>                            </ul>
+                            <li class="curr">新品</li>                                <li></li>                                <li></li>                            </ul>
                         <div class="mc-content">
 
 
@@ -351,93 +306,24 @@
                                 </div>
                                 <div class="mcm-right">
                                     <ul>
+                                        {foreach $goods_zx as $v}
                                         <li>
-                                            <div class="p-img"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品"><img src="/spadmin/goods/images/20181028/117f8fa642f2d4800e9ef4005efdf1fa.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
+                                            <div class="p-img"><a href="/home/details?goods_id={$v.goods_id}" title="{$v.goods_summary}"><img src="<?php $images=json_decode($v['goods_images'],true); echo $images[0]; ?>" width="130" height="130"></a></div>
+                                            <div class="p-name"><a href="/home/details?goods_id={$v.goods_id}" title="{$v.goods_summary}">{$v.goods_summary}</a></div>
                                             <div class="p-price">
-                                                <em>¥</em>128.00									</div>
+                                                <em>¥</em>{$v.goods_sales_price}									</div>
                                         </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98"><img src="/spadmin/goods/images/20181028/117f8fa642f2d4800e9ef4005efdf1fa.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>98.00									</div>
-                                        </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购"><img src="/spadmin/goods/images/20181028/117f8fa642f2d4800e9ef4005efdf1fa.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>89.00									</div>
-                                        </li>
+                                       {/foreach}
                                     </ul>
                                 </div>
                             </div>
 
 
 
-                            <div class="mc-main" style="display: none;">
-                                <div class="mcm-left">
-                                    <div class="spirit"></div>
-                                    <div class="rank-number rank-number1">1</div>
-                                    <div class="rank-number rank-number2">2</div>
-                                    <div class="rank-number rank-number3">3</div>
-                                </div>
-                                <div class="mcm-right">
-                                    <ul>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>128.00									</div>
-                                        </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>98.00									</div>
-                                        </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>89.00									</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
 
 
 
-                            <div class="mc-main" style="display: none;">
-                                <div class="mcm-left">
-                                    <div class="spirit"></div>
-                                    <div class="rank-number rank-number1">1</div>
-                                    <div class="rank-number rank-number2">2</div>
-                                    <div class="rank-number rank-number3">3</div>
-                                </div>
-                                <div class="mcm-right">
-                                    <ul>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=864" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>128.00									</div>
-                                        </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=863" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>98.00									</div>
-                                        </li>
-                                        <li>
-                                            <div class="p-img"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="130" height="130"></a></div>
-                                            <div class="p-name"><a href="goods.php?id=865" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
-                                            <div class="p-price">
-                                                <em>¥</em>89.00									</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>
@@ -452,9 +338,9 @@
             <div class="g-m-detail">
                 <div class="gm-tabbox" ectype="gm-tabs">
                     <ul class="gm-tab">
-                        <li class="curr" ectype="gm-tab-item">商品详情</li>
-                        <li ectype="gm-tab-item" class="">用户评论（<em class="ReviewsCount">0</em>）</li>
-                        <li ectype="gm-tab-item" class="">网友讨论圈</li>
+                        <li class="curr"  path="gm-f-xq" ectype="gm-tab-item">商品详情</li>
+                        <li ectype="gm-tab-item"  path="gm-f-comment" class="">用户评论（<em class="ReviewsCount">0</em>）</li>
+                        <li ectype="gm-tab-item" path="gm-f-tiezi" class="">网友讨论圈</li>
                     </ul>
                     <div class="extra">
                         <div class="item">
@@ -504,18 +390,20 @@
                     <div class="gm-tab-qp-bort" ectype="qp-bort" style="width: 1903px; left: -581.5px;"></div>
                 </div>
                 <div class="gm-floors" ectype="gm-floors">
-                    <div class="gm-f-item gm-f-details" ectype="gm-item" style="display: block;">
+                    <div class="gm-f-item gm-f-details"  ectype="gm-item" style="display: block;">
+                        <div class="gm-xq">
                         <div class="gm-title">
                             <h3>商品详情</h3>
                         </div>
                         <div class="goods-para-list">
                             <dl class="goods-para">
-                                <dd class="column"><span>商品名称：Midea/美的 MB-WFS5017TM电饭煲5L智能正品电饭锅家用3-4-6-7-8人 下单立减20 精研柴火饭 涡轮防溢</span></dd>
-                                <dd class="column"><span>商品编号：ECS000648</span></dd>
-                                <dd class="column"><span>店铺：<a href="" title="网软自营" target="_blank">网软自营</a></span></dd>
-                                <dd class="column"><span>重量：0克</span></dd>
-                                <dd class="column"><span>上架时间：2017-03-10 16:21:06</span></dd>
+                                <dd class="column"><span>商品名称：{$goods_list.goods_name}/{$goods_list.goods_summary}</span></dd>
+                                <dd class="column"><span>商品编号：{$goods_list.goods_code}</span></dd>
+                                <dd class="column"><span>店铺：<a href="" title="婴儿游运" target="_blank">婴儿游运</a></span></dd>
+                                <!--<dd class="column"><span>重量：0克</span></dd>-->
+                                <dd class="column"><span>上架时间：{$goods_list.goods_grounding_time|date='Y-m-d',###}</span></dd>
                             </dl>
+                        </div>
                         </div>
                     <div class="gm-f-item gm-f-comment" ectype="gm-item" style="display: none;">
                         <div class="gm-title">
@@ -625,21 +513,23 @@
                                         });
                                         var animationNum = 0;
                                         $(".animation-up").click(function(){
+                                            if(animationNum<1){
+                                            } else {
                                                 animationNum--;
-                                                if(animationNum<0){
-                                                    $(this).css("color","#ccc")
-                                                } else {
-                                                    var moveTop = animationNum*185
-                                                    $(".animationPage").animate({
-                                                        top:-moveTop+"px"
-                                                    });
-                                                }
-
-                                                console.log(animationNum)
+                                                var moveTop = animationNum*185
+                                                $(".animationPage").animate({
+                                                    top:-moveTop+"px"
+                                                });
+                                            }
+                                            if(animationNum<2){
+                                                $(".animation-down").css("color","#000");
+                                            }
+                                            if(animationNum==0){
+                                                $(this).css("color","#ccc");
+                                            }
                                         })
 
                                         $(".animation-down").click(function(){
-                                            $(".animation-up").css("color","#000")
                                             if(animationNum<2&&animationNum>-2){
                                                 animationNum++;
                                                 var moveTop = animationNum*185
@@ -649,7 +539,13 @@
                                             } else {
                                                 $(this).css("color","#ccc")
                                             }
-                                            console.log(animationNum)
+                                            if(animationNum>0){
+
+                                                $(".animation-up").css("color","#000");
+                                            }
+                                            if(animationNum==2){
+                                                $(this).css("color","#ccc");
+                                            }
                                         })
 
                                     </script></div>                                </div>
@@ -686,36 +582,37 @@
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="rection" id="guess_goods_love"><div class="ftit"><h3>猜你喜欢</h3></div>
-                <ul>
-                    <li>
-                        <div class="p-img"><a href="goods.php?id=864" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
-                        <div class="p-name"><a href="goods.php?id=864" target="_blank" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
-                        <div class="p-price"><em>¥</em>128.00</div>
-                    </li>
-                    <li>
-                        <div class="p-img"><a href="goods.php?id=863" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
-                        <div class="p-name"><a href="goods.php?id=863" target="_blank" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
-                        <div class="p-price"><em>¥</em>98.00</div>
-                    </li>
-                    <li>
-                        <div class="p-img"><a href="goods.php?id=865" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
-                        <div class="p-name"><a href="goods.php?id=865" target="_blank" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
-                        <div class="p-price"><em>¥</em>89.00</div>
-                    </li>
-                    <li>
-                        <div class="p-img"><a href="goods.php?id=627" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
-                        <div class="p-name"><a href="goods.php?id=627" target="_blank" title="2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套">2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套</a></div>
-                        <div class="p-price"><em>¥</em>200.00</div>
-                    </li>
-                    <li>
-                        <div class="p-img"><a href="goods.php?id=626" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
-                        <div class="p-name"><a href="goods.php?id=626" target="_blank" title="秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男">秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男</a></div>
-                        <div class="p-price"><em>¥</em>168.00</div>
-                    </li>
-                </ul></div>
+
         </div>
     </div>
+        <div class="rection" id="guess_goods_love"><div class="ftit"><h3>猜你喜欢</h3></div>
+            <ul>
+                <li>
+                    <div class="p-img"><a href="goods.php?id=864" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
+                    <div class="p-name"><a href="goods.php?id=864" target="_blank" title="马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品">马克华菲长袖T恤男士圆领修身韩版刺绣纯棉2017春装新款潮t 7002 立体3D绣花 欧美潮流范 17春装新品</a></div>
+                    <div class="p-price"><em>¥</em>128.00</div>
+                </li>
+                <li>
+                    <div class="p-img"><a href="goods.php?id=863" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
+                    <div class="p-name"><a href="goods.php?id=863" target="_blank" title="马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98">马克华菲长袖T恤男 冬季新品纯棉圆领黑白潮款印花休闲t恤   98</a></div>
+                    <div class="p-price"><em>¥</em>98.00</div>
+                </li>
+                <li>
+                    <div class="p-img"><a href="goods.php?id=865" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
+                    <div class="p-name"><a href="goods.php?id=865" target="_blank" title="美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购">美特斯邦威长袖T恤男士2017春装新款时尚印花百搭205064商场同款 1元秒100元优惠券丨限量抢丨立即抢购</a></div>
+                    <div class="p-price"><em>¥</em>89.00</div>
+                </li>
+                <li>
+                    <div class="p-img"><a href="goods.php?id=627" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
+                    <div class="p-name"><a href="goods.php?id=627" target="_blank" title="2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套">2017春装新款男士卫衣套头圆领韩版潮流时尚男生休闲外套</a></div>
+                    <div class="p-price"><em>¥</em>200.00</div>
+                </li>
+                <li>
+                    <div class="p-img"><a href="goods.php?id=626" target="_blank"><img src="/spadmin/goods/images/20181028/31b425ccab5e661f943ffffbb46b5230.jpeg" width="134" height="134"></a></div>
+                    <div class="p-name"><a href="goods.php?id=626" target="_blank" title="秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男">秋冬新款加绒圆领套头卫衣男青年男生韩版潮流学生休闲外套男</a></div>
+                    <div class="p-price"><em>¥</em>168.00</div>
+                </li>
+            </ul></div>
     <div class="hidden">
 
         <div id="notify_box" class="hide">
@@ -754,14 +651,15 @@
                 <div class="center_pop_txt">
                     <div class="title"><h3>提示</h3><a href="javascript:loadingClose();" title="关闭" class="loading-x">X</a></div>
                 </div>
+                {if !empty($member_info)}
                 <div class="btns">
-                    <a href="flow.php" class="ecsc-btn-mini ecsc-btn-orange">去付款</a>
+                    <a href="/home/details/cart_list" target="_Blank" class="ecsc-btn-mini ecsc-btn-orange">去付款</a>
                     <a href="javascript:loadingClose();" class="ecsc-btn-mini">继续购物</a>
                 </div>
+                {/if}
             </div>
         </div>
     </div>
-
 
     <div class="duibi_box" id="slideTxtBox" style="left: 55.5px; display: none;">
         <div class="parWarp">
@@ -805,4 +703,20 @@
     <div class="tm-dl-overlay-mask"></div>
 </div>
 </div>
+<script>
+    $(".gm-tab li").click(function () {
+        $(this).addClass("curr").siblings().removeClass("curr")
+        var path = $(this).attr('path');
+        if(path == 'gm-f-comment'){
+            $('.gm-f-comment').css("display","block");
+            $('.gm-xq').hide();
+        }else if(path == 'gm-f-tiezi'){
+            $('.gm-xq').hide();
+            $('.gm-f-comment').hide();
+        }else{
+            $('.gm-xq').css("display","block");
+            $('.gm-f-comment').hide();
+        }
+    })
+</script>
 {/block}
