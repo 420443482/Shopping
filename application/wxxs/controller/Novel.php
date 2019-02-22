@@ -279,6 +279,7 @@ class Novel extends Controller
     //小说热搜榜
     public  function hot_search()
     {
+
         $count = isset($_REQUEST['count'])?$_REQUEST['count']:0;
         $url = 'https://top.baidu.com/buzz/book.html';
         $content = $this->curl($url, 'GBK');
@@ -289,8 +290,9 @@ class Novel extends Controller
                 if(!isset($chapter_name[1][$i])) break;
                 $data[] = mb_convert_encoding($chapter_name[1][$i], "UTF-8", "GBK");
         }
+        $reding = Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid']))->order('up_time','desc')->limit(5)->select();
 
-        echo json_encode(array('code'=>1,'data'=>$data));
+        echo json_encode(array('code'=>1,'data'=>$data,'reding'=>$reding));
         exit;
     }
 
