@@ -210,7 +210,7 @@ class Novel extends Controller
     public function chapter_directory(){
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/';
-        $url = str_replace("http","https",$url);
+//        $url = str_replace("http","https",$url);
         $content = $this->curl($url);
 
         //小说图片
