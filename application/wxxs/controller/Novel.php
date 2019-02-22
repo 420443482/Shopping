@@ -165,7 +165,7 @@ class Novel extends Controller
 //        $url = 'http://www.xxbiquge.com/75_75939/';
         $w_top = isset($_REQUEST['top'])?$_REQUEST['top']:1;
         $w_bottom = isset($_REQUEST['bottom'])?$_REQUEST['bottom']:100;
-        $url = str_replace("http","https",$url);
+//        $url = str_replace("http","https",$url);
         $content = $this->curl($url);
         $link_m = 'http://www.xxbiquge.com';
         //小说章节目录
