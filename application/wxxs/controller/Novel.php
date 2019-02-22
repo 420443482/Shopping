@@ -166,11 +166,13 @@ class Novel extends Controller
             Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid'],'book_name'=>$book_name[2][2]))
                 ->update(array('directory_name'=>$data['chapter_title'],'directory_link'=>$data['prevlink'],'up_time'=>time()));
         }else{
+            //新增记录
             $book_data['openid'] = $_REQUEST['openid'];
             $book_data['book_name'] = $book_name[2][2];
             $book_data['book_link'] = $data['chapterlink'];
             $book_data['directory_name'] = $data['chapter_title'];
             $book_data['directory_link'] = $data['prevlink'];
+            $book_data['up_time'] = time();
             Db::name('wx_reading_record')->insertGetId($book_data);
         }
         echo json_encode(array('code'=>1,'data'=>$data));
