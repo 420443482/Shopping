@@ -17,6 +17,7 @@ class Novel extends Controller
         $keyword = $_REQUEST['name'];
 //        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
+        
         $array = [];
 
         if($data['page']>1){
@@ -48,7 +49,7 @@ class Novel extends Controller
         curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//这个是重点。
         curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);
-        
+
         $content = curl_exec ($ch);
         if ($content == FALSE) {
             echo "error:" . curl_error ( $ch );
