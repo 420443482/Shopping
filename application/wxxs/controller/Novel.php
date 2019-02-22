@@ -2,6 +2,7 @@
 namespace app\wxxs\controller;
 use app\common\model\User;
 use think\Controller;
+use think\Db;
 
 class Novel extends Controller
 {
@@ -141,6 +142,8 @@ class Novel extends Controller
 //        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
 //        $url = str_replace("http","https",$url);
         $content = $this->curl($url);
+        preg_match("/<div class=\"con_top\".*?>.*?<\/div>/ism",$content,$book_names);
+        preg_match_all("/<a .*?href=\"(.*?)\".*?>(.*?)<\/a>/is", $book_names[0], $book_name);//查询书名
 
         preg_match("/<div class=\"bookname\".*?>.*?<\/div>/ism",$content,$chapter);
         preg_match("/<h1>(.*?)<\/h1>/",$chapter[0],$chapter_title);//标题
@@ -155,7 +158,21 @@ class Novel extends Controller
 //        print_r($page[0][0]);
 //        exit;
         $list=str_replace(array("&nbsp;","<br />","<br>"),array("　","\n","\n"),$list[0][0]);//替换HTML标签
-            $data['content'] = strip_tags($list);
+        $data['content'] = strip_tags($list);
+
+        //判断用户是否看的同一本书
+        $user = Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid'],'book_name'=>$book_name[2][2]))->find();
+        if($user){
+            Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid'],'book_name'=>$book_name[2][2]))
+                ->update(array('directory_name'=>$data['chapter_title'],'directory_link'=>$data['prevlink'],'up_time'=>time()));
+        }else{
+            $book_data['openid'] = $_REQUEST['openid'];
+            $book_data['book_name'] = $book_name[2][2];
+            $book_data['book_link'] = $data['chapterlink'];
+            $book_data['directory_name'] = $data['chapter_title'];
+            $book_data['directory_link'] = $data['prevlink'];
+            Db::name('wx_reading_record')->insertGetId($book_data);
+        }
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;   
     }
