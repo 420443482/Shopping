@@ -295,6 +295,12 @@ class Novel extends Controller
         echo json_encode(array('code'=>1,'data'=>$data,'reding'=>$reding));
         exit;
     }
-
+    //判断是否有浏览记录
+    public function  is_reding(){
+        $list = Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid']))->find();
+        !empty($list)?$status = true:$status= false;
+        echo json_encode(array('code'=>1,'stauts'=>$status));
+        exit;
+    }
 }
 
