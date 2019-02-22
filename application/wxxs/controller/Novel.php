@@ -139,7 +139,7 @@ class Novel extends Controller
         $link_m = 'http://www.xxbiquge.com';
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
-        $url = str_replace("http","https",$url);
+//        $url = str_replace("http","https",$url);
         $content = $this->curl($url);
 
         preg_match("/<div class=\"bookname\".*?>.*?<\/div>/ism",$content,$chapter);
