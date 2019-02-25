@@ -61,7 +61,7 @@ class Novel extends Controller
     //搜索小说
     public function getItem($word,$p=1){
 //        本地测试连接:$url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
-        $url = "http://www.xbiquge.cc/search.php?keyword=".$word.'&page='.$p;
+        $url = "https://www.xbiquge6.com/search.php?keyword=".$word.'&page='.$p;
         $content = $this->curl($url);
         /***
          * 小说目录链接($link_array)
@@ -137,7 +137,7 @@ class Novel extends Controller
 
     //截取小说内容
         public function intercept_content(){
-        $link_m = 'http://www.xbiquge.cc';
+        $link_m = 'http://www.xxbiquge.com';
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
 //        $url = str_replace("http","https",$url);
@@ -187,7 +187,7 @@ class Novel extends Controller
         $w_bottom = isset($_REQUEST['bottom'])?$_REQUEST['bottom']:100;
 //        $url = str_replace("http","https",$url);
         $content = $this->curl($url);
-        $link_m = 'http://www.xbiquge.cc';
+        $link_m = 'http://www.xxbiquge.com';
         //小说章节目录
         preg_match_all("/<div id=\"info\".*?>.*?<\/div>/ism",$content,$user);
         preg_match_all("/<h1>(.*?)<\/h1>/",$user[0][0],$h);//小说标题
