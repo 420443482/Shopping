@@ -159,7 +159,7 @@ class Novel extends Controller
 //        exit;
         $list=str_replace(array("&nbsp;","<br />","<br>"),array("　","\n","\n"),$list[0][0]);//替换HTML标签
         $data['content'] = strip_tags($list);
-
+        if(isset($book_name[2][2]) && !empty($book_name[2][2])){
         //判断用户是否看的同一本书
         $user = Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid'],'book_name'=>$book_name[2][2]))->find();
         if($user){
@@ -174,6 +174,7 @@ class Novel extends Controller
             $book_data['directory_link'] = $data['prevlink'];
             $book_data['up_time'] = time();
             Db::name('wx_reading_record')->insertGetId($book_data);
+            }
         }
         echo json_encode(array('code'=>1,'data'=>$data));
         exit;   
