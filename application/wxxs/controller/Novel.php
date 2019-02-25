@@ -302,5 +302,10 @@ class Novel extends Controller
         echo json_encode(array('code'=>1,'stauts'=>$status));
         exit;
     }
+    //躲避小程序审核
+    public function is_tabBar(){
+        $is_display = 0;
+        echo json_encode(array('code'=>1,'$is_display'=>$is_display));
+    }
 }
 
