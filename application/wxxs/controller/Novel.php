@@ -307,6 +307,7 @@ class Novel extends Controller
     public function is_tab(){
         $is_display = 0;
         echo json_encode(array('code'=>1,'is_display'=>$is_display));
+        exit;
     }
 }
 
