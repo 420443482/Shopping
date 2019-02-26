@@ -14,7 +14,8 @@ class Novel extends Controller
     //显示首页
     public function novel_list()
     {
-
+        echo json_encode(array('code'=>1,'data'=>[]));
+        exit;
         $keyword = $_REQUEST['name'];
 //        $keyword = '大主宰';
         $data = $this->getItem($keyword); //获取搜索内容
@@ -60,6 +61,8 @@ class Novel extends Controller
     }
     //搜索小说
     public function getItem($word,$p=1){
+        echo json_encode(array('code'=>1,'data'=>[]));
+        exit;
 //        本地测试连接:$url = "https://www.xxbiquge.com/search.php?keyword=".urlencode($word).'&page='.$p;
         $url = "https://www.xbiquge6.com/search.php?keyword=".$word.'&page='.$p;
         $content = $this->curl($url);
@@ -137,6 +140,8 @@ class Novel extends Controller
 
     //截取小说内容
         public function intercept_content(){
+            echo json_encode(array('code'=>1,'data'=>[]));
+            exit;
         $link_m = 'https://www.xbiquge6.com';
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/3966694.html';
@@ -181,6 +186,8 @@ class Novel extends Controller
     }
     //显示小说所有章节
     public function directory(){
+        echo json_encode(array('code'=>1,'data'=>[]));
+        exit;
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/';
         $w_top = isset($_REQUEST['top'])?$_REQUEST['top']:1;
@@ -228,6 +235,8 @@ class Novel extends Controller
     }
     //显示小说章节详细信息
     public function chapter_directory(){
+        echo json_encode(array('code'=>1,'data'=>[]));
+        exit;
         $url = urldecode($_REQUEST['url']);
 //        $url = 'http://www.xxbiquge.com/75_75939/';
 //        $url = str_replace("http","https",$url);
@@ -280,7 +289,8 @@ class Novel extends Controller
     //小说热搜榜
     public  function hot_search()
     {
-
+        echo json_encode(array('code'=>1,'data'=>[],'reding'=>[]));
+        exit;
         $count = isset($_REQUEST['count'])?$_REQUEST['count']:0;
         $url = 'https://top.baidu.com/buzz/book.html';
         $content = $this->curl($url, 'GBK');
@@ -298,6 +308,8 @@ class Novel extends Controller
     }
     //判断是否有浏览记录
     public function  is_reding(){
+        echo json_encode(array('code'=>1,'stauts'=>[]));
+        exit;
         $list = Db::name('wx_reading_record')->where(array('openid'=>$_REQUEST['openid']))->find();
         !empty($list)?$status = true:$status= false;
         echo json_encode(array('code'=>1,'stauts'=>$status));
